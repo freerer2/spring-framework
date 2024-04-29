@@ -1,30 +1,14 @@
 [[spring-core]]
 = Core Technologies
 
-This part of the reference documentation covers all the technologies that are
-absolutely integral to the Spring Framework.
+참조 문서의 이 부분에서는 Spring 프레임워크에 절대적으로 필수적인 모든 기술을 다룹니다.
 
-Foremost amongst these is the Spring Framework's Inversion of Control (IoC) container.
-A thorough treatment of the Spring Framework's IoC container is closely followed by
-comprehensive coverage of Spring's Aspect-Oriented Programming (AOP) technologies.
-The Spring Framework has its own AOP framework, which is conceptually easy to
-understand and which successfully addresses the 80% sweet spot of AOP requirements
-in Java enterprise programming.
+그중에서도 가장 중요한 것은 Spring 프레임워크의 IoC(제어의 역전) 컨테이너입니다.
 
-Coverage of Spring's integration with AspectJ (currently the richest -- in terms of
-features -- and certainly most mature AOP implementation in the Java enterprise space)
-is also provided.
+스프링 프레임워크의 IoC 컨테이너에 대한 자세한 설명에 이어서 스프링의 측면 지향 프로그래밍(AOP) 기술에 대한 포괄적인 내용이 이어집니다.
 
-AOT processing can be used to optimize your application ahead-of-time. It is typically
-used for native image deployment using GraalVM.
+Spring 프레임워크에는 자체 AOP 프레임워크가 있습니다. 이는 개념적으로 이해하기 쉬우면서 해당 프레임워크를 통해 Java에서 요구하는 AOP 요구사항의 80% 가량을 문제없이 성공적으로 처리할 수 있습니다.
 
+AspectJ와 Spring연동에 대한 내용도 제공됩니다. (JAVA에서 현재까지 기능적으로 가장 풍부하면서 기술 성숙도가 높은 AOP구현)
 
-
-
-
-
-
-
-
-
-
+AOT 처리를 사용하면 애플리케이션을 미리 최적화할 수 있습니다. 일반적으로 GraalVM을 사용한 기본 이미지 배포에 사용됩니다.

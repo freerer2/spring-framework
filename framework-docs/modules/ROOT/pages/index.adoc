@@ -1,6 +1,6 @@
 :noheader:
 [[spring-framework-documentation]]
-= Spring Framework Documentation
+= 스프링 프레임워크 한글화 문서
 
 [horizontal]
 xref:overview.adoc[Overview] :: History, Design Philosophy, Feedback,
