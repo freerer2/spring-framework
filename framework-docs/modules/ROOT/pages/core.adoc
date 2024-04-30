@@ -1,5 +1,5 @@
 [[spring-core]]
-= 핵심기술
+= Core Technologies(한)
 
 참조 문서의 이 부분에서는 Spring Framework에 절대적으로 필수적인 모든 기술을 다룹니다.
 

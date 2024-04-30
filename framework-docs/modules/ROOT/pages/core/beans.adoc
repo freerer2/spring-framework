@@ -1,5 +1,5 @@
 [[beans]]
-= IoC Container
+= IoC Container(한)
 :page-section-summary-toc: 1
 
 이 장에서는 Spring의 Inversion of Control (IoC) Container를 다룹니다.
