@@ -1,11 +1,11 @@
 :noheader:
 [[spring-framework-documentation]]
-= 스프링 프레임워크 한글화 문서
+= 스프링 프레임워크 문서
 
 [horizontal]
 xref:overview.adoc[Overview] :: History, Design Philosophy, Feedback,
 Getting Started.
-xref:core.adoc[Core] :: IoC Container, Events, Resources, i18n,
+xref:core.adoc[핵심기술] :: IoC Container, Events, Resources, i18n,
 Validation, Data Binding, Type Conversion, SpEL, AOP, AOT.
 <<testing.adoc#testing, Testing>> :: Mock Objects, TestContext Framework,
 Spring MVC Test, WebTestClient.
