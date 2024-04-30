@@ -20,8 +20,6 @@ derby.log
 .gradletasknamecache
 /build
 buildSrc/build
-/spring-*/build
-/framework-*/build
 /integration-tests/build
 /src/asciidoc/build
 spring-test/test-output/
