@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Method Injection :: Spring Framework Reference</title>
+    <title>Method Injection(한글) :: Spring Framework Reference</title>
     <link rel="prev" href="factory-autowire.html">
     <link rel="next" href="../factory-scopes.html">
     <meta name="generator" content="Antora 3.2.0-alpha.2">
@@ -323,7 +323,7 @@
     <a class="nav-link" href="factory-autowire.html">Autowiring Collaborators(한글)</a>
   </li>
   <li class="nav-item is-current-page" data-depth="4">
-    <a class="nav-link" href="factory-method-injection.html">Method Injection</a>
+    <a class="nav-link" href="factory-method-injection.html">Method Injection(한글)</a>
   </li>
 </ul>
   </li>
@@ -1792,7 +1792,7 @@
   <div class="content">
     <div
       class="toc"
-      data-title="Method Injection"
+      data-title="Method Injection(한글)"
       data-levels="2"
     >
       <div class="toc-menu"></div>
@@ -1840,29 +1840,24 @@
     <li><a href="../../../core.html">Core Technologies(한글)</a></li>
     <li><a href="../../beans.html">IoC Container(한글)</a></li>
     <li><a href="../dependencies.html">Dependencies(한글)</a></li>
-    <li><a href="factory-method-injection.html">Method Injection</a></li>
+    <li><a href="factory-method-injection.html">Method Injection(한글)</a></li>
   </ul>
 </nav>
-<h1 id="page-title" class="page">Method Injection</h1>
+<h1 id="page-title" class="page">Method Injection(한글)</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>In most application scenarios, most beans in the container are
-<a href="../factory-scopes.html#beans-factory-scopes-singleton" class="xref page">singletons</a>. When a singleton bean needs to
-collaborate with another singleton bean or a non-singleton bean needs to collaborate
-with another non-singleton bean, you typically handle the dependency by defining one
-bean as a property of the other. A problem arises when the bean lifecycles are
-different. Suppose singleton bean A needs to use non-singleton (prototype) bean B,
-perhaps on each method invocation on A. The container creates the singleton bean A only
-once, and thus only gets one opportunity to set the properties. The container cannot
-provide bean A with a new instance of bean B every time one is needed.</p>
+<p>대부분의 애플리케이션 시나리오에서 컨테이너에 있는 대부분의 Bean은 <a href="../factory-scopes.html#beans-factory-scopes-singleton" class="xref page">싱글톤</a>입니다.
+싱글톤 Bean이 다른 싱글톤 Bean과 협업해야 하거나 비싱글톤 Bean이 다른 비싱글톤 Bean과 협업해야 하는 경우, 일반적으로 한 Bean을 다른 Bean의 속성으로 정의하여 의존성을 처리합니다.
+Bean의 라이프사이클이 서로 다른 경우 문제가 발생합니다.
+싱글톤 Bean A가 A에서 메서드를 호출할 때마다 비싱글톤(프로토타입) Bean B를 사용해야 한다고 가정해 보겠습니다.
+컨테이너는 싱글톤 Bean A를 한 번만 생성하므로 속성을 설정할 기회가 한 번만 주어집니다.
+컨테이너는 Bean A가 필요할 때마다 Bean B의 새 인스턴스를 제공할 수 없습니다.</p>
 </div>
 <div class="paragraph">
-<p>A solution is to forego some inversion of control. You can <a href="../factory-nature.html#beans-factory-aware" class="xref page">make bean A aware of the container</a>
- by implementing the <code>ApplicationContextAware</code> interface,
-and by <a href="../basics.html#beans-factory-client" class="xref page">making a <code>getBean("B")</code> call to the container</a> ask for (a
-typically new) bean B instance every time bean A needs it. The following example
-shows this approach:</p>
+<p>해결책은 제어의 역전을 포기하는 것입니다.
+<code>ApplicationContextAware</code> 인터페이스를 구현하고 <a href="../basics.html#beans-factory-client" class="xref page">컨테이너에 대한 <code>getBean("B")</code> 호출</a>을 통해 <a href="../factory-nature.html#beans-factory-aware" class="xref page">Bean A가 필요할 때마다</a> (일반적으로 새로운) Bean B 인스턴스를 요청하여 컨테이너를 인식하도록 만들 수 있습니다.
+다음 예제는 이 접근 방식을 보여줍니다:</p>
 </div>
 <div id="_tabs_1" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -1887,23 +1882,22 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 /**
- * A class that uses a stateful Command-style class to perform
- * some processing.
+ * 상태 저장 Command-style 클래스를 사용하여 일부 처리를 수행하는 클래스입니다.
  */
 public class CommandManager implements ApplicationContextAware {
 
 	private ApplicationContext applicationContext;
 
 	public Object process(Map commandState) {
-		// grab a new instance of the appropriate Command
+		// 해당 Command의 새 인스턴스를 가져옵니다.
 		Command command = createCommand();
-		// set the state on the (hopefully brand new) Command instance
+		// (새로운) Command 인스턴스의 상태를 설정합니다.
 		command.setState(commandState);
 		return command.execute();
 	}
 
 	protected Command createCommand() {
-		// notice the Spring API dependency!
+		// Spring API 종속성에 주목하세요!
 		return this.applicationContext.getBean("command", Command.class);
 	}
 
@@ -1952,30 +1946,25 @@ class CommandManager : ApplicationContextAware {
 </div>
 </div>
 <div class="paragraph">
-<p>The preceding is not desirable, because the business code is aware of and coupled to the
-Spring Framework. Method Injection, a somewhat advanced feature of the Spring IoC
-container, lets you handle this use case cleanly.</p>
+<p>비즈니스 코드가 Spring 프레임워크를 인식하고 결합되어 있기 때문에 앞의 방식은 바람직하지 않습니다.
+Spring IoC 컨테이너의 다소 고급 기능인 메서드 주입을 사용하면 이 사용 사례를 깔끔하게 처리할 수 있습니다.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p>You can read more about the motivation for Method Injection in
-<a href="https://spring.io/blog/2004/08/06/method-injection/">this blog entry</a>.</p>
+<p>메서드 주입의 동기에 대한 자세한 내용은 <a href="https://spring.io/blog/2004/08/06/method-injection/">이 블로그 항목</a>에서 확인할 수 있습니다.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-factory-lookup-method-injection"><a class="anchor" href="#beans-factory-lookup-method-injection"></a>Lookup Method Injection</h2>
+<h2 id="beans-factory-lookup-method-injection"><a class="anchor" href="#beans-factory-lookup-method-injection"></a>Lookup 메서드 주입(Lookup Method Injection)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Lookup method injection is the ability of the container to override methods on
-container-managed beans and return the lookup result for another named bean in the
-container. The lookup typically involves a prototype bean, as in the scenario described
-in <a href="#">the preceding section</a>. The Spring Framework
-implements this method injection by using bytecode generation from the CGLIB library to
-dynamically generate a subclass that overrides the method.</p>
+<p>Lookup 메서드 주입은 컨테이너가 컨테이너에서 관리되는 Bean의 메서드를 재정의하고 컨테이너의 다른 명명된 Bean에 대한 조회 결과를 반환하는 컨테이너의 기능입니다.
+조회에는 일반적으로 <a href="#">이전 섹션</a>에 설명된 시나리오에서와 같이 프로토타입 Bean이 포함됩니다.
+Spring 프레임워크는 CGLIB 라이브러리에서 바이트코드 생성을 사용하여 메서드를 재정의하는 서브클래스를 동적으로 생성함으로써 이 메서드 주입을 구현합니다.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1987,22 +1976,16 @@ dynamically generate a subclass that overrides the method.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>For this dynamic subclassing to work, the class that the Spring bean container
-subclasses cannot be <code>final</code>, and the method to be overridden cannot be <code>final</code>, either.</p>
+<p>이 동적 서브클래싱이 작동하려면 Spring Bean 컨테이너가 서브클래싱하는 클래스가 <code>final</code> 일 수 없으며, 재정의할 메서드도 <code>final</code> 일 수 없습니다.</p>
 </li>
 <li>
-<p>Unit-testing a class that has an <code>abstract</code> method requires you to subclass the class
-yourself and to supply a stub implementation of the <code>abstract</code> method.</p>
+<p><code>abstract</code> 메서드가 있는 클래스를 단위 테스트하려면 클래스를 직접 서브클래싱하고 <code>abstract</code> 메서드의 스텁 구현을 제공해야 합니다.</p>
 </li>
 <li>
-<p>Concrete methods are also necessary for component scanning, which requires concrete
-classes to pick up.</p>
+<p>컴포넌트 스캐닝에도 구체적인 메서드가 필요하며, 이를 위해서는 구체적인 클래스가 필요합니다.</p>
 </li>
 <li>
-<p>A further key limitation is that lookup methods do not work with factory methods and
-in particular not with <code>@Bean</code> methods in configuration classes, since, in that case,
-the container is not in charge of creating the instance and therefore cannot create
-a runtime-generated subclass on the fly.</p>
+<p>또 다른 주요 제한 사항은 Lookup 메서드가 팩토리 메서드, 특히 구성 클래스의 <code>@Bean</code> 메서드에서는 작동하지 않는다는 것입니다. 이 경우 컨테이너가 인스턴스 생성을 담당하지 않으므로 런타임에 생성된 서브클래스를 즉시 생성할 수 없기 때문입니다.</p>
 </li>
 </ul>
 </div>
@@ -2011,10 +1994,8 @@ a runtime-generated subclass on the fly.</p>
 </table>
 </div>
 <div class="paragraph">
-<p>In the case of the <code>CommandManager</code> class in the previous code snippet, the
-Spring container dynamically overrides the implementation of the <code>createCommand()</code>
-method. The <code>CommandManager</code> class does not have any Spring dependencies, as
-the reworked example shows:</p>
+<p>이전 코드 조각의 <code>CommandManager</code> 클래스의 경우, Spring 컨테이너는 <code>createCommand()</code> 메서드의 구현을 동적으로 재정의합니다.
+재작업된 예제에서 볼 수 있듯이 <code>CommandManager</code> 클래스에는 Spring 종속성이 없습니다:</p>
 </div>
 <div id="_tabs_2" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2033,19 +2014,19 @@ the reworked example shows:</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package fiona.apple;
 
-// no more Spring imports!
+// 더 이상 스프링을 가져오지 않아도 됩니다!
 
 public abstract class CommandManager {
 
 	public Object process(Object commandState) {
-		// grab a new instance of the appropriate Command interface
+		// 적절한 명령 Command의 새 인스턴스를 가져옵니다.
 		Command command = createCommand();
-		// set the state on the (hopefully brand new) Command instance
+		// (Command) 명령 인스턴스에서 상태를 설정합니다.
 		command.setState(commandState);
 		return command.execute();
 	}
 
-	// okay... but where is the implementation of this method?
+	// 좋아요... 하지만 이 방법의 구현은 어디에 있나요?
 	protected abstract Command createCommand();
 }</code></pre>
 </div>
@@ -2077,8 +2058,7 @@ abstract class CommandManager {
 </div>
 </div>
 <div class="paragraph">
-<p>In the client class that contains the method to be injected (the <code>CommandManager</code> in this
-case), the method to be injected requires a signature of the following form:</p>
+<p>주입할 메서드가 포함된 클라이언트 클래스(이 경우 <code>CommandManager</code>)에서 주입할 메서드에는 다음 형식의 서명이 필요합니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2086,9 +2066,9 @@ case), the method to be injected requires a signature of the following form:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If the method is <code>abstract</code>, the dynamically-generated subclass implements the method.
-Otherwise, the dynamically-generated subclass overrides the concrete method defined in
-the original class. Consider the following example:</p>
+<p>메서드가 'abstract' 인 경우 동적으로 생성된 서브클래스가 메서드를 구현합니다.
+그렇지 않으면 동적으로 생성된 서브클래스가 원래 클래스에 정의된 구체적인 메서드를 재정의합니다.
+다음 예제를 살펴보세요:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2104,15 +2084,12 @@ the original class. Consider the following example:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The bean identified as <code>commandManager</code> calls its own <code>createCommand()</code> method
-whenever it needs a new instance of the <code>myCommand</code> bean. You must be careful to deploy
-the <code>myCommand</code> bean as a prototype if that is actually what is needed. If it is
-a <a href="../factory-scopes.html#beans-factory-scopes-singleton" class="xref page">singleton</a>, the same instance of the <code>myCommand</code>
-bean is returned each time.</p>
+<p>명령 관리자`로 식별된 Bean은 <code>myCommand</code> Bean의 새 인스턴스가 필요할 때마다 자체 <code>createCommand()</code> 메서드를 호출합니다.
+실제로 필요한 경우 <code>myCommand</code> Bean을 프로토타입으로 배포하는 데 주의해야 합니다.
+<a href="../factory-scopes.html#beans-factory-scopes-singleton" class="xref page">싱글톤</a>인 경우, 매번 동일한 <code>myCommand</code> Bean 인스턴스가 반환됩니다.</p>
 </div>
 <div class="paragraph">
-<p>Alternatively, within the annotation-based component model, you can declare a lookup
-method through the <code>@Lookup</code> annotation, as the following example shows:</p>
+<p>또는 다음 예제에서 볼 수 있듯이 어노테이션 기반 컴포넌트 모델 내에서 <code>@Lookup</code> 어노테이션을 통해 Lookup 메서드를 선언할 수 있습니다:</p>
 </div>
 <div id="_tabs_3" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2163,8 +2140,7 @@ method through the <code>@Lookup</code> annotation, as the following example sho
 </div>
 </div>
 <div class="paragraph">
-<p>Or, more idiomatically, you can rely on the target bean getting resolved against the
-declared return type of the lookup method:</p>
+<p>또는 더 관용적으로, Lookup 메서드의 선언된 반환 유형에 대해 대상 Bean이 확인되는 것에 의존할 수 있습니다:</p>
 </div>
 <div id="_tabs_4" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2215,10 +2191,8 @@ declared return type of the lookup method:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Note that you should typically declare such annotated lookup methods with a concrete
-stub implementation, in order for them to be compatible with Spring&#8217;s component
-scanning rules where abstract classes get ignored by default. This limitation does not
-apply to explicitly registered or explicitly imported bean classes.</p>
+<p>추상 클래스가 기본적으로 무시되는 Spring의 구성 요소 검색 규칙과 호환되도록 하려면 일반적으로 이러한 주석이 달린 조회 메서드를 구체적인 (역자설명 : 가짜구현이라고 생각하면 편함)스텁 구현으로 선언해야 합니다.
+이 제한은 명시적으로 등록되거나 명시적으로 가져온 Bean 클래스에는 적용되지 않습니다.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -2228,12 +2202,11 @@ apply to explicitly registered or explicitly imported bean classes.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Another way of accessing differently scoped target beans is an <code>ObjectFactory</code>/
-<code>Provider</code> injection point. See <a href="../factory-scopes.html#beans-factory-scopes-other-injection" class="xref page">Scoped Beans as Dependencies</a>.</p>
+<p>다른 범위의 대상 Bean에 접근하는 또 다른 방법은 <code>ObjectFactory</code>/ <code>Provider</code> 주입 지점입니다.
+<a href="../factory-scopes.html#beans-factory-scopes-other-injection" class="xref page">범위가 지정된 Bean을 종속성으로 주입</a>를 참조하세요.</p>
 </div>
 <div class="paragraph">
-<p>You may also find the <code>ServiceLocatorFactoryBean</code> (in the
-<code>org.springframework.beans.factory.config</code> package) to be useful.</p>
+<p>또한 <code>org.springframework.beans.factory.config</code> 패키지에 있는 `ServiceLocatorFactoryBean`이 유용할 수도 있습니다.</p>
 </div>
 </td>
 </tr>
@@ -2242,17 +2215,15 @@ apply to explicitly registered or explicitly imported bean classes.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-factory-arbitrary-method-replacement"><a class="anchor" href="#beans-factory-arbitrary-method-replacement"></a>Arbitrary Method Replacement</h2>
+<h2 id="beans-factory-arbitrary-method-replacement"><a class="anchor" href="#beans-factory-arbitrary-method-replacement"></a>임의 메서드 교체(Arbitrary Method Replacement)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A less useful form of method injection than lookup method injection is the ability to
-replace arbitrary methods in a managed bean with another method implementation. You
-can safely skip the rest of this section until you actually need this functionality.</p>
+<p>Lookup 메서드 주입보다 덜 유용한 메서드 주입 형태는 관리되는 Bean의 임의 메서드를 다른 메서드 구현으로 대체할 수 있는 기능입니다.
+이 기능이 실제로 필요할 때까지 이 섹션의 나머지 부분은 건너뛰셔도 됩니다.</p>
 </div>
 <div class="paragraph">
-<p>With XML-based configuration metadata, you can use the <code>replaced-method</code> element to
-replace an existing method implementation with another, for a deployed bean. Consider
-the following class, which has a method called <code>computeValue</code> that we want to override:</p>
+<p>XML 기반 구성 메타데이터를 사용하면 배포된 Bean에 대해 <code>replaced-method</code> 요소를 사용하여 기존 메서드 구현을 다른 메서드로 대체할 수 있습니다.
+재정의하려는 `computeValue`라는 메서드가 있는 다음 클래스를 고려해 보겠습니다:</p>
 </div>
 <div id="_tabs_5" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2297,8 +2268,7 @@ the following class, which has a method called <code>computeValue</code> that we
 </div>
 </div>
 <div class="paragraph">
-<p>A class that implements the <code>org.springframework.beans.factory.support.MethodReplacer</code>
-interface provides the new method definition, as the following example shows:</p>
+<p>다음 예제에서 볼 수 있듯이 <code>org.springframework.beans.factory.support.MethodReplacer</code> 인터페이스를 구현하는 클래스는 새로운 메서드 정의를 제공합니다:</p>
 </div>
 <div id="_tabs_6" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2353,8 +2323,7 @@ class ReplacementComputeValue : MethodReplacer {
 </div>
 </div>
 <div class="paragraph">
-<p>The bean definition to deploy the original class and specify the method override would
-resemble the following example:</p>
+<p>원본 클래스를 배포하고 메서드 오버라이드를 지정하는 Bean 정의는 다음 예제와 유사합니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2369,12 +2338,10 @@ resemble the following example:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>You can use one or more <code>&lt;arg-type/&gt;</code> elements within the <code>&lt;replaced-method/&gt;</code>
-element to indicate the method signature of the method being overridden. The signature
-for the arguments is necessary only if the method is overloaded and multiple variants
-exist within the class. For convenience, the type string for an argument may be a
-substring of the fully qualified type name. For example, the following all match
-<code>java.lang.String</code>:</p>
+<p>재정의되는 메서드의 메서드 서명을 나타내기 위해 <code>&lt;replaced-method/&gt;</code> 요소 내에 하나 이상의 <code>&lt;arg-type/&gt;</code> 요소를 사용할 수 있습니다.
+인수의 서명은 메서드가 오버로드되고 클래스 내에 여러 변형이 존재하는 경우에만 필요합니다.
+편의를 위해 인수의 타입 문자열은 정규화된 타입 이름의 하위 문자열일 수 있습니다.
+예를 들어 다음은 모두 <code>java.lang.String</code> 과 일치합니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2384,9 +2351,7 @@ Str</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Because the number of arguments is often enough to distinguish between each possible
-choice, this shortcut can save a lot of typing, by letting you type only the
-shortest string that matches an argument type.</p>
+<p>인수의 수는 가능한 각 선택을 구분하기에 충분한 경우가 많으므로 이 단축키를 사용하면 인수 유형과 일치하는 가장 짧은 문자열만 입력할 수 있어 많은 타이핑을 절약할 수 있습니다.</p>
 </div>
 </div>
 </div>
