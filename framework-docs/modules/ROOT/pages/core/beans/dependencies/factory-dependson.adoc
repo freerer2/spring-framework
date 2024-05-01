@@ -1,14 +1,12 @@
 [[beans-factory-dependson]]
-= Using `depends-on`
+= Using `depends-on`(한글)
 
-If a bean is a dependency of another bean, that usually means that one bean is set as a
-property of another. Typically you accomplish this with the <<beans-ref-element, `<ref/>`
-element>> in XML-based configuration metadata. However, sometimes dependencies between
-beans are less direct. An example is when a static initializer in a class needs to be
-triggered, such as for database driver registration. The `depends-on` attribute can
-explicitly force one or more beans to be initialized before the bean using this element
-is initialized. The following example uses the `depends-on` attribute to express a
-dependency on a single bean:
+한 Bean이 다른 Bean의 종속성이라는 것은 일반적으로 한 Bean이 다른 Bean의 속성으로 설정되어 있다는 것을 의미합니다.
+일반적으로 XML 기반 구성 메타데이터의 <<beans-ref-element, `<ref/>` 요소>>로 이를 수행합니다.
+그러나 때로는 Bean 간의 종속성이 직접적이지 않을 수도 있습니다.
+예를 들어 데이터베이스 드라이버 등록과 같이 클래스의 정적 초기화기가 트리거되어야 하는 경우를 들 수 있습니다.
+`depends-on` 속성을 사용하면 이 요소를 사용하는 Bean이 초기화되기 전에 하나 이상의 Bean을 명시적으로 강제로 초기화할 수 있습니다.
+다음 예제에서는 `depends-on` 속성을 사용하여 단일 Bean에 대한 종속성을 표현합니다:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----
@@ -16,9 +14,7 @@ dependency on a single bean:
 	<bean id="manager" class="ManagerBean" />
 ----
 
-To express a dependency on multiple beans, supply a list of bean names as the value of
-the `depends-on` attribute (commas, whitespace, and semicolons are valid
-delimiters):
+여러 Bean에 대한 종속성을 표현하려면 Bean 이름 목록을 `depends-on` 속성의 값으로 제공합니다(쉼표, 공백 및 세미콜론이 유효한 구분 기호입니다):
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----
@@ -30,11 +26,9 @@ delimiters):
 	<bean id="accountDao" class="x.y.jdbc.JdbcAccountDao" />
 ----
 
-NOTE: The `depends-on` attribute can specify both an initialization-time dependency and,
-in the case of xref:core/beans/factory-scopes.adoc#beans-factory-scopes-singleton[singleton] beans only, a corresponding
-destruction-time dependency. Dependent beans that define a `depends-on` relationship
-with a given bean are destroyed first, prior to the given bean itself being destroyed.
-Thus, `depends-on` can also control shutdown order.
+NOTE: `depends-on` 속성은 초기화 시간 종속성과 싱글톤 Bean의 경우에만 해당되는 소멸 시간 종속성을 모두 지정할 수 있습니다.
+지정된 Bean과 `depends-on` 관계를 정의하는 종속 Bean은 지정된 Bean 자체가 소멸되기 전에 먼저 소멸됩니다.
+따라서 `depends-on`은 종료 순서도 제어할 수 있습니다.
 
 
 

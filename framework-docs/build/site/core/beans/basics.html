@@ -314,13 +314,13 @@
     <a class="nav-link" href="dependencies/factory-properties-detailed.html">Dependencies and Configuration in Detail(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="dependencies/factory-dependson.html">Using <code>depends-on</code></a>
+    <a class="nav-link" href="dependencies/factory-dependson.html">Using <code>depends-on</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="dependencies/factory-lazy-init.html">Lazy-initialized Beans</a>
+    <a class="nav-link" href="dependencies/factory-lazy-init.html">Lazy-initialized Beans(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="dependencies/factory-autowire.html">Autowiring Collaborators</a>
+    <a class="nav-link" href="dependencies/factory-autowire.html">Autowiring Collaborators(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="dependencies/factory-method-injection.html">Method Injection</a>
@@ -1846,7 +1846,7 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p><code>org.springframework.context.ApplicationContext</code> 인터페이스는 Spring IoC 컨테이너를 나타내며 빈의 인스턴스화, 구성 및 어셈블리를 담당합니다.
+<p><code>org.springframework.context.ApplicationContext</code> 인터페이스는 Spring IoC 컨테이너를 나타내며 Bean의 인스턴스화, 구성 및 어셈블리를 담당합니다.
 컨테이너는 구성 메타데이터를 읽음으로써 인스턴스화, 구성 및 어셈블할 객체에 대한 지침을 얻습니다.
 구성 메타데이터는 XML, Java 어노테이션 또는 Java 코드로 표현됩니다.
 이를 통해 애플리케이션을 구성하는 객체와 이러한 객체 간의 풍부한 상호 의존성을 표현할 수 있습니다.</p>
@@ -1902,10 +1902,10 @@ Spring IoC 컨테이너 자체는 이 구성 메타데이터가 실제로 작성
 <div class="ulist">
 <ul>
 <li>
-<p><a href="annotation-config.html" class="xref page">어노테이션 기반 구성</a>: 어노테이션 기반 구성 메타데이터를 사용하여 빈을 정의합니다.</p>
+<p><a href="annotation-config.html" class="xref page">어노테이션 기반 구성</a>: 어노테이션 기반 구성 메타데이터를 사용하여 Bean을 정의합니다.</p>
 </li>
 <li>
-<p><a href="java.html" class="xref page">Java 기반 구성</a>: XML 파일이 아닌 Java를 사용하여 애플리케이션 클래스 외부에 빈을 정의합니다.
+<p><a href="java.html" class="xref page">Java 기반 구성</a>: XML 파일이 아닌 Java를 사용하여 애플리케이션 클래스 외부에 Bean을 정의합니다.
 자세한 내용은 다음을 참조하세요:
 <a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/context/annotation/Configuration.html"><code>@Configuration</code></a>,
 <a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/context/annotation/Bean.html"><code>@Bean</code></a>,
@@ -1915,12 +1915,12 @@ Spring IoC 컨테이너 자체는 이 구성 메타데이터가 실제로 작성
 </ul>
 </div>
 <div class="paragraph">
-<p>스프링 구성은 컨테이너가 관리해야 하는 최소 하나 이상의 빈 정의로 구성됩니다.
-XML 기반 구성 메타데이터는 이러한 빈을 최상위 <code>&lt;beans/&gt;</code> 요소 내부의 <code>&lt;bean/&gt;</code> 요소로 구성합니다.
+<p>스프링 구성은 컨테이너가 관리해야 하는 최소 하나 이상의 Bean 정의로 구성됩니다.
+XML 기반 구성 메타데이터는 이러한 Bean을 최상위 <code>&lt;beans/&gt;</code> 요소 내부의 <code>&lt;bean/&gt;</code> 요소로 구성합니다.
 Java 구성은 일반적으로 <code>@Configuration</code> 클래스 내에서 <code>@Bean</code> 주석이 달린 메서드를 사용합니다.</p>
 </div>
 <div class="paragraph">
-<p>이러한 빈 정의는 애플리케이션을 구성하는 실제 객체에 해당합니다.
+<p>이러한 Bean 정의는 애플리케이션을 구성하는 실제 객체에 해당합니다.
 일반적으로 서비스 계층 객체, 리포지토리 또는 DAO(데이터 액세스 객체)와 같은 지속성 계층 객체, 웹 컨트롤러와 같은 프레젠테이션 객체, JPA <code>EntityManagerFactory</code>, JMS 큐와 같은 인프라 객체 등을 정의합니다.
 일반적으로 도메인 개체를 만들고 로드하는 것은 리포지토리와 비즈니스 로직의 책임이기 때문에 일반적으로 컨테이너에서 세분화된 도메인 개체를 구성하지 않습니다.</p>
 </div>
@@ -1952,17 +1952,17 @@ Java 구성은 일반적으로 <code>@Configuration</code> 클래스 내에서 <
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td><code>id</code> 속성은 개별 빈 정의를 식별하는 문자열입니다.</td>
+<td><code>id</code> 속성은 개별 Bean 정의를 식별하는 문자열입니다.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td><code>class</code> 속성은 빈의 유형을 정의하며 정규화된 클래스 이름을 사용합니다.</td>
+<td><code>class</code> 속성은 Bean의 유형을 정의하며 정규화된 클래스 이름을 사용합니다.</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p><code>id</code> 속성의 값은 공동 작업 객체를 참조하는 데 사용할 수 있습니다.
-이 예에서는 공동 작업 객체를 참조하기 위한 XML은 표시되지 않습니다.
+<p><code>id</code> 속성의 값은 협업 객체를 참조하는 데 사용할 수 있습니다.
+이 예에서는 협업 객체를 참조하기 위한 XML은 표시되지 않습니다.
 자세한 내용은 <a href="dependencies.html" class="xref page">Dependencies</a>를 참조하세요.</p>
 </div>
 </div>
@@ -2067,19 +2067,19 @@ Java 구성은 일반적으로 <code>@Configuration</code> 클래스 내에서 <
 </div>
 <div class="paragraph">
 <p>앞의 예제에서 서비스 계층은 <code>PetStoreServiceImpl</code> 클래스와 (JPA 객체-관계형 매핑 표준에 기반한) <code>JpaAccountDao</code> 및 <code>JpaItemDao</code> 유형의 데이터 액세스 객체 두 개로 구성됩니다.
-<code>property name</code> 요소는 JavaBean 속성의 이름을 참조하고 <code>ref</code> 요소는 다른 빈 정의의 이름을 참조합니다.
+<code>property name</code> 요소는 JavaBean 속성의 이름을 참조하고 <code>ref</code> 요소는 다른 Bean 정의의 이름을 참조합니다.
 이러한 <code>id`와 `ref</code> 요소 간의 연결은 협업하는 객체 간의 종속성을 나타냅니다.
 객체의 종속성 구성에 대한 자세한 내용은 <a href="dependencies.html" class="xref page">Dependencies</a>를 참조하세요.</p>
 </div>
 <div class="sect2">
 <h3 id="beans-factory-xml-import"><a class="anchor" href="#beans-factory-xml-import"></a>XML 기반 구성 메타데이터 작성하기(Composing XML-based Configuration Metadata)</h3>
 <div class="paragraph">
-<p>빈 정의가 여러 XML 파일에 걸쳐 있으면 유용할 수 있습니다.
+<p>Bean 정의가 여러 XML 파일에 걸쳐 있으면 유용할 수 있습니다.
 종종 각 개별 XML 구성 파일은 아키텍처에서 논리 계층 또는 모듈을 나타냅니다.</p>
 </div>
 <div class="paragraph">
-<p>애플리케이션 컨텍스트 생성자를 사용하여 이러한 모든 XML 조각에서 빈 정의를 로드할 수 있습니다.
-이 생성자는 <a href="#beans-factory-instantiation">이전 섹션</a>에 표시된 것처럼 여러 개의 <code>Resource</code> 위치를 사용합니다. 또는 <code>&lt;import/&gt;</code> 요소의 하나 이상을 사용하여 다른 파일에서 빈 정의를 로드할 수 있습니다. 다음 예제는 그 방법을 보여줍니다:</p>
+<p>애플리케이션 컨텍스트 생성자를 사용하여 이러한 모든 XML 조각에서 Bean 정의를 로드할 수 있습니다.
+이 생성자는 <a href="#beans-factory-instantiation">이전 섹션</a>에 표시된 것처럼 여러 개의 <code>Resource</code> 위치를 사용합니다. 또는 <code>&lt;import/&gt;</code> 요소의 하나 이상을 사용하여 다른 파일에서 Bean 정의를 로드할 수 있습니다. 다음 예제는 그 방법을 보여줍니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2094,12 +2094,12 @@ Java 구성은 일반적으로 <code>@Configuration</code> 클래스 내에서 <
 </div>
 </div>
 <div class="paragraph">
-<p>앞의 예제에서는 외부 빈 정의가 세 개의 파일에서 로드됩니다:
+<p>앞의 예제에서는 외부 Bean 정의가 세 개의 파일에서 로드됩니다:
 <code>services.xml</code>, <code>messageSource.xml</code>, <code>themeSource.xml</code> 입니다.
 모든 위치 경로는 가져오기를 수행하는 정의 파일에 상대적이므로 <code>services.xml`은 가져오기를 수행하는 파일과 동일한 디렉토리 또는 클래스 경로 위치에 있어야 하며, `messageSource.xml</code> 및 <code>themeSource.xml</code> 은 가져오는 파일 위치 아래의 <code>resources</code> 위치에 있어야 합니다.
 보시다시피 선행 슬래시는 무시됩니다.
 그러나 이러한 경로는 상대적이기 때문에 슬래시를 전혀 사용하지 않는 것이 좋습니다.
-최상위 <code>&lt;beans/&gt;</code> 요소를 포함하여 가져오는 파일의 내용은 Spring 스키마에 따라 유효한 XML 빈 정의여야 합니다.</p>
+최상위 <code>&lt;beans/&gt;</code> 요소를 포함하여 가져오는 파일의 내용은 Spring 스키마에 따라 유효한 XML Bean 정의여야 합니다.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2125,7 +2125,7 @@ Java 구성은 일반적으로 <code>@Configuration</code> 클래스 내에서 <
 </div>
 <div class="paragraph">
 <p>네임스페이스 자체에서 가져오기 지시어 기능을 제공합니다.
-일반 빈 정의 이외의 추가 구성 기능은 Spring에서 제공하는 다양한 XML 네임스페이스에서 사용할 수 있습니다.&#8201;&#8212;&#8201;예를 들어, <code>context</code> 및 <code>util</code> 네임스페이스가 있습니다.</p>
+일반 Bean 정의 이외의 추가 구성 기능은 Spring에서 제공하는 다양한 XML 네임스페이스에서 사용할 수 있습니다.&#8201;&#8212;&#8201;예를 들어, <code>context</code> 및 <code>util</code> 네임스페이스가 있습니다.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2169,10 +2169,10 @@ bean definition files through an <code>importBeans</code> directive.</p>
 <h2 id="beans-factory-client"><a class="anchor" href="#beans-factory-client"></a>컨테이너 사용(Using the Container)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><code>ApplicationContext&#8217;는 다양한 빈과 그 종속성의 레지스트리를 유지 관리할 수 있는 고급 팩토리를 위한 인터페이스입니다. `T getBean(String name, Class&lt;T&gt; requiredType)</code>, 메서드를 사용하여 빈의 인스턴스를 검색할 수 있습니다.</p>
+<p><code>ApplicationContext&#8217;는 다양한 Bean과 그 종속성의 레지스트리를 유지 관리할 수 있는 고급 팩토리를 위한 인터페이스입니다. `T getBean(String name, Class&lt;T&gt; requiredType)</code>, 메서드를 사용하여 Bean의 인스턴스를 검색할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>`ApplicationContext`를 사용하면 다음과 같이 빈 정의를 읽고 액세스할 수 있습니다.
+<p>`ApplicationContext`를 사용하면 다음과 같이 Bean 정의를 읽고 액세스할 수 있습니다.
 예제에서 볼 수 있습니다:</p>
 </div>
 <div id="_tabs_2" class="openblock tabs is-sync is-loading">
@@ -2220,7 +2220,7 @@ List&lt;String&gt; userList = service.getUsernameList();</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>그루비 구성을 사용하면 부트스트랩은 매우 비슷해 보입니다. 하지만 Groovy를 인식하는 다른 컨텍스트 구현 클래스가 있습니다(XML 빈 정의도 이해).
+<p>그루비 구성을 사용하면 부트스트랩은 매우 비슷해 보입니다. 하지만 Groovy를 인식하는 다른 컨텍스트 구현 클래스가 있습니다(XML Bean 정의도 이해).
 다음 예제는 Groovy 구성을 보여줍니다:</p>
 </div>
 <div id="_tabs_3" class="openblock tabs is-sync is-loading">
@@ -2324,13 +2324,13 @@ context.refresh()</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>이러한 reader delegates를 동일한 <code>ApplicationContext</code> 에서 혼합하여 다양한 구성 소스에서 빈 정의를 읽을 수 있습니다.</p>
+<p>이러한 reader delegates를 동일한 <code>ApplicationContext</code> 에서 혼합하여 다양한 구성 소스에서 Bean 정의를 읽을 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>그런 다음 <code>getBean</code> 을 사용하여 빈의 인스턴스를 검색할 수 있습니다.
-<code>ApplicationContext</code> 인터페이스에는 빈을 검색하기 위한 몇 가지 다른 메서드가 있지만, 이상적으로는 애플리케이션 코드에서 이러한 메서드를 사용하지 않아야 합니다.
+<p>그런 다음 <code>getBean</code> 을 사용하여 Bean의 인스턴스를 검색할 수 있습니다.
+<code>ApplicationContext</code> 인터페이스에는 Bean을 검색하기 위한 몇 가지 다른 메서드가 있지만, 이상적으로는 애플리케이션 코드에서 이러한 메서드를 사용하지 않아야 합니다.
 실제로 애플리케이션 코드에는 <code>getBean()</code> 메서드에 대한 호출이 전혀 없어야 하며, 따라서 Spring API에 대한 종속성이 전혀 없어야 합니다.
-예를 들어, Spring과 웹 프레임워크의 통합은 컨트롤러 및 JSF 관리 빈과 같은 다양한 웹 프레임워크 구성 요소에 대한 의존성 주입을 제공하여 메타데이터(예: @autowiring 어노테이션)를 통해 특정 빈에 대한 의존성을 선언할 수 있게 해줍니다.</p>
+예를 들어, Spring과 웹 프레임워크의 통합은 컨트롤러 및 JSF 관리 Bean과 같은 다양한 웹 프레임워크 구성 요소에 대한 의존성 주입을 제공하여 메타데이터(예: @autowiring 어노테이션)를 통해 특정 Bean에 대한 의존성을 선언할 수 있게 해줍니다.</p>
 </div>
 </div>
 </div>

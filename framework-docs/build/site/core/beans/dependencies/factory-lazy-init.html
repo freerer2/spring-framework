@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Lazy-initialized Beans :: Spring Framework Reference</title>
+    <title>Lazy-initialized Beans(한글) :: Spring Framework Reference</title>
     <link rel="prev" href="factory-dependson.html">
     <link rel="next" href="factory-autowire.html">
     <meta name="generator" content="Antora 3.2.0-alpha.2">
@@ -314,13 +314,13 @@
     <a class="nav-link" href="factory-properties-detailed.html">Dependencies and Configuration in Detail(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="factory-dependson.html">Using <code>depends-on</code></a>
+    <a class="nav-link" href="factory-dependson.html">Using <code>depends-on</code>(한글)</a>
   </li>
   <li class="nav-item is-current-page" data-depth="4">
-    <a class="nav-link" href="factory-lazy-init.html">Lazy-initialized Beans</a>
+    <a class="nav-link" href="factory-lazy-init.html">Lazy-initialized Beans(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="factory-autowire.html">Autowiring Collaborators</a>
+    <a class="nav-link" href="factory-autowire.html">Autowiring Collaborators(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="factory-method-injection.html">Method Injection</a>
@@ -1792,7 +1792,7 @@
   <div class="content">
     <div
       class="toc"
-      data-title="Lazy-initialized Beans"
+      data-title="Lazy-initialized Beans(한글)"
       data-levels="2"
     >
       <div class="toc-menu"></div>
@@ -1840,23 +1840,18 @@
     <li><a href="../../../core.html">Core Technologies(한글)</a></li>
     <li><a href="../../beans.html">IoC Container(한글)</a></li>
     <li><a href="../dependencies.html">Dependencies(한글)</a></li>
-    <li><a href="factory-lazy-init.html">Lazy-initialized Beans</a></li>
+    <li><a href="factory-lazy-init.html">Lazy-initialized Beans(한글)</a></li>
   </ul>
 </nav>
-<h1 id="page-title" class="page">Lazy-initialized Beans</h1>
+<h1 id="page-title" class="page">Lazy-initialized Beans(한글)</h1>
 <div class="paragraph">
-<p>By default, <code>ApplicationContext</code> implementations eagerly create and configure all
-<a href="../factory-scopes.html#beans-factory-scopes-singleton" class="xref page">singleton</a> beans as part of the initialization
-process. Generally, this pre-instantiation is desirable, because errors in the
-configuration or surrounding environment are discovered immediately, as opposed to hours
-or even days later. When this behavior is not desirable, you can prevent
-pre-instantiation of a singleton bean by marking the bean definition as being
-lazy-initialized. A lazy-initialized bean tells the IoC container to create a bean
-instance when it is first requested, rather than at startup.</p>
+<p>기본적으로 <code>ApplicationContext</code> 구현은 초기화 프로세스의 일부로 모든 <a href="../factory-scopes.html#beans-factory-scopes-singleton" class="xref page">싱글톤</a> Bean을 열심히 생성하고 구성합니다.
+일반적으로 이러한 사전 인스턴스화는 구성이나 주변 환경의 오류가 몇 시간 또는 며칠 후에 발견되는 것이 아니라 즉시 발견되므로 바람직합니다.
+이 동작이 바람직하지 않은 경우, Bean 정의를 지연 초기화됨으로 표시하여 싱글톤 Bean의 사전 인스턴스화를 방지할 수 있습니다.
+지연 초기화된 Bean은 시작 시점이 아닌 처음 요청될 때 Bean 인스턴스를 생성하도록 IoC 컨테이너에 지시합니다.</p>
 </div>
 <div class="paragraph">
-<p>In XML, this behavior is controlled by the <code>lazy-init</code> attribute on the <code>&lt;bean/&gt;</code>
-element, as the following example shows:</p>
+<p>XML에서 이 동작은 다음 예제에서 볼 수 있듯이 <code>&lt;bean/&gt;</code> 요소의 <code>lazy-init</code> 속성에 의해 제어됩니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1865,19 +1860,14 @@ element, as the following example shows:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>When the preceding configuration is consumed by an <code>ApplicationContext</code>, the <code>lazy</code> bean
-is not eagerly pre-instantiated when the <code>ApplicationContext</code> starts,
-whereas the <code>not.lazy</code> bean is eagerly pre-instantiated.</p>
+<p>앞의 구성이 <code>ApplicationContext</code> 에 의해 소비되는 경우, <code>ApplicationContext</code> 가 시작될 때 <code>lazy</code> Bean은 열심히 사전 인스턴스화되지 않는 반면, <code>not.lazy</code> Bean은 열심히 사전 인스턴스화됩니다.</p>
 </div>
 <div class="paragraph">
-<p>However, when a lazy-initialized bean is a dependency of a singleton bean that is
-not lazy-initialized, the <code>ApplicationContext</code> creates the lazy-initialized bean at
-startup, because it must satisfy the singleton&#8217;s dependencies. The lazy-initialized bean
-is injected into a singleton bean elsewhere that is not lazy-initialized.</p>
+<p>그러나 지연 초기화된 Bean이 지연 초기화되지 않은 싱글톤 Bean의 종속성인 경우, 싱글톤의 종속성을 만족해야 하기 때문에 `ApplicationContext`는 시작 시 지연 초기화된 Bean을 생성합니다.
+지연 초기화된 Bean은 지연 초기화되지 않은 다른 곳의 싱글톤 Bean에 주입됩니다.</p>
 </div>
 <div class="paragraph">
-<p>You can also control lazy-initialization at the container level by using the
-<code>default-lazy-init</code> attribute on the <code>&lt;beans/&gt;</code> element, as the following example shows:</p>
+<p>다음 예제와 같이 <code>&lt;beans/&gt;</code> 요소에 <code>default-lazy-init</code> 속성을 사용하여 컨테이너 수준에서 지연 초기화를 제어할 수도 있습니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1887,8 +1877,8 @@ is injected into a singleton bean elsewhere that is not lazy-initialized.</p>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="factory-dependson.html">Using <code>depends-on</code></a></span>
-  <span class="next"><a href="factory-autowire.html">Autowiring Collaborators</a></span>
+  <span class="prev"><a href="factory-dependson.html">Using <code>depends-on</code>(한글)</a></span>
+  <span class="next"><a href="factory-autowire.html">Autowiring Collaborators(한글)</a></span>
 </nav>
 </article>
   </div>

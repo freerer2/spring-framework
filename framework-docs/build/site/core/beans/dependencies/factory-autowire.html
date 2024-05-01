@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Autowiring Collaborators :: Spring Framework Reference</title>
+    <title>Autowiring Collaborators(한글) :: Spring Framework Reference</title>
     <link rel="prev" href="factory-lazy-init.html">
     <link rel="next" href="factory-method-injection.html">
     <meta name="generator" content="Antora 3.2.0-alpha.2">
@@ -314,13 +314,13 @@
     <a class="nav-link" href="factory-properties-detailed.html">Dependencies and Configuration in Detail(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="factory-dependson.html">Using <code>depends-on</code></a>
+    <a class="nav-link" href="factory-dependson.html">Using <code>depends-on</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="factory-lazy-init.html">Lazy-initialized Beans</a>
+    <a class="nav-link" href="factory-lazy-init.html">Lazy-initialized Beans(한글)</a>
   </li>
   <li class="nav-item is-current-page" data-depth="4">
-    <a class="nav-link" href="factory-autowire.html">Autowiring Collaborators</a>
+    <a class="nav-link" href="factory-autowire.html">Autowiring Collaborators(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="factory-method-injection.html">Method Injection</a>
@@ -1792,7 +1792,7 @@
   <div class="content">
     <div
       class="toc"
-      data-title="Autowiring Collaborators"
+      data-title="Autowiring Collaborators(한글)"
       data-levels="2"
     >
       <div class="toc-menu"></div>
@@ -1840,41 +1840,35 @@
     <li><a href="../../../core.html">Core Technologies(한글)</a></li>
     <li><a href="../../beans.html">IoC Container(한글)</a></li>
     <li><a href="../dependencies.html">Dependencies(한글)</a></li>
-    <li><a href="factory-autowire.html">Autowiring Collaborators</a></li>
+    <li><a href="factory-autowire.html">Autowiring Collaborators(한글)</a></li>
   </ul>
 </nav>
-<h1 id="page-title" class="page">Autowiring Collaborators</h1>
+<h1 id="page-title" class="page">Autowiring Collaborators(한글)</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Spring container can autowire relationships between collaborating beans. You can
-let Spring resolve collaborators (other beans) automatically for your bean by
-inspecting the contents of the <code>ApplicationContext</code>. Autowiring has the following
-advantages:</p>
+<p>Spring 컨테이너는 협업하는 Bean 간의 관계를 Autowiring할 수 있습니다.
+Spring이 `ApplicationContext`의 내용을 검사하여 Bean에 대한 협업자(다른 Bean)를 자동으로 해결하도록 할 수 있습니다.
+Autowiring에는 다음과 같은 장점이 있습니다:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Autowiring can significantly reduce the need to specify properties or constructor
-arguments. (Other mechanisms such as a bean template
-<a href="../child-bean-definitions.html" class="xref page">discussed elsewhere in this chapter</a> are also valuable
-in this regard.)</p>
+<p>Autowiring을 사용하면 속성이나 생성자 인수를 지정할 필요성을 크게 줄일 수 있습니다.
+(<a href="../child-bean-definitions.html" class="xref page">이 장의 다른 곳에서 설명하는</a> Bean 템플릿과 같은 다른 메커니즘도 이와 관련하여 유용합니다.).</p>
 </li>
 <li>
-<p>Autowiring can update a configuration as your objects evolve. For example, if you need
-to add a dependency to a class, that dependency can be satisfied automatically without
-you needing to modify the configuration. Thus autowiring can be especially useful
-during development, without negating the option of switching to explicit wiring when
-the code base becomes more stable.</p>
+<p>Autowiring은 객체가 진화함에 따라 구성을 업데이트할 수 있습니다.
+예를 들어 클래스에 종속성을 추가해야 하는 경우 구성을 수정할 필요 없이 해당 종속성을 자동으로 충족시킬 수 있습니다.
+따라서 Autowiring은 코드 기반이 안정화되면 명시적 연결로 전환하는 옵션을 부정하지 않으면서 개발 중에 특히 유용할 수 있습니다.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>When using XML-based configuration metadata (see <a href="factory-collaborators.html" class="xref page">Dependency Injection</a>), you
-can specify the autowire mode for a bean definition with the <code>autowire</code> attribute of the
-<code>&lt;bean/&gt;</code> element. The autowiring functionality has four modes. You specify autowiring
-per bean and can thus choose which ones to autowire. The following table describes the
-four autowiring modes:</p>
+<p>XML 기반 구성 메타데이터를 사용하는 경우(<a href="factory-collaborators.html" class="xref page">의존성 주입</a> 참조), <code>&lt;bean/&gt;</code> 요소의 <code>autowire</code> 속성을 사용하여 Bean 정의에 대한 Autowiring 모드를 지정할 수 있습니다.
+Autowiring 기능에는 네 가지 모드가 있습니다.
+Bean별로 Autowiring을 지정하여 어떤 것을 자동 와이어링할지 선택할 수 있습니다.
+다음 표에서는 네 가지 Autowiring 모드에 대해 설명합니다:</p>
 </div>
 <table id="beans-factory-autowiring-modes-tbl" class="tableblock frame-all grid-all stripes-odd stretch">
 <caption class="title">Table 1. Autowiring modes</caption>
@@ -1891,148 +1885,122 @@ four autowiring modes:</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>no</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(Default) No autowiring. Bean references must be defined by <code>ref</code> elements. Changing
-  the default setting is not recommended for larger deployments, because specifying
-  collaborators explicitly gives greater control and clarity. To some extent, it
-  documents the structure of a system.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(기본값) No Autowiring.
+  Bean 참조는 <code>ref</code> 요소로 정의해야 합니다.
+  협업자를 명시적으로 지정하면 제어 및 명확성이 향상되므로 대규모 배포의 경우 기본 설정을 변경하지 않는 것이 좋습니다.
+  어느 정도는 시스템의 구조를 문서화합니다.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>byName</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Autowiring by property name. Spring looks for a bean with the same name as the
-  property that needs to be autowired. For example, if a bean definition is set to
-  autowire by name and it contains a <code>master</code> property (that is, it has a
-  <code>setMaster(..)</code> method), Spring looks for a bean definition named <code>master</code> and uses
-  it to set the property.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">속성 이름별 Autowiring.
+  Spring은 Autowiring이 필요한 프로퍼티와 이름이 같은 Bean을 찾습니다.
+  예를 들어, 이름별로 Autowiring이 설정된 Bean 정의에 <code>master</code> 속성이 포함된 경우(즉, <code>setMaster(..)</code> 메서드가 있는 경우) Spring은 <code>master</code> 라는 이름의 Bean 정의를 찾아서 속성을 설정하는 데 사용합니다.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>byType</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Lets a property be autowired if exactly one bean of the property type exists in
-  the container. If more than one exists, a fatal exception is thrown, which indicates
-  that you may not use <code>byType</code> autowiring for that bean. If there are no matching
-  beans, nothing happens (the property is not set).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">컨테이너에 속성 유형의 Bean이 정확히 하나만 존재하는 경우 속성을 Autowiring할 수 있습니다.
+  둘 이상 존재하면 치명적인 예외가 발생하며, 이는 해당 Bean에 대해 <code>byType</code> Autowiring을 사용할 수 없음을 나타냅니다.
+  일치하는 Bean이 없으면 아무 일도 일어나지 않습니다(프로퍼티가 설정되지 않음).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>constructor</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Analogous to <code>byType</code> but applies to constructor arguments. If there is not exactly
-  one bean of the constructor argument type in the container, a fatal error is raised.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>byType</code> 과 유사하지만 생성자 인자에 적용됩니다.
+  컨테이너에 생성자 인자 타입의 Bean이 정확히 하나도 없으면 치명적인 에러가 발생합니다.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>With <code>byType</code> or <code>constructor</code> autowiring mode, you can wire arrays and
-typed collections. In such cases, all autowire candidates within the container that
-match the expected type are provided to satisfy the dependency. You can autowire
-strongly-typed <code>Map</code> instances if the expected key type is <code>String</code>. An autowired <code>Map</code>
-instance&#8217;s values consist of all bean instances that match the expected type, and the
-<code>Map</code> instance&#8217;s keys contain the corresponding bean names.</p>
+<p><code>byType</code> 또는 <code>constructor</code> Autowiring 모드를 사용하면 배열과 타입이 지정된 컬렉션을 연결할 수 있습니다.
+이러한 경우 컨테이너 내에서 예상 유형과 일치하는 모든 Autowiring 후보가 종속성을 충족하기 위해 제공됩니다.
+예상 키 유형이 <code>String`인 경우 강력하게 유형화된 `Map</code> 인스턴스를 Autowiring할 수 있습니다.
+Autowiring된 <code>Map</code> 인스턴스의 값은 예상 유형과 일치하는 모든 Bean 인스턴스로 구성되며, <code>Map</code> 인스턴스의 키에는 해당 Bean 이름이 포함됩니다.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-autowired-exceptions"><a class="anchor" href="#beans-autowired-exceptions"></a>Limitations and Disadvantages of Autowiring</h2>
+<h2 id="beans-autowired-exceptions"><a class="anchor" href="#beans-autowired-exceptions"></a>Autowiring의 한계와 단점(Limitations and Disadvantages of Autowiring)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Autowiring works best when it is used consistently across a project. If autowiring is
-not used in general, it might be confusing to developers to use it to wire only one or
-two bean definitions.</p>
+<p>Autowiring은 프로젝트 전체에서 일관되게 사용할 때 가장 효과적입니다.
+일반적으로 Autowiring을 사용하지 않는 경우 개발자가 한두 개의 Bean 정의만 연결하는 데 사용하는 것은 혼란스러울 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>Consider the limitations and disadvantages of autowiring:</p>
+<p>Autowiring의 한계와 단점을 고려하세요:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Explicit dependencies in <code>property</code> and <code>constructor-arg</code> settings always override
-autowiring. You cannot autowire simple properties such as primitives,
-<code>Strings</code>, and <code>Classes</code> (and arrays of such simple properties). This limitation is
-by-design.</p>
+<p>명시적 종속성 <code>property</code> 및 <code>constructor-arg</code> 설정은 항상 Autowiring을 재정의합니다.
+(역자설명 : 원시적인)프리미티브, <code>Strings</code>, <code>Class</code>(및 이러한 단순 프로퍼티의 배열)와 같은 단순 프로퍼티는 Autowiring할 수 없습니다.
+이 제한은 설계상입니다.</p>
 </li>
 <li>
-<p>Autowiring is less exact than explicit wiring. Although, as noted in the earlier table,
-Spring is careful to avoid guessing in case of ambiguity that might have unexpected
-results. The relationships between your Spring-managed objects are no longer
-documented explicitly.</p>
+<p>Autowiring은 명시적 연결보다 정확도가 떨어집니다.
+하지만 앞의 표에서 언급했듯이 Spring은 모호한 경우 예기치 않은 결과를 초래할 수 있는 추측을 피하기 위해 주의를 기울입니다.
+Spring에서 관리되는 객체 간의 관계는 더 이상 명시적으로 문서화되지 않습니다.</p>
 </li>
 <li>
-<p>Wiring information may not be available to tools that may generate documentation from
-a Spring container.</p>
+<p>Spring 컨테이너에서 문서를 생성할 수 있는 도구에서 연결 정보를 사용하지 못할 수 있습니다.</p>
 </li>
 <li>
-<p>Multiple bean definitions within the container may match the type specified by the
-setter method or constructor argument to be autowired. For arrays, collections, or
-<code>Map</code> instances, this is not necessarily a problem. However, for dependencies that
-expect a single value, this ambiguity is not arbitrarily resolved. If no unique bean
-definition is available, an exception is thrown.</p>
+<p>컨테이너 내의 여러 Bean 정의가 설정자 메서드 또는 생성자 인수에 의해 지정된 유형과 일치할 수 있으며 Autowiring될 수 있습니다.
+배열, 컬렉션 또는 <code>Map</code> 인스턴스의 경우 이것이 반드시 문제가 되는 것은 아닙니다.
+그러나 단일 값을 기대하는 종속성의 경우 이러한 모호성이 임의로 해결되지 않습니다.
+고유한 Bean 정의를 사용할 수 없는 경우 예외가 발생합니다.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>In the latter scenario, you have several options:</p>
+<p>후자의 시나리오에서는 몇 가지 옵션이 있습니다:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Abandon autowiring in favor of explicit wiring.</p>
+<p>명시적 연결을 위해 Autowiring을 포기합니다.</p>
 </li>
 <li>
-<p>Avoid autowiring for a bean definition by setting its <code>autowire-candidate</code> attributes
-to <code>false</code>, as described in the <a href="#beans-factory-autowire-candidate">next section</a>.</p>
+<p><a href="#beans-factory-autowire-candidate">다음 섹션</a>에 설명된 대로 <code>autowire-candidate</code> 속성을 `false`로 설정하여 Bean 정의에 대한 자동 와이어링을 피합니다.</p>
 </li>
 <li>
-<p>Designate a single bean definition as the primary candidate by setting the
-<code>primary</code> attribute of its <code>&lt;bean/&gt;</code> element to <code>true</code>.</p>
+<p>해당 <code>&lt;bean/&gt;</code> 요소의 <code>primary</code> 속성을 `true`로 설정하여 단일 Bean 정의를 기본 후보로 지정합니다.</p>
 </li>
 <li>
-<p>Implement the more fine-grained control available with annotation-based configuration,
-as described in <a href="../annotation-config.html" class="xref page">Annotation-based Container Configuration</a>.</p>
+<p><a href="../annotation-config.html" class="xref page">주석 기반 컨테이너 구성</a>에 설명된 대로 주석 기반 구성에서 사용할 수 있는 보다 세분화된 제어를 구현합니다.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-factory-autowire-candidate"><a class="anchor" href="#beans-factory-autowire-candidate"></a>Excluding a Bean from Autowiring</h2>
+<h2 id="beans-factory-autowire-candidate"><a class="anchor" href="#beans-factory-autowire-candidate"></a>Autowiring에서 Bean 제외시키기(Excluding a Bean from Autowiring)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>On a per-bean basis, you can exclude a bean from autowiring. In Spring&#8217;s XML format, set
-the <code>autowire-candidate</code> attribute of the <code>&lt;bean/&gt;</code> element to <code>false</code>. The container
-makes that specific bean definition unavailable to the autowiring infrastructure
-(including annotation style configurations such as <a href="../annotation-config/autowired.html" class="xref page"><code>@Autowired</code></a>
-).</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The <code>autowire-candidate</code> attribute is designed to only affect type-based autowiring.
-It does not affect explicit references by name, which get resolved even if the
-specified bean is not marked as an autowire candidate. As a consequence, autowiring
-by name nevertheless injects a bean if the name matches.
-</td>
-</tr>
-</table>
+<p>Bean 단위로 Autowiring에서 Bean을 제외할 수 있습니다.
+Spring의 XML 형식에서 <code>&lt;bean/&gt;</code> 요소의 <code>autowire-candidate</code> 속성을 <code>false`로 설정합니다.
+컨테이너는 해당 특정 Bean 정의를 Autowiring 인프라에서 사용할 수 없게 만듭니다(<a href="../annotation-config/autowired.html" class="xref page"></code>@Autowired`</a> 등의 어노테이션 스타일 구성 포함).</p>
 </div>
 <div class="paragraph">
-<p>You can also limit autowire candidates based on pattern-matching against bean names. The
-top-level <code>&lt;beans/&gt;</code> element accepts one or more patterns within its
-<code>default-autowire-candidates</code> attribute. For example, to limit autowire candidate status
-to any bean whose name ends with <code>Repository</code>, provide a value of <code>*Repository</code>. To
-provide multiple patterns, define them in a comma-separated list. An explicit value of
-<code>true</code> or <code>false</code> for a bean definition&#8217;s <code>autowire-candidate</code> attribute always takes
-precedence. For such beans, the pattern matching rules do not apply.</p>
+<p>참고: <code>autowire-candidate</code> 속성은 유형 기반 Autowiring에만 영향을 주도록 설계되었습니다.
+이름에 의한 명시적 참조에는 영향을 미치지 않으며, 지정된 Bean이 Autowiring 후보로 표시되지 않더라도 해결됩니다.
+따라서 이름별 Autowiring은 이름이 일치하는 경우 Bean을 주입합니다.</p>
 </div>
 <div class="paragraph">
-<p>These techniques are useful for beans that you never want to be injected into other
-beans by autowiring. It does not mean that an excluded bean cannot itself be configured by
-using autowiring. Rather, the bean itself is not a candidate for autowiring other beans.</p>
+<p>Bean 이름에 대한 패턴 매칭을 기반으로 Autowiring 후보를 제한할 수도 있습니다.
+최상위 <code>&lt;beans/&gt;</code> 요소는 <code>default-autowire-candidates</code> 속성 내에서 하나 이상의 패턴을 허용합니다.
+예를 들어, 이름이 <code>Repository`로 끝나는 모든 Bean으로 Autowire 후보 상태를 제한하려면 `*Repository</code> 값을 제공하세요.
+여러 패턴을 제공하려면 쉼표로 구분된 목록으로 정의합니다.
+Bean 정의의 <code>autowire-candidate</code> 속성에 대한 명시적 값 <code>true</code> 또는 `false`가 항상 우선합니다.
+이러한 Bean의 경우 패턴 일치 규칙이 적용되지 않습니다.</p>
+</div>
+<div class="paragraph">
+<p>이러한 기법은 Autowiring을 통해 다른 Bean에 주입하지 않으려는 Bean에 유용합니다.
+그렇다고 해서 제외된 Bean 자체를 Autowiring을 사용하여 구성할 수 없다는 의미는 아닙니다.
+오히려 Bean 자체는 다른 Bean을 Autowiring할 수 있는 후보가 아닙니다.</p>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="factory-lazy-init.html">Lazy-initialized Beans</a></span>
+  <span class="prev"><a href="factory-lazy-init.html">Lazy-initialized Beans(한글)</a></span>
   <span class="next"><a href="factory-method-injection.html">Method Injection</a></span>
 </nav>
 </article>

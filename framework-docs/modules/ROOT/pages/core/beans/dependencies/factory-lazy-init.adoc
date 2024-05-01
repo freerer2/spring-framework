@@ -1,17 +1,12 @@
 [[beans-factory-lazy-init]]
-= Lazy-initialized Beans
+= Lazy-initialized Beans(한글)
 
-By default, `ApplicationContext` implementations eagerly create and configure all
-xref:core/beans/factory-scopes.adoc#beans-factory-scopes-singleton[singleton] beans as part of the initialization
-process. Generally, this pre-instantiation is desirable, because errors in the
-configuration or surrounding environment are discovered immediately, as opposed to hours
-or even days later. When this behavior is not desirable, you can prevent
-pre-instantiation of a singleton bean by marking the bean definition as being
-lazy-initialized. A lazy-initialized bean tells the IoC container to create a bean
-instance when it is first requested, rather than at startup.
+기본적으로 `ApplicationContext` 구현은 초기화 프로세스의 일부로 모든 xref:core/beans/factory-scopes.adoc#beans-factory-scopes-singleton[싱글톤] Bean을 열심히 생성하고 구성합니다.
+일반적으로 이러한 사전 인스턴스화는 구성이나 주변 환경의 오류가 몇 시간 또는 며칠 후에 발견되는 것이 아니라 즉시 발견되므로 바람직합니다.
+이 동작이 바람직하지 않은 경우, Bean 정의를 지연 초기화됨으로 표시하여 싱글톤 Bean의 사전 인스턴스화를 방지할 수 있습니다.
+지연 초기화된 Bean은 시작 시점이 아닌 처음 요청될 때 Bean 인스턴스를 생성하도록 IoC 컨테이너에 지시합니다.
 
-In XML, this behavior is controlled by the `lazy-init` attribute on the `<bean/>`
-element, as the following example shows:
+XML에서 이 동작은 다음 예제에서 볼 수 있듯이 `<bean/>` 요소의 `lazy-init` 속성에 의해 제어됩니다:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----
@@ -19,17 +14,12 @@ element, as the following example shows:
 	<bean name="not.lazy" class="com.something.AnotherBean"/>
 ----
 
-When the preceding configuration is consumed by an `ApplicationContext`, the `lazy` bean
-is not eagerly pre-instantiated when the `ApplicationContext` starts,
-whereas the `not.lazy` bean is eagerly pre-instantiated.
+앞의 구성이 `ApplicationContext` 에 의해 소비되는 경우, `ApplicationContext` 가 시작될 때 `lazy` Bean은 열심히 사전 인스턴스화되지 않는 반면, `not.lazy` Bean은 열심히 사전 인스턴스화됩니다.
 
-However, when a lazy-initialized bean is a dependency of a singleton bean that is
-not lazy-initialized, the `ApplicationContext` creates the lazy-initialized bean at
-startup, because it must satisfy the singleton's dependencies. The lazy-initialized bean
-is injected into a singleton bean elsewhere that is not lazy-initialized.
+그러나 지연 초기화된 Bean이 지연 초기화되지 않은 싱글톤 Bean의 종속성인 경우, 싱글톤의 종속성을 만족해야 하기 때문에 `ApplicationContext`는 시작 시 지연 초기화된 Bean을 생성합니다.
+지연 초기화된 Bean은 지연 초기화되지 않은 다른 곳의 싱글톤 Bean에 주입됩니다.
 
-You can also control lazy-initialization at the container level by using the
-`default-lazy-init` attribute on the `<beans/>` element, as the following example shows:
+다음 예제와 같이 `<beans/>` 요소에 `default-lazy-init` 속성을 사용하여 컨테이너 수준에서 지연 초기화를 제어할 수도 있습니다:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----

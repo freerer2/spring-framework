@@ -1,7 +1,7 @@
 [[beans-factory-properties-detailed]]
 = Dependencies and Configuration in Detail(한글)
 
-xref:core/beans/dependencies/factory-collaborators.adoc[이전 섹션]에서 언급했듯이, 빈 프로퍼티와 생성자 인수를 다른 관리되는 빈(협업자)에 대한 참조로 정의하거나 인라인으로 정의된 값으로 정의할 수 있습니다.
+xref:core/beans/dependencies/factory-collaborators.adoc[이전 섹션]에서 언급했듯이, Bean 프로퍼티와 생성자 인수를 다른 관리되는 Bean(협업자)에 대한 참조로 정의하거나 인라인으로 정의된 값으로 정의할 수 있습니다.
 Spring의 XML 기반 구성 메타데이터는 이러한 목적을 위해 `<property/>` 및 `<constructor-arg/>` 요소 내에서 하위 요소 유형을 지원합니다.
 
 
@@ -45,7 +45,7 @@ Spring의 XML 기반 구성 메타데이터는 이러한 목적을 위해 `<prop
 ----
 
 앞의 XML이 더 간결합니다.
-그러나 빈 정의를 생성할 때 자동 속성 완성을 지원하는 IDE(예: https://www.jetbrains.com/idea/[IntelliJ IDEA] 또는 {spring-site-tools}[Spring Tools for Eclipse])를 사용하지 않는 한 오타가 설계 시점이 아닌 런타임에 발견됩니다.
+그러나 Bean 정의를 생성할 때 자동 속성 완성을 지원하는 IDE(예: https://www.jetbrains.com/idea/[IntelliJ IDEA] 또는 {spring-site-tools}[Spring Tools for Eclipse])를 사용하지 않는 한 오타가 설계 시점이 아닌 런타임에 발견됩니다.
 이러한 IDE 지원을 적극 권장합니다.
 
 다음과 같이 `java.util.Properties` 인스턴스를 구성할 수도 있습니다:
@@ -71,7 +71,7 @@ Spring 컨테이너는 `<value/>` 요소 내부의 텍스트를 JavaBeans `Prope
 [[beans-idref-element]]
 === `idref` 요소(The `idref` element)
 
-`idref` 요소는 컨테이너에 있는 다른 빈의 `id`(참조가 아닌 문자열 값)를 `<constructor-arg/>` 또는 `<property/>` 요소에 전달하는 오류 방지 방법입니다.
+`idref` 요소는 컨테이너에 있는 다른 Bean의 `id`(참조가 아닌 문자열 값)를 `<constructor-arg/>` 또는 `<property/>` 요소에 전달하는 오류 방지 방법입니다.
 다음 예제는 이를 사용하는 방법을 보여줍니다:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
@@ -85,7 +85,7 @@ Spring 컨테이너는 `<value/>` 요소 내부의 텍스트를 JavaBeans `Prope
 	</bean>
 ----
 
-앞의 빈 정의 스니펫은 (런타임에) 정확히 다음과 같은
+앞의 Bean 정의 스니펫은 (런타임에) 정확히 다음과 같은
 코드 조각과 정확히 동일합니다:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
@@ -97,29 +97,29 @@ Spring 컨테이너는 `<value/>` 요소 내부의 텍스트를 JavaBeans `Prope
 	</bean>
 ----
 
-첫 번째 형태가 두 번째 형태보다 선호되는데, `idref` 태그를 사용하면 컨테이너가 배포 시점에 참조된 이름의 빈이 실제로 존재하는지 확인할 수 있기 때문입니다.
-두 번째 변형에서는 `client` 빈의 `targetName` 속성으로 전달되는 값에 대한 유효성 검사가 수행되지 않습니다.
-`client` 빈이 실제로 인스턴스화될 때만 오타가 발견됩니다(대부분 치명적인 결과를 초래할 수 있음).
-`client` 빈이 xref:core/beans/factory-scopes.adoc[prototype] 빈인 경우, 이 오타 및 그에 따른 예외는 컨테이너가 배포된 후 한참 후에야 발견될 수 있습니다.
+첫 번째 형태가 두 번째 형태보다 선호되는데, `idref` 태그를 사용하면 컨테이너가 배포 시점에 참조된 이름의 Bean이 실제로 존재하는지 확인할 수 있기 때문입니다.
+두 번째 변형에서는 `client` Bean의 `targetName` 속성으로 전달되는 값에 대한 유효성 검사가 수행되지 않습니다.
+`client` Bean이 실제로 인스턴스화될 때만 오타가 발견됩니다(대부분 치명적인 결과를 초래할 수 있음).
+`client` Bean이 xref:core/beans/factory-scopes.adoc[prototype] Bean인 경우, 이 오타 및 그에 따른 예외는 컨테이너가 배포된 후 한참 후에야 발견될 수 있습니다.
 
 참고: `idref` 요소의 `local` 속성은 더 이상 일반 `bean` 참조에 대한 값을 제공하지 않으므로 4.0 beans XSD에서 더 이상 지원되지 않습니다.
 4.0 스키마로 업그레이드할 때는 기존 `idref local` 참조를 `idref bean`으로 변경하세요.
 
-idref/>` 요소가 가치를 제공하는 일반적인 위치(적어도 Spring 2.0 이전 버전에서는)는 `ProxyFactoryBean` 빈 정의의 xref:core/aop-api/pfb.adoc#aop-pfb-1[AOP 인터셉터]의 구성입니다.
+idref/>` 요소가 가치를 제공하는 일반적인 위치(적어도 Spring 2.0 이전 버전에서는)는 `ProxyFactoryBean` Bean 정의의 xref:core/aop-api/pfb.adoc#aop-pfb-1[AOP 인터셉터]의 구성입니다.
 인터셉터 이름을 지정할 때 `<idref/>` 요소를 사용하면 인터셉터 ID의 철자를 잘못 입력하는 것을 방지할 수 있습니다.
 
 
 [[beans-ref-element]]
-== 다른 빈에 대한 참조(공동 작업자)(References to Other Beans (Collaborators))
+== 다른 Bean에 대한 참조(협업자)(References to Other Beans (Collaborators))
 
 `ref` 요소는 `<constructor-arg/>` 또는 `<property/>` 정의 요소 내부의 마지막 요소입니다.
-여기에서는 빈의 지정된 속성 값을 컨테이너가 관리하는 다른 빈(공동 작업자)에 대한 참조로 설정합니다.
-참조된 빈은 속성을 설정하려는 빈의 종속성이며, 속성이 설정되기 전에 필요에 따라 초기화됩니다.
-(공동 작업자가 싱글톤 빈인 경우 컨테이너에 의해 이미 초기화될 수 있습니다.) 모든 참조는 궁극적으로 다른 객체에 대한 참조입니다.
+여기에서는 Bean의 지정된 속성 값을 컨테이너가 관리하는 다른 Bean(협업자)에 대한 참조로 설정합니다.
+참조된 Bean은 속성을 설정하려는 Bean의 종속성이며, 속성이 설정되기 전에 필요에 따라 초기화됩니다.
+(협업자가 싱글톤 Bean인 경우 컨테이너에 의해 이미 초기화될 수 있습니다.) 모든 참조는 궁극적으로 다른 객체에 대한 참조입니다.
 범위 지정 및 유효성 검사는 `bean` 또는 `parent` 속성을 통해 다른 객체의 ID 또는 이름을 지정하는지 여부에 따라 달라집니다.
 
-`<ref/>` 태그의 `bean` 속성을 통해 대상 빈을 지정하는 것이 가장 일반적인 형태이며, 동일한 XML 파일에 있는지 여부에 관계없이 동일한 컨테이너 또는 상위 컨테이너에 있는 모든 빈에 대한 참조를 생성할 수 있습니다.
-`bean` 속성의 값은 대상 빈의 `id` 속성과 동일하거나 대상 빈의 `name` 속성의 값 중 하나와 동일할 수 있습니다.
+`<ref/>` 태그의 `bean` 속성을 통해 대상 Bean을 지정하는 것이 가장 일반적인 형태이며, 동일한 XML 파일에 있는지 여부에 관계없이 동일한 컨테이너 또는 상위 컨테이너에 있는 모든 Bean에 대한 참조를 생성할 수 있습니다.
+`bean` 속성의 값은 대상 Bean의 `id` 속성과 동일하거나 대상 Bean의 `name` 속성의 값 중 하나와 동일할 수 있습니다.
 다음 예는 `ref` 요소를 사용하는 방법을 보여줍니다:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
@@ -127,10 +127,10 @@ idref/>` 요소가 가치를 제공하는 일반적인 위치(적어도 Spring 2
 	<ref bean="someBean"/>
 ----
 
-`parent` 속성을 통해 대상 빈을 지정하면 현재 컨테이너의 부모 컨테이너에 있는 빈에 대한 참조가 생성됩니다.
-parent` 속성의 값은 대상 빈의 `id` 속성 또는 대상 빈의 `name` 속성에 있는 값 중 하나와 동일할 수 있습니다.
-대상 빈은 현재 빈의 상위 컨테이너에 있어야 합니다.
-이 빈 참조 변형은 주로 컨테이너 계층 구조가 있고 기존 빈을 부모 빈과 이름이 같은 프록시를 사용하여 부모 컨테이너에 래핑하려는 경우에 사용해야 합니다.
+`parent` 속성을 통해 대상 Bean을 지정하면 현재 컨테이너의 부모 컨테이너에 있는 Bean에 대한 참조가 생성됩니다.
+parent` 속성의 값은 대상 Bean의 `id` 속성 또는 대상 Bean의 `name` 속성에 있는 값 중 하나와 동일할 수 있습니다.
+대상 Bean은 현재 Bean의 상위 컨테이너에 있어야 합니다.
+이 Bean 참조 변형은 주로 컨테이너 계층 구조가 있고 기존 Bean을 부모 Bean과 이름이 같은 프록시를 사용하여 부모 컨테이너에 래핑하려는 경우에 사용해야 합니다.
 다음 목록은 `parent` 속성을 사용하는 방법을 보여줍니다:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
@@ -158,9 +158,9 @@ NOTE: `ref` 요소의 `local` 속성은 더 이상 일반 `bean` 참조에 대�
 
 
 [[beans-inner-beans]]
-== 내부 빈(Inner Beans)
+== 내부 Bean(Inner Beans)
 
-다음 예제에서 볼 수 있듯이 `<property/>` 또는 `<constructor-arg/>` 요소 안의 `<bean/>` 요소는 내부 빈을 정의합니다:
+다음 예제에서 볼 수 있듯이 `<property/>` 또는 `<constructor-arg/>` 요소 안의 `<bean/>` 요소는 내부 Bean을 정의합니다:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----
@@ -175,15 +175,15 @@ NOTE: `ref` 요소의 `local` 속성은 더 이상 일반 `bean` 참조에 대�
 	</bean>
 ----
 
-내부 빈 정의에는 정의된 ID나 이름이 필요하지 않습니다.
+내부 Bean 정의에는 정의된 ID나 이름이 필요하지 않습니다.
 지정된 경우 컨테이너는 이러한 값을 식별자로 사용하지 않습니다.
-또한 내부 빈은 항상 익명이며 항상 외부 빈과 함께 생성되므로 컨테이너는 생성 시 `scope` 플래그를 무시합니다.
-내부 빈에 독립적으로 접근하거나 둘러싸는 빈이 아닌 다른 협업 빈에 주입하는 것은 불가능합니다.
+또한 내부 Bean은 항상 익명이며 항상 외부 Bean과 함께 생성되므로 컨테이너는 생성 시 `scope` 플래그를 무시합니다.
+내부 Bean에 독립적으로 접근하거나 둘러싸는 Bean이 아닌 다른 협업 Bean에 주입하는 것은 불가능합니다.
 
-코너 케이스로서, 예를 들어 싱글톤 빈 내에 포함된 요청 범위 내부 빈에 대해 사용자 정의 범위에서 소멸 콜백을 수신할 수 있습니다.
-내부 빈 인스턴스의 생성은 포함된 빈에 연결되지만, 파기 콜백을 통해 요청 범위의 라이프사이클에 참여할 수 있습니다.
+코너 케이스로서, 예를 들어 싱글톤 Bean 내에 포함된 요청 범위 내부 Bean에 대해 사용자 정의 범위에서 소멸 콜백을 수신할 수 있습니다.
+내부 Bean 인스턴스의 생성은 포함된 Bean에 연결되지만, 파기 콜백을 통해 요청 범위의 라이프사이클에 참여할 수 있습니다.
 이것은 일반적인 시나리오가 아닙니다.
-내부 빈은 일반적으로 단순히 포함 빈의 범위를 공유합니다.
+내부 Bean은 일반적으로 단순히 포함 Bean의 범위를 공유합니다.
 
 
 [[beans-collection-elements]]
@@ -269,8 +269,8 @@ Readers unfamiliar with parent and child bean definitions may wish to read the x
 	<beans>
 ----
 
-`child` 빈 정의의 `adminEmails` 속성의 `<props/>` 요소에 `merge=true` 속성이 사용된 것을 주목하세요.
-`child` 빈이 컨테이너에 의해 확인되고 인스턴스화되면 결과 인스턴스에는 자식의 `adminEmails` 컬렉션과 상위의 `adminEmails` 컬렉션을 병합한 결과가 포함된 `adminEmails` `Properties` 컬렉션이 있습니다.
+`child` Bean 정의의 `adminEmails` 속성의 `<props/>` 요소에 `merge=true` 속성이 사용된 것을 주목하세요.
+`child` Bean이 컨테이너에 의해 확인되고 인스턴스화되면 결과 인스턴스에는 자식의 `adminEmails` 컬렉션과 상위의 `adminEmails` 컬렉션을 병합한 결과가 포함된 `adminEmails` `Properties` 컬렉션이 있습니다.
 다음 목록은 결과를 보여줍니다:
 
 [literal,subs="verbatim,quotes"]
@@ -301,8 +301,8 @@ support=support@example.co.uk
 
 Java의 제네릭 타입 지원 덕분에 강력한 타입의 컬렉션을 사용할 수 있습니다.
 즉, (예를 들어) `String` 요소만 포함할 수 있도록 `Collection` 유형을 선언할 수 있습니다.
-Spring을 사용하여 강력하게 타입이 지정된 `Collection` 을 빈에 의존적으로 주입하는 경우, 스프링의 타입 변환 지원을 활용하여 강력하게 타입이 지정된 `Collection` 인스턴스의 요소가 `Collection`에 추가되기 전에 적절한 타입으로 변환되도록 할 수 있습니다.
-다음 Java 클래스와 빈 정의는 이를 수행하는 방법을 보여줍니다:
+Spring을 사용하여 강력하게 타입이 지정된 `Collection` 을 Bean에 의존적으로 주입하는 경우, 스프링의 타입 변환 지원을 활용하여 강력하게 타입이 지정된 `Collection` 인스턴스의 요소가 `Collection`에 추가되기 전에 적절한 타입으로 변환되도록 할 수 있습니다.
+다음 Java 클래스와 Bean 정의는 이를 수행하는 방법을 보여줍니다:
 
 [tabs]
 ======
@@ -345,15 +345,15 @@ class SomeClass {
 	</beans>
 ----
 
-`something` 빈의 `accounts` 속성을 주입할 준비가 되면, 강력하게 타입이 지정된 `Map<String, Float>` 의 요소 유형에 대한 제네릭 정보를 리플렉션을 통해 사용할 수 있습니다.
+`something` Bean의 `accounts` 속성을 주입할 준비가 되면, 강력하게 타입이 지정된 `Map<String, Float>` 의 요소 유형에 대한 제네릭 정보를 리플렉션을 통해 사용할 수 있습니다.
 따라서 Spring의 타입 변환 인프라는 다양한 값 요소를 `Float` 타입으로 인식하고 문자열 값(`9.99`, `2.75`, `3.99`)은 실제 `Float` 타입으로 변환됩니다.
 
 
 [[beans-null-element]]
-== 널 및 빈 문자열 값(Null and Empty String Values)
+== 널 및 Bean 문자열 값(Null and Empty String Values)
 
-Spring은 속성 등에 대한 빈 인수를 빈 `String` 으로 취급합니다.
-다음 XML 기반 구성 메타데이터 스니펫은 `email` 속성을 빈 `String` 값("")으로 설정합니다.
+Spring은 속성 등에 대한 Bean 인수를 Bean `String` 으로 취급합니다.
+다음 XML 기반 구성 메타데이터 스니펫은 `email` 속성을 Bean `String` 값("")으로 설정합니다.
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----
@@ -417,7 +417,7 @@ Kotlin::
 [[beans-p-namespace]]
 == p-namespace가 있는 XML 바로 가기(XML Shortcut with the p-namespace)
 
-p-namespace를 사용하면 중첩된 `<property/>` 요소 대신 `bean` 요소의 속성을 사용하여 속성 값을 공동 작업하는 빈 또는 둘 다를 설명할 수 있습니다.
+p-namespace를 사용하면 중첩된 `<property/>` 요소 대신 `bean` 요소의 속성을 사용하여 속성 값을 협업하는 Bean 또는 둘 다를 설명할 수 있습니다.
 
 Spring은 XML 스키마 정의에 기반한 xref:core/appendix/xsd-schemas.adoc[네임스페이스]를 통해 확장 가능한 구성 형식을 지원합니다.
 이 장에서 설명하는 `beans` 구성 형식은 XML 스키마 문서에 정의되어 있습니다.
@@ -442,11 +442,11 @@ Spring은 XML 스키마 정의에 기반한 xref:core/appendix/xsd-schemas.adoc[
 	</beans>
 ----
 
-이 예는 빈 정의에서 `email` 이라는 p-namespace의 속성을 보여줍니다.
+이 예는 Bean 정의에서 `email` 이라는 p-namespace의 속성을 보여줍니다.
 이것은 Spring에 속성 선언을 포함하도록 지시합니다.
 앞서 언급했듯이 p-namespace에는 스키마 정의가 없으므로 속성 이름을 속성 이름으로 설정할 수 있습니다.
 
-이 다음 예제에는 다른 빈에 대한 참조가 있는 두 개의 빈 정의가 더 포함되어 있습니다:
+이 다음 예제에는 다른 Bean에 대한 참조가 있는 두 개의 Bean 정의가 더 포함되어 있습니다:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----
@@ -473,8 +473,8 @@ Spring은 XML 스키마 정의에 기반한 xref:core/appendix/xsd-schemas.adoc[
 ----
 
 이 예제에는 p-namespace를 사용하는 속성 값뿐만 아니라 특수 형식을 사용하여 속성 참조를 선언하는 것도 포함되어 있습니다.
-첫 번째 빈 정의에서는 `<property name="spouse" ref="jane"/>` 을 사용하여 빈 `john` 에서 빈 `jane` 으로 참조를 생성하지만, 두 번째 빈 정의에서는 `p:spouse-ref="jane"` 을 속성으로 사용하여 정확히 동일한 작업을 수행합니다.
-이 경우 `spouse` 는 속성 이름이고, `-ref` 부분은 이것이 직선 값이 아니라 다른 빈에 대한 참조임을 나타냅니다.
+첫 번째 Bean 정의에서는 `<property name="spouse" ref="jane"/>` 을 사용하여 Bean `john` 에서 Bean `jane` 으로 참조를 생성하지만, 두 번째 Bean 정의에서는 `p:spouse-ref="jane"` 을 속성으로 사용하여 정확히 동일한 작업을 수행합니다.
+이 경우 `spouse` 는 속성 이름이고, `-ref` 부분은 이것이 직선 값이 아니라 다른 Bean에 대한 참조임을 나타냅니다.
 
 NOTE: p-namespace는 표준 XML 형식만큼 유연하지 않습니다.
 예를 들어, 속성 참조를 선언하는 형식은 `Ref`로 끝나는 속성과 충돌하지만 표준 XML 형식은 충돌하지 않습니다.
@@ -513,7 +513,7 @@ NOTE: p-namespace는 표준 XML 형식만큼 유연하지 않습니다.
 	</beans>
 ----
 
-`c:` 네임스페이스는 생성자 인수를 이름으로 설정하기 위해 `p:` 하나(빈 참조의 경우 후행 `-ref`)와 동일한 규칙을 사용합니다.
+`c:` 네임스페이스는 생성자 인수를 이름으로 설정하기 위해 `p:` 하나(Bean 참조의 경우 후행 `-ref`)와 동일한 규칙을 사용합니다.
 마찬가지로, XSD 스키마에 정의되어 있지 않더라도 XML 파일에 선언해야 합니다(Spring 코어 내부에 존재).
 
 생성자 인자 이름을 사용할 수 없는 드문 경우(일반적으로 디버깅 정보 없이 바이트코드가 컴파일된 경우)에는 다음과 같이 인자 인덱스에 대한 폴백을 사용할 수 있습니다: 
@@ -534,8 +534,8 @@ NOTE: XML 문법으로 인해 인덱스 표기법에는 앞에 `_` 가 있어야
 [[beans-compound-property-names]]
 == 복합 프로퍼티 이름(Compound Property Names)
 
-최종 속성 이름을 제외한 경로의 모든 구성 요소가 `null` 이 아니라면 빈 속성을 설정할 때 복합 또는 중첩된 속성 이름을 사용할 수 있습니다.
-다음 빈 정의를 살펴보겠습니다:
+최종 속성 이름을 제외한 경로의 모든 구성 요소가 `null` 이 아니라면 Bean 속성을 설정할 때 복합 또는 중첩된 속성 이름을 사용할 수 있습니다.
+다음 Bean 정의를 살펴보겠습니다:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----
@@ -544,8 +544,8 @@ NOTE: XML 문법으로 인해 인덱스 표기법에는 앞에 `_` 가 있어야
 	</bean>
 ----
 
-`something` 빈에는 `fred` 속성이 있고, 그 속성에 `bob` 속성이 있으며, 그 속성에 `sammy` 속성이 있고, 최종 `sammy` 속성이 `123` 값으로 설정되고 있습니다.
-이것이 작동하려면 빈이 생성된 후 `something`의 `fred` 속성과 `fred`의 `bob` 속성이 `null` 이 아니어야 합니다.
+`something` Bean에는 `fred` 속성이 있고, 그 속성에 `bob` 속성이 있으며, 그 속성에 `sammy` 속성이 있고, 최종 `sammy` 속성이 `123` 값으로 설정되고 있습니다.
+이것이 작동하려면 Bean이 생성된 후 `something`의 `fred` 속성과 `fred`의 `bob` 속성이 `null` 이 아니어야 합니다.
 그렇지 않으면 `NullPointerException`이 발생합니다.
 
 

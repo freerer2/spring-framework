@@ -1,18 +1,18 @@
 [[beans-definition]]
 = Bean Overview(한글)
 
-Spring IoC 컨테이너는 하나 이상의 빈을 관리합니다.
-이러한 빈은 컨테이너에 제공하는 구성 메타데이터(예: XML `<bean/>` 정의의 형태)로 생성됩니다.
+Spring IoC 컨테이너는 하나 이상의 Bean을 관리합니다.
+이러한 Bean은 컨테이너에 제공하는 구성 메타데이터(예: XML `<bean/>` 정의의 형태)로 생성됩니다.
 
-컨테이너 자체 내에서 이러한 빈 정의는 다음과 같은 메타데이터를 포함하는 `BeanDefinition` 객체로 표현됩니다(다른 정보 중에서도):
+컨테이너 자체 내에서 이러한 Bean 정의는 다음과 같은 메타데이터를 포함하는 `BeanDefinition` 객체로 표현됩니다(다른 정보 중에서도):
 
-* 패키지 한정 클래스 이름: 일반적으로 정의되는 빈의 실제 구현 클래스입니다.
-* 빈 동작 구성 요소: 컨테이너에서 빈이 어떻게 동작해야 하는지 설명합니다(범위, 수명 주기 콜백 등).
-* 빈이 작업을 수행하는 데 필요한 다른 빈에 대한 참조. 
-이러한 참조를 공동 작업자 또는 의존성이라고도 합니다.
-* 새로 생성된 객체에서 설정할 기타 구성 설정 -- 예를 들어, 풀의 크기 제한이나 연결 풀을 관리하는 빈에서 사용할 연결 수와 같은 설정입니다.
+* 패키지 한정 클래스 이름: 일반적으로 정의되는 Bean의 실제 구현 클래스입니다.
+* Bean 동작 구성 요소: 컨테이너에서 Bean이 어떻게 동작해야 하는지 설명합니다(범위, 수명 주기 콜백 등).
+* Bean이 작업을 수행하는 데 필요한 다른 Bean에 대한 참조. 
+이러한 참조를 협업자 또는 의존성이라고도 합니다.
+* 새로 생성된 객체에서 설정할 기타 구성 설정 -- 예를 들어, 풀의 크기 제한이나 연결 풀을 관리하는 Bean에서 사용할 연결 수와 같은 설정입니다.
 
-이 메타데이터는 각 빈 정의를 구성하는 속성 집합으로 변환됩니다.
+이 메타데이터는 각 Bean 정의를 구성하는 속성 집합으로 변환됩니다.
 다음 표에서는 이러한 속성에 대해 설명합니다:
 
 [[beans-factory-bean-definition-tbl]]
@@ -42,79 +42,79 @@ Spring IoC 컨테이너는 하나 이상의 빈을 관리합니다.
 | xref:core/beans/dependencies/factory-lazy-init.adoc[Beans 지연초기화]
 
 | Initialization method
-| xref:core/beans/factory-nature.adoc#beans-factory-lifecycle-initializingbean[빈 초기화 콜백]
+| xref:core/beans/factory-nature.adoc#beans-factory-lifecycle-initializingbean[Bean 초기화 콜백]
 
 | Destruction method
-| xref:core/beans/factory-nature.adoc#beans-factory-lifecycle-disposablebean[빈 파기 콜백]
+| xref:core/beans/factory-nature.adoc#beans-factory-lifecycle-disposablebean[Bean 파기 콜백]
 |===
 
-특정 빈을 생성하는 방법에 대한 정보를 포함하는 빈 정의 외에도, `ApplicationContext` 구현은 컨테이너 외부에서 (사용자가) 생성한 기존 객체를 등록할 수 있도록 허용합니다.
-이 작업은 'getBeanFactory()` 메서드를 통해 애플리케이션 컨텍스트의 `BeanFactory`에 액세스하여 수행되며, 이 메서드는 `DefaultListableBeanFactory` 구현을 반환합니다. 디폴트 리스터블 빈 팩토리`는 `registerSingleton(..)` 및 `registerBeanDefinition(..)` 메서드를 통해 이 등록을 지원합니다. 
-그러나 일반적인 애플리케이션은 일반 빈 정의 메타데이터를 통해 정의된 빈으로만 작동합니다.
+특정 Bean을 생성하는 방법에 대한 정보를 포함하는 Bean 정의 외에도, `ApplicationContext` 구현은 컨테이너 외부에서 (사용자가) 생성한 기존 객체를 등록할 수 있도록 허용합니다.
+이 작업은 'getBeanFactory()` 메서드를 통해 애플리케이션 컨텍스트의 `BeanFactory`에 액세스하여 수행되며, 이 메서드는 `DefaultListableBeanFactory` 구현을 반환합니다. 디폴트 리스터블 Bean 팩토리`는 `registerSingleton(..)` 및 `registerBeanDefinition(..)` 메서드를 통해 이 등록을 지원합니다. 
+그러나 일반적인 애플리케이션은 일반 Bean 정의 메타데이터를 통해 정의된 Bean으로만 작동합니다.
 
 [NOTE]
 ====
-빈 메타데이터와 수동으로 제공된 싱글톤 인스턴스는 가능한 한 빨리 등록해야 컨테이너가 autowiring 및 기타  요구 사항 검증 단계에서 이를 적절히 추론할 수 있습니다.
-기존 메타데이터와 기존 싱글톤 인스턴스를 재정의하는 것은 어느 정도 지원되지만, 런타임에 (팩토리에 대한 실시간 액세스와 동시에) 새 빈을 등록하는 것은 공식적으로 지원되지 않으며 동시 액세스 예외, 빈 컨테이너의 일관되지 않은 상태 또는 두 가지 모두로 이어질 수 있습니다.
+Bean 메타데이터와 수동으로 제공된 싱글톤 인스턴스는 가능한 한 빨리 등록해야 컨테이너가 autowiring 및 기타  요구 사항 검증 단계에서 이를 적절히 추론할 수 있습니다.
+기존 메타데이터와 기존 싱글톤 인스턴스를 재정의하는 것은 어느 정도 지원되지만, 런타임에 (팩토리에 대한 실시간 액세스와 동시에) 새 Bean을 등록하는 것은 공식적으로 지원되지 않으며 동시 액세스 예외, Bean 컨테이너의 일관되지 않은 상태 또는 두 가지 모두로 이어질 수 있습니다.
 ====
 
 [[beans-definition-overriding]]
-== 빈 재정의(Overriding Beans)
+== Bean 재정의(Overriding Beans)
 
-빈 재정의는 이미 할당된 식별자를 사용하여 빈이 등록될 때 발생합니다.
-빈 재정의는 가능하지만 구성을 읽기 어렵게 만들며 이 기능은 향후 릴리스에서 더 이상 사용되지 않습니다.
+Bean 재정의는 이미 할당된 식별자를 사용하여 Bean이 등록될 때 발생합니다.
+Bean 재정의는 가능하지만 구성을 읽기 어렵게 만들며 이 기능은 향후 릴리스에서 더 이상 사용되지 않습니다.
 
-빈 재정의 기능을 완전히 비활성화하려면 새로 고침하기 전에 `ApplicationContext` 에서 `allowBeanDefinitionOverriding` 을 `false` 로 설정하면 됩니다. 
-이러한 설정에서 빈 오버라이딩이 사용되면 예외가 발생합니다.
+Bean 재정의 기능을 완전히 비활성화하려면 새로 고침하기 전에 `ApplicationContext` 에서 `allowBeanDefinitionOverriding` 을 `false` 로 설정하면 됩니다. 
+이러한 설정에서 Bean 오버라이딩이 사용되면 예외가 발생합니다.
 
-기본적으로 컨테이너는 모든 빈 오버라이딩을 `INFO` 수준에서 기록하므로 사용자가 그에 따라 구성을 조정할 수 있습니다.
+기본적으로 컨테이너는 모든 Bean 오버라이딩을 `INFO` 수준에서 기록하므로 사용자가 그에 따라 구성을 조정할 수 있습니다.
 권장되지는 않지만, `allowBeanDefinitionOverriding` 플래그를 `true`로 설정하여 이러한 로그를 무음화할 수 있습니다.
 
-NOTE: 테스트에서 빈을 재정의하는 것이 편리하다는 것을 알고 있으며, 이에 대한 명시적인 지원이 있습니다.
+NOTE: 테스트에서 Bean을 재정의하는 것이 편리하다는 것을 알고 있으며, 이에 대한 명시적인 지원이 있습니다.
 자세한 내용은 xref:testing/testcontext-framework/bean-overriding.adoc[이 섹션]을 참조하세요.
 
 [[beans-beanname]]
-== 빈 이름 지정(Naming Beans)
+== Bean 이름 지정(Naming Beans)
 
-모든 빈에는 하나 이상의 식별자가 있습니다.
-이러한 식별자는 빈을 호스팅하는 컨테이너 내에서 고유해야 합니다.
-일반적으로 빈에는 하나의 식별자만 있습니다.
+모든 Bean에는 하나 이상의 식별자가 있습니다.
+이러한 식별자는 Bean을 호스팅하는 컨테이너 내에서 고유해야 합니다.
+일반적으로 Bean에는 하나의 식별자만 있습니다.
 그러나 두 개 이상의 식별자가 필요한 경우 추가 식별자는 별칭으로 간주할 수 있습니다.
 
-XML 기반 구성 메타데이터에서는 `id` 속성, `name` 속성 또는 둘 다를 사용하여 빈 식별자를 지정합니다.
+XML 기반 구성 메타데이터에서는 `id` 속성, `name` 속성 또는 둘 다를 사용하여 Bean 식별자를 지정합니다.
 `id` 속성을 사용하면 정확히 하나의 `id`를 지정할 수 있습니다.
 일반적으로 이러한 이름은 영문/숫자('myBean', 'someService' 등)이지만 특수 문자도 포함할 수 있습니다.
-빈의 다른 별칭을 도입하려는 경우, 쉼표(`,`), 세미콜론(`;`) 또는 공백으로 구분하여 `name` 속성에 지정할 수도 있습니다.
-`id` 속성은 `xsd:string` 유형으로 정의되지만, 빈 `id` 고유성은 XML 파서가 아니라 컨테이너에 의해 적용됩니다.
+Bean의 다른 별칭을 도입하려는 경우, 쉼표(`,`), 세미콜론(`;`) 또는 공백으로 구분하여 `name` 속성에 지정할 수도 있습니다.
+`id` 속성은 `xsd:string` 유형으로 정의되지만, Bean `id` 고유성은 XML 파서가 아니라 컨테이너에 의해 적용됩니다.
 
-빈의 `name` 이나 `id` 를 입력할 필요는 없습니다.
-`name` 또는 `id` 를 명시적으로 제공하지 않으면 컨테이너가 해당 빈의 고유 이름을 생성합니다.
-그러나 `ref` 요소 또는 서비스 로케이터 스타일 조회를 사용하여 해당 빈을 이름으로 참조하려면 이름을 제공해야 합니다.
-이름을 제공하지 않는 것은 xref:core/beans/dependencies/factory-properties-detailed.adoc#beans-inner-beans[내부 빈]과 xref:core/beans/dependencies/factory-autowire.adoc[autowiring]을 사용하는 것과 관련이 있습니다.
+Bean의 `name` 이나 `id` 를 입력할 필요는 없습니다.
+`name` 또는 `id` 를 명시적으로 제공하지 않으면 컨테이너가 해당 Bean의 고유 이름을 생성합니다.
+그러나 `ref` 요소 또는 서비스 로케이터 스타일 조회를 사용하여 해당 Bean을 이름으로 참조하려면 이름을 제공해야 합니다.
+이름을 제공하지 않는 것은 xref:core/beans/dependencies/factory-properties-detailed.adoc#beans-inner-beans[내부 Bean]과 xref:core/beans/dependencies/factory-autowire.adoc[autowiring]을 사용하는 것과 관련이 있습니다.
 
-.빈 이름 지정 규칙(Bean Naming Conventions)
+.Bean 이름 지정 규칙(Bean Naming Conventions)
 ****
-규칙은 빈 이름을 지정할 때 인스턴스 필드 이름에 표준 Java 규칙을 사용하는 것입니다.
-즉, 빈 이름은 소문자로 시작하고 거기서부터 대소문자를 사용합니다.
+규칙은 Bean 이름을 지정할 때 인스턴스 필드 이름에 표준 Java 규칙을 사용하는 것입니다.
+즉, Bean 이름은 소문자로 시작하고 거기서부터 대소문자를 사용합니다.
 이러한 이름의 예로는 `accountManager`, `accountService`, `userDao`, `loginController` 등이 있습니다.
 
-일관되게 빈 이름을 지정하면 구성을 더 쉽게 읽고 이해할 수 있습니다.
-또한 Spring AOP를 사용하는 경우 이름별로 관련된 빈에 advice를 적용할 때 많은 도움이 됩니다.
+일관되게 Bean 이름을 지정하면 구성을 더 쉽게 읽고 이해할 수 있습니다.
+또한 Spring AOP를 사용하는 경우 이름별로 관련된 Bean에 advice를 적용할 때 많은 도움이 됩니다.
 ****
 
-NOTE: 클래스 경로에서 컴포넌트 스캔을 사용하면 Spring은 앞에서 설명한 규칙에 따라 이름 없는 컴포넌트에 대한 빈 이름을 생성합니다(기본적으로 간단한 클래스 이름을 가져와 첫 글자를 소문자로 바꿉니다).
+NOTE: 클래스 경로에서 컴포넌트 스캔을 사용하면 Spring은 앞에서 설명한 규칙에 따라 이름 없는 컴포넌트에 대한 Bean 이름을 생성합니다(기본적으로 간단한 클래스 이름을 가져와 첫 글자를 소문자로 바꿉니다).
 그러나 문자가 두 개 이상이고 첫 번째와 두 번째 문자가 모두 대문자인 (비정상적인) 특수한 경우에는 원래의 대소문자가 유지됩니다.
 이는 `java.beans.Introspector.decapitalize` 에 정의된 것과 동일한 규칙입니다. (여기서 Spring이 사용합니다.)
 
 
 [[beans-beanname-alias]]
-=== 빈 별칭 지정(Aliasing a Bean outside the Bean Definition)
+=== Bean 별칭 지정(Aliasing a Bean outside the Bean Definition)
 
-빈 정의 자체에서 `id` 속성으로 지정된 최대 하나의 이름과 `name` 속성의 다른 이름을 조합하여 빈에 대해 둘 이상의 이름을 제공할 수 있습니다.
-이러한 이름은 동일한 빈에 대한 동등한 별칭이 될 수 있으며, 애플리케이션의 각 구성 요소가 해당 구성 요소 자체에 특정한 빈 이름을 사용하여 공통된 의존성(dependency)을 참조하도록 하는 등의 일부 상황에 유용합니다.
+Bean 정의 자체에서 `id` 속성으로 지정된 최대 하나의 이름과 `name` 속성의 다른 이름을 조합하여 Bean에 대해 둘 이상의 이름을 제공할 수 있습니다.
+이러한 이름은 동일한 Bean에 대한 동등한 별칭이 될 수 있으며, 애플리케이션의 각 구성 요소가 해당 구성 요소 자체에 특정한 Bean 이름을 사용하여 공통된 의존성(dependency)을 참조하도록 하는 등의 일부 상황에 유용합니다.
 
-그러나 빈이 실제로 정의된 곳에 모든 별칭을 지정하는 것이 항상 적절한 것은 아닙니다.
-때로는 다른 곳에 정의된 빈에 대한 별칭을 도입하는 것이 바람직할 때가 있습니다.
+그러나 Bean이 실제로 정의된 곳에 모든 별칭을 지정하는 것이 항상 적절한 것은 아닙니다.
+때로는 다른 곳에 정의된 Bean에 대한 별칭을 도입하는 것이 바람직할 때가 있습니다.
 이는 일반적으로 구성이 각 하위 시스템으로 분할되어 있고 각 하위 시스템에 고유한 객체 정의 집합이 있는 대규모 시스템에서 발생합니다.
 XML 기반 구성 메타데이터에서는 `<alias/>` 요소를 사용하여 이 작업을 수행할 수 있습니다.
 다음 예에서는 이를 수행하는 방법을 보여줍니다:,
@@ -124,7 +124,7 @@ XML 기반 구성 메타데이터에서는 `<alias/>` 요소를 사용하여 이
 	<alias name="fromName" alias="toName"/>
 ----
 
-이 경우, (동일한 컨테이너에 있는) `fromName` 이라는 이름의 빈은 이 별칭 정의를 사용한 후에 `toName` 으로 참조될 수도 있습니다.
+이 경우, (동일한 컨테이너에 있는) `fromName` 이라는 이름의 Bean은 이 별칭 정의를 사용한 후에 `toName` 으로 참조될 수도 있습니다.
 
 예를 들어, 하위 시스템 A에 대한 구성 메타데이터는 `subsystemA-dataSource` 라는 이름으로 데이터 소스를 참조할 수 있습니다.
 하위 시스템 B에 대한 구성 메타데이터는 `subsystemB-dataSource` 라는 이름으로 데이터 소스를 참조할 수 있습니다.
@@ -137,7 +137,7 @@ XML 기반 구성 메타데이터에서는 `<alias/>` 요소를 사용하여 이
 	<alias name="myApp-dataSource" alias="subsystemB-dataSource"/>
 ----
 
-이제 각 컴포넌트와 메인 애플리케이션은 고유하고 다른 정의와 충돌하지 않도록 보장된 이름을 통해 데이터소스를 참조할 수 있지만(효과적으로 네임스페이스를 생성), 동일한 빈을 참조합니다.
+이제 각 컴포넌트와 메인 애플리케이션은 고유하고 다른 정의와 충돌하지 않도록 보장된 이름을 통해 데이터소스를 참조할 수 있지만(효과적으로 네임스페이스를 생성), 동일한 Bean을 참조합니다.
 
 .자바 구성(Java-configuration)
 ****
@@ -150,39 +150,39 @@ Java 구성을 사용하는 경우 `@Bean` 어노테이션을 사용하여 별�
 [[beans-factory-class]]
 == Beans 인스턴스화(Instantiating Beans)
 
-빈 정의는 본질적으로 하나 이상의 객체를 생성하기 위한 레시피입니다.
-컨테이너는 요청 시 명명된 빈의 레시피를 살펴보고 해당 빈 정의로 캡슐화된 구성 메타데이터를 사용하여 실제 객체를 생성(또는 획득)합니다.
+Bean 정의는 본질적으로 하나 이상의 객체를 생성하기 위한 레시피입니다.
+컨테이너는 요청 시 명명된 Bean의 레시피를 살펴보고 해당 Bean 정의로 캡슐화된 구성 메타데이터를 사용하여 실제 객체를 생성(또는 획득)합니다.
 
 XML 기반 구성 메타데이터를 사용하는 경우, `<bean/>` 요소의 `class` 속성에 인스턴스화할 객체의 유형(또는 클래스)을 지정합니다.
 이 `class` 속성(내부적으로는 `BeanDefinition` 인스턴스의 `Class` 속성)은 일반적으로 필수입니다. (예외에 대해서는 xref:core/beans/definition.adoc#beans-factory-class-instance-factory-method[인스턴스 팩토리 메서드를 사용한 인스턴스화] 및 xref:core/beans/child-bean-definitions.adoc[Bean 정의 상속]을 참조하십시오). Class` 속성은 두 가지 방법 중 하나로 사용할 수 있습니다:
 
-* 일반적으로 컨테이너 자체가 `new` 연산자를 사용하는 Java 코드와 유사하게 생성자를 반사적으로 호출하여 빈을 직접 생성하는 경우, 생성할 빈 클래스를 지정합니다.
-* 컨테이너가 빈을 생성하기 위해 클래스에서 `static` 팩토리 메서드를 호출하는 덜 일반적인 경우, 객체를 생성하기 위해 호출되는 `static` 팩토리 메서드가 포함된 실제 클래스를 지정합니다. `static` 팩토리 메서드 호출에서 반환되는 객체 유형은 동일한 클래스이거나 완전히 다른 클래스일 수 있습니다.
+* 일반적으로 컨테이너 자체가 `new` 연산자를 사용하는 Java 코드와 유사하게 생성자를 반사적으로 호출하여 Bean을 직접 생성하는 경우, 생성할 Bean 클래스를 지정합니다.
+* 컨테이너가 Bean을 생성하기 위해 클래스에서 `static` 팩토리 메서드를 호출하는 덜 일반적인 경우, 객체를 생성하기 위해 호출되는 `static` 팩토리 메서드가 포함된 실제 클래스를 지정합니다. `static` 팩토리 메서드 호출에서 반환되는 객체 유형은 동일한 클래스이거나 완전히 다른 클래스일 수 있습니다.
 
 .Nested class names
 ****
-중첩 클래스에 대한 빈 정의를 구성하려는 경우 중첩 클래스의 이진 이름 또는 소스 이름을 사용할 수 있습니다.
+중첩 클래스에 대한 Bean 정의를 구성하려는 경우 중첩 클래스의 이진 이름 또는 소스 이름을 사용할 수 있습니다.
 
 예를 들어, `com.example` 패키지에 `SomeThing`이라는 클래스가 있고 이 `SomeThing` 클래스에 `OtherThing`이라는 `static` 중첩 클래스가 있는 경우 달러 기호(`$`) 또는 점('.`)으로 구분할 수 있습니다.
-따라서 빈 정의에서 `class` 속성의 값은 `com.example.SomeThing$OtherThing` 또는 `com.example.SomeThing.OtherThing`이 될 것입니다.
+따라서 Bean 정의에서 `class` 속성의 값은 `com.example.SomeThing$OtherThing` 또는 `com.example.SomeThing.OtherThing`이 될 것입니다.
 ****
 
 
 [[beans-factory-class-ctor]]
 === 생성자를 사용한 인스턴스화(Instantiation with a Constructor)
 
-생성자 접근 방식으로 빈을 생성하면 모든 일반 클래스가 Spring에서 사용할 수 있고 호환됩니다.
+생성자 접근 방식으로 Bean을 생성하면 모든 일반 클래스가 Spring에서 사용할 수 있고 호환됩니다.
 즉, 개발 중인 클래스는 특정 인터페이스를 구현하거나 특정 방식으로 코딩할 필요가 없습니다.
-단순히 빈 클래스를 지정하는 것으로 충분합니다.
-그러나 특정 빈에 사용하는 IoC 유형에 따라 기본(empty) 생성자가 필요할 수 있습니다.
+단순히 Bean 클래스를 지정하는 것으로 충분합니다.
+그러나 특정 Bean에 사용하는 IoC 유형에 따라 기본(empty) 생성자가 필요할 수 있습니다.
 
 Spring IoC 컨테이너는 관리하고자 하는 거의 모든 클래스를 관리할 수 있습니다.
 이는 실제 JavaBean 관리에만 국한되지 않습니다.
 대부분의 Spring 사용자는 기본(인수가 없는) 생성자와 컨테이너의 속성을 모델로 한 적절한 설정자 및 게터만 있는 실제 JavaBean을 선호합니다.
-컨테이너에 더 이색적인 비빈 스타일 클래스를 포함할 수도 있습니다.
+컨테이너에 더 이색적인 비Bean 스타일 클래스를 포함할 수도 있습니다.
 예를 들어, JavaBean 사양을 전혀 준수하지 않는 레거시 연결 풀을 사용해야 하는 경우 Spring에서 이를 관리할 수 있습니다.
 
-XML 기반 구성 메타데이터를 사용하면 다음과 같이 빈 클래스를 지정할 수 있습니다:
+XML 기반 구성 메타데이터를 사용하면 다음과 같이 Bean 클래스를 지정할 수 있습니다:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----
@@ -197,11 +197,11 @@ XML 기반 구성 메타데이터를 사용하면 다음과 같이 빈 클래스
 [[beans-factory-class-static-factory-method]]
 === 스태틱 팩토리 메서드를 사용한 인스턴스화(Instantiation with a Static Factory Method)
 
-정적 팩토리 메서드로 생성하는 빈을 정의할 때는 `class` 속성을 사용하여 `static` 팩토리 메서드가 포함된 클래스를 지정하고 `factory-method`라는 속성을 사용하여 팩토리 메서드 자체의 이름을 지정합니다.
+정적 팩토리 메서드로 생성하는 Bean을 정의할 때는 `class` 속성을 사용하여 `static` 팩토리 메서드가 포함된 클래스를 지정하고 `factory-method`라는 속성을 사용하여 팩토리 메서드 자체의 이름을 지정합니다.
 나중에 설명하는 대로 선택적 인수를 사용하여 이 메서드를 호출하고 생성자를 통해 생성된 것처럼 처리되는 라이브 객체를 반환할 수 있어야 합니다.
-이러한 빈 정의의 한 가지 용도는 레거시 코드에서 `static` 팩토리를 호출하는 것입니다.
+이러한 Bean 정의의 한 가지 용도는 레거시 코드에서 `static` 팩토리를 호출하는 것입니다.
 
-다음 빈 정의는 팩토리 메서드를 호출하여 빈을 생성하도록 지정합니다.
+다음 Bean 정의는 팩토리 메서드를 호출하여 Bean을 생성하도록 지정합니다.
 이 정의는 반환되는 객체의 유형(클래스)을 지정하지 않고 팩토리 메서드가 포함된 클래스를 지정합니다.
 이 예제에서 `createInstance()` 메서드는 `static` 메서드여야 합니다.
 다음 예제는 팩토리 메서드를 지정하는 방법을 보여줍니다:
@@ -213,7 +213,7 @@ XML 기반 구성 메타데이터를 사용하면 다음과 같이 빈 클래스
 		factory-method="createInstance"/>
 ----
 
-다음 예제는 앞의 빈 정의와 함께 작동하는 클래스를 보여줍니다:
+다음 예제는 앞의 Bean 정의와 함께 작동하는 클래스를 보여줍니다:
 
 [tabs]
 ======
@@ -251,10 +251,10 @@ Kotlin::
 [[beans-factory-class-instance-factory-method]]
 === 인스턴스 팩토리 메서드를 사용한 인스턴스화(Instantiation by Using an Instance Factory Method)
 
-xref:core/beans/definition.adoc#beans-factory-class-static-factory-method[정적 팩토리 메서드]를 통한 인스턴스화와 마찬가지로, 인스턴스 팩토리 메서드를 사용한 인스턴스화는 컨테이너에서 기존 빈의 non-static 메서드를 호출하여 새 빈을 생성합니다.
-이 메커니즘을 사용하려면 `class` 속성을 비워두고 `factory-bean` 속성에서 객체를 생성하기 위해 호출할 인스턴스 메서드가 포함된 현재(또는 부모 또는 상위) 컨테이너의 빈 이름을 지정합니다.
+xref:core/beans/definition.adoc#beans-factory-class-static-factory-method[정적 팩토리 메서드]를 통한 인스턴스화와 마찬가지로, 인스턴스 팩토리 메서드를 사용한 인스턴스화는 컨테이너에서 기존 Bean의 non-static 메서드를 호출하여 새 Bean을 생성합니다.
+이 메커니즘을 사용하려면 `class` 속성을 비워두고 `factory-bean` 속성에서 객체를 생성하기 위해 호출할 인스턴스 메서드가 포함된 현재(또는 부모 또는 상위) 컨테이너의 Bean 이름을 지정합니다.
 팩토리 메서드 자체의 이름은 `factory-method` 속성을 사용하여 설정합니다.
-다음 예제는 이러한 빈을 구성하는 방법을 보여줍니다:
+다음 예제는 이러한 Bean을 구성하는 방법을 보여줍니다:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----
@@ -364,22 +364,22 @@ Kotlin::
 ----
 ======
 
-이 접근 방식은 의존성 주입(DI)을 통해 팩토리 빈 자체를 관리하고 구성할 수 있음을 보여줍니다.
+이 접근 방식은 의존성 주입(DI)을 통해 팩토리 Bean 자체를 관리하고 구성할 수 있음을 보여줍니다.
 xref:core/beans/dependencies/factory-properties-detailed.adoc[종속성 및 구성 상세 정보]를 참조하세요.
 
-NOTE: Spring 문서에서 "팩토리 빈"은 Spring 컨테이너에 구성되고 xref:core/beans/definition.adoc#beans-factory-class-instance-factory-method[instance] 또는 xref:core/beans/definition.adoc#beans-factory-class-static-factory-method[static] 팩토리 메서드를 통해 객체를 생성하는 빈을 말합니다.
+NOTE: Spring 문서에서 "팩토리 Bean"은 Spring 컨테이너에 구성되고 xref:core/beans/definition.adoc#beans-factory-class-instance-factory-method[instance] 또는 xref:core/beans/definition.adoc#beans-factory-class-static-factory-method[static] 팩토리 메서드를 통해 객체를 생성하는 Bean을 말합니다.
 이와 대조적으로, `FactoryBean`(대문자를 주목하세요)은 Spring 전용 xref:core/beans/factory-extension.adoc#beans-factory-extension-factorybean[`FactoryBean`] 구현 클래스를 나타냅니다.
 
 
 [[beans-factory-type-determination]]
-=== 빈의 런타임 유형 결정하기(Determining a Bean's Runtime Type)
+=== Bean의 런타임 유형 결정하기(Determining a Bean's Runtime Type)
 
-특정 빈의 런타임 유형은 결정하기가 쉽지 않습니다.
-빈 메타데이터 정의에서 지정된 클래스는 초기 클래스 참조일 뿐이며, 선언된 팩토리 메서드와 결합되거나 `FactoryBean` 클래스가 되어 빈의 다른 런타임 유형으로 이어질 수도 있고, 인스턴스 수준 팩토리 메서드의 경우 전혀 설정되지 않을 수도 있습니다(대신 지정된 `factory-bean` 이름을 통해 해결됨).
-또한, AOP 프록시는 대상 빈의 실제 유형(구현된 인터페이스만)이 제한적으로 노출되는 인터페이스 기반 프록시로 빈 인스턴스를 래핑할 수 있습니다.
+특정 Bean의 런타임 유형은 결정하기가 쉽지 않습니다.
+Bean 메타데이터 정의에서 지정된 클래스는 초기 클래스 참조일 뿐이며, 선언된 팩토리 메서드와 결합되거나 `FactoryBean` 클래스가 되어 Bean의 다른 런타임 유형으로 이어질 수도 있고, 인스턴스 수준 팩토리 메서드의 경우 전혀 설정되지 않을 수도 있습니다(대신 지정된 `factory-bean` 이름을 통해 해결됨).
+또한, AOP 프록시는 대상 Bean의 실제 유형(구현된 인터페이스만)이 제한적으로 노출되는 인터페이스 기반 프록시로 Bean 인스턴스를 래핑할 수 있습니다.
 
-특정 빈의 실제 런타임 유형을 알아내는 권장 방법은 지정된 빈 이름에 대해 `BeanFactory.getType`을 호출하는 것입니다.
-이것은 위의 모든 경우를 고려하여 동일한 빈 이름에 대해 `BeanFactory.getBean` 호출이 반환할 객체의 유형을 반환합니다.
+특정 Bean의 실제 런타임 유형을 알아내는 권장 방법은 지정된 Bean 이름에 대해 `BeanFactory.getType`을 호출하는 것입니다.
+이것은 위의 모든 경우를 고려하여 동일한 Bean 이름에 대해 `BeanFactory.getBean` 호출이 반환할 객체의 유형을 반환합니다.
 
 
 

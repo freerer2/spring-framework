@@ -314,13 +314,13 @@
     <a class="nav-link" href="dependencies/factory-properties-detailed.html">Dependencies and Configuration in Detail(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="dependencies/factory-dependson.html">Using <code>depends-on</code></a>
+    <a class="nav-link" href="dependencies/factory-dependson.html">Using <code>depends-on</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="dependencies/factory-lazy-init.html">Lazy-initialized Beans</a>
+    <a class="nav-link" href="dependencies/factory-lazy-init.html">Lazy-initialized Beans(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="dependencies/factory-autowire.html">Autowiring Collaborators</a>
+    <a class="nav-link" href="dependencies/factory-autowire.html">Autowiring Collaborators(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="dependencies/factory-method-injection.html">Method Injection</a>
@@ -1846,8 +1846,8 @@
 <div class="paragraph">
 <p>이 장에서는 제어의 역전(IoC) 원칙을 스프링 프레임워크에서 구현하는 방법을 다룹니다.
 종속성 주입(DI)은 객체가 생성자 인수, 팩토리 메서드의 인수 또는 객체 인스턴스가 생성되거나 팩토리 메서드에서 반환된 후 객체 인스턴스에 설정된 속성을 통해서만 종속성(즉, 함께 작업하는 다른 객체)을 정의하는 IoC의 특수한 형태입니다.
-그런 다음 IoC 컨테이너는 빈을 생성할 때 이러한 종속성을 주입합니다.
-이 프로세스는 기본적으로 클래스의 직접 구성 또는 서비스 로케이터 패턴과 같은 메커니즘을 사용하여 종속성의 인스턴스화 또는 위치를 제어하는 빈 자체의 역방향(따라서 이름, 제어의 역전)입니다.</p>
+그런 다음 IoC 컨테이너는 Bean을 생성할 때 이러한 종속성을 주입합니다.
+이 프로세스는 기본적으로 클래스의 직접 구성 또는 서비스 로케이터 패턴과 같은 메커니즘을 사용하여 종속성의 인스턴스화 또는 위치를 제어하는 Bean 자체의 역방향(따라서 이름, 제어의 역전)입니다.</p>
 </div>
 <div class="paragraph">
 <p><code>org.springframework.beans</code> 및 <code>org.springframework.context</code> 패키지는 Spring Framework의 IoC 컨테이너의 기반입니다.
@@ -1877,9 +1877,9 @@
 </div>
 <div class="paragraph">
 <p>Spring에서는 애플리케이션의 백본(backbone)을 형성하고 Spring IoC 컨테이너에 의해 관리되는 객체를 Bean이라고 합니다.
-빈은 Spring IoC 컨테이너에 의해 인스턴스화, 어셈블 및 관리되는 객체입니다.
-그렇지 않으면 빈은 애플리케이션의 많은 객체 중 하나에 불과합니다.
-빈과 빈 간의 종속성은 컨테이너에서 사용하는 구성 메타데이터에 반영됩니다.</p>
+Bean은 Spring IoC 컨테이너에 의해 인스턴스화, 어셈블 및 관리되는 객체입니다.
+그렇지 않으면 Bean은 애플리케이션의 많은 객체 중 하나에 불과합니다.
+Bean과 Bean 간의 종속성은 컨테이너에서 사용하는 구성 메타데이터에 반영됩니다.</p>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="../beans.html">IoC Container(한글)</a></span>

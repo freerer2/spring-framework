@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Using depends-on :: Spring Framework Reference</title>
+    <title>Using depends-on(한글) :: Spring Framework Reference</title>
     <link rel="prev" href="factory-properties-detailed.html">
     <link rel="next" href="factory-lazy-init.html">
     <meta name="generator" content="Antora 3.2.0-alpha.2">
@@ -314,13 +314,13 @@
     <a class="nav-link" href="factory-properties-detailed.html">Dependencies and Configuration in Detail(한글)</a>
   </li>
   <li class="nav-item is-current-page" data-depth="4">
-    <a class="nav-link" href="factory-dependson.html">Using <code>depends-on</code></a>
+    <a class="nav-link" href="factory-dependson.html">Using <code>depends-on</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="factory-lazy-init.html">Lazy-initialized Beans</a>
+    <a class="nav-link" href="factory-lazy-init.html">Lazy-initialized Beans(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="factory-autowire.html">Autowiring Collaborators</a>
+    <a class="nav-link" href="factory-autowire.html">Autowiring Collaborators(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="factory-method-injection.html">Method Injection</a>
@@ -1792,7 +1792,7 @@
   <div class="content">
     <div
       class="toc"
-      data-title="Using depends-on"
+      data-title="Using depends-on(한글)"
       data-levels="2"
     >
       <div class="toc-menu"></div>
@@ -1840,19 +1840,17 @@
     <li><a href="../../../core.html">Core Technologies(한글)</a></li>
     <li><a href="../../beans.html">IoC Container(한글)</a></li>
     <li><a href="../dependencies.html">Dependencies(한글)</a></li>
-    <li><a href="factory-dependson.html">Using <code>depends-on</code></a></li>
+    <li><a href="factory-dependson.html">Using <code>depends-on</code>(한글)</a></li>
   </ul>
 </nav>
-<h1 id="page-title" class="page">Using <code>depends-on</code></h1>
+<h1 id="page-title" class="page">Using <code>depends-on</code>(한글)</h1>
 <div class="paragraph">
-<p>If a bean is a dependency of another bean, that usually means that one bean is set as a
-property of another. Typically you accomplish this with the <a href="#beans-ref-element"><code>&lt;ref/&gt;</code>
-element</a> in XML-based configuration metadata. However, sometimes dependencies between
-beans are less direct. An example is when a static initializer in a class needs to be
-triggered, such as for database driver registration. The <code>depends-on</code> attribute can
-explicitly force one or more beans to be initialized before the bean using this element
-is initialized. The following example uses the <code>depends-on</code> attribute to express a
-dependency on a single bean:</p>
+<p>한 Bean이 다른 Bean의 종속성이라는 것은 일반적으로 한 Bean이 다른 Bean의 속성으로 설정되어 있다는 것을 의미합니다.
+일반적으로 XML 기반 구성 메타데이터의 <a href="#beans-ref-element"><code>&lt;ref/&gt;</code> 요소</a>로 이를 수행합니다.
+그러나 때로는 Bean 간의 종속성이 직접적이지 않을 수도 있습니다.
+예를 들어 데이터베이스 드라이버 등록과 같이 클래스의 정적 초기화기가 트리거되어야 하는 경우를 들 수 있습니다.
+<code>depends-on</code> 속성을 사용하면 이 요소를 사용하는 Bean이 초기화되기 전에 하나 이상의 Bean을 명시적으로 강제로 초기화할 수 있습니다.
+다음 예제에서는 <code>depends-on</code> 속성을 사용하여 단일 Bean에 대한 종속성을 표현합니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1861,9 +1859,7 @@ dependency on a single bean:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>To express a dependency on multiple beans, supply a list of bean names as the value of
-the <code>depends-on</code> attribute (commas, whitespace, and semicolons are valid
-delimiters):</p>
+<p>여러 Bean에 대한 종속성을 표현하려면 Bean 이름 목록을 <code>depends-on</code> 속성의 값으로 제공합니다(쉼표, 공백 및 세미콜론이 유효한 구분 기호입니다):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1882,18 +1878,16 @@ delimiters):</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The <code>depends-on</code> attribute can specify both an initialization-time dependency and,
-in the case of <a href="../factory-scopes.html#beans-factory-scopes-singleton" class="xref page">singleton</a> beans only, a corresponding
-destruction-time dependency. Dependent beans that define a <code>depends-on</code> relationship
-with a given bean are destroyed first, prior to the given bean itself being destroyed.
-Thus, <code>depends-on</code> can also control shutdown order.
+<code>depends-on</code> 속성은 초기화 시간 종속성과 싱글톤 Bean의 경우에만 해당되는 소멸 시간 종속성을 모두 지정할 수 있습니다.
+지정된 Bean과 <code>depends-on</code> 관계를 정의하는 종속 Bean은 지정된 Bean 자체가 소멸되기 전에 먼저 소멸됩니다.
+따라서 `depends-on`은 종료 순서도 제어할 수 있습니다.
 </td>
 </tr>
 </table>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="factory-properties-detailed.html">Dependencies and Configuration in Detail(한글)</a></span>
-  <span class="next"><a href="factory-lazy-init.html">Lazy-initialized Beans</a></span>
+  <span class="next"><a href="factory-lazy-init.html">Lazy-initialized Beans(한글)</a></span>
 </nav>
 </article>
   </div>

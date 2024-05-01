@@ -3,36 +3,28 @@
 = 스프링 프레임워크 문서
 
 [horizontal]
-xref:overview.adoc[Overview] :: History, Design Philosophy, Feedback,
-Getting Started.
-xref:core.adoc[Core(한글)] :: IoC Container, Events, Resources, i18n,
-Validation, Data Binding, Type Conversion, SpEL, AOP, AOT.
-<<testing.adoc#testing, Testing>> :: Mock Objects, TestContext Framework,
-Spring MVC Test, WebTestClient.
-xref:data-access.adoc[Data Access] :: Transactions, DAO Support,
-JDBC, R2DBC, O/R Mapping, XML Marshalling.
-xref:web.adoc[Web Servlet] :: Spring MVC, WebSocket, SockJS,
-STOMP Messaging.
-xref:web-reactive.adoc[Web Reactive] :: Spring WebFlux, WebClient,
-WebSocket, RSocket.
-xref:integration.adoc[Integration] :: REST Clients, JMS, JCA, JMX,
-Email, Tasks, Scheduling, Caching, Observability, JVM Checkpoint Restore.
-xref:languages.adoc[Languages] :: Kotlin, Groovy, Dynamic Languages.
-xref:appendix.adoc[Appendix] :: Spring properties.
-{spring-framework-wiki}[Wiki] :: What's New,
-Upgrade Notes, Supported Versions, additional cross-version information.
+xref:overview.adoc[Overview] :: History, Design Philosophy, Feedback, Getting Started.
+xref:core.adoc[Core(한글)] :: IoC Container, Events, Resources, i18n, Validation, Data Binding, Type Conversion, SpEL, AOP, AOT.
+//<<testing.adoc#testing, Testing>> :: Mock Objects, TestContext Framework, Spring MVC Test, WebTestClient.
+xref:data-access.adoc[Data Access] :: Transactions, DAO Support, JDBC, R2DBC, O/R Mapping, XML Marshalling.
+xref:web.adoc[Web Servlet] :: Spring MVC, WebSocket, SockJS, STOMP Messaging.
+xref:web-reactive.adoc[Web Reactive] :: Spring WebFlux, WebClient, WebSocket, RSocket.
+xref:integration.adoc[Integration] :: REST Clients, JMS, JCA, JMX, Email, Tasks, Scheduling, Caching, Observability, JVM Checkpoint Restore.
+//xref:languages.adoc[Languages] :: Kotlin, Groovy, Dynamic Languages.
+//xref:appendix.adoc[Appendix] :: Spring properties.
+//{spring-framework-wiki}[Wiki] :: What's New, Upgrade Notes, Supported Versions, additional cross-version information.
 
 link:https://docs.spring.io/spring-framework/reference/index.html[스프링 프레임워크 문서]의 한글화 버전입니다.
 
 한글화가 완료된 내역은 제목 옆에 (한글)이 붙습니다. +
 한글화가 진행중인 내역은 제목 옆에 (반글)이 붙습니다.
 
-스프링 프레임워크의 공식문서를 학습함과 동시에 지식의 공유차원으로 해당 문서를 한글화한 뒤 공식 페이지와 동일한 환경으로 읽을 수 있도록 만들었습니다. +
+이전 까지 스프링의 필요한 내용을 검색으로만 찾아보다가 슬슬 스프링 프레임워크의 개념을 다시 정립할 때가 된 것 같아 책이나 강의가 아닌 공식문서로 학습하기로 하였고 동시에 지식 공유의 차원으로 해당 문서를 한글화한 뒤 공식 페이지와 동일한 환경으로 읽을 수 있도록 만들었습니다. +
 이해하기 쉽게 작성하지 않고, 최대한 원문의 뜻을 왜곡 하지 않으려 노력을 한 결과 한글화된 부분이 이상하고 읽기 힘든 부분이 생길 수 있으며, 이는 다른 사람이 학습해 놓은 블로그나 가지고 있는 스프링 책을 참조하면 이 문서를 이해하는데 도움이 될겁니다.
 
 == 한글화를 진행할 목록입니다.
 [horizontal]
-코어 :: IoC 컨테이너, 리소스, 유효성검사, AOP, Null Safefy
+코어 :: IoC 컨테이너, 리소스, 유효성검사, AOP, Null Safefy, AoT
 데이터 엑세스 :: 트랜잭션 관리자, DAO 서포트, JDBC
 서블렛 웹기술 :: Spring MVC, REST 클라이언트, 웹소켓
 통합 :: 이메일
