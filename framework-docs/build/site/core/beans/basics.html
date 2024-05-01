@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Container Overview :: Spring Framework Reference</title>
+    <title>Container Overview(한글) :: Spring Framework Reference</title>
     <link rel="prev" href="introduction.html">
     <link rel="next" href="definition.html">
     <meta name="generator" content="Antora 3.2.0-alpha.2">
@@ -288,30 +288,30 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../core.html">Core Technologies(한)</a>
+    <a class="nav-link" href="../../core.html">Core Technologies(한글)</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../beans.html">IoC Container(한)</a>
+    <a class="nav-link" href="../beans.html">IoC Container(한글)</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="introduction.html">Introduction to the Spring IoC Container and Beans(한)</a>
+    <a class="nav-link" href="introduction.html">Introduction to the Spring IoC Container and Beans(한글)</a>
   </li>
   <li class="nav-item is-current-page" data-depth="3">
-    <a class="nav-link" href="basics.html">Container Overview</a>
+    <a class="nav-link" href="basics.html">Container Overview(한글)</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="definition.html">Bean Overview</a>
+    <a class="nav-link" href="definition.html">Bean Overview(한글)</a>
   </li>
   <li class="nav-item" data-depth="3">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="dependencies.html">Dependencies</a>
+    <a class="nav-link" href="dependencies.html">Dependencies(한글)</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="dependencies/factory-collaborators.html">Dependency Injection</a>
+    <a class="nav-link" href="dependencies/factory-collaborators.html">Dependency Injection(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="dependencies/factory-properties-detailed.html">Dependencies and Configuration in Detail</a>
+    <a class="nav-link" href="dependencies/factory-properties-detailed.html">Dependencies and Configuration in Detail(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="dependencies/factory-dependson.html">Using <code>depends-on</code></a>
@@ -1792,13 +1792,13 @@
   <div class="content">
     <div
       class="toc"
-      data-title="Container Overview"
+      data-title="Container Overview(한글)"
       data-levels="2"
     >
       <div class="toc-menu"></div>
     </div>
     <div class="sidebar-links">
-        <a href="file:///C:/Users/LHK/spring-framework/framework-docs/modules/ROOT/pages/core/beans/basics.adoc">
+        <a href="file:///C:/Users/LHK/spring-framework/trans2kr/framework-docs/modules/ROOT/pages/core/beans/basics.adoc">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"
@@ -1837,49 +1837,32 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../../index.html">Spring Framework</a></li>
-    <li><a href="../../core.html">Core Technologies(한)</a></li>
-    <li><a href="../beans.html">IoC Container(한)</a></li>
-    <li><a href="basics.html">Container Overview</a></li>
+    <li><a href="../../core.html">Core Technologies(한글)</a></li>
+    <li><a href="../beans.html">IoC Container(한글)</a></li>
+    <li><a href="basics.html">Container Overview(한글)</a></li>
   </ul>
 </nav>
-<h1 id="page-title" class="page">Container Overview</h1>
+<h1 id="page-title" class="page">Container Overview(한글)</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>org.springframework.context.ApplicationContext</code> interface represents the Spring IoC
-container and is responsible for instantiating, configuring, and assembling the
-beans. The container gets its instructions on what objects to
-instantiate, configure, and assemble by reading configuration metadata. The
-configuration metadata is represented in XML, Java annotations, or Java code. It lets
-you express the objects that compose your application and the rich interdependencies
-between those objects.</p>
+<p><code>org.springframework.context.ApplicationContext</code> 인터페이스는 Spring IoC 컨테이너를 나타내며 빈의 인스턴스화, 구성 및 어셈블리를 담당합니다.
+컨테이너는 구성 메타데이터를 읽음으로써 인스턴스화, 구성 및 어셈블할 객체에 대한 지침을 얻습니다.
+구성 메타데이터는 XML, Java 어노테이션 또는 Java 코드로 표현됩니다.
+이를 통해 애플리케이션을 구성하는 객체와 이러한 객체 간의 풍부한 상호 의존성을 표현할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>Several implementations of the <code>ApplicationContext</code> interface are supplied
-with Spring. In stand-alone applications, it is common to create an
-instance of
-<a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/context/support/ClassPathXmlApplicationContext.html"><code>ClassPathXmlApplicationContext</code></a>
-or <a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/context/support/FileSystemXmlApplicationContext.html"><code>FileSystemXmlApplicationContext</code></a>.
-While XML has been the traditional format for defining configuration metadata, you can
-instruct the container to use Java annotations or code as the metadata format by
-providing a small amount of XML configuration to declaratively enable support for these
-additional metadata formats.</p>
+<p><code>ApplicationContext</code> 인터페이스의 여러 구현이 Spring과 함께 제공됩니다.
+독립형 애플리케이션에서는 <a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/context/support/ClassPathXmlApplicationContext.html"><code>ClassPathXmlApplicationContext</code></a> 또는 <a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/context/support/FileSystemXmlApplicationContext.html"><code>FileSystemXmlApplicationContext</code></a> 인스턴스를 생성하는 것이 일반적입니다.
+XML은 구성 메타데이터를 정의하는 전통적인 형식이었지만, 이러한 추가 메타데이터 형식을 선언적으로 지원하도록 약간의 XML 구성을 제공하여 컨테이너에 Java 주석이나 코드를 메타데이터 형식으로 사용하도록 지시할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>In most application scenarios, explicit user code is not required to instantiate one or
-more instances of a Spring IoC container. For example, in a web application scenario, a
-simple eight (or so) lines of boilerplate web descriptor XML in the <code>web.xml</code> file
-of the application typically suffices (see
-<a href="context-introduction.html#context-create" class="xref page">Convenient ApplicationContext Instantiation for Web Applications</a>).
-If you use the <a href="https://spring.io/tools">Spring Tools for Eclipse</a> (an Eclipse-powered
-development environment), you can easily create this boilerplate configuration with a
-few mouse clicks or keystrokes.</p>
+<p>대부분의 애플리케이션 시나리오에서는 하나 이상의 Spring IoC 컨테이너 인스턴스를 인스턴스화하는 데 명시적인 사용자 코드가 필요하지 않습니다.
+예를 들어, 웹 애플리케이션 시나리오에서는 일반적으로 애플리케이션의 <code>web.xml</code> 파일에 8줄 정도의 간단한 상용구 웹 설명자 XML로 충분합니다(다음을 참조 <a href="context-introduction.html#context-create" class="xref page">Convenient ApplicationContext Instantiation for Web Applications</a>). <a href="https://spring.io/tools">Spring Tools for Eclipse</a>를 사용하는 경우(Eclipse 기반 개발 환경), 몇 번의 마우스 클릭이나 키 입력으로 이 상용구 구성을 쉽게 생성할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>The following diagram shows a high-level view of how Spring works. Your application classes
-are combined with configuration metadata so that, after the <code>ApplicationContext</code> is
-created and initialized, you have a fully configured and executable system or
-application.</p>
+<p>다음 다이어그램은 Spring이 어떻게 작동하는지에 대한 개략적인 보기를 보여줍니다.
+애플리케이션 클래스는 구성 메타데이터와 결합되어 'ApplicationContext' 가 생성되고 초기화되면 완전히 구성되고 실행 가능한 시스템 또는 애플리케이션을 갖게 됩니다.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1890,18 +1873,14 @@ application.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-factory-metadata"><a class="anchor" href="#beans-factory-metadata"></a>Configuration Metadata</h2>
+<h2 id="beans-factory-metadata"><a class="anchor" href="#beans-factory-metadata"></a>구성 메타데이터(Configuration Metadata)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>As the preceding diagram shows, the Spring IoC container consumes a form of
-configuration metadata. This configuration metadata represents how you, as an
-application developer, tell the Spring container to instantiate, configure, and assemble
-the objects in your application.</p>
+<p>앞의 다이어그램에서 볼 수 있듯이 Spring IoC 컨테이너는 일종의 구성 메타데이터를 사용합니다.
+이 구성 메타데이터는 애플리케이션 개발자가 애플리케이션의 객체를 인스턴스화, 구성 및 어셈블하도록 Spring 컨테이너에 지시하는 방법을 나타냅니다.</p>
 </div>
 <div class="paragraph">
-<p>Configuration metadata is traditionally supplied in a simple and intuitive XML format,
-which is what most of this chapter uses to convey key concepts and features of the
-Spring IoC container.</p>
+<p>구성 메타데이터는 전통적으로 간단하고 직관적인 XML 형식으로 제공되며, 이 장에서는 대부분 Spring IoC 컨테이너의 주요 개념과 기능을 전달하기 위해 이 형식을 사용합니다.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1910,50 +1889,43 @@ Spring IoC container.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-XML-based metadata is not the only allowed form of configuration metadata.
-The Spring IoC container itself is totally decoupled from the format in which this
-configuration metadata is actually written. These days, many developers choose
-<a href="java.html" class="xref page">Java-based configuration</a> for their Spring applications.
+XML 기반 메타데이터만이 구성 메타데이터의 유일한 허용 형식은 아닙니다.
+Spring IoC 컨테이너 자체는 이 구성 메타데이터가 실제로 작성되는 형식과 완전히 분리되어 있습니다.
+요즘에는 많은 개발자들이 Spring 애플리케이션을 위해 <a href="java.html" class="xref page">Java 기반 구성</a>을 선택합니다.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>For information about using other forms of metadata with the Spring container, see:</p>
+<p>Spring 컨테이너와 함께 다른 형태의 메타데이터를 사용하는 방법에 대한 자세한 내용은 다음을 참조하세요:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="annotation-config.html" class="xref page">Annotation-based configuration</a>: define beans using
-annotation-based configuration metadata.</p>
+<p><a href="annotation-config.html" class="xref page">어노테이션 기반 구성</a>: 어노테이션 기반 구성 메타데이터를 사용하여 빈을 정의합니다.</p>
 </li>
 <li>
-<p><a href="java.html" class="xref page">Java-based configuration</a>: define beans external to your application
-classes by using Java rather than XML files. To use these features, see the
+<p><a href="java.html" class="xref page">Java 기반 구성</a>: XML 파일이 아닌 Java를 사용하여 애플리케이션 클래스 외부에 빈을 정의합니다.
+자세한 내용은 다음을 참조하세요:
 <a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/context/annotation/Configuration.html"><code>@Configuration</code></a>,
 <a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/context/annotation/Bean.html"><code>@Bean</code></a>,
 <a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/context/annotation/Import.html"><code>@Import</code></a>,
-and <a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/context/annotation/DependsOn.html"><code>@DependsOn</code></a> annotations.</p>
+<a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/context/annotation/DependsOn.html"><code>@DependsOn</code></a> 어노테이션.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Spring configuration consists of at least one and typically more than one bean
-definition that the container must manage. XML-based configuration metadata configures these
-beans as <code>&lt;bean/&gt;</code> elements inside a top-level <code>&lt;beans/&gt;</code> element. Java
-configuration typically uses <code>@Bean</code>-annotated methods within a <code>@Configuration</code> class.</p>
+<p>스프링 구성은 컨테이너가 관리해야 하는 최소 하나 이상의 빈 정의로 구성됩니다.
+XML 기반 구성 메타데이터는 이러한 빈을 최상위 <code>&lt;beans/&gt;</code> 요소 내부의 <code>&lt;bean/&gt;</code> 요소로 구성합니다.
+Java 구성은 일반적으로 <code>@Configuration</code> 클래스 내에서 <code>@Bean</code> 주석이 달린 메서드를 사용합니다.</p>
 </div>
 <div class="paragraph">
-<p>These bean definitions correspond to the actual objects that make up your application.
-Typically, you define service layer objects, persistence layer objects such as
-repositories or data access objects (DAOs), presentation objects such as Web controllers,
-infrastructure objects such as a JPA <code>EntityManagerFactory</code>, JMS queues, and so forth.
-Typically, one does not configure fine-grained domain objects in the container, because
-it is usually the responsibility of repositories and business logic to create and load
-domain objects.</p>
+<p>이러한 빈 정의는 애플리케이션을 구성하는 실제 객체에 해당합니다.
+일반적으로 서비스 계층 객체, 리포지토리 또는 DAO(데이터 액세스 객체)와 같은 지속성 계층 객체, 웹 컨트롤러와 같은 프레젠테이션 객체, JPA <code>EntityManagerFactory</code>, JMS 큐와 같은 인프라 객체 등을 정의합니다.
+일반적으로 도메인 개체를 만들고 로드하는 것은 리포지토리와 비즈니스 로직의 책임이기 때문에 일반적으로 컨테이너에서 세분화된 도메인 개체를 구성하지 않습니다.</p>
 </div>
 <div class="paragraph">
-<p>The following example shows the basic structure of XML-based configuration metadata:</p>
+<p>다음 예는 XML 기반 구성 메타데이터의 기본 구조를 보여줍니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1980,30 +1952,26 @@ domain objects.</p>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The <code>id</code> attribute is a string that identifies the individual bean definition.</td>
+<td><code>id</code> 속성은 개별 빈 정의를 식별하는 문자열입니다.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>The <code>class</code> attribute defines the type of the bean and uses the fully qualified
-class name.</td>
+<td><code>class</code> 속성은 빈의 유형을 정의하며 정규화된 클래스 이름을 사용합니다.</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The value of the <code>id</code> attribute can be used to refer to collaborating objects. The XML
-for referring to collaborating objects is not shown in this example. See
-<a href="dependencies.html" class="xref page">Dependencies</a> for more information.</p>
+<p><code>id</code> 속성의 값은 공동 작업 객체를 참조하는 데 사용할 수 있습니다.
+이 예에서는 공동 작업 객체를 참조하기 위한 XML은 표시되지 않습니다.
+자세한 내용은 <a href="dependencies.html" class="xref page">Dependencies</a>를 참조하세요.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-factory-instantiation"><a class="anchor" href="#beans-factory-instantiation"></a>Instantiating a Container</h2>
+<h2 id="beans-factory-instantiation"><a class="anchor" href="#beans-factory-instantiation"></a>컨테이너 인스턴스화(Instantiating a Container)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The location path or paths
-supplied to an <code>ApplicationContext</code> constructor are resource strings that let
-the container load configuration metadata from a variety of external resources, such
-as the local file system, the Java <code>CLASSPATH</code>, and so on.</p>
+<p><code>ApplicationContext</code> 생성자에 제공된 위치 경로는 컨테이너가 로컬 파일 시스템, Java <code>CLASSPATH</code> 등과 같은 다양한 외부 리소스에서 구성 메타데이터를 로드할 수 있도록 하는 리소스 문자열입니다.</p>
 </div>
 <div id="_tabs_1" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2041,19 +2009,15 @@ as the local file system, the Java <code>CLASSPATH</code>, and so on.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>After you learn about Spring&#8217;s IoC container, you may want to know more about Spring&#8217;s
-<code>Resource</code> abstraction (as described in
-<a href="../resources.html" class="xref page">Resources</a>)
-which provides a convenient mechanism for reading an InputStream from locations defined
-in a URI syntax. In particular, <code>Resource</code> paths are used to construct applications contexts,
-as described in <a href="../resources.html#resources-app-ctx" class="xref page">Application Contexts and Resource Paths</a>.</p>
+<p>Spring의 IoC 컨테이너에 대해 배운 후에는 URI 구문에 정의된 위치에서 InputStream을 읽기 위한 편리한 메커니즘을 제공하는 Spring의 <code>Resource</code> 추상화(<a href="../resources.html" class="xref page">Resources</a>)에 대해 자세히 알아보고 싶을 수 있습니다.
+특히, <code>Resource</code> 경로는 애플리케이션 컨텍스트를 구성하는 데 사용되며, <a href="../resources.html#resources-app-ctx" class="xref page">애플리케이션 컨텍스트 및 리소스 경로</a>에 설명된 대로 사용됩니다.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The following example shows the service layer objects <code>(services.xml)</code> configuration file:</p>
+<p>다음 예시는 서비스 계층 객체 <code>(services.xml)</code> 구성 파일을 보여줍니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2077,7 +2041,7 @@ as described in <a href="../resources.html#resources-app-ctx" class="xref page">
 </div>
 </div>
 <div class="paragraph">
-<p>The following example shows the data access objects <code>daos.xml</code> file:</p>
+<p>다음 예는 데이터 액세스 개체 <code>daos.xml</code> 파일을 보여줍니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2102,26 +2066,20 @@ as described in <a href="../resources.html#resources-app-ctx" class="xref page">
 </div>
 </div>
 <div class="paragraph">
-<p>In the preceding example, the service layer consists of the <code>PetStoreServiceImpl</code> class
-and two data access objects of the types <code>JpaAccountDao</code> and <code>JpaItemDao</code> (based
-on the JPA Object-Relational Mapping standard). The <code>property name</code> element refers to the
-name of the JavaBean property, and the <code>ref</code> element refers to the name of another bean
-definition. This linkage between <code>id</code> and <code>ref</code> elements expresses the dependency between
-collaborating objects. For details of configuring an object&#8217;s dependencies, see
-<a href="dependencies.html" class="xref page">Dependencies</a>.</p>
+<p>앞의 예제에서 서비스 계층은 <code>PetStoreServiceImpl</code> 클래스와 (JPA 객체-관계형 매핑 표준에 기반한) <code>JpaAccountDao</code> 및 <code>JpaItemDao</code> 유형의 데이터 액세스 객체 두 개로 구성됩니다.
+<code>property name</code> 요소는 JavaBean 속성의 이름을 참조하고 <code>ref</code> 요소는 다른 빈 정의의 이름을 참조합니다.
+이러한 <code>id`와 `ref</code> 요소 간의 연결은 협업하는 객체 간의 종속성을 나타냅니다.
+객체의 종속성 구성에 대한 자세한 내용은 <a href="dependencies.html" class="xref page">Dependencies</a>를 참조하세요.</p>
 </div>
 <div class="sect2">
-<h3 id="beans-factory-xml-import"><a class="anchor" href="#beans-factory-xml-import"></a>Composing XML-based Configuration Metadata</h3>
+<h3 id="beans-factory-xml-import"><a class="anchor" href="#beans-factory-xml-import"></a>XML 기반 구성 메타데이터 작성하기(Composing XML-based Configuration Metadata)</h3>
 <div class="paragraph">
-<p>It can be useful to have bean definitions span multiple XML files. Often, each individual
-XML configuration file represents a logical layer or module in your architecture.</p>
+<p>빈 정의가 여러 XML 파일에 걸쳐 있으면 유용할 수 있습니다.
+종종 각 개별 XML 구성 파일은 아키텍처에서 논리 계층 또는 모듈을 나타냅니다.</p>
 </div>
 <div class="paragraph">
-<p>You can use the application context constructor to load bean definitions from all these
-XML fragments. This constructor takes multiple <code>Resource</code> locations, as was shown in the
-<a href="#beans-factory-instantiation">previous section</a>. Alternatively,
-use one or more occurrences of the <code>&lt;import/&gt;</code> element to load bean definitions from
-another file or files. The following example shows how to do so:</p>
+<p>애플리케이션 컨텍스트 생성자를 사용하여 이러한 모든 XML 조각에서 빈 정의를 로드할 수 있습니다.
+이 생성자는 <a href="#beans-factory-instantiation">이전 섹션</a>에 표시된 것처럼 여러 개의 <code>Resource</code> 위치를 사용합니다. 또는 <code>&lt;import/&gt;</code> 요소의 하나 이상을 사용하여 다른 파일에서 빈 정의를 로드할 수 있습니다. 다음 예제는 그 방법을 보여줍니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2136,15 +2094,12 @@ another file or files. The following example shows how to do so:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>In the preceding example, external bean definitions are loaded from three files:
-<code>services.xml</code>, <code>messageSource.xml</code>, and <code>themeSource.xml</code>. All location paths are
-relative to the definition file doing the importing, so <code>services.xml</code> must be in the
-same directory or classpath location as the file doing the importing, while
-<code>messageSource.xml</code> and <code>themeSource.xml</code> must be in a <code>resources</code> location below the
-location of the importing file. As you can see, a leading slash is ignored. However, given
-that these paths are relative, it is better form not to use the slash at all. The
-contents of the files being imported, including the top level <code>&lt;beans/&gt;</code> element, must
-be valid XML bean definitions, according to the Spring Schema.</p>
+<p>앞의 예제에서는 외부 빈 정의가 세 개의 파일에서 로드됩니다:
+<code>services.xml</code>, <code>messageSource.xml</code>, <code>themeSource.xml</code> 입니다.
+모든 위치 경로는 가져오기를 수행하는 정의 파일에 상대적이므로 <code>services.xml`은 가져오기를 수행하는 파일과 동일한 디렉토리 또는 클래스 경로 위치에 있어야 하며, `messageSource.xml</code> 및 <code>themeSource.xml</code> 은 가져오는 파일 위치 아래의 <code>resources</code> 위치에 있어야 합니다.
+보시다시피 선행 슬래시는 무시됩니다.
+그러나 이러한 경로는 상대적이기 때문에 슬래시를 전혀 사용하지 않는 것이 좋습니다.
+최상위 <code>&lt;beans/&gt;</code> 요소를 포함하여 가져오는 파일의 내용은 Spring 스키마에 따라 유효한 XML 빈 정의여야 합니다.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2154,33 +2109,27 @@ be valid XML bean definitions, according to the Spring Schema.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>It is possible, but not recommended, to reference files in parent directories using a
-relative "../" path. Doing so creates a dependency on a file that is outside the current
-application. In particular, this reference is not recommended for <code>classpath:</code> URLs (for
-example, <code>classpath:../services.xml</code>), where the runtime resolution process chooses the
-&#8220;nearest&#8221; classpath root and then looks into its parent directory. Classpath
-configuration changes may lead to the choice of a different, incorrect directory.</p>
+<p>상대 "../" 경로를 사용하여 상위 디렉터리의 파일을 참조하는 것은 가능하지만 권장되지는 않습니다.
+이렇게 하면 현재 애플리케이션 외부에 있는 파일에 대한 종속성이 생성됩니다.
+특히 런타임 확인 프로세스가 &#8220;가장 가까운&#8221; 클래스 경로 루트를 선택한 다음 해당 상위 디렉터리를 조사하는 <code>classpath:</code> URL(예: <code>classpath:../services.xml</code>)에는 이 참조를 사용하지 않는 것이 좋습니다.
+클래스경로 구성을 변경하면 다른 잘못된 디렉터리가 선택될 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>You can always use fully qualified resource locations instead of relative paths: for
-example, <code>file:C:/config/services.xml</code> or <code>classpath:/config/services.xml</code>. However, be
-aware that you are coupling your application&#8217;s configuration to specific absolute
-locations. It is generally preferable to keep an indirection for such absolute
-locations&#8201;&#8212;&#8201;for example, through "${&#8230;&#8203;}" placeholders that are resolved against JVM
-system properties at runtime.</p>
+<p>상대 경로 대신 항상 정규화된 리소스 위치를 사용할 수 있습니다(예: <code>file:C:/config/services.xml</code> 또는 <code>classpath:/config/services.xml</code>).
+그러나 애플리케이션의 구성을 특정 절대 위치에 연결한다는 점에 유의하세요.
+일반적으로 이러한 절대 위치는 다음과 같이 간접적으로 지정하는 것이 좋습니다.&#8201;&#8212;&#8201;예를 들어 "${&#8230;&#8203;}" 자리 표시자를 통해 런타임에 JVM 시스템 속성에 대해 확인합니다.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The namespace itself provides the import directive feature. Further
-configuration features beyond plain bean definitions are available in a selection
-of XML namespaces provided by Spring&#8201;&#8212;&#8201;for example, the <code>context</code> and <code>util</code> namespaces.</p>
+<p>네임스페이스 자체에서 가져오기 지시어 기능을 제공합니다.
+일반 빈 정의 이외의 추가 구성 기능은 Spring에서 제공하는 다양한 XML 네임스페이스에서 사용할 수 있습니다.&#8201;&#8212;&#8201;예를 들어, <code>context</code> 및 <code>util</code> 네임스페이스가 있습니다.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="groovy-bean-definition-dsl"><a class="anchor" href="#groovy-bean-definition-dsl"></a>The Groovy Bean Definition DSL</h3>
+<h3 id="groovy-bean-definition-dsl"><a class="anchor" href="#groovy-bean-definition-dsl"></a>The Groovy Bean Definition DSL(번역 제외, 사유:그루비)</h3>
 <div class="paragraph">
 <p>As a further example for externalized configuration metadata, bean definitions can also
 be expressed in Spring&#8217;s Groovy Bean Definition DSL, as known from the Grails framework.
@@ -2217,16 +2166,14 @@ bean definition files through an <code>importBeans</code> directive.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-factory-client"><a class="anchor" href="#beans-factory-client"></a>Using the Container</h2>
+<h2 id="beans-factory-client"><a class="anchor" href="#beans-factory-client"></a>컨테이너 사용(Using the Container)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>ApplicationContext</code> is the interface for an advanced factory capable of maintaining
-a registry of different beans and their dependencies. By using the method
-<code>T getBean(String name, Class&lt;T&gt; requiredType)</code>, you can retrieve instances of your beans.</p>
+<p><code>ApplicationContext&#8217;는 다양한 빈과 그 종속성의 레지스트리를 유지 관리할 수 있는 고급 팩토리를 위한 인터페이스입니다. `T getBean(String name, Class&lt;T&gt; requiredType)</code>, 메서드를 사용하여 빈의 인스턴스를 검색할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>The <code>ApplicationContext</code> lets you read bean definitions and access them, as the following
-example shows:</p>
+<p>`ApplicationContext`를 사용하면 다음과 같이 빈 정의를 읽고 액세스할 수 있습니다.
+예제에서 볼 수 있습니다:</p>
 </div>
 <div id="_tabs_2" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2273,9 +2220,8 @@ List&lt;String&gt; userList = service.getUsernameList();</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>With Groovy configuration, bootstrapping looks very similar. It has a different context
-implementation class which is Groovy-aware (but also understands XML bean definitions).
-The following example shows Groovy configuration:</p>
+<p>그루비 구성을 사용하면 부트스트랩은 매우 비슷해 보입니다. 하지만 Groovy를 인식하는 다른 컨텍스트 구현 클래스가 있습니다(XML 빈 정의도 이해).
+다음 예제는 Groovy 구성을 보여줍니다:</p>
 </div>
 <div id="_tabs_3" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2306,9 +2252,8 @@ The following example shows Groovy configuration:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The most flexible variant is <code>GenericApplicationContext</code> in combination with reader
-delegates&#8201;&#8212;&#8201;for example, with <code>XmlBeanDefinitionReader</code> for XML files, as the following
-example shows:</p>
+<p>가장 유연한 변형은 reader delegates(역자설명 : 프로세스를 처리하는 행위를 자신이 처리하는게 아닌 대신 해줄 함수나 클래스에게 처리를 맡기는 패턴)와 결합된 <code>GenericApplicationContext</code> 입니다.&#8201;&#8212;&#8201;예를 들어, 다음과 같이 XML 파일의 경우 <code>XmlBeanDefinitionReader</code> 와 함께 사용하는 것입니다.
+예제에서 볼 수 있습니다:</p>
 </div>
 <div id="_tabs_4" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2343,8 +2288,8 @@ context.refresh()</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can also use the <code>GroovyBeanDefinitionReader</code> for Groovy files, as the following
-example shows:</p>
+<p>다음과 같이 Groovy 파일에 대해 <code>GroovyBeanDefinitionReader</code> 를 사용할 수도 있습니다.
+예제에서 볼 수 있습니다:</p>
 </div>
 <div id="_tabs_5" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2379,23 +2324,19 @@ context.refresh()</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can mix and match such reader delegates on the same <code>ApplicationContext</code>,
-reading bean definitions from diverse configuration sources.</p>
+<p>이러한 reader delegates를 동일한 <code>ApplicationContext</code> 에서 혼합하여 다양한 구성 소스에서 빈 정의를 읽을 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>You can then use <code>getBean</code> to retrieve instances of your beans. The <code>ApplicationContext</code>
-interface has a few other methods for retrieving beans, but, ideally, your application
-code should never use them. Indeed, your application code should have no calls to the
-<code>getBean()</code> method at all and thus have no dependency on Spring APIs at all. For example,
-Spring&#8217;s integration with web frameworks provides dependency injection for various web
-framework components such as controllers and JSF-managed beans, letting you declare
-a dependency on a specific bean through metadata (such as an autowiring annotation).</p>
+<p>그런 다음 <code>getBean</code> 을 사용하여 빈의 인스턴스를 검색할 수 있습니다.
+<code>ApplicationContext</code> 인터페이스에는 빈을 검색하기 위한 몇 가지 다른 메서드가 있지만, 이상적으로는 애플리케이션 코드에서 이러한 메서드를 사용하지 않아야 합니다.
+실제로 애플리케이션 코드에는 <code>getBean()</code> 메서드에 대한 호출이 전혀 없어야 하며, 따라서 Spring API에 대한 종속성이 전혀 없어야 합니다.
+예를 들어, Spring과 웹 프레임워크의 통합은 컨트롤러 및 JSF 관리 빈과 같은 다양한 웹 프레임워크 구성 요소에 대한 의존성 주입을 제공하여 메타데이터(예: @autowiring 어노테이션)를 통해 특정 빈에 대한 의존성을 선언할 수 있게 해줍니다.</p>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="introduction.html">Introduction to the Spring IoC Container and Beans(한)</a></span>
-  <span class="next"><a href="definition.html">Bean Overview</a></span>
+  <span class="prev"><a href="introduction.html">Introduction to the Spring IoC Container and Beans(한글)</a></span>
+  <span class="next"><a href="definition.html">Bean Overview(한글)</a></span>
 </nav>
 </article>
   </div>

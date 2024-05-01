@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Introduction to the Spring IoC Container and Beans(한) :: Spring Framework Reference</title>
+    <title>Introduction to the Spring IoC Container and Beans(한글) :: Spring Framework Reference</title>
     <link rel="prev" href="../beans.html">
     <link rel="next" href="basics.html">
     <meta name="generator" content="Antora 3.2.0-alpha.2">
@@ -288,30 +288,30 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../core.html">Core Technologies(한)</a>
+    <a class="nav-link" href="../../core.html">Core Technologies(한글)</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../beans.html">IoC Container(한)</a>
+    <a class="nav-link" href="../beans.html">IoC Container(한글)</a>
 <ul class="nav-list">
   <li class="nav-item is-current-page" data-depth="3">
-    <a class="nav-link" href="introduction.html">Introduction to the Spring IoC Container and Beans(한)</a>
+    <a class="nav-link" href="introduction.html">Introduction to the Spring IoC Container and Beans(한글)</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="basics.html">Container Overview</a>
+    <a class="nav-link" href="basics.html">Container Overview(한글)</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="definition.html">Bean Overview</a>
+    <a class="nav-link" href="definition.html">Bean Overview(한글)</a>
   </li>
   <li class="nav-item" data-depth="3">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="dependencies.html">Dependencies</a>
+    <a class="nav-link" href="dependencies.html">Dependencies(한글)</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="dependencies/factory-collaborators.html">Dependency Injection</a>
+    <a class="nav-link" href="dependencies/factory-collaborators.html">Dependency Injection(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="dependencies/factory-properties-detailed.html">Dependencies and Configuration in Detail</a>
+    <a class="nav-link" href="dependencies/factory-properties-detailed.html">Dependencies and Configuration in Detail(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="dependencies/factory-dependson.html">Using <code>depends-on</code></a>
@@ -1792,13 +1792,13 @@
   <div class="content">
     <div
       class="toc"
-      data-title="Introduction to the Spring IoC Container and Beans(한)"
+      data-title="Introduction to the Spring IoC Container and Beans(한글)"
       data-levels="2"
     >
       <div class="toc-menu"></div>
     </div>
     <div class="sidebar-links">
-        <a href="file:///C:/Users/LHK/spring-framework/framework-docs/modules/ROOT/pages/core/beans/introduction.adoc">
+        <a href="file:///C:/Users/LHK/spring-framework/trans2kr/framework-docs/modules/ROOT/pages/core/beans/introduction.adoc">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"
@@ -1837,23 +1837,22 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../../index.html">Spring Framework</a></li>
-    <li><a href="../../core.html">Core Technologies(한)</a></li>
-    <li><a href="../beans.html">IoC Container(한)</a></li>
-    <li><a href="introduction.html">Introduction to the Spring IoC Container and Beans(한)</a></li>
+    <li><a href="../../core.html">Core Technologies(한글)</a></li>
+    <li><a href="../beans.html">IoC Container(한글)</a></li>
+    <li><a href="introduction.html">Introduction to the Spring IoC Container and Beans(한글)</a></li>
   </ul>
 </nav>
-<h1 id="page-title" class="page">Introduction to the Spring IoC Container and Beans(한)</h1>
+<h1 id="page-title" class="page">Introduction to the Spring IoC Container and Beans(한글)</h1>
 <div class="paragraph">
-<p>이 장에서는 제어의 역전(IoC) 원칙의 스프링 프레임워크 구현에 대해 설명합니다.
-의존성 주입(DI)은 객체가 생성자 인수, 팩토리 메서드의 인수 또는 객체 인스턴스가 생성되거나
-팩토리 메서드에서 반환된 후 객체 인스턴스에 설정된 속성을 통해서만 종속성(즉, 함께 작업하는 다른 객체)을 정의하는 IoC의 특수한 형태입니다.
+<p>이 장에서는 제어의 역전(IoC) 원칙을 스프링 프레임워크에서 구현하는 방법을 다룹니다.
+종속성 주입(DI)은 객체가 생성자 인수, 팩토리 메서드의 인수 또는 객체 인스턴스가 생성되거나 팩토리 메서드에서 반환된 후 객체 인스턴스에 설정된 속성을 통해서만 종속성(즉, 함께 작업하는 다른 객체)을 정의하는 IoC의 특수한 형태입니다.
 그런 다음 IoC 컨테이너는 빈을 생성할 때 이러한 종속성을 주입합니다.
 이 프로세스는 기본적으로 클래스의 직접 구성 또는 서비스 로케이터 패턴과 같은 메커니즘을 사용하여 종속성의 인스턴스화 또는 위치를 제어하는 빈 자체의 역방향(따라서 이름, 제어의 역전)입니다.</p>
 </div>
 <div class="paragraph">
 <p><code>org.springframework.beans</code> 및 <code>org.springframework.context</code> 패키지는 Spring Framework의 IoC 컨테이너의 기반입니다.
 <a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/beans/factory/BeanFactory.html"><code>BeanFactory</code></a> 인터페이스는 모든 유형의 객체를 관리할 수 있는 고급 구성 메커니즘을 제공합니다.
-<a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/context/ApplicationContext.html"><code>ApplicationContext</code></a>는 <code>BeanFactory</code> 하위 인터페이스입니다. 이를 포함합니다.:</p>
+<a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/context/ApplicationContext.html"><code>ApplicationContext</code></a>는 <code>BeanFactory</code> 의 하위 인터페이스입니다.  이를 포함합니다 :</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1872,8 +1871,8 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>간단히 말해, <code>BeanFactory</code> 는 구성 프레임워크와 기본 기능을 제공하고 <code>ApplicationContext`는 더 많은 기업별 기능을 추가합니다.
-`ApplicationContext</code> 는 <code>BeanFactory</code> 의 완전한 상위 집합이며, 이 장에서는 Spring의 IoC 컨테이너에 대한 설명에서 독점적으로 사용됩니다.
+<p>간단히 말해, <code>BeanFactory</code> 는 구성 프레임워크와 기본 기능을 제공하고 <code>ApplicationContext</code> 는 더 많은 기업별 기능을 추가합니다.
+<code>ApplicationContext</code> 는 <code>BeanFactory</code> 의 완전한 상위 집합이며, 이 장에서는 Spring의 IoC 컨테이너에 대한 설명에서 독점적으로 사용됩니다.
 <code>ApplicationContext</code> 대신 <code>BeanFactory</code> 를 사용하는 방법에 대한 자세한 내용은 <a href="beanfactory.html" class="xref page"><code>BeanFactory</code> API</a>를 다루는 섹션을 참조하세요.</p>
 </div>
 <div class="paragraph">
@@ -1883,8 +1882,8 @@
 빈과 빈 간의 종속성은 컨테이너에서 사용하는 구성 메타데이터에 반영됩니다.</p>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="../beans.html">IoC Container(한)</a></span>
-  <span class="next"><a href="basics.html">Container Overview</a></span>
+  <span class="prev"><a href="../beans.html">IoC Container(한글)</a></span>
+  <span class="next"><a href="basics.html">Container Overview(한글)</a></span>
 </nav>
 </article>
   </div>

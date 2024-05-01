@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Dependency Injection :: Spring Framework Reference</title>
+    <title>Dependency Injection(한글) :: Spring Framework Reference</title>
     <link rel="prev" href="../dependencies.html">
     <link rel="next" href="factory-properties-detailed.html">
     <meta name="generator" content="Antora 3.2.0-alpha.2">
@@ -288,30 +288,30 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../../core.html">Core Technologies(한)</a>
+    <a class="nav-link" href="../../../core.html">Core Technologies(한글)</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../beans.html">IoC Container(한)</a>
+    <a class="nav-link" href="../../beans.html">IoC Container(한글)</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../introduction.html">Introduction to the Spring IoC Container and Beans(한)</a>
+    <a class="nav-link" href="../introduction.html">Introduction to the Spring IoC Container and Beans(한글)</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../basics.html">Container Overview</a>
+    <a class="nav-link" href="../basics.html">Container Overview(한글)</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../definition.html">Bean Overview</a>
+    <a class="nav-link" href="../definition.html">Bean Overview(한글)</a>
   </li>
   <li class="nav-item" data-depth="3">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../dependencies.html">Dependencies</a>
+    <a class="nav-link" href="../dependencies.html">Dependencies(한글)</a>
 <ul class="nav-list">
   <li class="nav-item is-current-page" data-depth="4">
-    <a class="nav-link" href="factory-collaborators.html">Dependency Injection</a>
+    <a class="nav-link" href="factory-collaborators.html">Dependency Injection(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="factory-properties-detailed.html">Dependencies and Configuration in Detail</a>
+    <a class="nav-link" href="factory-properties-detailed.html">Dependencies and Configuration in Detail(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="factory-dependson.html">Using <code>depends-on</code></a>
@@ -1792,13 +1792,13 @@
   <div class="content">
     <div
       class="toc"
-      data-title="Dependency Injection"
+      data-title="Dependency Injection(한글)"
       data-levels="2"
     >
       <div class="toc-menu"></div>
     </div>
     <div class="sidebar-links">
-        <a href="file:///C:/Users/LHK/spring-framework/framework-docs/modules/ROOT/pages/core/beans/dependencies/factory-collaborators.adoc">
+        <a href="file:///C:/Users/LHK/spring-framework/trans2kr/framework-docs/modules/ROOT/pages/core/beans/dependencies/factory-collaborators.adoc">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"
@@ -1837,48 +1837,35 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../../../index.html">Spring Framework</a></li>
-    <li><a href="../../../core.html">Core Technologies(한)</a></li>
-    <li><a href="../../beans.html">IoC Container(한)</a></li>
-    <li><a href="../dependencies.html">Dependencies</a></li>
-    <li><a href="factory-collaborators.html">Dependency Injection</a></li>
+    <li><a href="../../../core.html">Core Technologies(한글)</a></li>
+    <li><a href="../../beans.html">IoC Container(한글)</a></li>
+    <li><a href="../dependencies.html">Dependencies(한글)</a></li>
+    <li><a href="factory-collaborators.html">Dependency Injection(한글)</a></li>
   </ul>
 </nav>
-<h1 id="page-title" class="page">Dependency Injection</h1>
+<h1 id="page-title" class="page">Dependency Injection(한글)</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Dependency injection (DI) is a process whereby objects define their dependencies
-(that is, the other objects with which they work) only through constructor arguments,
-arguments to a factory method, or properties that are set on the object instance after
-it is constructed or returned from a factory method. The container then injects those
-dependencies when it creates the bean. This process is fundamentally the inverse (hence
-the name, Inversion of Control) of the bean itself controlling the instantiation
-or location of its dependencies on its own by using direct construction of classes or
-the Service Locator pattern.</p>
+<p>의존성 주입(DI)은 객체가 생성자 인수, 팩토리 메서드의 인수 또는 객체 인스턴스가 생성되거나 팩토리 메서드에서 반환된 후 객체 인스턴스에 설정된 속성을 통해서만 의존성(즉, 함께 작동하는 다른 객체)을 정의하는 프로세스입니다.
+그런 다음 컨테이너는 빈을 생성할 때 이러한 의존성을 주입합니다.
+이 프로세스는 기본적으로 클래스의 직접 구성 또는 서비스 로케이터 패턴을 사용하여 빈 자체가 의존성의 인스턴스화 또는 위치를 자체적으로 제어하는 역방향(따라서 이름, 제어의 역전)입니다.
+DI 원칙을 사용하면 코드가 더 깔끔해지며, 객체에 의존성이 제공될 때 (역자설명 : 느슨한 결합)디커플링이 더 효과적입니다.
+객체는 의존성을 조회하지 않으며 의존성의 위치나 클래스를 알지 못합니다.
+결과적으로 클래스를 테스트하기가 더 쉬워지며, 특히 의존성이 인터페이스나 추상 베이스 클래스에 있는 경우 단위 테스트에서 스텁 또는 모의 구현을 사용할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>Code is cleaner with the DI principle, and decoupling is more effective when objects are
-provided with their dependencies. The object does not look up its dependencies and does
-not know the location or class of the dependencies. As a result, your classes become easier
-to test, particularly when the dependencies are on interfaces or abstract base classes,
-which allow for stub or mock implementations to be used in unit tests.</p>
-</div>
-<div class="paragraph">
-<p>DI exists in two major variants: <a href="#beans-constructor-injection">Constructor-based dependency injection</a>
- and <a href="#beans-setter-injection">Setter-based dependency injection</a>.</p>
+<p>DI는 크게 두 가지 변형이 있습니다: <a href="#beans-constructor-injection">생성자 기반 의존성 주입</a> 및 <a href="#beans-setter-injection">세터 기반 의존성 주입</a>.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-constructor-injection"><a class="anchor" href="#beans-constructor-injection"></a>Constructor-based Dependency Injection</h2>
+<h2 id="beans-constructor-injection"><a class="anchor" href="#beans-constructor-injection"></a>생성자 기반 종속성 주입(Constructor-based Dependency Injection)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Constructor-based DI is accomplished by the container invoking a constructor with a
-number of arguments, each representing a dependency. Calling a <code>static</code> factory method
-with specific arguments to construct the bean is nearly equivalent, and this discussion
-treats arguments to a constructor and to a <code>static</code> factory method similarly. The
-following example shows a class that can only be dependency-injected with constructor
-injection:</p>
+<p>생성자 기반 DI는 컨테이너가 여러 개의 인수를 사용하여 생성자를 호출하고 각 인수가 종속성을 나타내는 방식으로 수행됩니다.
+특정 인수를 사용하여 <code>static</code> 팩토리 메서드를 호출하여 빈을 생성하는 것은 거의 동일하며, 이 설명에서는 생성자와 <code>static</code> 팩토리 메서드에 대한 인수를 비슷하게 취급합니다.
+다음 예제는 생성자 주입으로만 종속성을 주입할 수 있는 클래스를 보여줍니다:</p>
 </div>
 <div id="_tabs_1" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -1923,17 +1910,14 @@ class SimpleMovieLister(private val movieFinder: MovieFinder) {
 </div>
 </div>
 <div class="paragraph">
-<p>Notice that there is nothing special about this class. It is a POJO that
-has no dependencies on container specific interfaces, base classes, or annotations.</p>
+<p>이 클래스에는 특별한 것이 없습니다. 컨테이너 특정 인터페이스, 베이스 클래스 또는 어노테이션에 대한 종속성이 없는 (역자설명 : Plain Old Java Object)POJO입니다.</p>
 </div>
 <div class="sect2">
-<h3 id="beans-factory-ctor-arguments-resolution"><a class="anchor" href="#beans-factory-ctor-arguments-resolution"></a>Constructor Argument Resolution</h3>
+<h3 id="beans-factory-ctor-arguments-resolution"><a class="anchor" href="#beans-factory-ctor-arguments-resolution"></a>생성자 인수(Constructor Argument Resolution)</h3>
 <div class="paragraph">
-<p>Constructor argument resolution matching occurs by using the argument&#8217;s type. If no
-potential ambiguity exists in the constructor arguments of a bean definition, the
-order in which the constructor arguments are defined in a bean definition is the order
-in which those arguments are supplied to the appropriate constructor when the bean is
-being instantiated. Consider the following class:</p>
+<p>생성자 인수 매칭은 인자의 유형을 사용하여 발생합니다.
+빈 정의의 생성자 인자에 잠재적인 모호성이 존재하지 않는 경우, 빈 정의에서 생성자 인자가 정의되는 순서는 빈이 인스턴스화될 때 해당 인자가 적절한 생성자에게 제공되는 순서입니다.
+다음 클래스를 생각해 보세요:</p>
 </div>
 <div id="_tabs_2" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -1973,10 +1957,8 @@ class ThingOne(thingTwo: ThingTwo, thingThree: ThingThree)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Assuming that the <code>ThingTwo</code> and <code>ThingThree</code> classes are not related by inheritance, no
-potential ambiguity exists. Thus, the following configuration works fine, and you do not
-need to specify the constructor argument indexes or types explicitly in the
-<code>&lt;constructor-arg/&gt;</code> element.</p>
+<p><code>ThingTwo</code> 와 <code>ThingThree</code> 클래스가 상속으로 관련이 없다고 가정하면 잠재적인 모호성은 존재하지 않습니다.
+따라서 다음 구성은 정상적으로 작동하며, 생성자 인자 인덱스나 유형을 <code>&lt;constructor-arg/&gt;</code> 요소에 명시적으로 지정할 필요가 없습니다.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1993,10 +1975,9 @@ need to specify the constructor argument indexes or types explicitly in the
 </div>
 </div>
 <div class="paragraph">
-<p>When another bean is referenced, the type is known, and matching can occur (as was the
-case with the preceding example). When a simple type is used, such as
-<code>&lt;value&gt;true&lt;/value&gt;</code>, Spring cannot determine the type of the value, and so cannot match
-by type without help. Consider the following class:</p>
+<p>다른 빈을 참조하면 유형을 알 수 있으므로 앞의 예제에서와 같이 일치시킬 수 있습니다.
+'&lt;value&gt;true&lt;/value&gt;' 와 같은 단순한 타입이 사용되는 경우 Spring은 값의 타입을 확인할 수 없으므로 도움 없이는 타입별로 일치시킬 수 없습니다.
+다음 클래스를 고려해 보겠습니다:</p>
 </div>
 <div id="_tabs_3" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2046,12 +2027,10 @@ class ExampleBean(
 </div>
 </div>
 <div class="openblock">
-<div class="title"><a id="beans-factory-ctor-arguments-type"></a>Constructor argument type matching</div>
+<div class="title"><a id="beans-factory-ctor-arguments-type"></a>생성자 인수 타입 일치</div>
 <div class="content">
 <div class="paragraph">
-<p>In the preceding scenario, the container can use type matching with simple types if
-you explicitly specify the type of the constructor argument by using the <code>type</code> attribute,
-as the following example shows:</p>
+<p>앞의 시나리오에서 컨테이너는 다음 예제와 같이 <code>type</code> 속성을 사용하여 생성자 인수의 유형을 명시적으로 지정하면 단순 유형과 유형 일치를 사용할 수 있습니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2064,11 +2043,10 @@ as the following example shows:</p>
 </div>
 </div>
 <div class="openblock">
-<div class="title"><a id="beans-factory-ctor-arguments-index"></a>Constructor argument index</div>
+<div class="title"><a id="beans-factory-ctor-arguments-index"></a>생성자 인수 인덱스</div>
 <div class="content">
 <div class="paragraph">
-<p>You can use the <code>index</code> attribute to specify explicitly the index of constructor arguments,
-as the following example shows:</p>
+<p>다음 예시와 같이 <code>index</code> 속성을 사용하여 생성자 인수의 인덱스를 명시적으로 지정할 수 있습니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2079,8 +2057,7 @@ as the following example shows:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>In addition to resolving the ambiguity of multiple simple values, specifying an index
-resolves ambiguity where a constructor has two arguments of the same type.</p>
+<p>다음 예시와 같이 <code>index</code> 속성을 사용하여 생성자 인수의 인덱스를 명시적으로 지정할 수 있습니다:</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2089,7 +2066,7 @@ resolves ambiguity where a constructor has two arguments of the same type.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The index is 0-based.
+인덱스는 0을 기준으로 합니다.
 </td>
 </tr>
 </table>
@@ -2097,11 +2074,11 @@ The index is 0-based.
 </div>
 </div>
 <div class="openblock">
-<div class="title"><a id="beans-factory-ctor-arguments-name"></a>Constructor argument name</div>
+<div class="title"><a id="beans-factory-ctor-arguments-name"></a>생성자 인수명</div>
 <div class="content">
 <div class="paragraph">
-<p>You can also use the constructor parameter name for value disambiguation, as the following
-example shows:</p>
+<p>다음과 같이 생성자 매개변수 이름을 사용하여 값을 명확히 할 수도 있습니다.
+예제에서 볼 수 있습니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2112,12 +2089,9 @@ example shows:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Keep in mind that, to make this work out of the box, your code must be compiled with the
-debug flag enabled so that Spring can look up the parameter name from the constructor.
-If you cannot or do not want to compile your code with the debug flag, you can use the
-<a href="https://download.oracle.com/javase/8/docs/api/java/beans/ConstructorProperties.html">@ConstructorProperties</a>
-JDK annotation to explicitly name your constructor arguments. The sample class would
-then have to look as follows:</p>
+<p>이 기능을 바로 사용하려면 Spring이 생성자에서 매개 변수 이름을 조회할 수 있도록 디버그 플래그를 활성화한 상태로 코드를 컴파일해야 합니다.
+디버그 플래그를 사용하여 코드를 컴파일할 수 없거나 원하지 않는 경우 <a href="https://download.oracle.com/javase/8/docs/api/java/beans/ConstructorProperties.html">@ConstructorProperties</a> JDK 어노테이션을 사용하여 생성자 인수의 이름을 명시적으로 지정할 수 있습니다.
+그러면 샘플 클래스는 다음과 같이 보일 것입니다:</p>
 </div>
 <div id="_tabs_4" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2168,17 +2142,13 @@ constructor(val years: Int, val ultimateAnswer: String)</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-setter-injection"><a class="anchor" href="#beans-setter-injection"></a>Setter-based Dependency Injection</h2>
+<h2 id="beans-setter-injection"><a class="anchor" href="#beans-setter-injection"></a>세터 기반 의존성 주입(Setter-based Dependency Injection)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Setter-based DI is accomplished by the container calling setter methods on your
-beans after invoking a no-argument constructor or a no-argument <code>static</code> factory method to
-instantiate your bean.</p>
-</div>
-<div class="paragraph">
-<p>The following example shows a class that can only be dependency-injected by using pure
-setter injection. This class is conventional Java. It is a POJO that has no dependencies
-on container specific interfaces, base classes, or annotations.</p>
+<p>세터 기반 DI(의존성 주입)는 인수가 없는 생성자 또는 인수가 없는 <code>static</code> 팩토리 메서드를 호출하여 빈을 인스턴스화한 후 컨테이너가 빈의 세터 메서드를 호출하여 수행됩니다.
+다음 예제는 순수 세터 주입을 사용해야만 종속성 주입이 가능한 클래스를 보여줍니다.
+이 클래스는 기존 Java입니다.
+컨테이너 특정 인터페이스, 베이스 클래스 또는 어노테이션에 대한 종속성이 없는 POJO입니다.</p>
 </div>
 <div id="_tabs_5" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2226,155 +2196,111 @@ on container specific interfaces, base classes, or annotations.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>ApplicationContext</code> supports constructor-based and setter-based DI for the beans it
-manages. It also supports setter-based DI after some dependencies have already been
-injected through the constructor approach. You configure the dependencies in the form of
-a <code>BeanDefinition</code>, which you use in conjunction with <code>PropertyEditor</code> instances to
-convert properties from one format to another. However, most Spring users do not work
-with these classes directly (that is, programmatically) but rather with XML <code>bean</code>
-definitions, annotated components (that is, classes annotated with <code>@Component</code>,
-<code>@Controller</code>, and so forth), or <code>@Bean</code> methods in Java-based <code>@Configuration</code> classes.
-These sources are then converted internally into instances of <code>BeanDefinition</code> and used to
-load an entire Spring IoC container instance.</p>
+<p><code>ApplicationContext</code> 는 관리하는 빈에 대해 생성자 기반 및 세터 기반 DI를 지원합니다.
+또한 생성자 접근 방식을 통해 일부 종속성이 이미 주입된 후에도 세터 기반 DI를 지원합니다.
+속성을 한 형식에서 다른 형식으로 변환하기 위해 <code>PropertyEditor</code> 인스턴스와 함께 사용하는 <code>BeanDefinition`의 형태로 종속성을 구성합니다.
+그러나 대부분의 Spring 사용자는 이러한 클래스를 직접(즉, 프로그래밍 방식으로) 사용하는 것이 아니라 XML `bean</code> 정의, 주석이 달린 컴포넌트(즉, <code>@Component</code>, <code>@Controller</code> 등으로 주석이 달린 클래스) 또는 Java 기반 <code>@Configuration</code> 클래스의 <code>@Bean</code> 메서드를 사용하여 작업합니다.
+그런 다음 이러한 소스는 내부적으로 <code>BeanDefinition</code> 의 인스턴스로 변환되어 전체 Spring IoC 컨테이너 인스턴스를 로드하는 데 사용됩니다.</p>
 </div>
 <div id="beans-constructor-vs-setter-injection" class="sidebarblock">
 <div class="content">
-<div class="title">Constructor-based or setter-based DI?</div>
+<div class="title">생성자-기반 또는 세터-기반 의존성 주입?(Constructor-based or setter-based DI?)</div>
 <div class="paragraph">
-<p>Since you can mix constructor-based and setter-based DI, it is a good rule of thumb to
-use constructors for mandatory dependencies and setter methods or configuration methods
-for optional dependencies. Note that use of the <a href="../annotation-config/autowired.html" class="xref page">@Autowired</a>
-annotation on a setter method can be used to make the property be a required dependency;
-however, constructor injection with programmatic validation of arguments is preferable.</p>
+<p>생성자 기반과 설정자 기반 DI를 혼합할 수 있으므로 필수 종속성에는 생성자를 사용하고 선택적 종속성에는 설정자 메서드 또는 구성 메서드를 사용하는 것이 좋은 경험 법칙입니다.
+세터 메서드에 <a href="../annotation-config/autowired.html" class="xref page">@Autowired</a> 어노테이션을 사용하면 속성을 필수 종속성으로 만들 수 있지만 인수의 프로그래밍 유효성 검사를 통해 생성자 주입을 사용하는 것이 바람직합니다.
+Spring 팀은 일반적으로 생성자 주입을 옹호하는데, 이는 애플리케이션 구성 요소를 불변 객체로 구현할 수 있고 필수 종속성이 'null&#8217;이 되지 않도록 보장하기 때문입니다.
+또한 생성자 주입된 컴포넌트는 항상 완전히 초기화된 상태로 클라이언트(호출) 코드에 반환됩니다.
+참고로, 생성자 인수가 많다는 것은 코드 냄새가 좋지 않다는 의미이며, 클래스에 너무 많은 책임이 있을 수 있으므로 적절한 분리를 위해 리팩터링해야 한다는 뜻입니다.
+세터 주입은 주로 클래스 내에서 합리적인 기본값을 할당할 수 있는 선택적 종속성에만 사용해야 합니다.
+그렇지 않으면 코드가 종속성을 사용하는 모든 곳에서 null이 아닌 검사를 수행해야 합니다.
+세터 주입의 한 가지 장점은 세터 메서드를 사용하면 해당 클래스의 객체를 나중에 재구성하거나 다시 주입할 수 있다는 것입니다.</p>
 </div>
 <div class="paragraph">
-<p>The Spring team generally advocates constructor injection, as it lets you implement
-application components as immutable objects and ensures that required dependencies
-are not <code>null</code>. Furthermore, constructor-injected components are always returned to the client
-(calling) code in a fully initialized state. As a side note, a large number of constructor
-arguments is a bad code smell, implying that the class likely has too many
-responsibilities and should be refactored to better address proper separation of concerns.</p>
-</div>
-<div class="paragraph">
-<p>Setter injection should primarily only be used for optional dependencies that can be
-assigned reasonable default values within the class. Otherwise, not-null checks must be
-performed everywhere the code uses the dependency. One benefit of setter injection is that
-setter methods make objects of that class amenable to reconfiguration or re-injection
-later. Management through <a href="../../../integration/jmx.html" class="xref page">JMX MBeans</a> is therefore a compelling
-use case for setter injection.</p>
-</div>
-<div class="paragraph">
-<p>Use the DI style that makes the most sense for a particular class. Sometimes, when dealing
-with third-party classes for which you do not have the source, the choice is made for you.
-For example, if a third-party class does not expose any setter methods, then constructor
-injection may be the only available form of DI.</p>
+<p>따라서 <a href="../../../integration/jmx.html" class="xref page">JMX MBeans</a>를 통한 관리는 세터 인젝션의 강력한 사용 사례입니다.
+특정 클래스에 가장 적합한 DI 스타일을 사용하세요.
+때로는 소스가 없는 타사 클래스를 다룰 때는 사용자가 직접 선택해야 하는 경우도 있습니다.
+예를 들어 타사 클래스에 설정자 메서드가 노출되지 않는 경우 생성자 주입이 사용 가능한 유일한 DI 형태일 수 있습니다.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-dependency-resolution"><a class="anchor" href="#beans-dependency-resolution"></a>Dependency Resolution Process</h2>
+<h2 id="beans-dependency-resolution"><a class="anchor" href="#beans-dependency-resolution"></a>종속성 프로세스(Dependency Resolution Process)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The container performs bean dependency resolution as follows:</p>
+<p>컨테이너는 다음과 같이 빈 종속성 확인을 수행합니다:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The <code>ApplicationContext</code> is created and initialized with configuration metadata that
-describes all the beans. Configuration metadata can be specified by XML, Java code, or
-annotations.</p>
+<p>모든 빈을 설명하는 구성 메타데이터로 <code>ApplicationContext</code> 가 생성되고 초기화됩니다.
+구성 메타데이터는 XML, Java 코드 또는 어노테이션으로 지정할 수 있습니다.</p>
 </li>
 <li>
-<p>For each bean, its dependencies are expressed in the form of properties, constructor
-arguments, or arguments to the static-factory method (if you use that instead of a
-normal constructor). These dependencies are provided to the bean, when the bean is
-actually created.</p>
+<p>각 빈의 종속성은 속성, 생성자 인수 또는 정적-팩토리 메서드(일반 생성자 대신 사용하는 경우)에 대한 인수의 형태로 표현됩니다.
+이러한 종속성은 빈이 실제로 생성될 때 빈에 제공됩니다.</p>
 </li>
 <li>
-<p>Each property or constructor argument is an actual definition of the value to set, or
-a reference to another bean in the container.</p>
+<p>각 속성 또는 생성자 인수는 설정할 값의 실제 정의이거나 컨테이너의 다른 빈에 대한 참조입니다.</p>
 </li>
 <li>
-<p>Each property or constructor argument that is a value is converted from its specified
-format to the actual type of that property or constructor argument. By default, Spring
-can convert a value supplied in string format to all built-in types, such as <code>int</code>,
-<code>long</code>, <code>String</code>, <code>boolean</code>, and so forth.</p>
+<p>값인 각 속성 또는 생성자 인수는 지정된 형식에서 해당 속성 또는 생성자 인수의 실제 유형으로 변환됩니다.
+기본적으로 Spring은 문자열 형식으로 제공된 값을 <code>int</code>, <code>long</code>, <code>String</code>, <code>boolean</code> 등과 같은 모든 기본 제공 유형으로 변환할 수 있습니다.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The Spring container validates the configuration of each bean as the container is created.
-However, the bean properties themselves are not set until the bean is actually created.
-Beans that are singleton-scoped and set to be pre-instantiated (the default) are created
-when the container is created. Scopes are defined in <a href="../factory-scopes.html" class="xref page">Bean Scopes</a>. Otherwise,
-the bean is created only when it is requested. Creation of a bean potentially causes a
-graph of beans to be created, as the bean&#8217;s dependencies and its dependencies'
-dependencies (and so on) are created and assigned. Note that resolution mismatches among
-those dependencies may show up late&#8201;&#8212;&#8201;that is, on first creation of the affected bean.</p>
+<p>Spring 컨테이너는 컨테이너가 생성될 때 각 빈의 구성에 대한 유효성을 검사합니다.
+그러나 빈 속성 자체는 빈이 실제로 생성될 때까지 설정되지 않습니다.
+싱글톤 범위로 설정되고 사전 인스턴스화되도록 설정된 빈(기본값)은 컨테이너가 생성될 때 생성됩니다.
+범위는 <a href="../factory-scopes.html" class="xref page">Bean Scopes</a>.에 정의되어 있습니다.
+그렇지 않으면 요청이 있을 때만 빈이 생성됩니다.
+빈을 생성하면 빈의 종속성과 그 종속성의 종속성 등이 생성되고 할당되므로 빈 그래프가 생성될 가능성이 있습니다.
+이러한 종속성 간의 불일치는 늦게 나타날 수 있습니다.&#8201;&#8212;&#8201;즉, 영향을 받는 빈을 처음 생성할 때 나타날 수 있습니다.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
-<div class="title">Circular dependencies</div>
+<div class="title">순환 종속(Circular dependencies)</div>
 <div class="paragraph">
-<p>If you use predominantly constructor injection, it is possible to create an unresolvable
-circular dependency scenario.</p>
+<p>생성자 주입을 주로 사용하는 경우 해결할 수 없는 순환 종속성 시나리오가 발생할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>For example: Class A requires an instance of class B through constructor injection, and
-class B requires an instance of class A through constructor injection. If you configure
-beans for classes A and B to be injected into each other, the Spring IoC container
-detects this circular reference at runtime, and throws a
-<code>BeanCurrentlyInCreationException</code>.</p>
+<p>예를 들어 클래스 A는 생성자 주입을 통해 클래스 B의 인스턴스를 필요로 하고, 클래스 B는 생성자 주입을 통해 클래스 A의 인스턴스를 필요로 합니다.
+클래스 A와 B에 대한 빈이 서로 주입되도록 구성하면 Spring IoC 컨테이너는 런타임에 이 순환 참조를 감지하고 <code>BeanCurrentlyInCreationException</code> 을 던집니다.</p>
 </div>
 <div class="paragraph">
-<p>One possible solution is to edit the source code of some classes to be configured by
-setters rather than constructors. Alternatively, avoid constructor injection and use
-setter injection only. In other words, although it is not recommended, you can configure
-circular dependencies with setter injection.</p>
+<p>한 가지 가능한 해결책은 일부 클래스의 소스 코드를 생성자가 아닌 세터로 구성하도록 편집하는 것입니다.
+또는 생성자 주입을 피하고 세터 주입만 사용하는 방법도 있습니다.
+즉, 권장되지는 않지만 세터 주입으로 순환 종속성을 구성할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>Unlike the typical case (with no circular dependencies), a circular dependency
-between bean A and bean B forces one of the beans to be injected into the other prior to
-being fully initialized itself (a classic chicken-and-egg scenario).</p>
+<p>일반적인 경우(순환 종속성이 없는 경우)와 달리, 빈 A와 빈 B 사이의 순환 종속성은 빈 중 하나가 완전히 초기화되기 전에 다른 빈에 강제로 주입됩니다(고전적인 닭과 달걀 시나리오).</p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>You can generally trust Spring to do the right thing. It detects configuration problems,
-such as references to non-existent beans and circular dependencies, at container
-load-time. Spring sets properties and resolves dependencies as late as possible, when
-the bean is actually created. This means that a Spring container that has loaded
-correctly can later generate an exception when you request an object if there is a
-problem creating that object or one of its dependencies&#8201;&#8212;&#8201;for example, the bean throws an
-exception as a result of a missing or invalid property. This potentially delayed
-visibility of some configuration issues is why <code>ApplicationContext</code> implementations by
-default pre-instantiate singleton beans. At the cost of some upfront time and memory to
-create these beans before they are actually needed, you discover configuration issues
-when the <code>ApplicationContext</code> is created, not later. You can still override this default
-behavior so that singleton beans initialize lazily, rather than being eagerly
-pre-instantiated.</p>
+<p>일반적으로 Spring이 올바른 작업을 수행한다고 믿을 수 있습니다.
+Spring은 컨테이너 로드 시 존재하지 않는 빈에 대한 참조 및 순환 종속성과 같은 구성 문제를 감지합니다.
+Spring은 빈이 실제로 생성될 때 가능한 한 늦게 속성을 설정하고 종속성을 해결합니다.
+즉, 올바르게 로드된 Spring 컨테이너는 나중에 객체를 요청할 때 해당 객체 또는 해당 종속성 중 하나를 생성하는 데 문제가 있는 경우(예: 빈이 누락되거나 잘못된 속성으로 인해 예외를 던지는 경우) 예외를 생성할 수 있습니다.
+일부 구성 문제에 대한 가시성이 지연될 수 있기 때문에 <code>ApplicationContext</code> 구현은 기본적으로 싱글톤 빈을 사전 인스턴스화합니다.
+이러한 빈을 실제로 필요하기 전에 생성하는 데 약간의 시간과 메모리가 소요되지만, 나중에가 아니라 <code>ApplicationContext</code> 가 생성될 때 구성 문제를 발견할 수 있습니다.
+이 기본 동작을 재정의하여 싱글톤 빈이 열심히 사전 인스턴스화되지 않고 느리게 초기화되도록 할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>If no circular dependencies exist, when one or more collaborating beans are being
-injected into a dependent bean, each collaborating bean is totally configured prior
-to being injected into the dependent bean. This means that, if bean A has a dependency on
-bean B, the Spring IoC container completely configures bean B prior to invoking the
-setter method on bean A. In other words, the bean is instantiated (if it is not a
-pre-instantiated singleton), its dependencies are set, and the relevant lifecycle
-methods (such as a <a href="../factory-nature.html#beans-factory-lifecycle-initializingbean" class="xref page">configured init method</a>
-or the <a href="../factory-nature.html#beans-factory-lifecycle-initializingbean" class="xref page">InitializingBean callback method</a>)
-are invoked.</p>
+<p>순환 종속성이 존재하지 않는 경우, 하나 이상의 협업 빈이 종속 빈에 주입될 때 각 협업 빈은 종속 빈에 주입되기 전에 완전히 구성됩니다.
+즉, 빈 A에 빈 B에 대한 종속성이 있는 경우 Spring IoC 컨테이너는 빈 A에서 세터 메서드를 호출하기 전에 빈 B를 완전히 구성합니다.
+즉, 빈이 인스턴스화되고(사전 인스턴스화된 싱글톤이 아닌 경우), 종속성이 설정되고, 관련 수명 주기 메서드(예: <a href="../factory-nature.html#beans-factory-lifecycle-initializingbean" class="xref page">구성된 init 메서드</a> 또는 <a href="../factory-nature.html#beans-factory-lifecycle-initializingbean" class="xref page">InitializingBean callback 메서드</a>)가 호출되는 방식이죠.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-some-examples"><a class="anchor" href="#beans-some-examples"></a>Examples of Dependency Injection</h2>
+<h2 id="beans-some-examples"><a class="anchor" href="#beans-some-examples"></a>의존성 주입 예제(Examples of Dependency Injection)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The following example uses XML-based configuration metadata for setter-based DI. A small
-part of a Spring XML configuration file specifies some bean definitions as follows:</p>
+<p>다음 예제는 세터 기반 DI에 XML 기반 구성 메타데이터를 사용합니다.
+Spring XML 구성 파일의 작은 부분은 다음과 같이 몇 가지 빈 정의를 지정합니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2394,7 +2320,7 @@ part of a Spring XML configuration file specifies some bean definitions as follo
 </div>
 </div>
 <div class="paragraph">
-<p>The following example shows the corresponding <code>ExampleBean</code> class:</p>
+<p>다음 예제는 해당 <code>ExampleBean</code> 클래스를 보여줍니다:</p>
 </div>
 <div id="_tabs_6" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2448,8 +2374,8 @@ part of a Spring XML configuration file specifies some bean definitions as follo
 </div>
 </div>
 <div class="paragraph">
-<p>In the preceding example, setters are declared to match against the properties specified
-in the XML file. The following example uses constructor-based DI:</p>
+<p>앞의 예제에서는 XML 파일에 지정된 속성과 일치하도록 세터가 선언되어 있습니다.
+다음 예제에서는 생성자 기반 DI를 사용합니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2470,7 +2396,7 @@ in the XML file. The following example uses constructor-based DI:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The following example shows the corresponding <code>ExampleBean</code> class:</p>
+<p>다음 예제는 해당 <code>ExampleBean</code> 클래스를 보여줍니다:</p>
 </div>
 <div id="_tabs_7" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2518,12 +2444,10 @@ in the XML file. The following example uses constructor-based DI:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The constructor arguments specified in the bean definition are used as arguments to
-the constructor of the <code>ExampleBean</code>.</p>
+<p>빈 정의에 지정된 생성자 인수는 <code>ExampleBean</code> 의 생성자 인자로 사용됩니다.</p>
 </div>
 <div class="paragraph">
-<p>Now consider a variant of this example, where, instead of using a constructor, Spring is
-told to call a <code>static</code> factory method to return an instance of the object:</p>
+<p>이제 이 예제의 변형으로, 생성자를 사용하는 대신 Spring이 객체의 인스턴스를 반환하기 위해 <code>static</code> 팩토리 메서드를 호출하도록 지시하는 경우를 생각해 보겠습니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2538,7 +2462,7 @@ told to call a <code>static</code> factory method to return an instance of the o
 </div>
 </div>
 <div class="paragraph">
-<p>The following example shows the corresponding <code>ExampleBean</code> class:</p>
+<p>다음 예제는 해당 <code>ExampleBean</code> 클래스를 보여줍니다:</p>
 </div>
 <div id="_tabs_8" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2598,19 +2522,15 @@ told to call a <code>static</code> factory method to return an instance of the o
 </div>
 </div>
 <div class="paragraph">
-<p>Arguments to the <code>static</code> factory method are supplied by <code>&lt;constructor-arg/&gt;</code> elements,
-exactly the same as if a constructor had actually been used. The type of the class being
-returned by the factory method does not have to be of the same type as the class that
-contains the <code>static</code> factory method (although, in this example, it is). An instance
-(non-static) factory method can be used in an essentially identical fashion (aside
-from the use of the <code>factory-bean</code> attribute instead of the <code>class</code> attribute), so we
-do not discuss those details here.</p>
+<p><code>static</code> 팩토리 메서드에 대한 인수는 <code>&lt;constructor-arg/&gt;</code> 요소로 제공되며, 실제로 생성자가 사용된 것과 똑같습니다.
+팩토리 메서드가 반환하는 클래스의 유형은 <code>정적</code> 팩토리 메서드가 포함된 클래스와 동일한 유형일 필요는 없습니다(이 예제에서는 동일하지만).
+인스턴스(non-static) 팩토리 메서드는 본질적으로 동일한 방식으로 사용될 수 있으므로(<code>class</code> 속성 대신 <code>factory-bean</code> 속성을 사용하는 것 외에는) 여기서는 이러한 세부 사항에 대해서는 설명하지 않습니다.</p>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="../dependencies.html">Dependencies</a></span>
-  <span class="next"><a href="factory-properties-detailed.html">Dependencies and Configuration in Detail</a></span>
+  <span class="prev"><a href="../dependencies.html">Dependencies(한글)</a></span>
+  <span class="next"><a href="factory-properties-detailed.html">Dependencies and Configuration in Detail(한글)</a></span>
 </nav>
 </article>
   </div>

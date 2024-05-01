@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Dependencies and Configuration in Detail :: Spring Framework Reference</title>
+    <title>Dependencies and Configuration in Detail(한글) :: Spring Framework Reference</title>
     <link rel="prev" href="factory-collaborators.html">
     <link rel="next" href="factory-dependson.html">
     <meta name="generator" content="Antora 3.2.0-alpha.2">
@@ -288,30 +288,30 @@
   </li>
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../../core.html">Core Technologies(한)</a>
+    <a class="nav-link" href="../../../core.html">Core Technologies(한글)</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../../beans.html">IoC Container(한)</a>
+    <a class="nav-link" href="../../beans.html">IoC Container(한글)</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../introduction.html">Introduction to the Spring IoC Container and Beans(한)</a>
+    <a class="nav-link" href="../introduction.html">Introduction to the Spring IoC Container and Beans(한글)</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../basics.html">Container Overview</a>
+    <a class="nav-link" href="../basics.html">Container Overview(한글)</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../definition.html">Bean Overview</a>
+    <a class="nav-link" href="../definition.html">Bean Overview(한글)</a>
   </li>
   <li class="nav-item" data-depth="3">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../dependencies.html">Dependencies</a>
+    <a class="nav-link" href="../dependencies.html">Dependencies(한글)</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="factory-collaborators.html">Dependency Injection</a>
+    <a class="nav-link" href="factory-collaborators.html">Dependency Injection(한글)</a>
   </li>
   <li class="nav-item is-current-page" data-depth="4">
-    <a class="nav-link" href="factory-properties-detailed.html">Dependencies and Configuration in Detail</a>
+    <a class="nav-link" href="factory-properties-detailed.html">Dependencies and Configuration in Detail(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="factory-dependson.html">Using <code>depends-on</code></a>
@@ -1792,13 +1792,13 @@
   <div class="content">
     <div
       class="toc"
-      data-title="Dependencies and Configuration in Detail"
+      data-title="Dependencies and Configuration in Detail(한글)"
       data-levels="2"
     >
       <div class="toc-menu"></div>
     </div>
     <div class="sidebar-links">
-        <a href="file:///C:/Users/LHK/spring-framework/framework-docs/modules/ROOT/pages/core/beans/dependencies/factory-properties-detailed.adoc">
+        <a href="file:///C:/Users/LHK/spring-framework/trans2kr/framework-docs/modules/ROOT/pages/core/beans/dependencies/factory-properties-detailed.adoc">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"
@@ -1837,33 +1837,28 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../../../index.html">Spring Framework</a></li>
-    <li><a href="../../../core.html">Core Technologies(한)</a></li>
-    <li><a href="../../beans.html">IoC Container(한)</a></li>
-    <li><a href="../dependencies.html">Dependencies</a></li>
-    <li><a href="factory-properties-detailed.html">Dependencies and Configuration in Detail</a></li>
+    <li><a href="../../../core.html">Core Technologies(한글)</a></li>
+    <li><a href="../../beans.html">IoC Container(한글)</a></li>
+    <li><a href="../dependencies.html">Dependencies(한글)</a></li>
+    <li><a href="factory-properties-detailed.html">Dependencies and Configuration in Detail(한글)</a></li>
   </ul>
 </nav>
-<h1 id="page-title" class="page">Dependencies and Configuration in Detail</h1>
+<h1 id="page-title" class="page">Dependencies and Configuration in Detail(한글)</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>As mentioned in the <a href="factory-collaborators.html" class="xref page">previous section</a>, you can define bean
-properties and constructor arguments as references to other managed beans (collaborators)
-or as values defined inline. Spring&#8217;s XML-based configuration metadata supports
-sub-element types within its <code>&lt;property/&gt;</code> and <code>&lt;constructor-arg/&gt;</code> elements for this
-purpose.</p>
+<p><a href="factory-collaborators.html" class="xref page">이전 섹션</a>에서 언급했듯이, 빈 프로퍼티와 생성자 인수를 다른 관리되는 빈(협업자)에 대한 참조로 정의하거나 인라인으로 정의된 값으로 정의할 수 있습니다.
+Spring의 XML 기반 구성 메타데이터는 이러한 목적을 위해 <code>&lt;property/&gt;</code> 및 <code>&lt;constructor-arg/&gt;</code> 요소 내에서 하위 요소 유형을 지원합니다.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-value-element"><a class="anchor" href="#beans-value-element"></a>Straight Values (Primitives, Strings, and so on)</h2>
+<h2 id="beans-value-element"><a class="anchor" href="#beans-value-element"></a>스트레이트 값(프리미티브, 문자열 등)(Straight Values (Primitives, Strings, and so on))</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>value</code> attribute of the <code>&lt;property/&gt;</code> element specifies a property or constructor
-argument as a human-readable string representation. Spring&#8217;s
-<a href="../../validation/convert.html#core-convert-ConversionService-API" class="xref page">conversion service</a> is used to convert these
-values from a <code>String</code> to the actual type of the property or argument.
-The following example shows various values being set:</p>
+<p><code>&lt;property/&gt;</code> 요소의 <code>value</code> 속성은 속성 또는 생성자 인수를 사람이 읽을 수 있는 문자열 표현으로 지정합니다.
+이러한 값을 '문자열&#8217;에서 속성 또는 인수의 실제 유형으로 변환하기 위해 Spring의 <a href="../../validation/convert.html#core-convert-ConversionService-API" class="xref page">conversion service</a>가 사용됩니다.
+다음 예제에서는 다양한 값이 설정되는 것을 보여줍니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1877,8 +1872,7 @@ The following example shows various values being set:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The following example uses the <a href="#beans-p-namespace">p-namespace</a> for even more succinct
-XML configuration:</p>
+<p>다음 예제에서는 보다 간결한 XML 구성을 위해 <a href="#beans-p-namespace">p-namespace</a>를 사용합니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1899,14 +1893,12 @@ XML configuration:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The preceding XML is more succinct. However, typos are discovered at runtime rather than
-design time, unless you use an IDE (such as <a href="https://www.jetbrains.com/idea/">IntelliJ
-IDEA</a> or the <a href="https://spring.io/tools">Spring Tools for Eclipse</a>)
-that supports automatic property completion when you create bean definitions. Such IDE
-assistance is highly recommended.</p>
+<p>앞의 XML이 더 간결합니다.
+그러나 빈 정의를 생성할 때 자동 속성 완성을 지원하는 IDE(예: <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a> 또는 <a href="https://spring.io/tools">Spring Tools for Eclipse</a>)를 사용하지 않는 한 오타가 설계 시점이 아닌 런타임에 발견됩니다.
+이러한 IDE 지원을 적극 권장합니다.</p>
 </div>
 <div class="paragraph">
-<p>You can also configure a <code>java.util.Properties</code> instance, as follows:</p>
+<p>다음과 같이 <code>java.util.Properties</code> 인스턴스를 구성할 수도 있습니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1924,17 +1916,14 @@ assistance is highly recommended.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The Spring container converts the text inside the <code>&lt;value/&gt;</code> element into a
-<code>java.util.Properties</code> instance by using the JavaBeans <code>PropertyEditor</code> mechanism. This
-is a nice shortcut, and is one of a few places where the Spring team do favor the use of
-the nested <code>&lt;value/&gt;</code> element over the <code>value</code> attribute style.</p>
+<p>Spring 컨테이너는 <code>&lt;value/&gt;</code> 요소 내부의 텍스트를 JavaBeans <code>PropertyEditor</code> 메커니즘을 사용하여 <code>java.util.Properties</code> 인스턴스로 변환합니다.
+이것은 좋은 지름길이며, Spring 팀에서 <code>value</code> 속성 스타일보다 중첩된 <code>&lt;value/&gt;</code> 요소의 사용을 선호하는 몇 안 되는 곳 중 하나입니다.</p>
 </div>
 <div class="sect2">
-<h3 id="beans-idref-element"><a class="anchor" href="#beans-idref-element"></a>The <code>idref</code> element</h3>
+<h3 id="beans-idref-element"><a class="anchor" href="#beans-idref-element"></a><code>idref</code> 요소(The <code>idref</code> element)</h3>
 <div class="paragraph">
-<p>The <code>idref</code> element is simply an error-proof way to pass the <code>id</code> (a string value - not
-a reference) of another bean in the container to a <code>&lt;constructor-arg/&gt;</code> or <code>&lt;property/&gt;</code>
-element. The following example shows how to use it:</p>
+<p><code>idref</code> 요소는 컨테이너에 있는 다른 빈의 <code>id</code>(참조가 아닌 문자열 값)를 <code>&lt;constructor-arg/&gt;</code> 또는 <code>&lt;property/&gt;</code> 요소에 전달하는 오류 방지 방법입니다.
+다음 예제는 이를 사용하는 방법을 보여줍니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1948,8 +1937,8 @@ element. The following example shows how to use it:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The preceding bean definition snippet is exactly equivalent (at runtime) to the
-following snippet:</p>
+<p>앞의 빈 정의 스니펫은 (런타임에) 정확히 다음과 같은
+코드 조각과 정확히 동일합니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1961,57 +1950,36 @@ following snippet:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The first form is preferable to the second, because using the <code>idref</code> tag lets the
-container validate at deployment time that the referenced, named bean actually
-exists. In the second variation, no validation is performed on the value that is passed
-to the <code>targetName</code> property of the <code>client</code> bean. Typos are only discovered (with most
-likely fatal results) when the <code>client</code> bean is actually instantiated. If the <code>client</code>
-bean is a <a href="../factory-scopes.html" class="xref page">prototype</a> bean, this typo and the resulting exception
-may only be discovered long after the container is deployed.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The <code>local</code> attribute on the <code>idref</code> element is no longer supported in the 4.0 beans
-XSD, since it does not provide value over a regular <code>bean</code> reference any more. Change
-your existing <code>idref local</code> references to <code>idref bean</code> when upgrading to the 4.0 schema.
-</td>
-</tr>
-</table>
+<p>첫 번째 형태가 두 번째 형태보다 선호되는데, <code>idref</code> 태그를 사용하면 컨테이너가 배포 시점에 참조된 이름의 빈이 실제로 존재하는지 확인할 수 있기 때문입니다.
+두 번째 변형에서는 <code>client</code> 빈의 <code>targetName</code> 속성으로 전달되는 값에 대한 유효성 검사가 수행되지 않습니다.
+<code>client</code> 빈이 실제로 인스턴스화될 때만 오타가 발견됩니다(대부분 치명적인 결과를 초래할 수 있음).
+<code>client</code> 빈이 <a href="../factory-scopes.html" class="xref page">prototype</a> 빈인 경우, 이 오타 및 그에 따른 예외는 컨테이너가 배포된 후 한참 후에야 발견될 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>A common place (at least in versions earlier than Spring 2.0) where the <code>&lt;idref/&gt;</code> element
-brings value is in the configuration of <a href="../../aop-api/pfb.html#aop-pfb-1" class="xref page">AOP interceptors</a> in a
-<code>ProxyFactoryBean</code> bean definition. Using <code>&lt;idref/&gt;</code> elements when you specify the
-interceptor names prevents you from misspelling an interceptor ID.</p>
+<p>참고: <code>idref</code> 요소의 <code>local</code> 속성은 더 이상 일반 <code>bean</code> 참조에 대한 값을 제공하지 않으므로 4.0 beans XSD에서 더 이상 지원되지 않습니다.
+4.0 스키마로 업그레이드할 때는 기존 <code>idref local</code> 참조를 `idref bean`으로 변경하세요.</p>
+</div>
+<div class="paragraph">
+<p>idref/&gt;` 요소가 가치를 제공하는 일반적인 위치(적어도 Spring 2.0 이전 버전에서는)는 <code>ProxyFactoryBean</code> 빈 정의의 <a href="../../aop-api/pfb.html#aop-pfb-1" class="xref page">AOP 인터셉터</a>의 구성입니다.
+인터셉터 이름을 지정할 때 <code>&lt;idref/&gt;</code> 요소를 사용하면 인터셉터 ID의 철자를 잘못 입력하는 것을 방지할 수 있습니다.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-ref-element"><a class="anchor" href="#beans-ref-element"></a>References to Other Beans (Collaborators)</h2>
+<h2 id="beans-ref-element"><a class="anchor" href="#beans-ref-element"></a>다른 빈에 대한 참조(공동 작업자)(References to Other Beans (Collaborators))</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>ref</code> element is the final element inside a <code>&lt;constructor-arg/&gt;</code> or <code>&lt;property/&gt;</code>
-definition element. Here, you set the value of the specified property of a bean to be a
-reference to another bean (a collaborator) managed by the container. The referenced bean
-is a dependency of the bean whose property is to be set, and it is initialized on demand
-as needed before the property is set. (If the collaborator is a singleton bean, it may
-already be initialized by the container.) All references are ultimately a reference to
-another object. Scoping and validation depend on whether you specify the ID or name of the
-other object through the <code>bean</code> or <code>parent</code> attribute.</p>
+<p><code>ref</code> 요소는 <code>&lt;constructor-arg/&gt;</code> 또는 <code>&lt;property/&gt;</code> 정의 요소 내부의 마지막 요소입니다.
+여기에서는 빈의 지정된 속성 값을 컨테이너가 관리하는 다른 빈(공동 작업자)에 대한 참조로 설정합니다.
+참조된 빈은 속성을 설정하려는 빈의 종속성이며, 속성이 설정되기 전에 필요에 따라 초기화됩니다.
+(공동 작업자가 싱글톤 빈인 경우 컨테이너에 의해 이미 초기화될 수 있습니다.) 모든 참조는 궁극적으로 다른 객체에 대한 참조입니다.
+범위 지정 및 유효성 검사는 <code>bean</code> 또는 <code>parent</code> 속성을 통해 다른 객체의 ID 또는 이름을 지정하는지 여부에 따라 달라집니다.</p>
 </div>
 <div class="paragraph">
-<p>Specifying the target bean through the <code>bean</code> attribute of the <code>&lt;ref/&gt;</code> tag is the most
-general form and allows creation of a reference to any bean in the same container or
-parent container, regardless of whether it is in the same XML file. The value of the
-<code>bean</code> attribute may be the same as the <code>id</code> attribute of the target bean or be the same
-as one of the values in the <code>name</code> attribute of the target bean. The following example
-shows how to use a <code>ref</code> element:</p>
+<p><code>&lt;ref/&gt;</code> 태그의 <code>bean</code> 속성을 통해 대상 빈을 지정하는 것이 가장 일반적인 형태이며, 동일한 XML 파일에 있는지 여부에 관계없이 동일한 컨테이너 또는 상위 컨테이너에 있는 모든 빈에 대한 참조를 생성할 수 있습니다.
+<code>bean</code> 속성의 값은 대상 빈의 <code>id</code> 속성과 동일하거나 대상 빈의 <code>name</code> 속성의 값 중 하나와 동일할 수 있습니다.
+다음 예는 <code>ref</code> 요소를 사용하는 방법을 보여줍니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2019,14 +1987,11 @@ shows how to use a <code>ref</code> element:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Specifying the target bean through the <code>parent</code> attribute creates a reference to a bean
-that is in a parent container of the current container. The value of the <code>parent</code>
-attribute may be the same as either the <code>id</code> attribute of the target bean or one of the
-values in the <code>name</code> attribute of the target bean. The target bean must be in a
-parent container of the current one. You should use this bean reference variant mainly
-when you have a hierarchy of containers and you want to wrap an existing bean in a parent
-container with a proxy that has the same name as the parent bean. The following pair of
-listings shows how to use the <code>parent</code> attribute:</p>
+<p><code>parent</code> 속성을 통해 대상 빈을 지정하면 현재 컨테이너의 부모 컨테이너에 있는 빈에 대한 참조가 생성됩니다.
+parent` 속성의 값은 대상 빈의 <code>id</code> 속성 또는 대상 빈의 <code>name</code> 속성에 있는 값 중 하나와 동일할 수 있습니다.
+대상 빈은 현재 빈의 상위 컨테이너에 있어야 합니다.
+이 빈 참조 변형은 주로 컨테이너 계층 구조가 있고 기존 빈을 부모 빈과 이름이 같은 프록시를 사용하여 부모 컨테이너에 래핑하려는 경우에 사용해야 합니다.
+다음 목록은 <code>parent</code> 속성을 사용하는 방법을 보여줍니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2055,9 +2020,8 @@ listings shows how to use the <code>parent</code> attribute:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The <code>local</code> attribute on the <code>ref</code> element is no longer supported in the 4.0 beans
-XSD, since it does not provide value over a regular <code>bean</code> reference any more. Change
-your existing <code>ref local</code> references to <code>ref bean</code> when upgrading to the 4.0 schema.
+<code>ref</code> 요소의 <code>local</code> 속성은 더 이상 일반 <code>bean</code> 참조에 대한 값을 제공하지 않으므로 4.0 bean XSD에서 더 이상 지원되지 않습니다.
+4.0 스키마로 업그레이드할 때 기존 <code>ref local</code> 참조를 `ref bean`으로 변경하세요.
 </td>
 </tr>
 </table>
@@ -2065,11 +2029,10 @@ your existing <code>ref local</code> references to <code>ref bean</code> when up
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-inner-beans"><a class="anchor" href="#beans-inner-beans"></a>Inner Beans</h2>
+<h2 id="beans-inner-beans"><a class="anchor" href="#beans-inner-beans"></a>내부 빈(Inner Beans)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A <code>&lt;bean/&gt;</code> element inside the <code>&lt;property/&gt;</code> or <code>&lt;constructor-arg/&gt;</code> elements defines an
-inner bean, as the following example shows:</p>
+<p>다음 예제에서 볼 수 있듯이 <code>&lt;property/&gt;</code> 또는 <code>&lt;constructor-arg/&gt;</code> 요소 안의 <code>&lt;bean/&gt;</code> 요소는 내부 빈을 정의합니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2085,17 +2048,16 @@ inner bean, as the following example shows:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>An inner bean definition does not require a defined ID or name. If specified, the container
-does not use such a value as an identifier. The container also ignores the <code>scope</code> flag on
-creation, because inner beans are always anonymous and are always created with the outer
-bean. It is not possible to access inner beans independently or to inject them into
-collaborating beans other than into the enclosing bean.</p>
+<p>내부 빈 정의에는 정의된 ID나 이름이 필요하지 않습니다.
+지정된 경우 컨테이너는 이러한 값을 식별자로 사용하지 않습니다.
+또한 내부 빈은 항상 익명이며 항상 외부 빈과 함께 생성되므로 컨테이너는 생성 시 <code>scope</code> 플래그를 무시합니다.
+내부 빈에 독립적으로 접근하거나 둘러싸는 빈이 아닌 다른 협업 빈에 주입하는 것은 불가능합니다.</p>
 </div>
 <div class="paragraph">
-<p>As a corner case, it is possible to receive destruction callbacks from a custom scope&#8201;&#8212;&#8201;for example, for a request-scoped inner bean contained within a singleton bean. The creation
-of the inner bean instance is tied to its containing bean, but destruction callbacks let it
-participate in the request scope&#8217;s lifecycle. This is not a common scenario. Inner beans
-typically simply share their containing bean&#8217;s scope.</p>
+<p>코너 케이스로서, 예를 들어 싱글톤 빈 내에 포함된 요청 범위 내부 빈에 대해 사용자 정의 범위에서 소멸 콜백을 수신할 수 있습니다.
+내부 빈 인스턴스의 생성은 포함된 빈에 연결되지만, 파기 콜백을 통해 요청 범위의 라이프사이클에 참여할 수 있습니다.
+이것은 일반적인 시나리오가 아닙니다.
+내부 빈은 일반적으로 단순히 포함 빈의 범위를 공유합니다.</p>
 </div>
 </div>
 </div>
@@ -2103,9 +2065,8 @@ typically simply share their containing bean&#8217;s scope.</p>
 <h2 id="beans-collection-elements"><a class="anchor" href="#beans-collection-elements"></a>Collections</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>&lt;list/&gt;</code>, <code>&lt;set/&gt;</code>, <code>&lt;map/&gt;</code>, and <code>&lt;props/&gt;</code> elements set the properties
-and arguments of the Java <code>Collection</code> types <code>List</code>, <code>Set</code>, <code>Map</code>, and <code>Properties</code>,
-respectively. The following example shows how to use them:</p>
+<p>&lt;`list/&gt;`, <code>&lt;set/&gt;</code>, <code>&lt;map/&gt;</code>, <code>&lt;props/&gt;</code> 요소는 각각 Java <code>Collection</code> 유형 <code>List</code>, <code>Set</code>, <code>Map</code> 및 `Properties`의 속성 및 인수를 설정합니다.
+다음 예제는 사용 방법을 보여줍니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2143,8 +2104,7 @@ respectively. The following example shows how to use them:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The value of a map key or value, or a set value, can also be any of the
-following elements:</p>
+<p>맵 키 또는 값의 값 또는 집합 값은 다음 요소 중 하나라도 될 수 있습니다:,</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2152,22 +2112,18 @@ following elements:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-collection-elements-merging"><a class="anchor" href="#beans-collection-elements-merging"></a>Collection Merging</h3>
+<h3 id="beans-collection-elements-merging"><a class="anchor" href="#beans-collection-elements-merging"></a>컬렉션 병합(Collection Merging)</h3>
 <div class="paragraph">
-<p>The Spring container also supports merging collections. An application
-developer can define a parent <code>&lt;list/&gt;</code>, <code>&lt;map/&gt;</code>, <code>&lt;set/&gt;</code> or <code>&lt;props/&gt;</code> element
-and have child <code>&lt;list/&gt;</code>, <code>&lt;map/&gt;</code>, <code>&lt;set/&gt;</code> or <code>&lt;props/&gt;</code> elements inherit and
-override values from the parent collection. That is, the child collection&#8217;s values are
-the result of merging the elements of the parent and child collections, with the child&#8217;s
-collection elements overriding values specified in the parent collection.</p>
+<p>Spring 컨테이너는 컬렉션 병합도 지원합니다.
+애플리케이션 개발자는 부모 <code>&lt;list/&gt;</code>, <code>&lt;map/&gt;</code>, <code>&lt;set/&gt;</code> or <code>&lt;props/&gt;</code> element and have child <code>&lt;list/&gt;</code>, <code>&lt;map/&gt;</code>, <code>&lt;set/&gt;</code> 또는 <code>&lt;props/&gt;</code> 요소가 부모 컬렉션의 값을 상속 및 재정의하도록 할 수 있습니다.
+즉, 하위 컬렉션의 값은 상위 컬렉션과 하위 컬렉션의 요소를 병합한 결과이며 하위 컬렉션의 컬렉션 요소가 상위 컬렉션에 지정된 값보다 우선합니다.</p>
 </div>
 <div class="paragraph">
-<p>This section on merging discusses the parent-child bean mechanism. Readers unfamiliar
-with parent and child bean definitions may wish to read the
-<a href="../child-bean-definitions.html" class="xref page">relevant section</a> before continuing.</p>
+<p>This section on merging discusses the parent-child bean mechanism.
+Readers unfamiliar with parent and child bean definitions may wish to read the <a href="../child-bean-definitions.html" class="xref page">relevant section</a> before continuing.</p>
 </div>
 <div class="paragraph">
-<p>The following example demonstrates collection merging:</p>
+<p>다음 예는 컬렉션 병합을 보여줍니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2193,12 +2149,9 @@ with parent and child bean definitions may wish to read the
 </div>
 </div>
 <div class="paragraph">
-<p>Notice the use of the <code>merge=true</code> attribute on the <code>&lt;props/&gt;</code> element of the
-<code>adminEmails</code> property of the <code>child</code> bean definition. When the <code>child</code> bean is resolved
-and instantiated by the container, the resulting instance has an <code>adminEmails</code>
-<code>Properties</code> collection that contains the result of merging the child&#8217;s
-<code>adminEmails</code> collection with the parent&#8217;s <code>adminEmails</code> collection. The following listing
-shows the result:</p>
+<p><code>child</code> 빈 정의의 <code>adminEmails</code> 속성의 <code>&lt;props/&gt;</code> 요소에 <code>merge=true</code> 속성이 사용된 것을 주목하세요.
+<code>child</code> 빈이 컨테이너에 의해 확인되고 인스턴스화되면 결과 인스턴스에는 자식의 <code>adminEmails</code> 컬렉션과 상위의 <code>adminEmails</code> 컬렉션을 병합한 결과가 포함된 <code>adminEmails</code> <code>Properties</code> 컬렉션이 있습니다.
+다음 목록은 결과를 보여줍니다:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -2208,40 +2161,32 @@ support=support@example.co.uk</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The child <code>Properties</code> collection&#8217;s value set inherits all property elements from the
-parent <code>&lt;props/&gt;</code>, and the child&#8217;s value for the <code>support</code> value overrides the value in
-the parent collection.</p>
+<p>하위 <code>Properties</code> 컬렉션의 값 집합은 상위 <code>&lt;props/&gt;</code> 의 모든 속성 요소를 상속하며, 하위 <code>support</code> 값의 하위 값은 상위 컬렉션의 값을 재정의합니다.</p>
 </div>
 <div class="paragraph">
-<p>This merging behavior applies similarly to the <code>&lt;list/&gt;</code>, <code>&lt;map/&gt;</code>, and <code>&lt;set/&gt;</code>
-collection types. In the specific case of the <code>&lt;list/&gt;</code> element, the semantics
-associated with the <code>List</code> collection type (that is, the notion of an <code>ordered</code>
-collection of values) is maintained. The parent&#8217;s values precede all of the child list&#8217;s
-values. In the case of the <code>Map</code>, <code>Set</code>, and <code>Properties</code> collection types, no ordering
-exists. Hence, no ordering semantics are in effect for the collection types that underlie
-the associated <code>Map</code>, <code>Set</code>, and <code>Properties</code> implementation types that the container
-uses internally.</p>
+<p>이 병합 동작은 <code>&lt;list/&gt;</code>, <code>&lt;map/&gt;</code>, <code>&lt;set/&gt;</code> 컬렉션 타입에도 유사하게 적용됩니다.
+특히 <code>&lt;list/&gt;</code> 요소의 경우, <code>List</code> 컬렉션 유형과 관련된 의미론(즉, 값의 <code>순서가 지정된</code> 컬렉션 개념)이 유지됩니다.
+부모의 값은 모든 하위 목록의 값보다 우선합니다.
+<code>Map</code>, <code>Set</code>, <code>Properties</code> 컬렉션 타입의 경우 순서가 존재하지 않습니다.
+따라서 컨테이너가 내부적으로 사용하는 관련 <code>Map</code>, <code>Set</code>, <code>Properties</code> 구현 타입의 기반이 되는 컬렉션 타입에는 순서 지정 시맨틱이 적용되지 않습니다.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-collection-merge-limitations"><a class="anchor" href="#beans-collection-merge-limitations"></a>Limitations of Collection Merging</h3>
+<h3 id="beans-collection-merge-limitations"><a class="anchor" href="#beans-collection-merge-limitations"></a>컬렉션 병합의 제한 사항(Limitations of Collection Merging)</h3>
 <div class="paragraph">
-<p>You cannot merge different collection types (such as a <code>Map</code> and a <code>List</code>). If you
-do attempt to do so, an appropriate <code>Exception</code> is thrown. The <code>merge</code> attribute must be
-specified on the lower, inherited, child definition. Specifying the <code>merge</code> attribute on
-a parent collection definition is redundant and does not result in the desired merging.</p>
+<p>서로 다른 컬렉션 유형(예: <code>Map</code> 과 <code>List</code>)은 병합할 수 없습니다.
+병합을 시도하면 적절한 <code>Exception`이 발생합니다.
+`merge</code> 속성은 상속된 하위 자식 정의에 지정해야 합니다.
+부모 컬렉션 정의에 <code>merge</code> 속성을 지정하는 것은 중복되며 원하는 병합이 이루어지지 않습니다.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-collection-elements-strongly-typed"><a class="anchor" href="#beans-collection-elements-strongly-typed"></a>Strongly-typed collection</h3>
+<h3 id="beans-collection-elements-strongly-typed"><a class="anchor" href="#beans-collection-elements-strongly-typed"></a>강력한 타입 컬렉션(Strongly-typed collection)</h3>
 <div class="paragraph">
-<p>Thanks to Java&#8217;s support for generic types, you can use strongly typed collections.
-That is, it is possible to declare a <code>Collection</code> type such that it can only contain
-(for example) <code>String</code> elements. If you use Spring to dependency-inject a
-strongly-typed <code>Collection</code> into a bean, you can take advantage of Spring&#8217;s
-type-conversion support such that the elements of your strongly-typed <code>Collection</code>
-instances are converted to the appropriate type prior to being added to the <code>Collection</code>.
-The following Java class and bean definition show how to do so:</p>
+<p>Java의 제네릭 타입 지원 덕분에 강력한 타입의 컬렉션을 사용할 수 있습니다.
+즉, (예를 들어) <code>String</code> 요소만 포함할 수 있도록 <code>Collection</code> 유형을 선언할 수 있습니다.
+Spring을 사용하여 강력하게 타입이 지정된 <code>Collection</code> 을 빈에 의존적으로 주입하는 경우, 스프링의 타입 변환 지원을 활용하여 강력하게 타입이 지정된 <code>Collection</code> 인스턴스의 요소가 `Collection`에 추가되기 전에 적절한 타입으로 변환되도록 할 수 있습니다.
+다음 Java 클래스와 빈 정의는 이를 수행하는 방법을 보여줍니다:</p>
 </div>
 <div id="_tabs_1" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2296,22 +2241,18 @@ The following Java class and bean definition show how to do so:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>When the <code>accounts</code> property of the <code>something</code> bean is prepared for injection, the generics
-information about the element type of the strongly-typed <code>Map&lt;String, Float&gt;</code> is
-available by reflection. Thus, Spring&#8217;s type conversion infrastructure recognizes the
-various value elements as being of type <code>Float</code>, and the string values (<code>9.99</code>, <code>2.75</code>, and
-<code>3.99</code>) are converted into an actual <code>Float</code> type.</p>
+<p><code>something</code> 빈의 <code>accounts</code> 속성을 주입할 준비가 되면, 강력하게 타입이 지정된 <code>Map&lt;String, Float&gt;</code> 의 요소 유형에 대한 제네릭 정보를 리플렉션을 통해 사용할 수 있습니다.
+따라서 Spring의 타입 변환 인프라는 다양한 값 요소를 <code>Float</code> 타입으로 인식하고 문자열 값(<code>9.99</code>, <code>2.75</code>, <code>3.99</code>)은 실제 <code>Float</code> 타입으로 변환됩니다.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-null-element"><a class="anchor" href="#beans-null-element"></a>Null and Empty String Values</h2>
+<h2 id="beans-null-element"><a class="anchor" href="#beans-null-element"></a>널 및 빈 문자열 값(Null and Empty String Values)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Spring treats empty arguments for properties and the like as empty <code>Strings</code>. The
-following XML-based configuration metadata snippet sets the <code>email</code> property to the empty
-<code>String</code> value ("").</p>
+<p>Spring은 속성 등에 대한 빈 인수를 빈 <code>String</code> 으로 취급합니다.
+다음 XML 기반 구성 메타데이터 스니펫은 <code>email</code> 속성을 빈 <code>String</code> 값("")으로 설정합니다.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2321,7 +2262,7 @@ following XML-based configuration metadata snippet sets the <code>email</code> p
 </div>
 </div>
 <div class="paragraph">
-<p>The preceding example is equivalent to the following Java code:</p>
+<p>앞의 예는 다음 Java 코드와 동일합니다:</p>
 </div>
 <div id="_tabs_2" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2352,7 +2293,8 @@ following XML-based configuration metadata snippet sets the <code>email</code> p
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>&lt;null/&gt;</code> element handles <code>null</code> values. The following listing shows an example:</p>
+<p><code>&lt;null/&gt;</code> 요소는 <code>null</code> 값을 처리합니다.
+다음 목록은 예시를 보여줍니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2364,7 +2306,7 @@ following XML-based configuration metadata snippet sets the <code>email</code> p
 </div>
 </div>
 <div class="paragraph">
-<p>The preceding configuration is equivalent to the following Java code:</p>
+<p>앞의 구성은 다음 Java 코드와 동일합니다:</p>
 </div>
 <div id="_tabs_3" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2397,21 +2339,18 @@ following XML-based configuration metadata snippet sets the <code>email</code> p
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-p-namespace"><a class="anchor" href="#beans-p-namespace"></a>XML Shortcut with the p-namespace</h2>
+<h2 id="beans-p-namespace"><a class="anchor" href="#beans-p-namespace"></a>p-namespace가 있는 XML 바로 가기(XML Shortcut with the p-namespace)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The p-namespace lets you use the <code>bean</code> element&#8217;s attributes (instead of nested
-<code>&lt;property/&gt;</code> elements) to describe your property values collaborating beans, or both.</p>
+<p>p-namespace를 사용하면 중첩된 <code>&lt;property/&gt;</code> 요소 대신 <code>bean</code> 요소의 속성을 사용하여 속성 값을 공동 작업하는 빈 또는 둘 다를 설명할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>Spring supports extensible configuration formats <a href="../../appendix/xsd-schemas.html" class="xref page">with namespaces</a>,
-which are based on an XML Schema definition. The <code>beans</code> configuration format discussed in
-this chapter is defined in an XML Schema document. However, the p-namespace is not defined
-in an XSD file and exists only in the core of Spring.</p>
+<p>Spring은 XML 스키마 정의에 기반한 <a href="../../appendix/xsd-schemas.html" class="xref page">네임스페이스</a>를 통해 확장 가능한 구성 형식을 지원합니다.
+이 장에서 설명하는 <code>beans</code> 구성 형식은 XML 스키마 문서에 정의되어 있습니다.
+그러나 p-namespace는 XSD 파일에 정의되어 있지 않으며 Spring의 코어에만 존재합니다.</p>
 </div>
 <div class="paragraph">
-<p>The following example shows two XML snippets (the first uses
-standard XML format and the second uses the p-namespace) that resolve to the same result:</p>
+<p>다음 예제에서는 동일한 결과로 해석되는 두 개의 XML 스니펫(첫 번째는 표준 XML 형식을 사용하고 두 번째는 p-namespace를 사용)을 보여 줍니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2431,14 +2370,12 @@ standard XML format and the second uses the p-namespace) that resolve to the sam
 </div>
 </div>
 <div class="paragraph">
-<p>The example shows an attribute in the p-namespace called <code>email</code> in the bean definition.
-This tells Spring to include a property declaration. As previously mentioned, the
-p-namespace does not have a schema definition, so you can set the name of the attribute
-to the property name.</p>
+<p>이 예는 빈 정의에서 <code>email</code> 이라는 p-namespace의 속성을 보여줍니다.
+이것은 Spring에 속성 선언을 포함하도록 지시합니다.
+앞서 언급했듯이 p-namespace에는 스키마 정의가 없으므로 속성 이름을 속성 이름으로 설정할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>This next example includes two more bean definitions that both have a reference to
-another bean:</p>
+<p>이 다음 예제에는 다른 빈에 대한 참조가 있는 두 개의 빈 정의가 더 포함되어 있습니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2465,13 +2402,9 @@ another bean:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This example includes not only a property value using the p-namespace
-but also uses a special format to declare property references. Whereas the first bean
-definition uses <code>&lt;property name="spouse" ref="jane"/&gt;</code> to create a reference from bean
-<code>john</code> to bean <code>jane</code>, the second bean definition uses <code>p:spouse-ref="jane"</code> as an
-attribute to do the exact same thing. In this case, <code>spouse</code> is the property name,
-whereas the <code>-ref</code> part indicates that this is not a straight value but rather a
-reference to another bean.</p>
+<p>이 예제에는 p-namespace를 사용하는 속성 값뿐만 아니라 특수 형식을 사용하여 속성 참조를 선언하는 것도 포함되어 있습니다.
+첫 번째 빈 정의에서는 <code>&lt;property name="spouse" ref="jane"/&gt;</code> 을 사용하여 빈 <code>john</code> 에서 빈 <code>jane</code> 으로 참조를 생성하지만, 두 번째 빈 정의에서는 <code>p:spouse-ref="jane"</code> 을 속성으로 사용하여 정확히 동일한 작업을 수행합니다.
+이 경우 <code>spouse</code> 는 속성 이름이고, <code>-ref</code> 부분은 이것이 직선 값이 아니라 다른 빈에 대한 참조임을 나타냅니다.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2480,11 +2413,9 @@ reference to another bean.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The p-namespace is not as flexible as the standard XML format. For example, the format
-for declaring property references clashes with properties that end in <code>Ref</code>, whereas the
-standard XML format does not. We recommend that you choose your approach carefully and
-communicate this to your team members to avoid producing XML documents that use all
-three approaches at the same time.
+p-namespace는 표준 XML 형식만큼 유연하지 않습니다.
+예를 들어, 속성 참조를 선언하는 형식은 `Ref`로 끝나는 속성과 충돌하지만 표준 XML 형식은 충돌하지 않습니다.
+세 가지 방식을 동시에 사용하는 XML 문서를 만들지 않도록 접근 방식을 신중하게 선택하고 이를 팀원들에게 알리는 것이 좋습니다.
 </td>
 </tr>
 </table>
@@ -2492,16 +2423,13 @@ three approaches at the same time.
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-c-namespace"><a class="anchor" href="#beans-c-namespace"></a>XML Shortcut with the c-namespace</h2>
+<h2 id="beans-c-namespace"><a class="anchor" href="#beans-c-namespace"></a>c-namespace가 있는 XML 바로 가기(XML Shortcut with the c-namespace)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Similar to the <a href="#beans-p-namespace">XML Shortcut with the p-namespace</a>, the c-namespace, introduced in Spring
-3.1, allows inlined attributes for configuring the constructor arguments rather
-then nested <code>constructor-arg</code> elements.</p>
+<p>스프링 3.1에 도입된 c 네임스페이스는 <a href="#beans-p-namespace">XML 바로 가기 with the p-namespace</a>와 마찬가지로, 생성자 인수를 구성하기 위한 인라인 속성을 중첩된 <code>constructor-arg</code> 요소 대신 사용할 수 있도록 합니다.</p>
 </div>
 <div class="paragraph">
-<p>The following example uses the <code>c:</code> namespace to do the same thing as the from
-<a href="factory-collaborators.html#beans-constructor-injection" class="xref page">Constructor-based Dependency Injection</a>:</p>
+<p>다음 예제에서는 <code>c:</code> 네임스페이스를 사용하여 from <a href="factory-collaborators.html#beans-constructor-injection" class="xref page">생성자 기반 의존성 주입</a>과 동일한 작업을 수행합니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2529,15 +2457,11 @@ then nested <code>constructor-arg</code> elements.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>c:</code> namespace uses the same conventions as the <code>p:</code> one (a trailing <code>-ref</code> for
-bean references) for setting the constructor arguments by their names. Similarly,
-it needs to be declared in the XML file even though it is not defined in an XSD schema
-(it exists inside the Spring core).</p>
+<p><code>c:</code> 네임스페이스는 생성자 인수를 이름으로 설정하기 위해 <code>p:</code> 하나(빈 참조의 경우 후행 <code>-ref</code>)와 동일한 규칙을 사용합니다.
+마찬가지로, XSD 스키마에 정의되어 있지 않더라도 XML 파일에 선언해야 합니다(Spring 코어 내부에 존재).</p>
 </div>
 <div class="paragraph">
-<p>For the rare cases where the constructor argument names are not available (usually if
-the bytecode was compiled without debugging information), you can use fallback to the
-argument indexes, as follows:</p>
+<p>생성자 인자 이름을 사용할 수 없는 드문 경우(일반적으로 디버깅 정보 없이 바이트코드가 컴파일된 경우)에는 다음과 같이 인자 인덱스에 대한 폴백을 사용할 수 있습니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2553,29 +2477,23 @@ argument indexes, as follows:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Due to the XML grammar, the index notation requires the presence of the leading <code>_</code>,
-as XML attribute names cannot start with a number (even though some IDEs allow it).
-A corresponding index notation is also available for <code>&lt;constructor-arg&gt;</code> elements but
-not commonly used since the plain order of declaration is usually sufficient there.
+XML 문법으로 인해 인덱스 표기법에는 앞에 <code>_</code> 가 있어야 하는데, 이는 XML 어트리뷰트 이름이 숫자로 시작할 수 없기 때문입니다(일부 IDE에서는 허용하지만).
+해당 인덱스 표기법은 <code>&lt;constructor-arg&gt;</code> 요소에도 사용할 수 있지만 일반적으로 일반 선언 순서로 충분하기 때문에 일반적으로 사용되지는 않습니다.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>In practice, the constructor resolution
-<a href="factory-collaborators.html#beans-factory-ctor-arguments-resolution" class="xref page">mechanism</a> is quite efficient in matching
-arguments, so unless you really need to, we recommend using the name notation
-throughout your configuration.</p>
+<p>실제로 생성자 확인 <a href="factory-collaborators.html#beans-factory-ctor-arguments-resolution" class="xref page">메커니즘</a>은 인수를 일치시키는 데 매우 효율적이므로 꼭 필요한 경우가 아니라면 구성 전체에서 이름 표기를 사용하는 것이 좋습니다.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-compound-property-names"><a class="anchor" href="#beans-compound-property-names"></a>Compound Property Names</h2>
+<h2 id="beans-compound-property-names"><a class="anchor" href="#beans-compound-property-names"></a>복합 프로퍼티 이름(Compound Property Names)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can use compound or nested property names when you set bean properties, as long as
-all components of the path except the final property name are not <code>null</code>. Consider the
-following bean definition:</p>
+<p>최종 속성 이름을 제외한 경로의 모든 구성 요소가 <code>null</code> 이 아니라면 빈 속성을 설정할 때 복합 또는 중첩된 속성 이름을 사용할 수 있습니다.
+다음 빈 정의를 살펴보겠습니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2585,15 +2503,14 @@ following bean definition:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>something</code> bean has a <code>fred</code> property, which has a <code>bob</code> property, which has a <code>sammy</code>
-property, and that final <code>sammy</code> property is being set to a value of <code>123</code>. In order for
-this to work, the <code>fred</code> property of <code>something</code> and the <code>bob</code> property of <code>fred</code> must not
-be <code>null</code> after the bean is constructed. Otherwise, a <code>NullPointerException</code> is thrown.</p>
+<p><code>something</code> 빈에는 <code>fred</code> 속성이 있고, 그 속성에 <code>bob</code> 속성이 있으며, 그 속성에 <code>sammy</code> 속성이 있고, 최종 <code>sammy</code> 속성이 <code>123</code> 값으로 설정되고 있습니다.
+이것이 작동하려면 빈이 생성된 후 <code>something`의 `fred</code> 속성과 <code>fred`의 `bob</code> 속성이 <code>null</code> 이 아니어야 합니다.
+그렇지 않으면 `NullPointerException`이 발생합니다.</p>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="factory-collaborators.html">Dependency Injection</a></span>
+  <span class="prev"><a href="factory-collaborators.html">Dependency Injection(한글)</a></span>
   <span class="next"><a href="factory-dependson.html">Using <code>depends-on</code></a></span>
 </nav>
 </article>
