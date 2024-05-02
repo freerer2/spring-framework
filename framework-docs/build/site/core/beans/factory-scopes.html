@@ -1798,7 +1798,7 @@
       <div class="toc-menu"></div>
     </div>
     <div class="sidebar-links">
-        <a href="file:///C:/Users/LHK/spring-framework/framework-docs/modules/ROOT/pages/core/beans/factory-scopes.adoc">
+        <a href="file:///C:/Users/LHK/spring-framework/trans2kr/framework-docs/modules/ROOT/pages/core/beans/factory-scopes.adoc">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"
@@ -2012,25 +2012,19 @@ Spring 컨테이너가 싱글톤 Bean을 인스턴스화하고 해당 종속성�
 <div class="sect2">
 <h3 id="beans-factory-scopes-other-web-configuration"><a class="anchor" href="#beans-factory-scopes-other-web-configuration"></a>초기 웹 구성(Initial Web Configuration)</h3>
 <div class="paragraph">
-<p>To support the scoping of beans at the <code>request</code>, <code>session</code>, <code>application</code>, and
-<code>websocket</code> levels (web-scoped beans), some minor initial configuration is
-required before you define your beans. (This initial setup is not required
-for the standard scopes: <code>singleton</code> and <code>prototype</code>.)</p>
+<p><code>request</code>, <code>session</code>, <code>application</code>, <code>websocket</code> 수준(웹 Scope Bean) 의 Scope를 적용하려면, Bean을 정의하기 전에 약간의 초기 구성이 필요합니다. (표준 Scope인 <code>singleton</code> 및 `prototype`의 경우 이 초기 설정이 필요하지 않습니다.)</p>
 </div>
 <div class="paragraph">
-<p>How you accomplish this initial setup depends on your particular Servlet environment.</p>
+<p>이 초기 설정을 수행하는 방법은 특정 서블릿 환경에 따라 다릅니다.</p>
 </div>
 <div class="paragraph">
-<p>If you access scoped beans within Spring Web MVC, in effect, within a request that is
-processed by the Spring <code>DispatcherServlet</code>, no special setup is necessary.
-<code>DispatcherServlet</code> already exposes all relevant state.</p>
+<p>Spring Web MVC 내에서 Scope가 지정된 Bean에 액세스하는 경우, 즉 사실상 Spring <code>DispatcherServlet</code> 에 의해 처리되는 요청 내에서 액세스하는 경우 특별한 설정이 필요하지 않습니다.
+<code>DispatcherServlet</code> 은 이미 모든 관련 상태를 제공합니다.</p>
 </div>
 <div class="paragraph">
-<p>If you use a Servlet web container, with requests processed outside of Spring&#8217;s
-<code>DispatcherServlet</code> (for example, when using JSF), you need to register the
-<code>org.springframework.web.context.request.RequestContextListener</code> <code>ServletRequestListener</code>.
-This can be done programmatically by using the <code>WebApplicationInitializer</code> interface.
-Alternatively, add the following declaration to your web application&#8217;s <code>web.xml</code> file:</p>
+<p>서블릿 웹 컨테이너를 사용하는 경우, Spring의 <code>DispatcherServlet</code> 외부에서 요청을 처리하는 경우(예: JSF 사용 시), <code>org.springframework.web.context.request.RequestContextListener</code> <code>ServletRequestListener</code> 를 등록해야 합니다.
+이 작업은 <code>WebApplicationInitializer</code> 인터페이스를 사용하여 프로그래밍 방식으로 수행할 수 있습니다.
+또는 웹 애플리케이션의 <code>web.xml</code> 파일에 다음 선언을 추가할 수도 있습니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2046,10 +2040,9 @@ Alternatively, add the following declaration to your web application&#8217;s <co
 </div>
 </div>
 <div class="paragraph">
-<p>Alternatively, if there are issues with your listener setup, consider using Spring&#8217;s
-<code>RequestContextFilter</code>. The filter mapping depends on the surrounding web
-application configuration, so you have to change it as appropriate. The following listing
-shows the filter part of a web application:</p>
+<p>또는 리스너 설정에 문제가 있는 경우 Spring의 <code>RequestContextFilter</code> 를 사용하는 것을 고려해 보세요.
+필터 매핑은 주변 웹 애플리케이션 구성에 따라 달라지므로 적절하게 변경해야 합니다.
+다음 목록은 웹 애플리케이션의 필터 부분을 보여줍니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2068,16 +2061,15 @@ shows the filter part of a web application:</p>
 </div>
 </div>
 <div class="paragraph">
-<p><code>DispatcherServlet</code>, <code>RequestContextListener</code>, and <code>RequestContextFilter</code> all do exactly
-the same thing, namely bind the HTTP request object to the <code>Thread</code> that is servicing
-that request. This makes beans that are request- and session-scoped available further
-down the call chain.</p>
+<p><code>DispatcherServlet</code>, <code>RequestContextListener</code>, <code>RequestContextFilter</code> 는 모두 정확히 동일한 작업을 수행합니다.
+즉, HTTP 요청 객체를 해당 요청을 서비스하는 <code>Thread</code> 에 바인딩하는 것입니다.
+이렇게 하면 request 및 session Scope의 Bean을 콜 체인의 더 아래에서 사용할 수 있습니다.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-factory-scopes-request"><a class="anchor" href="#beans-factory-scopes-request"></a>Request scope</h3>
+<h3 id="beans-factory-scopes-request"><a class="anchor" href="#beans-factory-scopes-request"></a>리퀘스트 Scope(Request Scope)</h3>
 <div class="paragraph">
-<p>Consider the following XML configuration for a bean definition:</p>
+<p>Bean 정의에 대한 다음 XML 구성을 고려하세요:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2085,18 +2077,15 @@ down the call chain.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The Spring container creates a new instance of the <code>LoginAction</code> bean by using the
-<code>loginAction</code> bean definition for each and every HTTP request. That is, the
-<code>loginAction</code> bean is scoped at the HTTP request level. You can change the internal
-state of the instance that is created as much as you want, because other instances
-created from the same <code>loginAction</code> bean definition do not see these changes in state.
-They are particular to an individual request. When the request completes processing, the
-bean that is scoped to the request is discarded.</p>
+<p>Spring 컨테이너는 모든 HTTP Request에 대해 <code>loginAction</code> Bean 정의를 사용하여 <code>loginAction</code> Bean의 새 인스턴스를 생성합니다.
+즉, <code>loginAction</code> Bean은 HTTP request 수준에서 Scope가 지정됩니다.
+생성된 인스턴스의 내부 상태는 원하는 만큼 변경할 수 있는데, 동일한 <code>loginAction</code> Bean 정의에서 생성된 다른 인스턴스에는 이러한 상태 변경이 표시되지 않기 때문입니다.
+이는 개별 요청에만 해당됩니다.
+요청이 처리를 완료하면 해당 Request으로 Scope가 지정된 Bean은 삭제됩니다.</p>
 </div>
 <div class="paragraph">
-<p>When using annotation-driven components or Java configuration, the <code>@RequestScope</code> annotation
-can be used to assign a component to the <code>request</code> scope. The following example shows how
-to do so:</p>
+<p>어노테이션 기반 컴포넌트 또는 Java 구성을 사용하는 경우 <code>@RequestScope</code> 어노테이션을 사용하여 컴포넌트를 <code>request</code> Scope에 할당할 수 있습니다.
+다음 예제는 그 방법을 보여줍니다:</p>
 </div>
 <div id="_tabs_1" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2136,9 +2125,9 @@ class LoginAction {
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-factory-scopes-session"><a class="anchor" href="#beans-factory-scopes-session"></a>Session Scope</h3>
+<h3 id="beans-factory-scopes-session"><a class="anchor" href="#beans-factory-scopes-session"></a>세션 Scope(Session Scope)</h3>
 <div class="paragraph">
-<p>Consider the following XML configuration for a bean definition:</p>
+<p>Bean 정의에 대한 다음 XML 구성을 고려하세요:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2146,19 +2135,13 @@ class LoginAction {
 </div>
 </div>
 <div class="paragraph">
-<p>The Spring container creates a new instance of the <code>UserPreferences</code> bean by using the
-<code>userPreferences</code> bean definition for the lifetime of a single HTTP <code>Session</code>. In other
-words, the <code>userPreferences</code> bean is effectively scoped at the HTTP <code>Session</code> level. As
-with request-scoped beans, you can change the internal state of the instance that is
-created as much as you want, knowing that other HTTP <code>Session</code> instances that are also
-using instances created from the same <code>userPreferences</code> bean definition do not see these
-changes in state, because they are particular to an individual HTTP <code>Session</code>. When the
-HTTP <code>Session</code> is eventually discarded, the bean that is scoped to that particular HTTP
-<code>Session</code> is also discarded.</p>
+<p>Spring 컨테이너는 단일 HTTP <code>Session</code> 의 수명 기간 동안 <code>userPreferences</code> Bean 정의를 사용하여 <code>UserPreferences</code> Bean의 새 인스턴스를 생성합니다.
+다시 말해, <code>userPreferences</code> Bean은 HTTP <code>Session</code> 수준에서 효과적으로 Scope가 지정됩니다.
+Request Scope가 지정된 Bean과 마찬가지로, 생성된 인스턴스의 내부 상태를 원하는 만큼 변경할 수 있으며, 동일한 <code>userPreferences</code> Bean 정의에서 생성된 인스턴스를 사용하는 다른 HTTP <code>Session</code> 인스턴스에서는 이러한 상태 변경이 개별 HTTP <code>Session</code> 에만 해당되기 때문에 볼 수 없다는 것을 알 수 있습니다.
+HTTP <code>Session</code> 이 결국 폐기되면, 해당 특정 HTTP <code>Session</code> 으로 Scope가 지정된 Bean도 폐기됩니다.</p>
 </div>
 <div class="paragraph">
-<p>When using annotation-driven components or Java configuration, you can use the
-<code>@SessionScope</code> annotation to assign a component to the <code>session</code> scope.</p>
+<p>어노테이션 기반 컴포넌트 또는 Java 구성을 사용하는 경우, <code>@SessionScope</code> 어노테이션을 사용하여 <code>session</code> Scope에 컴포넌트를 할당할 수 있습니다.</p>
 </div>
 <div id="_tabs_2" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2198,9 +2181,9 @@ class UserPreferences {
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-factory-scopes-application"><a class="anchor" href="#beans-factory-scopes-application"></a>Application Scope</h3>
+<h3 id="beans-factory-scopes-application"><a class="anchor" href="#beans-factory-scopes-application"></a>애플리케이션 Scope(Application Scope)</h3>
 <div class="paragraph">
-<p>Consider the following XML configuration for a bean definition:</p>
+<p>Bean 정의에 대한 다음 XML 구성을 고려하세요:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2208,18 +2191,13 @@ class UserPreferences {
 </div>
 </div>
 <div class="paragraph">
-<p>The Spring container creates a new instance of the <code>AppPreferences</code> bean by using the
-<code>appPreferences</code> bean definition once for the entire web application. That is, the
-<code>appPreferences</code> bean is scoped at the <code>ServletContext</code> level and stored as a regular
-<code>ServletContext</code> attribute. This is somewhat similar to a Spring singleton bean but
-differs in two important ways: It is a singleton per <code>ServletContext</code>, not per Spring
-<code>ApplicationContext</code> (for which there may be several in any given web application),
-and it is actually exposed and therefore visible as a <code>ServletContext</code> attribute.</p>
+<p>Spring 컨테이너는 전체 웹 애플리케이션에 대해 <code>appPreferences</code> Bean 정의를 한 번 사용하여 <code>AppPreferences</code> Bean의 새 인스턴스를 생성합니다.
+즉, <code>appPreferences</code> Bean은 <code>ServletContext</code> 수준에서 Scope가 지정되고 일반 <code>ServletContext</code> 어트리뷰트로 저장됩니다.
+이것은 Spring 싱글톤 Bean과 다소 유사하지만 두 가지 중요한 점에서 다릅니다: Spring <code>ApplicationContext</code>(특정 웹 애플리케이션에 여러 개가 있을 수 있음)가 아닌 <code>ServletContext</code> 별 싱글톤이며, 실제로 노출되어 <code>ServletContext</code> 어트리뷰트로 표시된다는 점입니다.</p>
 </div>
 <div class="paragraph">
-<p>When using annotation-driven components or Java configuration, you can use the
-<code>@ApplicationScope</code> annotation to assign a component to the <code>application</code> scope. The
-following example shows how to do so:</p>
+<p>어노테이션 기반 컴포넌트 또는 Java 구성을 사용하는 경우, <code>@ApplicationScope</code> 어노테이션을 사용하여 <code>application</code> Scope에 컴포넌트를 할당할 수 있습니다.
+다음 예제는 그 방법을 보여줍니다:</p>
 </div>
 <div id="_tabs_3" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2259,23 +2237,18 @@ class AppPreferences {
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-factory-scopes-websocket"><a class="anchor" href="#beans-factory-scopes-websocket"></a>WebSocket Scope</h3>
+<h3 id="beans-factory-scopes-websocket"><a class="anchor" href="#beans-factory-scopes-websocket"></a>웹소켓 Scope(WebSocket Scope)</h3>
 <div class="paragraph">
-<p>WebSocket scope is associated with the lifecycle of a WebSocket session and applies to
-STOMP over WebSocket applications, see
-<a href="../../web/websocket/stomp/scope.html" class="xref page">WebSocket scope</a> for more details.</p>
+<p>웹소켓 Scope는 웹소켓 세션의 수명 주기와 연관되어 있으며 웹소켓 애플리케이션을 통한 (역자설명 : Simple Text Oriented Messaging Protocol)STOMP에 적용됩니다.
+자세한 내용은 <a href="#web/websocket/stomp/scope." class="xref unresolved">WebSocket Scope</a>를 참조하세요.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-factory-scopes-other-injection"><a class="anchor" href="#beans-factory-scopes-other-injection"></a>Scoped Beans as Dependencies</h3>
+<h3 id="beans-factory-scopes-other-injection"><a class="anchor" href="#beans-factory-scopes-other-injection"></a>Scope가 지정된 Bean을 종속성으로 사용하기(Scoped Beans as Dependencies)</h3>
 <div class="paragraph">
-<p>The Spring IoC container manages not only the instantiation of your objects (beans),
-but also the wiring up of collaborators (or dependencies). If you want to inject (for
-example) an HTTP request-scoped bean into another bean of a longer-lived scope, you may
-choose to inject an AOP proxy in place of the scoped bean. That is, you need to inject
-a proxy object that exposes the same public interface as the scoped object but that can
-also retrieve the real target object from the relevant scope (such as an HTTP request)
-and delegate method calls onto the real object.</p>
+<p>Spring IoC 컨테이너는 객체(Bean)의 인스턴스화뿐만 아니라 협업자(또는 의존성)의 연결도 관리합니다.
+예를 들어 HTTP Request Scope의 Bean을 더 긴 Scope의 다른 Bean에 주입하려는 경우, Scope가 지정된 Bean 대신 AOP 프록시를 주입하도록 선택할 수 있습니다.
+즉, Scope가 지정된 객체와 동일한 공용 인터페이스를 노출하지만 관련 Scope(예: HTTP Request)에서 실제 대상 객체를 검색하고 메서드 호출을 실제 객체에 위임할 수 있는 프록시 객체를 주입해야 합니다.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2285,38 +2258,29 @@ and delegate method calls onto the real object.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>You may also use <code>&lt;aop:scoped-proxy/&gt;</code> between beans that are scoped as <code>singleton</code>,
-with the reference then going through an intermediate proxy that is serializable
-and therefore able to re-obtain the target singleton bean on deserialization.</p>
+<p>또한 <code>singleton</code> 으로 Scope가 지정된 Bean 간에 <code>&lt;aop:scoped-proxy/&gt;</code> 를 사용할 수 있으며, 참조는 직렬화 가능하므로 역직렬화 시 대상 싱글톤 Bean을 다시 얻을 수 있는 중간 프록시를 거치게 됩니다.</p>
 </div>
 <div class="paragraph">
-<p>When declaring <code>&lt;aop:scoped-proxy/&gt;</code> against a bean of scope <code>prototype</code>, every method
-call on the shared proxy leads to the creation of a new target instance to which the
-call is then being forwarded.</p>
+<p><code>prototype</code> Bean에 대해 <code>&lt;aop:scoped-proxy/&gt;</code> 를 선언하면 (역자설명 : 호출을 전달하는 프록시 객체가 생성됨을 설명하는 듯&#8230;&#8203;)공유 프록시의 모든 메서드 호출은 호출이 전달되는 새 대상 인스턴스를 생성하게 됩니다.</p>
 </div>
 <div class="paragraph">
-<p>Also, scoped proxies are not the only way to access beans from shorter scopes in a
-lifecycle-safe fashion. You may also declare your injection point (that is, the
-constructor or setter argument or autowired field) as <code>ObjectFactory&lt;MyTargetBean&gt;</code>,
-allowing for a <code>getObject()</code> call to retrieve the current instance on demand every
-time it is needed&#8201;&#8212;&#8201;without holding on to the instance or storing it separately.</p>
+<p>또한, Scope가 지정된 프록시는 라이프사이클에 안전한 방식으로 더 짧은 Scope의 Bean에 액세스할 수 있는 유일한 방법은 아닙니다.
+또한 주입 지점(즉, 생성자 또는 설정자 인수 또는 Autowired 필드)을 <code>ObjectFactory&lt;MyTargetBean&gt;</code> 으로 선언하여 인스턴스를 보유하거나 별도로 저장하지 않고 필요할 때마다 <code>getObject()</code> 호출을 통해 현재 인스턴스를 검색할 수 있도록 할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>As an extended variant, you may declare <code>ObjectProvider&lt;MyTargetBean&gt;</code> which delivers
-several additional access variants, including <code>getIfAvailable</code> and <code>getIfUnique</code>.</p>
+<p>확장된 변형으로 <code>ObjectProvider&lt;MyTargetBean&gt;</code> 을 선언하여 <code>getIfAvailable</code> 및 <code>getIfUnique</code> 를 비롯한 여러 추가 액세스 변형을 제공할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>The JSR-330 variant of this is called <code>Provider</code> and is used with a <code>Provider&lt;MyTargetBean&gt;</code>
-declaration and a corresponding <code>get()</code> call for every retrieval attempt.
-See <a href="standard-annotations.html" class="xref page">here</a> for more details on JSR-330 overall.</p>
+<p>이에 대한 JSR-330 변형은 <code>Provider</code> 라고 불리며 모든 검색 시도에 대해 <code>Provider&lt;MyTargetBean&gt;</code> 선언 및 해당 <code>get()</code> 호출과 함께 사용됩니다.
+JSR-330 전반에 대한 자세한 내용은 <a href="standard-annotations.html" class="xref page">여기</a>를 참조하세요.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The configuration in the following example is only one line, but it is important to
-understand the &#8220;why&#8221; as well as the &#8220;how&#8221; behind it:</p>
+<p>다음 예제의 구성은 한 줄에 불과하지만 다음을 이해하는 것이 중요합니다.
+"'왜'" 와 그 뒤에 있는 "'어떻게'" 를 이해하는 것이 중요합니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2347,22 +2311,16 @@ understand the &#8220;why&#8221; as well as the &#8220;how&#8221; behind it:</p>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The line that defines the proxy.</td>
+<td>프록시를 정의하는 줄입니다.</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>To create such a proxy, you insert a child <code>&lt;aop:scoped-proxy/&gt;</code> element into a
-scoped bean definition (see
-<a href="#beans-factory-scopes-other-injection-proxies">Choosing the Type of Proxy to Create</a>
-and <a href="../appendix/xsd-schemas.html" class="xref page">XML Schema-based configuration</a>).</p>
+<p>이러한 프록시를 생성하려면 Scope가 지정된 Bean 정의에 하위 <code>&lt;aop:scoped-proxy/&gt;</code> 요소를 삽입합니다(<a href="#beans-factory-scopes-other-injection-proxies">생성할 프록시 유형 선택</a> 및 <a href="../appendix/xsd-schemas.html" class="xref page">XML 스키마 기반 구성</a> 참조).</p>
 </div>
 <div class="paragraph">
-<p>Why do definitions of beans scoped at the <code>request</code>, <code>session</code> and custom-scope
-levels require the <code>&lt;aop:scoped-proxy/&gt;</code> element in common scenarios?
-Consider the following singleton bean definition and contrast it with
-what you need to define for the aforementioned scopes (note that the following
-<code>userPreferences</code> bean definition as it stands is incomplete):</p>
+<p><code>request</code>, <code>session</code> 및 사용자 정의 Scope 수준에서 Scope가 지정된 Bean의 정의에 일반적인 시나리오에서 <code>&lt;aop:scoped-proxy/&gt;</code> 요소가 필요한 이유는 무엇일까요?
+다음 싱글톤 Bean 정의를 고려하고 앞서 언급한 Scope에 대해 정의해야 하는 것과 대조해 보세요(아래의 <code>userPreferences</code> Bean 정의는 불완전하다는 점에 유의하세요):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2374,33 +2332,20 @@ what you need to define for the aforementioned scopes (note that the following
 </div>
 </div>
 <div class="paragraph">
-<p>In the preceding example, the singleton bean (<code>userManager</code>) is injected with a reference
-to the HTTP <code>Session</code>-scoped bean (<code>userPreferences</code>). The salient point here is that the
-<code>userManager</code> bean is a singleton: it is instantiated exactly once per
-container, and its dependencies (in this case only one, the <code>userPreferences</code> bean) are
-also injected only once. This means that the <code>userManager</code> bean operates only on the
-exact same <code>userPreferences</code> object (that is, the one with which it was originally injected).</p>
+<p>앞의 예제에서는 싱글톤 Bean(<code>userManager</code>)에 HTTP <code>Session</code> Scope의 Bean(<code>userPreferences</code>)에 대한 참조가 주입되었습니다.
+여기서 중요한 점은 <code>userManager</code> Bean이 싱글톤이라는 점입니다. 컨테이너당 정확히 한 번만 인스턴스화되며, 그 종속성(이 경우 <code>userPreferences</code> Bean 하나만)도 한 번만 주입된다는 것입니다.
+즉, <code>userManager</code> Bean은 정확히 동일한 <code>userPreferences</code> 객체(즉, 원래 주입된 객체)에서만 작동합니다.</p>
 </div>
 <div class="paragraph">
-<p>This is not the behavior you want when injecting a shorter-lived scoped bean into a
-longer-lived scoped bean (for example, injecting an HTTP <code>Session</code>-scoped collaborating
-bean as a dependency into singleton bean). Rather, you need a single <code>userManager</code>
-object, and, for the lifetime of an HTTP <code>Session</code>, you need a <code>userPreferences</code> object
-that is specific to the HTTP <code>Session</code>. Thus, the container creates an object that
-exposes the exact same public interface as the <code>UserPreferences</code> class (ideally an
-object that is a <code>UserPreferences</code> instance), which can fetch the real
-<code>UserPreferences</code> object from the scoping mechanism (HTTP request, <code>Session</code>, and so
-forth). The container injects this proxy object into the <code>userManager</code> bean, which is
-unaware that this <code>UserPreferences</code> reference is a proxy. In this example, when a
-<code>UserManager</code> instance invokes a method on the dependency-injected <code>UserPreferences</code>
-object, it is actually invoking a method on the proxy. The proxy then fetches the real
-<code>UserPreferences</code> object from (in this case) the HTTP <code>Session</code> and delegates the
-method invocation onto the retrieved real <code>UserPreferences</code> object.</p>
+<p>이는 수명이 짧은 Scope의 Bean을 수명이 긴 Scope의 Bean에 주입할 때 원하는 동작이 아닙니다(예: 싱글톤 Bean에 종속성으로 HTTP <code>Session</code> Scope의 협업자 Bean을 주입하는 경우).
+그 대신, 단일 <code>userManager</code> 객체가 필요하며, HTTP <code>Session</code> 의 수명 동안에는 HTTP <code>Session`에 특정한 `userPreferences</code> 객체가 필요합니다.
+따라서 컨테이너는 Scope 지정 메커니즘(HTTP 요청, <code>Session</code> 등)에서 실제 <code>UserPreferences</code> 객체를 가져올 수 있는 <code>UserPreferences</code> 클래스와 정확히 동일한 공용 인터페이스를 노출하는 객체(이상적으로는 <code>UserPreferences</code> 인스턴스인 객체)를 생성합니다.
+컨테이너는 이 프록시 객체를 이 <code>UserPreferences</code> 참조가 프록시라는 것을 인식하지 못하는 <code>userManager</code> Bean에 주입합니다.
+이 예제에서 <code>UserManager</code> 인스턴스가 종속성이 주입된 <code>UserPreferences</code> 객체에서 메서드를 호출하면 실제로는 프록시에서 메서드를 호출하는 것입니다.
+그런 다음 프록시는 (이 경우) HTTP <code>Session</code> 에서 실제 <code>UserPreferences</code> 객체를 가져오고 메서드 호출을 검색된 실제 <code>UserPreferences</code> 객체에 위임합니다.</p>
 </div>
 <div class="paragraph">
-<p>Thus, you need the following (correct and complete) configuration when injecting
-<code>request-</code> and <code>session-scoped</code> beans into collaborating objects, as the following example
-shows:</p>
+<p>따라서 다음 예제에서 볼 수 있듯이 <code>request</code> 및 <code>session</code> Scope Bean을 협업자 객체에 주입할 때 다음과 같은 (정확하고 완전한) 구성이 필요합니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2414,10 +2359,9 @@ shows:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="beans-factory-scopes-other-injection-proxies"><a class="anchor" href="#beans-factory-scopes-other-injection-proxies"></a>Choosing the Type of Proxy to Create</h4>
+<h4 id="beans-factory-scopes-other-injection-proxies"><a class="anchor" href="#beans-factory-scopes-other-injection-proxies"></a>생성할 프록시 유형 선택(Choosing the Type of Proxy to Create)</h4>
 <div class="paragraph">
-<p>By default, when the Spring container creates a proxy for a bean that is marked up with
-the <code>&lt;aop:scoped-proxy/&gt;</code> element, a CGLIB-based class proxy is created.</p>
+<p>기본적으로 Spring 컨테이너가 <code>&lt;aop:scoped-proxy/&gt;</code> 요소로 마크업된 Bean에 대한 프록시를 생성하면 CGLIB 기반 클래스 프록시가 생성됩니다.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2427,22 +2371,18 @@ the <code>&lt;aop:scoped-proxy/&gt;</code> element, a CGLIB-based class proxy is
 </td>
 <td class="content">
 <div class="paragraph">
-<p>CGLIB proxies do not intercept private methods. Attempting to call a private method
-on such a proxy will not delegate to the actual scoped target object.</p>
+<p>CGLIB 프록시는 private 메서드를 가로채지 않습니다.
+이러한 프록시에서 private 메서드를 호출하려고 시도하면 실제 Scope가 지정된 대상 객체에 위임되지 않습니다.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Alternatively, you can configure the Spring container to create standard JDK
-interface-based proxies for such scoped beans, by specifying <code>false</code> for the value of
-the <code>proxy-target-class</code> attribute of the <code>&lt;aop:scoped-proxy/&gt;</code> element. Using JDK
-interface-based proxies means that you do not need additional libraries in your
-application classpath to affect such proxying. However, it also means that the class of
-the scoped bean must implement at least one interface and that all collaborators
-into which the scoped bean is injected must reference the bean through one of its
-interfaces. The following example shows a proxy based on an interface:</p>
+<p>또는, <code>&lt;aop:scoped-proxy/&gt;</code> 요소의 <code>proxy-target-class</code> 속성 값에 `false`를 지정하여 이러한 Scope Bean에 대한 표준 JDK 인터페이스 기반 프록시를 생성하도록 Spring 컨테이너를 구성할 수 있습니다.
+JDK 인터페이스 기반 프록시를 사용한다는 것은 애플리케이션 클래스 경로에 이러한 프록시에 영향을 주는 추가 라이브러리가 필요하지 않다는 것을 의미합니다.
+그러나 이는 또한 Scope가 지정된 Bean의 클래스가 하나 이상의 인터페이스를 구현해야 하며 Scope가 지정된 Bean이 주입되는 모든 협업자는 인터페이스 중 하나를 통해 Bean을 참조해야 한다는 것을 의미합니다.
+다음 예는 인터페이스 기반 프록시를 보여줍니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2457,52 +2397,38 @@ interfaces. The following example shows a proxy based on an interface:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>For more detailed information about choosing class-based or interface-based proxying,
-see <a href="../aop/proxying.html" class="xref page">Proxying Mechanisms</a>.</p>
+<p>클래스 기반 또는 인터페이스 기반 프록시 선택에 대한 자세한 내용은 <a href="../aop/proxying.html" class="xref page">프록시 메커니즘</a>을 참조하세요.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-factory-scopes-injection"><a class="anchor" href="#beans-factory-scopes-injection"></a>Injecting Request/Session References Directly</h3>
+<h3 id="beans-factory-scopes-injection"><a class="anchor" href="#beans-factory-scopes-injection"></a>Request/Session 참조 직접 주입하기</h3>
 <div class="paragraph">
-<p>As an alternative to factory scopes, a Spring <code>WebApplicationContext</code> also supports
-the injection of <code>HttpServletRequest</code>, <code>HttpServletResponse</code>, <code>HttpSession</code>,
-<code>WebRequest</code> and (if JSF is present) <code>FacesContext</code> and <code>ExternalContext</code> into
-Spring-managed beans, simply through type-based autowiring next to regular injection
-points for other beans. Spring generally injects proxies for such request and session
-objects which has the advantage of working in singleton beans and serializable beans
-as well, similar to scoped proxies for factory-scoped beans.</p>
+<p>팩토리 Scope의 대안으로, Spring <code>WebApplicationContext</code> 는 간단한 유형의 Autowiring을 통해 <code>HttpServletRequest</code>, <code>HttpServletResponse</code>, <code>HttpSession</code>, <code>WebRequest</code> 및 (JSF가 있는 경우) <code>FacesContext</code> 및 `ExternalContext`를 Spring 관리 Bean에 주입하는 것도 지원합니다.
+Spring은 일반적으로 이러한 요청 및 세션 객체에 대한 프록시를 주입하는데, 이는 팩토리 Scope의 Bean에 대한 Scope 프록시와 유사하게 싱글톤 Bean과 직렬화 가능한 Bean에서도 작동한다는 이점이 있습니다.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-factory-scopes-custom"><a class="anchor" href="#beans-factory-scopes-custom"></a>Custom Scopes</h2>
+<h2 id="beans-factory-scopes-custom"><a class="anchor" href="#beans-factory-scopes-custom"></a>사용자 지정 Scope(Custom Scopes)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The bean scoping mechanism is extensible. You can define your own
-scopes or even redefine existing scopes, although the latter is considered bad practice
-and you cannot override the built-in <code>singleton</code> and <code>prototype</code> scopes.</p>
+<p>Bean Scope 메커니즘은 확장 가능합니다.
+자체 Scope를 정의하거나 기존 Scope를 재정의할 수도 있지만, 후자는 나쁜 관행으로 간주되며 기본 제공 <code>singleton</code> 및 <code>prototype</code> Scope를 재정의할 수 없습니다.</p>
 </div>
 <div class="sect2">
-<h3 id="beans-factory-scopes-custom-creating"><a class="anchor" href="#beans-factory-scopes-custom-creating"></a>Creating a Custom Scope</h3>
+<h3 id="beans-factory-scopes-custom-creating"><a class="anchor" href="#beans-factory-scopes-custom-creating"></a>사용자 지정 Scope 만들기(Creating a Custom Scope)</h3>
 <div class="paragraph">
-<p>To integrate your custom scopes into the Spring container, you need to implement the
-<code>org.springframework.beans.factory.config.Scope</code> interface, which is described in this
-section. For an idea of how to implement your own scopes, see the <code>Scope</code>
-implementations that are supplied with the Spring Framework itself and the
-<a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/beans/factory/config/Scope.html"><code>Scope</code></a> javadoc,
-which explains the methods you need to implement in more detail.</p>
+<p>사용자 정의 Scope를 Spring 컨테이너에 통합하려면 이 섹션에서 설명하는 <code>org.springframework.beans.factory.config.Scope</code> 인터페이스를 구현해야 합니다.
+자체 스코프를 구현하는 방법에 대한 아이디어는 Spring 프레임워크 자체와 함께 제공되는 <code>Scope</code> 구현과 구현하는 데 필요한 방법을 자세히 설명하는 <a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/beans/factory/config/Scope.html"><code>Scope</code></a> javadoc을 참조하세요.</p>
 </div>
 <div class="paragraph">
-<p>The <code>Scope</code> interface has four methods to get objects from the scope, remove them from
-the scope, and let them be destroyed.</p>
+<p><code>Scope</code> 인터페이스에는 객체를 가져오고, 객체를 제거하고, 소멸시키는 네 가지 메서드가 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>The session scope implementation, for example, returns the session-scoped bean (if it
-does not exist, the method returns a new instance of the bean, after having bound it to
-the session for future reference). The following method returns the object from the
-underlying scope:</p>
+<p>예를 들어, Session Scope 구현은 Session Scope Bean을 반환합니다(존재하지 않는 경우 메서드는 나중에 참조할 수 있도록 세션에 바인딩한 후 새 Bean 인스턴스를 반환합니다).
+다음 메서드는 기본 Scope에서 객체를 반환합니다:</p>
 </div>
 <div id="_tabs_4" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2533,10 +2459,8 @@ underlying scope:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The session scope implementation, for example, removes the session-scoped bean from the
-underlying session. The object should be returned, but you can return <code>null</code> if the
-object with the specified name is not found. The following method removes the object from
-the underlying scope:</p>
+<p>예를 들어, Session Scope 구현은 Session Scope Bean을 반환합니다(존재하지 않는 경우 메서드는 나중에 참조할 수 있도록 세션에 바인딩한 후 새 Bean 인스턴스를 반환합니다).
+다음 메서드는 기본 Scope에서 객체를 반환합니다:</p>
 </div>
 <div id="_tabs_5" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2567,8 +2491,8 @@ the underlying scope:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The following method registers a callback that the scope should invoke when it is
-destroyed or when the specified object in the scope is destroyed:</p>
+<p>다음 메서드는 Scope가 파괴될 때 호출해야 하는 콜백을 등록합니다.
+파괴되거나 Scope의 지정된 객체가 파괴될 때 호출해야 하는 콜백을 등록합니다:</p>
 </div>
 <div id="_tabs_6" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2599,11 +2523,10 @@ destroyed or when the specified object in the scope is destroyed:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>See the <a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/beans/factory/config/Scope.html#registerDestructionCallback">javadoc</a>
-or a Spring scope implementation for more information on destruction callbacks.</p>
+<p>소멸 콜백에 대한 자세한 내용은 <a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/beans/factory/config/Scope.html#registerDestructionCallback">javadoc</a> 또는 Spring Scope 구현을 참조하세요.</p>
 </div>
 <div class="paragraph">
-<p>The following method obtains the conversation identifier for the underlying scope:</p>
+<p>다음 메서드는 기본 Scope에 대한 conversation identifier(식별자)를 가져옵니다:</p>
 </div>
 <div id="_tabs_7" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2634,16 +2557,14 @@ or a Spring scope implementation for more information on destruction callbacks.<
 </div>
 </div>
 <div class="paragraph">
-<p>This identifier is different for each scope. For a session scoped implementation, this
-identifier can be the session identifier.</p>
+<p>이 식별자는 각 Scope마다 다릅니다. Session Scope 구현의 경우 이 식별자는 Session 식별자가 될 수 있습니다.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-factory-scopes-custom-using"><a class="anchor" href="#beans-factory-scopes-custom-using"></a>Using a Custom Scope</h3>
+<h3 id="beans-factory-scopes-custom-using"><a class="anchor" href="#beans-factory-scopes-custom-using"></a>사용자 지정 Scope 사용(Using a Custom Scope)</h3>
 <div class="paragraph">
-<p>After you write and test one or more custom <code>Scope</code> implementations, you need to make
-the Spring container aware of your new scopes. The following method is the central
-method to register a new <code>Scope</code> with the Spring container:</p>
+<p>하나 이상의 사용자 정의 <code>Scope</code> 구현을 작성하고 테스트한 후에는 Spring 컨테이너가 새 범위를 인식하도록 해야 합니다.
+다음 메서드는 Spring 컨테이너에 새 `Scope`를 등록하는 핵심 메서드입니다:</p>
 </div>
 <div id="_tabs_8" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2674,19 +2595,15 @@ method to register a new <code>Scope</code> with the Spring container:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This method is declared on the <code>ConfigurableBeanFactory</code> interface, which is available
-through the <code>BeanFactory</code> property on most of the concrete <code>ApplicationContext</code>
-implementations that ship with Spring.</p>
+<p>이 메서드는 Spring과 함께 제공되는 대부분의 구체적인 <code>ApplicationContext</code> 구현에서 <code>BeanFactory</code> 속성을 통해 사용할 수 있는 <code>ConfigurableBeanFactory</code> 인터페이스에 선언되어 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>The first argument to the <code>registerScope(..)</code> method is the unique name associated with
-a scope. Examples of such names in the Spring container itself are <code>singleton</code> and
-<code>prototype</code>. The second argument to the <code>registerScope(..)</code> method is an actual instance
-of the custom <code>Scope</code> implementation that you wish to register and use.</p>
+<p><code>registerScope(..)</code> 메서드의 첫 번째 인수는 Scope와 연관된 고유 이름입니다.
+Spring 컨테이너 자체에서 이러한 이름의 예로는 <code>singleton</code> 과 <code>prototype</code> 이 있습니다.
+<code>registerScope(..)</code> 메서드의 두 번째 인수는 등록하고 사용하려는 사용자 정의 <code>Scope</code> 구현의 실제 인스턴스입니다.</p>
 </div>
 <div class="paragraph">
-<p>Suppose that you write your custom <code>Scope</code> implementation, and then register it as shown
-in the next example.</p>
+<p>다음 예시와 같이 사용자 정의 <code>Scope</code> 구현을 작성한 다음 등록한다고 가정해 보겠습니다.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2695,9 +2612,8 @@ in the next example.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The next example uses <code>SimpleThreadScope</code>, which is included with Spring but is not
-registered by default. The instructions would be the same for your own custom <code>Scope</code>
-implementations.
+다음 예제에서는 Spring에 포함되어 있지만 기본적으로 등록되지 않은 <code>SimpleThreadScope`를 사용합니다.
+사용자 정의 `Scope</code> 구현에 대한 지침은 동일합니다.
 </td>
 </tr>
 </table>
@@ -2733,8 +2649,7 @@ beanFactory.registerScope("thread", threadScope)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can then create bean definitions that adhere to the scoping rules of your custom
-<code>Scope</code>, as follows:</p>
+<p>그런 다음에 다음과 같이 사용자 정의 <code>Scope</code> 의 Scope 지정 규칙을 준수하는 Bean 정의를 만들 수 있습니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2742,9 +2657,8 @@ beanFactory.registerScope("thread", threadScope)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>With a custom <code>Scope</code> implementation, you are not limited to programmatic registration
-of the scope. You can also do the <code>Scope</code> registration declaratively, by using the
-<code>CustomScopeConfigurer</code> class, as the following example shows:</p>
+<p>사용자 정의 <code>Scope</code> 구현을 사용하면 Scope를 프로그래밍 방식으로 등록하는데 제한되지 않습니다.
+다음 예제에서 보는 것처럼 <code>CustomScopeConfigurer</code> 클래스를 사용하여 선언적으로 <code>Scope</code> 등록을 수행할 수도 있습니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2779,19 +2693,8 @@ of the scope. You can also do the <code>Scope</code> registration declaratively,
 &lt;/beans&gt;</code></pre>
 </div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-When you place <code>&lt;aop:scoped-proxy/&gt;</code> within a <code>&lt;bean&gt;</code> declaration for a
-<code>FactoryBean</code> implementation, it is the factory bean itself that is scoped, not the object
-returned from <code>getObject()</code>.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p><code>FactoryBean</code> 구현을 위한 <code>&lt;bean&gt;</code> 선언 내에 <code>&lt;aop:scoped-proxy/&gt;</code> 를 배치하면 <code>getObject()</code> 에서 반환된 객체가 아니라 Factory Bean 자체의 Scope가 지정됩니다.</p>
 </div>
 </div>
 </div>
