@@ -11,57 +11,48 @@ Spring 프레임워크는 Bean의 특성을 사용자 정의하는 데 사용할
 
 
 [[beans-factory-lifecycle]]
-== Lifecycle Callbacks
+== Lifecycle 콜백(Lifecycle Callbacks)
 
-To interact with the container's management of the bean lifecycle, you can implement
-the Spring `InitializingBean` and `DisposableBean` interfaces. The container calls
-`afterPropertiesSet()` for the former and `destroy()` for the latter to let the bean
-perform certain actions upon initialization and destruction of your beans.
+컨테이너의 Bean 수명 주기 관리와 상호 작용하기 위해 Spring `InitializingBean` 및 `DisposableBean` 인터페이스를 구현할 수 있습니다.
+컨테이너는 전자의 경우 `afterPropertiesSet()` 을 호출하고 후자의 경우 `destroy()` 를 호출하여 Bean이 초기화 및 소멸 시 특정 작업을 수행하도록 합니다.
 
 [TIP]
 ====
-The JSR-250 `@PostConstruct` and `@PreDestroy` annotations are generally considered best
-practice for receiving lifecycle callbacks in a modern Spring application. Using these
-annotations means that your beans are not coupled to Spring-specific interfaces.
-For details, see xref:core/beans/annotation-config/postconstruct-and-predestroy-annotations.adoc[Using `@PostConstruct` and `@PreDestroy`].
+JSR-250 `@PostConstruct` 및 `@PreDestroy` 어노테이션은 일반적으로 최신 Spring 애플리케이션에서 수명 주기 콜백을 수신하기 위한 모범 사례로 간주됩니다.
+이러한 어노테이션을 사용한다는 것은 Bean이 Spring 전용 인터페이스에 연결되지 않는다는 것을 의미합니다.
+자세한 내용은 xref:core/beans/annotation-config/postconstruct-and-predestroy-annotations.adoc[`@PostConstruct` 및 `@PreDestroy` 사용]을 참조하세요.
 
-If you do not want to use the JSR-250 annotations but you still want to remove
-coupling, consider `init-method` and `destroy-method` bean definition metadata.
+JSR-250 어노테이션을 사용하지 않으면서도 커플링을 제거하려는 경우 `init-method` 및 `destroy-method` Bean 정의 메타데이터를 고려하세요.
 ====
 
-Internally, the Spring Framework uses `BeanPostProcessor` implementations to process any
-callback interfaces it can find and call the appropriate methods. If you need custom
-features or other lifecycle behavior Spring does not by default offer, you can
-implement a `BeanPostProcessor` yourself. For more information, see
-xref:core/beans/factory-extension.adoc[Container Extension Points].
+내부적으로 Spring 프레임워크는 `BeanPostProcessor` 구현을 사용하여 찾을 수 있는 모든 콜백 인터페이스를 처리하고 적절한 메서드를 호출합니다.
+Spring이 기본적으로 제공하지 않는 사용자 정의 기능이나 기타 라이프사이클 동작이 필요한 경우 `BeanPostProcessor` 를 직접 구현할 수 있습니다.
+자세한 내용은 xref:core/beans/factory-extension.adoc[컨테이너 확장 포인트]를 참조하세요.
 
-In addition to the initialization and destruction callbacks, Spring-managed objects may
-also implement the `Lifecycle` interface so that those objects can participate in the
-startup and shutdown process, as driven by the container's own lifecycle.
+초기화 및 소멸 콜백 외에도 Spring 관리 객체는 컨테이너의 자체 라이프사이클에 따라 해당 객체가 시작 및 종료 프로세스에 참여할 수 있도록 `Lifecycle` 인터페이스를 구현할 수도 있습니다.
 
-The lifecycle callback interfaces are described in this section.
+라이프사이클 콜백 인터페이스는 이 섹션에서 설명합니다.
 
 
 
 [[beans-factory-lifecycle-initializingbean]]
-=== Initialization Callbacks
+=== 초기화 콜백(Initialization Callbacks)
 
-The `org.springframework.beans.factory.InitializingBean` interface lets a bean
-perform initialization work after the container has set all necessary properties on the
-bean. The `InitializingBean` interface specifies a single method:
+`org.springframework.beans.factory.InitializingBean` 인터페이스는 컨테이너가 Bean에 필요한 모든 property를 설정한 후 초기화 작업을 수행할 수 있도록 합니다.
+`InitializingBean` 인터페이스는 단일 메서드를 지정합니다:
 
 [source,java,indent=0,subs="verbatim,quotes"]
 ----
 	void afterPropertiesSet() throws Exception;
 ----
 
-We recommend that you do not use the `InitializingBean` interface, because it
-unnecessarily couples the code to Spring. Alternatively, we suggest using
-the xref:core/beans/annotation-config/postconstruct-and-predestroy-annotations.adoc[`@PostConstruct`] annotation or
-specifying a POJO initialization method. In the case of XML-based configuration metadata,
-you can use the `init-method` attribute to specify the name of the method that has a void
-no-argument signature. With Java configuration, you can use the `initMethod` attribute of
-`@Bean`. See xref:core/beans/java/bean-annotation.adoc#beans-java-lifecycle-callbacks[Receiving Lifecycle Callbacks]. Consider the following example:
+`InitializingBean` 인터페이스는 코드를 불필요하게 Spring에 결합하므로 사용하지 않는 것이 좋습니다.
+또는 xref:core/beans/annotation-config/postconstruct-and-predestroy-annotations.adoc[`@PostConstruct`] 어노테이션을 사용하거나 POJO 초기화 방법을 지정하는 것이 좋습니다.
+XML 기반 구성 메타데이터의 경우, `init-method` 속성을 사용하여 무인수 서명이 없는 메서드의 이름을 지정할 수 있습니다.
+Java 구성의 경우, `@Bean` 의 `initMethod` 속성을 사용할 수 있습니다.
+xref:core/beans/java/bean-annotation.adoc#beans-java-lifecycle-callbacks[Lifecycle Callbacks 받기]를 참조하세요.
+다음 예제를 살펴봅시다:org.springframework.beans.factory.InitializingBean` 인터페이스는 컨테이너가 Bean에 필요한 모든 property를 설정한 후 초기화 작업을 수행할 수 있도록 합니다.
+`InitializingBean` 인터페이스는 단일 메서드를 지정합니다:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----
@@ -95,8 +86,7 @@ Kotlin::
 ----
 ======
 
-The preceding example has almost exactly the same effect as the following example
-(which consists of two listings):
+앞의 예는 다음 예(두 개의 목록으로 구성됨)와 거의 동일한 효과를 가져옵니다:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----
@@ -131,29 +121,20 @@ Kotlin::
 ----
 ======
 
-However, the first of the two preceding examples does not couple the code to Spring.
+그러나 앞의 두 예제 중 첫 번째 예제에서는 코드를 Spring에 연결하지 않습니다.
 
 [NOTE]
 ====
-Be aware that `@PostConstruct` and initialization methods in general are executed
-within the container's singleton creation lock. The bean instance is only considered
-as fully initialized and ready to be published to others after returning from the
-`@PostConstruct` method. Such individual initialization methods are only meant
-for validating the configuration state and possibly preparing some data structures
-based on the given configuration but no further activity with external bean access.
-Otherwise there is a risk for an initialization deadlock.
+일반적으로 `@PostConstruct` 및 초기화 메서드는 컨테이너의 싱글톤 생성 Lock 내에서 실행된다는 점에 유의하세요.
+Bean 인스턴스는 `@PostConstruct` 메서드에서 반환된 후에만 완전히 초기화되고 다른 사용자에게 게시할 준비가 된 것으로 간주됩니다.
+이러한 개별 초기화 메서드는 구성 상태의 유효성을 검사하고 주어진 구성을 기반으로 일부 데이터 구조를 준비하기 위한 것일 뿐, 외부 Bean 액세스를 통한 추가 작업은 하지 않습니다.
+그렇지 않으면 초기화 교착 상태가 발생할 위험이 있습니다.
 
-For a scenario where expensive post-initialization activity is to be triggered,
-e.g. asynchronous database preparation steps, your bean should either implement
-`SmartInitializingSingleton.afterSingletonsInstantiated()` or rely on the context
-refresh event: implementing `ApplicationListener<ContextRefreshedEvent>` or
-declaring its annotation equivalent `@EventListener(ContextRefreshedEvent.class)`.
-Those variants come after all regular singleton initialization and therefore
-outside of any singleton creation lock.
+비용이 많이 드는 초기화 후 활동이 트리거되어야 하는 시나리오의 경우, 예를 들어
+비동기 데이터베이스 준비 단계와 같이 비용이 많이 드는 초기화 후 활동을 트리거해야 하는 시나리오의 경우, Bean은 `SmartInitializingSingleton.afterSingletonsInstantiated()` 를 구현하거나 `ApplicationListener<ContextRefreshedEvent>` 를 구현하거나 그에 해당하는 어노테이션 `@EventListener(ContextRefreshedEvent.class)` 를 선언하는 등 컨텍스트 새로고침 이벤트에 의존해야 합니다.
+이러한 변형은 모든 일반 싱글톤 초기화 이후에 발생하므로 싱글톤 생성 Lock에서 벗어납니다.
 
-Alternatively, you may implement the `(Smart)Lifecycle` interface and integrate with
-the container's overall lifecycle management, including an auto-startup mechanism,
-a pre-destroy stop step, and potential stop/restart callbacks (see below).
+또는 `(Smart)Lifecycle` 인터페이스를 구현하고 자동 시작 메커니즘, 사전 삭제 중지 단계, 잠재적인 중지/재시작 콜백을 포함한 컨테이너의 전체 수명 주기 관리와 통합할 수도 있습니다(아래 참조).
 ====
 
 
@@ -161,22 +142,20 @@ a pre-destroy stop step, and potential stop/restart callbacks (see below).
 [[beans-factory-lifecycle-disposablebean]]
 === Destruction Callbacks
 
-Implementing the `org.springframework.beans.factory.DisposableBean` interface lets a
-bean get a callback when the container that contains it is destroyed. The
-`DisposableBean` interface specifies a single method:
+org.springframework.beans.factory.DisposableBean` 인터페이스를 구현하면 Bean이 포함된 컨테이너가 소멸될 때 콜백을 받을 수 있습니다.
+`DisposableBean` 인터페이스는 단일 메서드를 지정합니다:
 
 [source,java,indent=0,subs="verbatim,quotes"]
 ----
 	void destroy() throws Exception;
 ----
 
-We recommend that you do not use the `DisposableBean` callback interface, because it
-unnecessarily couples the code to Spring. Alternatively, we suggest using
-the xref:core/beans/annotation-config/postconstruct-and-predestroy-annotations.adoc[`@PreDestroy`] annotation or
-specifying a generic method that is supported by bean definitions. With XML-based
-configuration metadata, you can use the `destroy-method` attribute on the `<bean/>`.
-With Java configuration, you can use the `destroyMethod` attribute of `@Bean`. See
-xref:core/beans/java/bean-annotation.adoc#beans-java-lifecycle-callbacks[Receiving Lifecycle Callbacks]. Consider the following definition:
+`DisposableBean` 콜백 인터페이스는 불필요하게 Spring에 코드를 결합하므로 사용하지 않는 것이 좋습니다.
+또는 xref:core/beans/annotation-config/postconstruct-and-predestroy-annotations.adoc[`@PreDestroy`] 어노테이션을 사용하거나 Bean 정의에서 지원하는 일반 메서드를 지정하는 것이 좋습니다.
+XML 기반 구성 메타데이터의 경우, `<bean/>` 에서 `destroy-method` 속성을 사용할 수 있습니다.
+Java 구성의 경우, `@Bean` 의 `destroyMethod` 속성을 사용할 수 있습니다.
+xref:core/beans/java/bean-annotation.adoc#beans-java-lifecycle-callbacks[수명 주기 콜백 받기]를 참조하세요.
+다음 정의를 고려하세요:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----
@@ -210,7 +189,7 @@ Kotlin::
 ----
 ======
 
-The preceding definition has almost exactly the same effect as the following definition:
+앞의 정의는 다음 정의와 거의 동일한 효과를 가져옵니다:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----
@@ -245,51 +224,35 @@ Kotlin::
 ----
 ======
 
-However, the first of the two preceding definitions does not couple the code to Spring.
+그러나 앞의 두 정의 중 첫 번째 정의는 코드를 Spring에 결합하지 않습니다.
 
-Note that Spring also supports inference of destroy methods, detecting a public `close` or
-`shutdown` method. This is the default behavior for `@Bean` methods in Java configuration
-classes and automatically matches `java.lang.AutoCloseable` or `java.io.Closeable`
-implementations, not coupling the destruction logic to Spring either.
+Spring은 또한 파괴 메서드의 추론을 지원하여 공개 `close`  또는 `shutdown` 메서드를 감지합니다.
+이는 Java 구성 클래스에서 `@Bean` 메서드의 기본 동작이며 `java.lang.AutoCloseable` 또는 `java.io.Closeable` 구현과 자동으로 일치하며, 파괴 로직도 Spring에 결합하지 않습니다.
 
-TIP: For destroy method inference with XML, you may assign the `destroy-method` attribute
-of a `<bean>` element a special `(inferred)` value, which instructs Spring to automatically
-detect a public `close` or `shutdown` method on the bean class for a specific bean definition.
-You can also set this special `(inferred)` value on the `default-destroy-method` attribute
-of a `<beans>` element to apply this behavior to an entire set of bean definitions (see
-xref:core/beans/factory-nature.adoc#beans-factory-lifecycle-default-init-destroy-methods[Default Initialization and Destroy Methods]).
+TIP: XML을 사용한 파괴 메서드 추론의 경우, `<bean>` 요소의 `destroy-method` 속성에 특수 `(inferred)` 값을 할당하여 특정 Bean 정의에 대한 Bean 클래스에서 공용 `close` 또는 `shutdown` 메서드를 자동으로 감지하도록 Spring에 지시할 수 있습니다.
+또한 이 특수 `(inferred)` 값을 `<beans>` 요소의 `default-destroy-method` 속성에 설정하여 전체 Bean 정의 집합에 이 동작을 적용할 수도 있습니다(xref:core/beans/factory-nature.adoc#beans-factory-lifecycle-default-init-destroy-methods[기본 초기화 및 삭제 메서드] 참조).
 
 [NOTE]
 ====
-For extended shutdown phases, you may implement the `Lifecycle` interface and receive
-an early stop signal before the destroy methods of any singleton beans are called.
-You may also implement `SmartLifecycle` for a time-bound stop step where the container
-will wait for all such stop processing to complete before moving on to destroy methods.
+확장된 종료 단계의 경우, `Lifecycle` 인터페이스를 구현하고 싱글톤 Bean의 파괴 메서드가 호출되기 전에 조기 중지 신호를 수신할 수 있습니다.
+또한 컨테이너가 이러한 모든 중지 처리가 완료될 때까지 기다렸다가 소멸 메서드로 넘어가는 시간 제한적 중지 단계에 대해 `SmartLifecycle` 을 구현할 수도 있습니다.
 ====
 
 
 
 [[beans-factory-lifecycle-default-init-destroy-methods]]
-=== Default Initialization and Destroy Methods
+=== 기본 초기화 및 Destroy 메서드(Default Initialization and Destroy Methods)
 
-When you write initialization and destroy method callbacks that do not use the
-Spring-specific `InitializingBean` and `DisposableBean` callback interfaces, you
-typically write methods with names such as `init()`, `initialize()`, `dispose()`,
-and so on. Ideally, the names of such lifecycle callback methods are standardized across
-a project so that all developers use the same method names and ensure consistency.
+Spring 전용 `InitializingBean` 및 `DisposableBean` 콜백 인터페이스를 사용하지 않는 초기화 및 소멸 메서드 콜백을 작성하는 경우 일반적으로 `init()`, `initialize()`, `dispose()` 등과 같은 이름을 가진 메서드를 작성하게 됩니다.
+이러한 라이프사이클 콜백 메서드의 이름은 프로젝트 전체에서 표준화되어 모든 개발자가 동일한 메서드 이름을 사용하고 일관성을 보장하는 것이 이상적입니다.
 
-You can configure the Spring container to "`look`" for named initialization and destroy
-callback method names on every bean. This means that you, as an application developer,
-can write your application classes and use an initialization callback called `init()`,
-without having to configure an `init-method="init"` attribute with each bean definition.
-The Spring IoC container calls that method when the bean is created (and in accordance
-with the standard lifecycle callback contract xref:core/beans/factory-nature.adoc#beans-factory-lifecycle[described previously]).
-This feature also enforces a consistent naming convention for initialization and
-destroy method callbacks.
+Spring 컨테이너를 구성하여 명명된 초기화를 위해 "`look`"하도록 설정하고 모든 Bean에서 콜백 메서드 이름을 삭제할 수 있습니다.
+즉, 애플리케이션 개발자는 애플리케이션 클래스를 작성하고 `init()` 이라는 초기화 콜백을 사용할 수 있으며, 각 Bean 정의에 `init-method="init"` 속성을 구성할 필요 없이 `init()`을 사용할 수 있습니다.
+Spring IoC 컨테이너는 Bean이 생성될 때 해당 메서드를 호출합니다(그리고 표준 수명 주기 콜백 계약 xref:core/beans/factory-nature.adoc#beans-factory-lifecycle[앞서 설명한])에 따라).
+이 기능은 또한 초기화 및 소멸 메서드 콜백에 대해 일관된 명명 규칙을 적용합니다.
 
-Suppose that your initialization callback methods are named `init()` and your destroy
-callback methods are named `destroy()`. Your class then resembles the class in the
-following example:
+초기화 콜백 메서드의 이름이 `init()` 이고 소멸 콜백 메서드의 이름이 `destroy()` 라고 가정해 보겠습니다.
+그러면 클래스는 다음 예제의 클래스와 비슷해집니다:
 
 [tabs]
 ======
@@ -332,7 +295,7 @@ Kotlin::
 ----
 ======
 
-You could then use that class in a bean resembling the following:
+그런 다음 다음과 유사한 Bean에서 해당 클래스를 사용할 수 있습니다:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----
@@ -345,42 +308,31 @@ You could then use that class in a bean resembling the following:
 	</beans>
 ----
 
-The presence of the `default-init-method` attribute on the top-level `<beans/>` element
-attribute causes the Spring IoC container to recognize a method called `init` on the bean
-class as the initialization method callback. When a bean is created and assembled, if the
-bean class has such a method, it is invoked at the appropriate time.
+최상위 `<beans/>` 요소 속성에 `default-init-method` 속성이 있으면 Spring IoC 컨테이너가 Bean 클래스의 `init` 이라는 메서드를 초기화 메서드 콜백으로 인식하게 됩니다.
+Bean이 생성되고 어셈블될 때 Bean 클래스에 이러한 메서드가 있으면 적절한 시점에 호출됩니다.
 
-You can configure destroy method callbacks similarly (in XML, that is) by using the
-`default-destroy-method` attribute on the top-level `<beans/>` element.
+최상위 `<beans/>` 요소의 `default-destroy-method` 속성을 사용하여 이와 유사하게(즉, XML에서) 파괴 메서드 콜백을 구성할 수 있습니다.
 
-Where existing bean classes already have callback methods that are named at variance
-with the convention, you can override the default by specifying (in XML, that is) the
-method name by using the `init-method` and `destroy-method` attributes of the `<bean/>`
-itself.
+기존 Bean 클래스에 이미 규칙과 다르게 명명된 콜백 메서드가 있는 경우, `<bean/>` 자체의 `init-method` 및 `destroy-method` 속성을 사용하여 메서드 이름을 지정하여(즉, XML에서) 기본값을 재정의할 수 있습니다.
 
-The Spring container guarantees that a configured initialization callback is called
-immediately after a bean is supplied with all dependencies. Thus, the initialization
-callback is called on the raw bean reference, which means that AOP interceptors and so
-forth are not yet applied to the bean. A target bean is fully created first and
-then an AOP proxy (for example) with its interceptor chain is applied. If the target
-bean and the proxy are defined separately, your code can even interact with the raw
-target bean, bypassing the proxy. Hence, it would be inconsistent to apply the
-interceptors to the `init` method, because doing so would couple the lifecycle of the
-target bean to its proxy or interceptors and leave strange semantics when your code
-interacts directly with the raw target bean.
+Spring 컨테이너는 구성된 초기화 콜백이 모든 종속성과 함께 Bean이 제공된 직후에 호출되도록 보장합니다.
+따라서 초기화 콜백은 원시 Bean 참조에서 호출되며, 이는 AOP 인터셉터 등이 아직 Bean에 적용되지 않았음을 의미합니다.
+대상 Bean이 먼저 완전히 생성된 다음 해당 인터셉터 체인이 포함된 AOP 프록시(예를 들어)가 적용됩니다.
+대상 Bean과 프록시가 별도로 정의된 경우, 코드가 프록시를 우회하여 원시 대상 Bean과 상호 작용할 수도 있습니다.
+따라서 인터셉터를 `init` 메서드에 적용하는 것은 일관성이 없는데, 그렇게 하면 대상 Bean의 라이프사이클이 프록시 또는 인터셉터에 결합되고 코드가 원시 대상 Bean과 직접 상호 작용할 때 이상한 의미가 남게 되기 때문입니다. +
+(역자설명 : 예를 들면 AOP와 초기화 대상 빈이 별도로 구성 된 경우 대상 빈은 AOP와 상호작용을 하지 않는데, 이 때 AOP와 대상 빈의 init 메서드를 결합하게 된다면 이상한 의미를 가진 코드가 된다는 의미)
 
 
 
 [[beans-factory-lifecycle-combined-effects]]
-=== Combining Lifecycle Mechanisms
+=== 수명 주기 메커니즘 결합(Combining Lifecycle Mechanisms)
 
-As of Spring 2.5, you have three options for controlling bean lifecycle behavior:
+Spring 2.5부터는 Bean 라이프사이클 동작을 제어하기 위한 세 가지 옵션이 있습니다: 
 
-* The xref:core/beans/factory-nature.adoc#beans-factory-lifecycle-initializingbean[`InitializingBean`] and
-xref:core/beans/factory-nature.adoc#beans-factory-lifecycle-disposablebean[`DisposableBean`] callback interfaces
-* Custom `init()` and `destroy()` methods
-* The xref:core/beans/annotation-config/postconstruct-and-predestroy-annotations.adoc[`@PostConstruct` and `@PreDestroy` annotations]
-. You can combine these mechanisms to control a given bean.
+* xref:core/beans/factory-nature.adoc#beans-factory-lifecycle-initializingbean[`InitializingBean`] 및 xref:core/beans/factory-nature.adoc#beans-factory-lifecycle-disposablebean[`DisposableBean`] 콜백 인터페이스.
+* 사용자 정의 `init()` 및 `destroy()` 메서드
+* xref:core/beans/annotation-config/postconstruct-and-predestroy-annotations.adoc[`@PostConstruct` 및 `@PreDestroy` 어노테이션].
+이러한 메커니즘을 결합하여 특정 Bean을 제어할 수 있습니다.
 
 NOTE: If multiple lifecycle mechanisms are configured for a bean and each mechanism is
 configured with a different method name, then each configured method is run in the
