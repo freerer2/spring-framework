@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Customizing the Nature of a Bean :: Spring Framework Reference</title>
+    <title>Customizing the Nature of a Bean(한글) :: Spring Framework Reference</title>
     <link rel="prev" href="factory-scopes.html">
     <link rel="next" href="child-bean-definitions.html">
     <meta name="generator" content="Antora 3.2.0-alpha.2">
@@ -331,7 +331,7 @@
     <a class="nav-link" href="factory-scopes.html">Bean Scopes(한글)</a>
   </li>
   <li class="nav-item is-current-page" data-depth="3">
-    <a class="nav-link" href="factory-nature.html">Customizing the Nature of a Bean</a>
+    <a class="nav-link" href="factory-nature.html">Customizing the Nature of a Bean(한글)</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="child-bean-definitions.html">Bean Definition Inheritance</a>
@@ -1792,7 +1792,7 @@
   <div class="content">
     <div
       class="toc"
-      data-title="Customizing the Nature of a Bean"
+      data-title="Customizing the Nature of a Bean(한글)"
       data-levels="2"
     >
       <div class="toc-menu"></div>
@@ -1839,15 +1839,15 @@
     <li><a href="../../index.html">Spring Framework</a></li>
     <li><a href="../../core.html">Core Technologies(한글)</a></li>
     <li><a href="../beans.html">IoC Container(한글)</a></li>
-    <li><a href="factory-nature.html">Customizing the Nature of a Bean</a></li>
+    <li><a href="factory-nature.html">Customizing the Nature of a Bean(한글)</a></li>
   </ul>
 </nav>
-<h1 id="page-title" class="page">Customizing the Nature of a Bean</h1>
+<h1 id="page-title" class="page">Customizing the Nature of a Bean(한글)</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Spring Framework provides a number of interfaces you can use to customize the nature
-of a bean. This section groups them as follows:</p>
+<p>Spring 프레임워크는 Bean의 특성을 사용자 정의하는 데 사용할 수 있는 다양한 인터페이스를 제공하므로 특성을 사용자 정의하는 데 사용할 수 있는 다양한 인터페이스를 제공합니다.
+이 섹션에서는 이러한 인터페이스를 다음과 같이 그룹화합니다:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1865,13 +1865,11 @@ of a bean. This section groups them as follows:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-factory-lifecycle"><a class="anchor" href="#beans-factory-lifecycle"></a>Lifecycle Callbacks</h2>
+<h2 id="beans-factory-lifecycle"><a class="anchor" href="#beans-factory-lifecycle"></a>Lifecycle 콜백(Lifecycle Callbacks)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To interact with the container&#8217;s management of the bean lifecycle, you can implement
-the Spring <code>InitializingBean</code> and <code>DisposableBean</code> interfaces. The container calls
-<code>afterPropertiesSet()</code> for the former and <code>destroy()</code> for the latter to let the bean
-perform certain actions upon initialization and destruction of your beans.</p>
+<p>컨테이너의 Bean 수명 주기 관리와 상호 작용하기 위해 Spring <code>InitializingBean</code> 및 <code>DisposableBean</code> 인터페이스를 구현할 수 있습니다.
+컨테이너는 전자의 경우 <code>afterPropertiesSet()</code> 을 호출하고 후자의 경우 <code>destroy()</code> 를 호출하여 Bean이 초기화 및 소멸 시 특정 작업을 수행하도록 합니다.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1881,40 +1879,33 @@ perform certain actions upon initialization and destruction of your beans.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The JSR-250 <code>@PostConstruct</code> and <code>@PreDestroy</code> annotations are generally considered best
-practice for receiving lifecycle callbacks in a modern Spring application. Using these
-annotations means that your beans are not coupled to Spring-specific interfaces.
-For details, see <a href="annotation-config/postconstruct-and-predestroy-annotations.html" class="xref page">Using <code>@PostConstruct</code> and <code>@PreDestroy</code></a>.</p>
+<p>JSR-250 <code>@PostConstruct</code> 및 <code>@PreDestroy</code> 어노테이션은 일반적으로 최신 Spring 애플리케이션에서 수명 주기 콜백을 수신하기 위한 모범 사례로 간주됩니다.
+이러한 어노테이션을 사용한다는 것은 Bean이 Spring 전용 인터페이스에 연결되지 않는다는 것을 의미합니다.
+자세한 내용은 <a href="annotation-config/postconstruct-and-predestroy-annotations.html" class="xref page"><code>@PostConstruct</code> 및 <code>@PreDestroy</code> 사용</a>을 참조하세요.</p>
 </div>
 <div class="paragraph">
-<p>If you do not want to use the JSR-250 annotations but you still want to remove
-coupling, consider <code>init-method</code> and <code>destroy-method</code> bean definition metadata.</p>
+<p>JSR-250 어노테이션을 사용하지 않으면서도 커플링을 제거하려는 경우 <code>init-method</code> 및 <code>destroy-method</code> Bean 정의 메타데이터를 고려하세요.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Internally, the Spring Framework uses <code>BeanPostProcessor</code> implementations to process any
-callback interfaces it can find and call the appropriate methods. If you need custom
-features or other lifecycle behavior Spring does not by default offer, you can
-implement a <code>BeanPostProcessor</code> yourself. For more information, see
-<a href="factory-extension.html" class="xref page">Container Extension Points</a>.</p>
+<p>내부적으로 Spring 프레임워크는 <code>BeanPostProcessor</code> 구현을 사용하여 찾을 수 있는 모든 콜백 인터페이스를 처리하고 적절한 메서드를 호출합니다.
+Spring이 기본적으로 제공하지 않는 사용자 정의 기능이나 기타 라이프사이클 동작이 필요한 경우 <code>BeanPostProcessor</code> 를 직접 구현할 수 있습니다.
+자세한 내용은 <a href="factory-extension.html" class="xref page">컨테이너 확장 포인트</a>를 참조하세요.</p>
 </div>
 <div class="paragraph">
-<p>In addition to the initialization and destruction callbacks, Spring-managed objects may
-also implement the <code>Lifecycle</code> interface so that those objects can participate in the
-startup and shutdown process, as driven by the container&#8217;s own lifecycle.</p>
+<p>초기화 및 소멸 콜백 외에도 Spring 관리 객체는 컨테이너의 자체 라이프사이클에 따라 해당 객체가 시작 및 종료 프로세스에 참여할 수 있도록 <code>Lifecycle</code> 인터페이스를 구현할 수도 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>The lifecycle callback interfaces are described in this section.</p>
+<p>라이프사이클 콜백 인터페이스는 이 섹션에서 설명합니다.</p>
 </div>
 <div class="sect2">
-<h3 id="beans-factory-lifecycle-initializingbean"><a class="anchor" href="#beans-factory-lifecycle-initializingbean"></a>Initialization Callbacks</h3>
+<h3 id="beans-factory-lifecycle-initializingbean"><a class="anchor" href="#beans-factory-lifecycle-initializingbean"></a>초기화 콜백(Initialization Callbacks)</h3>
 <div class="paragraph">
-<p>The <code>org.springframework.beans.factory.InitializingBean</code> interface lets a bean
-perform initialization work after the container has set all necessary properties on the
-bean. The <code>InitializingBean</code> interface specifies a single method:</p>
+<p><code>org.springframework.beans.factory.InitializingBean</code> 인터페이스는 컨테이너가 Bean에 필요한 모든 property를 설정한 후 초기화 작업을 수행할 수 있도록 합니다.
+<code>InitializingBean</code> 인터페이스는 단일 메서드를 지정합니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1922,13 +1913,13 @@ bean. The <code>InitializingBean</code> interface specifies a single method:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>We recommend that you do not use the <code>InitializingBean</code> interface, because it
-unnecessarily couples the code to Spring. Alternatively, we suggest using
-the <a href="annotation-config/postconstruct-and-predestroy-annotations.html" class="xref page"><code>@PostConstruct</code></a> annotation or
-specifying a POJO initialization method. In the case of XML-based configuration metadata,
-you can use the <code>init-method</code> attribute to specify the name of the method that has a void
-no-argument signature. With Java configuration, you can use the <code>initMethod</code> attribute of
-<code>@Bean</code>. See <a href="java/bean-annotation.html#beans-java-lifecycle-callbacks" class="xref page">Receiving Lifecycle Callbacks</a>. Consider the following example:</p>
+<p><code>InitializingBean</code> 인터페이스는 코드를 불필요하게 Spring에 결합하므로 사용하지 않는 것이 좋습니다.
+또는 <a href="annotation-config/postconstruct-and-predestroy-annotations.html" class="xref page"><code>@PostConstruct</code></a> 어노테이션을 사용하거나 POJO 초기화 방법을 지정하는 것이 좋습니다.
+XML 기반 구성 메타데이터의 경우, <code>init-method</code> 속성을 사용하여 무인수 서명이 없는 메서드의 이름을 지정할 수 있습니다.
+Java 구성의 경우, <code>@Bean</code> 의 <code>initMethod</code> 속성을 사용할 수 있습니다.
+<a href="java/bean-annotation.html#beans-java-lifecycle-callbacks" class="xref page">Lifecycle Callbacks 받기</a>를 참조하세요.
+다음 예제를 살펴봅시다:org.springframework.beans.factory.InitializingBean` 인터페이스는 컨테이너가 Bean에 필요한 모든 property를 설정한 후 초기화 작업을 수행할 수 있도록 합니다.
+<code>InitializingBean</code> 인터페이스는 단일 메서드를 지정합니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1974,8 +1965,7 @@ no-argument signature. With Java configuration, you can use the <code>initMethod
 </div>
 </div>
 <div class="paragraph">
-<p>The preceding example has almost exactly the same effect as the following example
-(which consists of two listings):</p>
+<p>앞의 예는 다음 예(두 개의 목록으로 구성됨)와 거의 동일한 효과를 가져옵니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2022,7 +2012,7 @@ no-argument signature. With Java configuration, you can use the <code>initMethod
 </div>
 </div>
 <div class="paragraph">
-<p>However, the first of the two preceding examples does not couple the code to Spring.</p>
+<p>그러나 앞의 두 예제 중 첫 번째 예제에서는 코드를 Spring에 연결하지 않습니다.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2032,27 +2022,18 @@ no-argument signature. With Java configuration, you can use the <code>initMethod
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Be aware that <code>@PostConstruct</code> and initialization methods in general are executed
-within the container&#8217;s singleton creation lock. The bean instance is only considered
-as fully initialized and ready to be published to others after returning from the
-<code>@PostConstruct</code> method. Such individual initialization methods are only meant
-for validating the configuration state and possibly preparing some data structures
-based on the given configuration but no further activity with external bean access.
-Otherwise there is a risk for an initialization deadlock.</p>
+<p>일반적으로 <code>@PostConstruct</code> 및 초기화 메서드는 컨테이너의 싱글톤 생성 Lock 내에서 실행된다는 점에 유의하세요.
+Bean 인스턴스는 <code>@PostConstruct</code> 메서드에서 반환된 후에만 완전히 초기화되고 다른 사용자에게 게시할 준비가 된 것으로 간주됩니다.
+이러한 개별 초기화 메서드는 구성 상태의 유효성을 검사하고 주어진 구성을 기반으로 일부 데이터 구조를 준비하기 위한 것일 뿐, 외부 Bean 액세스를 통한 추가 작업은 하지 않습니다.
+그렇지 않으면 초기화 교착 상태가 발생할 위험이 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>For a scenario where expensive post-initialization activity is to be triggered,
-e.g. asynchronous database preparation steps, your bean should either implement
-<code>SmartInitializingSingleton.afterSingletonsInstantiated()</code> or rely on the context
-refresh event: implementing <code>ApplicationListener&lt;ContextRefreshedEvent&gt;</code> or
-declaring its annotation equivalent <code>@EventListener(ContextRefreshedEvent.class)</code>.
-Those variants come after all regular singleton initialization and therefore
-outside of any singleton creation lock.</p>
+<p>비용이 많이 드는 초기화 후 활동이 트리거되어야 하는 시나리오의 경우, 예를 들어
+비동기 데이터베이스 준비 단계와 같이 비용이 많이 드는 초기화 후 활동을 트리거해야 하는 시나리오의 경우, Bean은 <code>SmartInitializingSingleton.afterSingletonsInstantiated()</code> 를 구현하거나 <code>ApplicationListener&lt;ContextRefreshedEvent&gt;</code> 를 구현하거나 그에 해당하는 어노테이션 <code>@EventListener(ContextRefreshedEvent.class)</code> 를 선언하는 등 컨텍스트 새로고침 이벤트에 의존해야 합니다.
+이러한 변형은 모든 일반 싱글톤 초기화 이후에 발생하므로 싱글톤 생성 Lock에서 벗어납니다.</p>
 </div>
 <div class="paragraph">
-<p>Alternatively, you may implement the <code>(Smart)Lifecycle</code> interface and integrate with
-the container&#8217;s overall lifecycle management, including an auto-startup mechanism,
-a pre-destroy stop step, and potential stop/restart callbacks (see below).</p>
+<p>또는 <code>(Smart)Lifecycle</code> 인터페이스를 구현하고 자동 시작 메커니즘, 사전 삭제 중지 단계, 잠재적인 중지/재시작 콜백을 포함한 컨테이너의 전체 수명 주기 관리와 통합할 수도 있습니다(아래 참조).</p>
 </div>
 </td>
 </tr>
@@ -2060,11 +2041,10 @@ a pre-destroy stop step, and potential stop/restart callbacks (see below).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-factory-lifecycle-disposablebean"><a class="anchor" href="#beans-factory-lifecycle-disposablebean"></a>Destruction Callbacks</h3>
+<h3 id="beans-factory-lifecycle-disposablebean"><a class="anchor" href="#beans-factory-lifecycle-disposablebean"></a>소멸 콜백(Destruction Callbacks)</h3>
 <div class="paragraph">
-<p>Implementing the <code>org.springframework.beans.factory.DisposableBean</code> interface lets a
-bean get a callback when the container that contains it is destroyed. The
-<code>DisposableBean</code> interface specifies a single method:</p>
+<p>org.springframework.beans.factory.DisposableBean` 인터페이스를 구현하면 Bean이 포함된 컨테이너가 소멸될 때 콜백을 받을 수 있습니다.
+<code>DisposableBean</code> 인터페이스는 단일 메서드를 지정합니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2072,13 +2052,12 @@ bean get a callback when the container that contains it is destroyed. The
 </div>
 </div>
 <div class="paragraph">
-<p>We recommend that you do not use the <code>DisposableBean</code> callback interface, because it
-unnecessarily couples the code to Spring. Alternatively, we suggest using
-the <a href="annotation-config/postconstruct-and-predestroy-annotations.html" class="xref page"><code>@PreDestroy</code></a> annotation or
-specifying a generic method that is supported by bean definitions. With XML-based
-configuration metadata, you can use the <code>destroy-method</code> attribute on the <code>&lt;bean/&gt;</code>.
-With Java configuration, you can use the <code>destroyMethod</code> attribute of <code>@Bean</code>. See
-<a href="java/bean-annotation.html#beans-java-lifecycle-callbacks" class="xref page">Receiving Lifecycle Callbacks</a>. Consider the following definition:</p>
+<p><code>DisposableBean</code> 콜백 인터페이스는 불필요하게 Spring에 코드를 결합하므로 사용하지 않는 것이 좋습니다.
+또는 <a href="annotation-config/postconstruct-and-predestroy-annotations.html" class="xref page"><code>@PreDestroy</code></a> 어노테이션을 사용하거나 Bean 정의에서 지원하는 일반 메서드를 지정하는 것이 좋습니다.
+XML 기반 구성 메타데이터의 경우, <code>&lt;bean/&gt;</code> 에서 <code>destroy-method</code> 속성을 사용할 수 있습니다.
+Java 구성의 경우, <code>@Bean</code> 의 <code>destroyMethod</code> 속성을 사용할 수 있습니다.
+<a href="java/bean-annotation.html#beans-java-lifecycle-callbacks" class="xref page">수명 주기 콜백 받기</a>를 참조하세요.
+다음 정의를 고려하세요:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2124,7 +2103,7 @@ With Java configuration, you can use the <code>destroyMethod</code> attribute of
 </div>
 </div>
 <div class="paragraph">
-<p>The preceding definition has almost exactly the same effect as the following definition:</p>
+<p>앞의 정의는 다음 정의와 거의 동일한 효과를 가져옵니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2171,13 +2150,11 @@ With Java configuration, you can use the <code>destroyMethod</code> attribute of
 </div>
 </div>
 <div class="paragraph">
-<p>However, the first of the two preceding definitions does not couple the code to Spring.</p>
+<p>그러나 앞의 두 정의 중 첫 번째 정의는 코드를 Spring에 결합하지 않습니다.</p>
 </div>
 <div class="paragraph">
-<p>Note that Spring also supports inference of destroy methods, detecting a public <code>close</code> or
-<code>shutdown</code> method. This is the default behavior for <code>@Bean</code> methods in Java configuration
-classes and automatically matches <code>java.lang.AutoCloseable</code> or <code>java.io.Closeable</code>
-implementations, not coupling the destruction logic to Spring either.</p>
+<p>Spring은 또한 파괴 메서드의 추론을 지원하여 공개 <code>close</code>  또는 <code>shutdown</code> 메서드를 감지합니다.
+이는 Java 구성 클래스에서 <code>@Bean</code> 메서드의 기본 동작이며 <code>java.lang.AutoCloseable</code> 또는 <code>java.io.Closeable</code> 구현과 자동으로 일치하며, 파괴 로직도 Spring에 결합하지 않습니다.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -2186,12 +2163,8 @@ implementations, not coupling the destruction logic to Spring either.</p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-For destroy method inference with XML, you may assign the <code>destroy-method</code> attribute
-of a <code>&lt;bean&gt;</code> element a special <code>(inferred)</code> value, which instructs Spring to automatically
-detect a public <code>close</code> or <code>shutdown</code> method on the bean class for a specific bean definition.
-You can also set this special <code>(inferred)</code> value on the <code>default-destroy-method</code> attribute
-of a <code>&lt;beans&gt;</code> element to apply this behavior to an entire set of bean definitions (see
-<a href="#beans-factory-lifecycle-default-init-destroy-methods">Default Initialization and Destroy Methods</a>).
+XML을 사용한 파괴 메서드 추론의 경우, <code>&lt;bean&gt;</code> 요소의 <code>destroy-method</code> 속성에 특수 <code>(inferred)</code> 값을 할당하여 특정 Bean 정의에 대한 Bean 클래스에서 공용 <code>close</code> 또는 <code>shutdown</code> 메서드를 자동으로 감지하도록 Spring에 지시할 수 있습니다.
+또한 이 특수 <code>(inferred)</code> 값을 <code>&lt;beans&gt;</code> 요소의 <code>default-destroy-method</code> 속성에 설정하여 전체 Bean 정의 집합에 이 동작을 적용할 수도 있습니다(<a href="#beans-factory-lifecycle-default-init-destroy-methods">기본 초기화 및 삭제 메서드</a> 참조).
 </td>
 </tr>
 </table>
@@ -2204,10 +2177,8 @@ of a <code>&lt;beans&gt;</code> element to apply this behavior to an entire set 
 </td>
 <td class="content">
 <div class="paragraph">
-<p>For extended shutdown phases, you may implement the <code>Lifecycle</code> interface and receive
-an early stop signal before the destroy methods of any singleton beans are called.
-You may also implement <code>SmartLifecycle</code> for a time-bound stop step where the container
-will wait for all such stop processing to complete before moving on to destroy methods.</p>
+<p>확장된 종료 단계의 경우, <code>Lifecycle</code> 인터페이스를 구현하고 싱글톤 Bean의 파괴 메서드가 호출되기 전에 조기 중지 신호를 수신할 수 있습니다.
+또한 컨테이너가 이러한 모든 중지 처리가 완료될 때까지 기다렸다가 소멸 메서드로 넘어가는 시간 제한적 중지 단계에 대해 <code>SmartLifecycle</code> 을 구현할 수도 있습니다.</p>
 </div>
 </td>
 </tr>
@@ -2215,28 +2186,20 @@ will wait for all such stop processing to complete before moving on to destroy m
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-factory-lifecycle-default-init-destroy-methods"><a class="anchor" href="#beans-factory-lifecycle-default-init-destroy-methods"></a>Default Initialization and Destroy Methods</h3>
+<h3 id="beans-factory-lifecycle-default-init-destroy-methods"><a class="anchor" href="#beans-factory-lifecycle-default-init-destroy-methods"></a>기본 초기화 및 Destroy 메서드(Default Initialization and Destroy Methods)</h3>
 <div class="paragraph">
-<p>When you write initialization and destroy method callbacks that do not use the
-Spring-specific <code>InitializingBean</code> and <code>DisposableBean</code> callback interfaces, you
-typically write methods with names such as <code>init()</code>, <code>initialize()</code>, <code>dispose()</code>,
-and so on. Ideally, the names of such lifecycle callback methods are standardized across
-a project so that all developers use the same method names and ensure consistency.</p>
+<p>Spring 전용 <code>InitializingBean</code> 및 <code>DisposableBean</code> 콜백 인터페이스를 사용하지 않는 초기화 및 소멸 메서드 콜백을 작성하는 경우 일반적으로 <code>init()</code>, <code>initialize()</code>, <code>dispose()</code> 등과 같은 이름을 가진 메서드를 작성하게 됩니다.
+이러한 라이프사이클 콜백 메서드의 이름은 프로젝트 전체에서 표준화되어 모든 개발자가 동일한 메서드 이름을 사용하고 일관성을 보장하는 것이 이상적입니다.</p>
 </div>
 <div class="paragraph">
-<p>You can configure the Spring container to &#8220;look&#8221; for named initialization and destroy
-callback method names on every bean. This means that you, as an application developer,
-can write your application classes and use an initialization callback called <code>init()</code>,
-without having to configure an <code>init-method="init"</code> attribute with each bean definition.
-The Spring IoC container calls that method when the bean is created (and in accordance
-with the standard lifecycle callback contract <a href="#beans-factory-lifecycle">described previously</a>).
-This feature also enforces a consistent naming convention for initialization and
-destroy method callbacks.</p>
+<p>Spring 컨테이너를 구성하여 명명된 초기화를 위해 "`look`"하도록 설정하고 모든 Bean에서 콜백 메서드 이름을 삭제할 수 있습니다.
+즉, 애플리케이션 개발자는 애플리케이션 클래스를 작성하고 <code>init()</code> 이라는 초기화 콜백을 사용할 수 있으며, 각 Bean 정의에 <code>init-method="init"</code> 속성을 구성할 필요 없이 `init()`을 사용할 수 있습니다.
+Spring IoC 컨테이너는 Bean이 생성될 때 해당 메서드를 호출합니다(그리고 표준 수명 주기 콜백 계약 <a href="#beans-factory-lifecycle">앞서 설명한</a>)에 따라).
+이 기능은 또한 초기화 및 소멸 메서드 콜백에 대해 일관된 명명 규칙을 적용합니다.</p>
 </div>
 <div class="paragraph">
-<p>Suppose that your initialization callback methods are named <code>init()</code> and your destroy
-callback methods are named <code>destroy()</code>. Your class then resembles the class in the
-following example:</p>
+<p>초기화 콜백 메서드의 이름이 <code>init()</code> 이고 소멸 콜백 메서드의 이름이 <code>destroy()</code> 라고 가정해 보겠습니다.
+그러면 클래스는 다음 예제의 클래스와 비슷해집니다:</p>
 </div>
 <div id="_tabs_5" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2291,7 +2254,7 @@ following example:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>You could then use that class in a bean resembling the following:</p>
+<p>그런 다음 다음과 유사한 Bean에서 해당 클래스를 사용할 수 있습니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2305,57 +2268,40 @@ following example:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The presence of the <code>default-init-method</code> attribute on the top-level <code>&lt;beans/&gt;</code> element
-attribute causes the Spring IoC container to recognize a method called <code>init</code> on the bean
-class as the initialization method callback. When a bean is created and assembled, if the
-bean class has such a method, it is invoked at the appropriate time.</p>
+<p>최상위 <code>&lt;beans/&gt;</code> 요소 속성에 <code>default-init-method</code> 속성이 있으면 Spring IoC 컨테이너가 Bean 클래스의 <code>init</code> 이라는 메서드를 초기화 메서드 콜백으로 인식하게 됩니다.
+Bean이 생성되고 어셈블될 때 Bean 클래스에 이러한 메서드가 있으면 적절한 시점에 호출됩니다.</p>
 </div>
 <div class="paragraph">
-<p>You can configure destroy method callbacks similarly (in XML, that is) by using the
-<code>default-destroy-method</code> attribute on the top-level <code>&lt;beans/&gt;</code> element.</p>
+<p>최상위 <code>&lt;beans/&gt;</code> 요소의 <code>default-destroy-method</code> 속성을 사용하여 이와 유사하게(즉, XML에서) 파괴 메서드 콜백을 구성할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>Where existing bean classes already have callback methods that are named at variance
-with the convention, you can override the default by specifying (in XML, that is) the
-method name by using the <code>init-method</code> and <code>destroy-method</code> attributes of the <code>&lt;bean/&gt;</code>
-itself.</p>
+<p>기존 Bean 클래스에 이미 규칙과 다르게 명명된 콜백 메서드가 있는 경우, <code>&lt;bean/&gt;</code> 자체의 <code>init-method</code> 및 <code>destroy-method</code> 속성을 사용하여 메서드 이름을 지정하여(즉, XML에서) 기본값을 재정의할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>The Spring container guarantees that a configured initialization callback is called
-immediately after a bean is supplied with all dependencies. Thus, the initialization
-callback is called on the raw bean reference, which means that AOP interceptors and so
-forth are not yet applied to the bean. A target bean is fully created first and
-then an AOP proxy (for example) with its interceptor chain is applied. If the target
-bean and the proxy are defined separately, your code can even interact with the raw
-target bean, bypassing the proxy. Hence, it would be inconsistent to apply the
-interceptors to the <code>init</code> method, because doing so would couple the lifecycle of the
-target bean to its proxy or interceptors and leave strange semantics when your code
-interacts directly with the raw target bean.</p>
+<p>Spring 컨테이너는 구성된 초기화 콜백이 모든 종속성과 함께 Bean이 제공된 직후에 호출되도록 보장합니다.
+따라서 초기화 콜백은 원시 Bean 참조에서 호출되며, 이는 AOP 인터셉터 등이 아직 Bean에 적용되지 않았음을 의미합니다.
+대상 Bean이 먼저 완전히 생성된 다음 해당 인터셉터 체인이 포함된 AOP 프록시(예를 들어)가 적용됩니다.
+대상 Bean과 프록시가 별도로 정의된 경우, 코드가 프록시를 우회하여 원시 대상 Bean과 상호 작용할 수도 있습니다.
+따라서 인터셉터를 <code>init</code> 메서드에 적용하는 것은 일관성이 없는데, 그렇게 하면 대상 Bean의 라이프사이클이 프록시 또는 인터셉터에 결합되고 코드가 원시 대상 Bean과 직접 상호 작용할 때 이상한 의미가 남게 되기 때문입니다.<br>
+(역자설명 : 예를 들면 AOP와 초기화 대상 빈이 별도로 구성 된 경우 대상 빈은 AOP와 상호작용을 하지 않는데, 이 때 AOP와 대상 빈의 init 메서드를 결합하게 된다면 이상한 의미를 가진 코드가 된다는 의미)</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-factory-lifecycle-combined-effects"><a class="anchor" href="#beans-factory-lifecycle-combined-effects"></a>Combining Lifecycle Mechanisms</h3>
+<h3 id="beans-factory-lifecycle-combined-effects"><a class="anchor" href="#beans-factory-lifecycle-combined-effects"></a>수명 주기 메커니즘 결합(Combining Lifecycle Mechanisms)</h3>
 <div class="paragraph">
-<p>As of Spring 2.5, you have three options for controlling bean lifecycle behavior:</p>
+<p>Spring 2.5부터는 Bean 라이프사이클 동작을 제어하기 위한 세 가지 옵션이 있습니다:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The <a href="#beans-factory-lifecycle-initializingbean"><code>InitializingBean</code></a> and
-<a href="#beans-factory-lifecycle-disposablebean"><code>DisposableBean</code></a> callback interfaces</p>
+<p><a href="#beans-factory-lifecycle-initializingbean"><code>InitializingBean</code></a> 및 <a href="#beans-factory-lifecycle-disposablebean"><code>DisposableBean</code></a> 콜백 인터페이스.</p>
 </li>
 <li>
-<p>Custom <code>init()</code> and <code>destroy()</code> methods</p>
+<p>사용자 정의 <code>init()</code> 및 <code>destroy()</code> 메서드</p>
 </li>
 <li>
-<p>The <a href="annotation-config/postconstruct-and-predestroy-annotations.html" class="xref page"><code>@PostConstruct</code> and <code>@PreDestroy</code> annotations</a></p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>You can combine these mechanisms to control a given bean.</p>
-</li>
-</ol>
-</div>
+<p><a href="annotation-config/postconstruct-and-predestroy-annotations.html" class="xref page"><code>@PostConstruct</code> 및 <code>@PreDestroy</code> 어노테이션</a>.
+이러한 메커니즘을 결합하여 특정 Bean을 제어할 수 있습니다.</p>
 </li>
 </ul>
 </div>
@@ -2366,55 +2312,29 @@ interacts directly with the raw target bean.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If multiple lifecycle mechanisms are configured for a bean and each mechanism is
-configured with a different method name, then each configured method is run in the
-order listed after this note. However, if the same method name is configured&#8201;&#8212;&#8201;for example,
-<code>init()</code> for an initialization method&#8201;&#8212;&#8201;for more than one of these lifecycle mechanisms,
-that method is run once, as explained in the
-<a href="#beans-factory-lifecycle-default-init-destroy-methods">preceding section</a>.
+하나의 빈에 대해 여러 라이프사이클 메커니즘이 구성되어 있고 각 메커니즘이 다른 메서드 이름으로 구성된 경우, 구성된 각 메서드는 이 참고 사항 뒤에 나열된 순서대로 실행됩니다.
+그러나 동일한 메서드 이름(예: 초기화 메서드의 경우 <code>init()</code>)이 하나 이상의 수명 주기 메커니즘에 대해 구성된 경우, 해당 메서드는 <a href="#beans-factory-lifecycle-default-init-destroy-methods">이전 섹션</a>에 설명된 대로 한 번만 실행됩니다.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Multiple lifecycle mechanisms configured for the same bean, with different
-initialization methods, are called as follows:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Methods annotated with <code>@PostConstruct</code></p>
-</li>
-<li>
-<p><code>afterPropertiesSet()</code> as defined by the <code>InitializingBean</code> callback interface</p>
-</li>
-<li>
-<p>A custom configured <code>init()</code> method</p>
-</li>
-</ol>
+<p>동일한 빈에 대해 서로 다른 초기화 메서드를 사용하여 구성된 여러 수명 주기 메커니즘은 다음과 같이 호출됩니다:
+. <code>@PostConstruct&#8217;로 주석이 달린 메서드
+. `InitializingBean</code> 콜백 인터페이스에 정의된 <code>afterPropertiesSet()`로 주석이 달린 메서드.
+. 사용자 정의 구성된 `init()</code> 메서드</p>
 </div>
 <div class="paragraph">
-<p>Destroy methods are called in the same order:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Methods annotated with <code>@PreDestroy</code></p>
-</li>
-<li>
-<p><code>destroy()</code> as defined by the <code>DisposableBean</code> callback interface</p>
-</li>
-<li>
-<p>A custom configured <code>destroy()</code> method</p>
-</li>
-</ol>
+<p>소멸 메서드는 동일한 순서로 호출됩니다:
+. <code>@PreDestroy`로 주석이 달린 메서드는 다음과 같은 순서로 호출됩니다.
+. `DisposableBean</code> 콜백 인터페이스에 정의된 <code>destroy()</code> .
+. 사용자 정의 구성된 <code>destroy()</code> 메서드</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-factory-lifecycle-processor"><a class="anchor" href="#beans-factory-lifecycle-processor"></a>Startup and Shutdown Callbacks</h3>
+<h3 id="beans-factory-lifecycle-processor"><a class="anchor" href="#beans-factory-lifecycle-processor"></a>시작 및 종료 콜백(Startup and Shutdown Callbacks)</h3>
 <div class="paragraph">
-<p>The <code>Lifecycle</code> interface defines the essential methods for any object that has its own
-lifecycle requirements (such as starting and stopping some background process):</p>
+<p><code>Lifecycle</code> 인터페이스는 자체 라이프사이클 요구 사항(예: 일부 백그라운드 프로세스 시작 및 중지)이 있는 모든 객체에 대한 필수 메서드를 정의합니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2429,11 +2349,9 @@ lifecycle requirements (such as starting and stopping some background process):<
 </div>
 </div>
 <div class="paragraph">
-<p>Any Spring-managed object may implement the <code>Lifecycle</code> interface. Then, when the
-<code>ApplicationContext</code> itself receives start and stop signals (for example, for a stop/restart
-scenario at runtime), it cascades those calls to all <code>Lifecycle</code> implementations
-defined within that context. It does this by delegating to a <code>LifecycleProcessor</code>, shown
-in the following listing:</p>
+<p>모든 Spring 관리 객체는 <code>Lifecycle</code> 인터페이스를 구현할 수 있습니다.
+그런 다음, <code>ApplicationContext</code> 자체가 시작 및 중지 신호를 수신하면(예를 들어 런타임에 중지/재시작 시나리오의 경우) 해당 컨텍스트 내에 정의된 모든 <code>Lifecycle</code> 구현으로 해당 호출을 캐스케이드합니다.
+이 작업은 다음 목록에 표시된 것처럼 <code>LifecycleProcessor</code> 에 위임하여 수행합니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2446,9 +2364,8 @@ in the following listing:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Notice that the <code>LifecycleProcessor</code> is itself an extension of the <code>Lifecycle</code>
-interface. It also adds two other methods for reacting to the context being refreshed
-and closed.</p>
+<p><code>LifecycleProcessor</code> 는 그 자체로 <code>Lifecycle</code> 인터페이스의 확장입니다.
+또한 새로고침 및 닫히는 컨텍스트에 반응하는 두 가지 다른 메서드가 추가되었습니다.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -2458,30 +2375,25 @@ and closed.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Note that the regular <code>org.springframework.context.Lifecycle</code> interface is a plain
-contract for explicit start and stop notifications and does not imply auto-startup
-at context refresh time. For fine-grained control over auto-startup and for graceful
-stopping of a specific bean (including startup and stop phases), consider implementing
-the extended <code>org.springframework.context.SmartLifecycle</code> interface instead.</p>
+<p>일반 <code>org.springframework.context.Lifecycle</code> 인터페이스는 명시적인 시작 및 중지 알림을 위한 일반 컨트랙트이며 컨텍스트 새로 고침 시간에 자동 시작을 의미하지 않는다는 점에 유의하세요.
+자동 시작을 세밀하게 제어하고 특정 빈(시작 및 중지 단계 포함)을 정상적으로 중지하려면 확장된 <code>org.springframework.context.SmartLifecycle</code> 인터페이스를 대신 구현하는 것을 고려하세요.</p>
 </div>
 <div class="paragraph">
-<p>Also, please note that stop notifications are not guaranteed to come before destruction.
-On regular shutdown, all <code>Lifecycle</code> beans first receive a stop notification before
-the general destruction callbacks are being propagated. However, on hot refresh during
-a context&#8217;s lifetime or on stopped refresh attempts, only destroy methods are called.</p>
+<p>또한, 종료 알림이 반드시 종료 전에 제공된다는 보장은 없습니다.
+정기 종료 시 모든 <code>Lifecycle</code> 빈은 일반적인 소멸 콜백이 전파되기 전에 먼저 중지 알림을 받습니다.
+그러나 컨텍스트의 수명 중 Hot Refresh 또는 중지된 Refresh 시도 시에는 소멸 메서드만 호출됩니다.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The order of startup and shutdown invocations can be important. If a &#8220;depends-on&#8221;
-relationship exists between any two objects, the dependent side starts after its
-dependency, and it stops before its dependency. However, at times, the direct
-dependencies are unknown. You may only know that objects of a certain type should start
-prior to objects of another type. In those cases, the <code>SmartLifecycle</code> interface defines
-another option, namely the <code>getPhase()</code> method as defined on its super-interface,
-<code>Phased</code>. The following listing shows the definition of the <code>Phased</code> interface:</p>
+<p>시작 및 종료 호출 순서는 중요할 수 있습니다.
+두 객체 사이에 '종속' 관계가 존재하면 종속된 쪽이 종속된 후에 시작하고 종속된 쪽이 종속되기 전에 중지합니다.
+그러나 때로는 직접적인 종속성을 알 수 없는 경우도 있습니다.
+특정 유형의 객체가 다른 유형의 객체보다 먼저 시작해야 한다는 것만 알 수 있습니다.
+이러한 경우 <code>SmartLifecycle</code> 인터페이스는 다른 옵션, 즉 상위 인터페이스인 <code>Phased</code> 에 정의된 대로 <code>getPhase()</code> 메서드를 정의합니다.
+다음 목록은 <code>Phased</code> 인터페이스의 정의를 보여줍니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2492,7 +2404,7 @@ another option, namely the <code>getPhase()</code> method as defined on its supe
 </div>
 </div>
 <div class="paragraph">
-<p>The following listing shows the definition of the <code>SmartLifecycle</code> interface:</p>
+<p>다음 목록은 <code>SmartLifecycle</code> 인터페이스의 정의를 보여줍니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2505,27 +2417,21 @@ another option, namely the <code>getPhase()</code> method as defined on its supe
 </div>
 </div>
 <div class="paragraph">
-<p>When starting, the objects with the lowest phase start first. When stopping, the
-reverse order is followed. Therefore, an object that implements <code>SmartLifecycle</code> and
-whose <code>getPhase()</code> method returns <code>Integer.MIN_VALUE</code> would be among the first to start
-and the last to stop. At the other end of the spectrum, a phase value of
-<code>Integer.MAX_VALUE</code> would indicate that the object should be started last and stopped
-first (likely because it depends on other processes to be running). When considering the
-phase value, it is also important to know that the default phase for any &#8220;normal&#8221;
-<code>Lifecycle</code> object that does not implement <code>SmartLifecycle</code> is <code>0</code>. Therefore, any
-negative phase value indicates that an object should start before those standard
-components (and stop after them). The reverse is true for any positive phase value.</p>
+<p>시작할 때는 위상이 가장 낮은 오브젝트가 먼저 시작됩니다.
+중지할 때는 그 반대 순서를 따릅니다.
+따라서 <code>SmartLifecycle</code> 을 구현하고 <code>getPhase()</code> 메서드가 <code>Integer.MIN_VALUE</code> 를 반환하는 객체는 가장 먼저 시작되고 가장 나중에 중지됩니다.
+반대로 위상 값이 <code>Integer.MAX_VALUE</code> 인 경우 개체가 가장 나중에 시작되고 가장 먼저 중지되어야 함을 나타냅니다(실행 중인 다른 프로세스에 따라 달라질 수 있기 때문일 수 있음).
+위상 값을 고려할 때, <code>SmartLifecycle`을 구현하지 않는 &#8220;일반&#8221; `Lifecycle</code> 객체의 기본 위상은 `0`이라는 점도 알아두는 것이 중요합니다.
+따라서 음수 위상 값은 객체가 해당 표준 컴포넌트보다 먼저 시작하고 그 이후에 중지해야 함을 나타냅니다.
+양수 위상 값은 그 반대입니다.</p>
 </div>
 <div class="paragraph">
-<p>The stop method defined by <code>SmartLifecycle</code> accepts a callback. Any
-implementation must invoke that callback&#8217;s <code>run()</code> method after that implementation&#8217;s
-shutdown process is complete. That enables asynchronous shutdown where necessary, since
-the default implementation of the <code>LifecycleProcessor</code> interface,
-<code>DefaultLifecycleProcessor</code>, waits up to its timeout value for the group of objects
-within each phase to invoke that callback. The default per-phase timeout is 30 seconds.
-You can override the default lifecycle processor instance by defining a bean named
-<code>lifecycleProcessor</code> within the context. If you want only to modify the timeout,
-defining the following would suffice:</p>
+<p><code>SmartLifecycle</code> 에 정의된 stop 메서드는 콜백을 받습니다.
+모든 구현은 해당 구현의 종료 프로세스가 완료된 후 해당 콜백의 <code>run()</code> 메서드를 호출해야 합니다.
+이를 통해 필요한 경우 비동기 종료가 가능해지는데, 이는 <code>LifecycleProcessor</code> 인터페이스의 기본 구현인 <code>DefaultLifecycleProcessor</code> 가 각 단계 내의 개체 그룹에 대해 해당 콜백을 호출할 때까지 해당 시간 초과 값까지 기다리기 때문입니다.
+단계별 기본 시간 제한은 30초입니다.
+컨텍스트 내에서 <code>lifecycleProcessor</code> 라는 이름의 빈을 정의하여 기본 수명 주기 프로세서 인스턴스를 재정의할 수 있습니다.
+타임아웃만 수정하려는 경우 다음을 정의하면 충분합니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2536,22 +2442,17 @@ defining the following would suffice:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>As mentioned earlier, the <code>LifecycleProcessor</code> interface defines callback methods for the
-refreshing and closing of the context as well. The latter drives the shutdown
-process as if <code>stop()</code> had been called explicitly, but it happens when the context is
-closing. The 'refresh' callback, on the other hand, enables another feature of
-<code>SmartLifecycle</code> beans. When the context is refreshed (after all objects have been
-instantiated and initialized), that callback is invoked. At that point, the
-default lifecycle processor checks the boolean value returned by each
-<code>SmartLifecycle</code> object&#8217;s <code>isAutoStartup()</code> method. If <code>true</code>, that object is
-started at that point rather than waiting for an explicit invocation of the context&#8217;s or
-its own <code>start()</code> method (unlike the context refresh, the context start does not happen
-automatically for a standard context implementation). The <code>phase</code> value and any
-&#8220;depends-on&#8221; relationships determine the startup order as described earlier.</p>
+<p>앞서 언급했듯이, <code>LifecycleProcessor</code> 인터페이스는 컨텍스트의 컨텍스트 새로 고침 및 종료에 대한 콜백 메서드를 정의합니다.
+후자는 명시적으로 호출된 것처럼 종료 프로세스를 명시적으로 호출한 것처럼 구동하지만, 컨텍스트가 닫힐 때 발생합니다. 닫을 때 발생합니다.
+반면에 'refresh' 콜백은 또 다른 기능인 <code>SmartLifecycle</code> Bean의 또 다른 기능을 활성화합니다.
+컨텍스트가 새로 고쳐질 때(모든 객체가 인스턴스화되고 인스턴스화되고 초기화된 후) 컨텍스트가 새로 고쳐지면 해당 콜백이 호출됩니다.
+이 시점에서 기본 수명 주기 프로세서는 각각의 <code>SmartLifecycle</code> 객체의 <code>isAutoStartup()</code> 메서드가 반환하는 Boolean 값을 확인합니다.
+<code>true</code> 이면 해당 객체는 컨텍스트의 명시적 호출을 기다리지 않고 그 시점에서 시작되거나 자체 <code>start()</code> 메서드의 명시적 호출을 기다리지 않고 해당 객체가 시작됩니다(컨텍스트 새로 고침과 달리, 컨텍스트 시작은 표준 컨텍스트 구현에서는 자동으로 발생하지 않습니다).
+<code>phase</code> 값과 모든 &#8220;depends-on&#8221; 관계에 따라 앞서 설명한 대로 시작 순서가 결정됩니다.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-factory-shutdown"><a class="anchor" href="#beans-factory-shutdown"></a>Shutting Down the Spring IoC Container Gracefully in Non-Web Applications</h3>
+<h3 id="beans-factory-shutdown"><a class="anchor" href="#beans-factory-shutdown"></a>웹이 아닌 애플리케이션에서 Spring IoC 컨테이너를 우아하게 종료하기</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -2560,24 +2461,20 @@ automatically for a standard context implementation). The <code>phase</code> val
 </td>
 <td class="content">
 <div class="paragraph">
-<p>This section applies only to non-web applications. Spring&#8217;s web-based
-<code>ApplicationContext</code> implementations already have code in place to gracefully shut down
-the Spring IoC container when the relevant web application is shut down.</p>
+<p>이 섹션은 웹 애플리케이션이 아닌 경우에만 적용됩니다.
+Spring의 웹 기반 <code>ApplicationContext</code> 구현에는 관련 웹 애플리케이션이 종료될 때 Spring IoC 컨테이너를 정상적으로 종료하는 코드가 이미 마련되어 있습니다.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>If you use Spring&#8217;s IoC container in a non-web application environment (for
-example, in a rich client desktop environment), register a shutdown hook with the
-JVM. Doing so ensures a graceful shutdown and calls the relevant destroy methods on your
-singleton beans so that all resources are released. You must still configure
-and implement these destroy callbacks correctly.</p>
+<p>웹 애플리케이션이 아닌 환경(예: 리치 클라이언트 데스크톱 환경)에서 Spring의 IoC 컨테이너를 사용하는 경우, 종료 훅을 JVM에 등록하세요.
+이렇게 하면 정상적으로 종료되고 싱글톤 빈에서 관련 삭제 메서드를 호출하여 모든 리소스가 해제됩니다.
+이러한 종료 콜백을 올바르게 구성하고 구현해야 합니다.</p>
 </div>
 <div class="paragraph">
-<p>To register a shutdown hook, call the <code>registerShutdownHook()</code> method that is
-declared on the <code>ConfigurableApplicationContext</code> interface, as the following example shows:</p>
+<p>종료 훅을 등록하려면 다음 예제에서와 같이 <code>ConfigurableApplicationContext</code> 인터페이스에 선언된 <code>registerShutdownHook()</code> 메서드를 호출합니다:</p>
 </div>
 <div id="_tabs_6" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2635,40 +2532,27 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 </div>
 </div>
 <div class="sect2">
-<h3 id="beans-factory-thread-safety"><a class="anchor" href="#beans-factory-thread-safety"></a>Thread Safety and Visibility</h3>
+<h3 id="beans-factory-thread-safety"><a class="anchor" href="#beans-factory-thread-safety"></a>스레드 안전성 및 가시성(Thread Safety and Visibility)</h3>
 <div class="paragraph">
-<p>The Spring core container publishes created singleton instances in a thread-safe manner,
-guarding access through a singleton lock and guaranteeing visibility in other threads.</p>
+<p>Spring 코어 컨테이너는 생성된 싱글톤 인스턴스를 스레드 안전 방식으로 게시하여 싱글톤 잠금을 통해 액세스를 보호하고 다른 스레드에서 가시성을 보장합니다.</p>
 </div>
 <div class="paragraph">
-<p>As a consequence, application-provided bean classes do not have to be concerned about the
-visibility of their initialization state. Regular configuration fields do not have to be
-marked as <code>volatile</code> as long as they are only mutated during the initialization phase,
-providing visibility guarantees similar to <code>final</code> even for setter-based configuration
-state that is mutable during that initial phase. If such fields get changed after the
-bean creation phase and its subsequent initial publication, they need to be declared as
-<code>volatile</code> or guarded by a common lock whenever accessed.</p>
+<p>결과적으로 애플리케이션 제공 Bean 클래스는 초기화 상태의 가시성에 대해 걱정할 필요가 없습니다.
+일반 구성 필드는 초기화 단계에서만 변경되는 한 <code>volatile(휘발성)</code> 으로 표시할 필요가 없으며, 초기 단계에서 변경 가능한 세터 기반 구성 상태의 경우에도 <code>final(최종)</code> 과 유사한 가시성을 보장합니다.
+이러한 필드가 빈 생성 단계와 그 이후의 초기 게시 이후에 변경되는 경우, 해당 필드는 <code>volatile(휘발성)</code> 으로 선언하거나 액세스할 때마다 공통 잠금으로 보호해야 합니다.</p>
 </div>
 <div class="paragraph">
-<p>Note that concurrent access to such configuration state in singleton bean instances,
-e.g. for controller instances or repository instances, is perfectly thread-safe after
-such safe initial publication from the container side. This includes common singleton
-<code>FactoryBean</code> instances which are processed within the general singleton lock as well.</p>
+<p>싱글톤 빈 인스턴스에서 이러한 구성 상태에 대한 동시 액세스는, 예를 들어
+컨트롤러 인스턴스나 리포지토리 인스턴스의 경우, 컨테이너 측에서 이러한 안전한 초기 게시 후에는 완벽하게 스레드 안전합니다.
+여기에는 일반 싱글톤 잠금 내에서 처리되는 일반 싱글톤 <code>FactoryBean</code> 인스턴스도 포함됩니다.</p>
 </div>
 <div class="paragraph">
-<p>For destruction callbacks, the configuration state remains thread-safe but any runtime
-state accumulated between initialization and destruction should be kept in thread-safe
-structures (or in <code>volatile</code> fields for simple cases) as per common Java guidelines.</p>
+<p>소멸 콜백의 경우, 구성 상태는 스레드 안전하지만 초기화와 소멸 사이에 누적된 모든 런타임 상태는 일반적인 Java 지침에 따라 스레드 안전 구조(또는 간단한 경우 <code>volatile</code> 필드)에 보관해야 합니다.</p>
 </div>
 <div class="paragraph">
-<p>Deeper <code>Lifecycle</code> integration as shown above involves runtime-mutable state such as
-a <code>runnable</code> field which will have to be declared as <code>volatile</code>. While the common
-lifecycle callbacks follow a certain order, e.g. a start callback is guaranteed to
-only happen after full initialization and a stop callback only after an initial start,
-there is a special case with the common stop before destroy arrangement: It is strongly
-recommended that the internal state in any such bean also allows for an immediate
-destroy callback without a preceding stop since this may happen during an extraordinary
-shutdown after a cancelled bootstrap or in case of a stop timeout caused by another bean.</p>
+<p>위와 같이 보다 심층적인 <code>Lifecycle</code> 통합에는 <code>runnable(실행가능)</code> 필드와 같은 런타임 변경 가능한 상태가 포함되며, 이는 `volatile(휘발성)`으로 선언되어야 합니다.
+일반적인 라이프사이클 콜백은 특정 순서를 따르지만, 예를 들어
+시작 콜백은 전체 초기화 후에만 발생하고 중지 콜백은 초기 시작 후에만 발생하도록 보장되지만, 일반적인 소멸 전 중지 배열에는 특별한 경우가 있습니다: 이러한 빈의 내부 상태는 취소된 부트스트랩 후 특별한 종료 중에 발생하거나 다른 빈으로 인한 중지 시간 초과가 발생할 수 있으므로 선행 중지 없이 즉각적인 파괴 콜백을 허용할 것을 강력히 권장합니다.</p>
 </div>
 </div>
 </div>
@@ -2677,10 +2561,8 @@ shutdown after a cancelled bootstrap or in case of a stop timeout caused by anot
 <h2 id="beans-factory-aware"><a class="anchor" href="#beans-factory-aware"></a><code>ApplicationContextAware</code> and <code>BeanNameAware</code></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When an <code>ApplicationContext</code> creates an object instance that implements the
-<code>org.springframework.context.ApplicationContextAware</code> interface, the instance is provided
-with a reference to that <code>ApplicationContext</code>. The following listing shows the definition
-of the <code>ApplicationContextAware</code> interface:</p>
+<p>응용 프로그램 컨텍스트`가 <code>org.springframework.context.ApplicationContextAware</code> 인터페이스를 구현하는 객체 인스턴스를 생성하면, 인스턴스에는 해당 <code>ApplicationContext</code> 에 대한 참조가 제공됩니다.
+다음 목록은 <code>ApplicationContextAware</code> 인터페이스의 정의를 보여줍니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2691,34 +2573,23 @@ of the <code>ApplicationContextAware</code> interface:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Thus, beans can programmatically manipulate the <code>ApplicationContext</code> that created them,
-through the <code>ApplicationContext</code> interface or by casting the reference to a known
-subclass of this interface (such as <code>ConfigurableApplicationContext</code>, which exposes
-additional functionality). One use would be the programmatic retrieval of other beans.
-Sometimes this capability is useful. However, in general, you should avoid it, because
-it couples the code to Spring and does not follow the Inversion of Control style,
-where collaborators are provided to beans as properties. Other methods of the
-<code>ApplicationContext</code> provide access to file resources, publishing application events,
-and accessing a <code>MessageSource</code>. These additional features are described in
-<a href="context-introduction.html" class="xref page">Additional Capabilities of the <code>ApplicationContext</code></a>.</p>
+<p>따라서, Bean은 <code>ApplicationContext</code> 인터페이스를 통해 또는 이 인터페이스의 알려진 하위 클래스(예: 추가 기능을 노출하는 <code>ConfigurableApplicationContext</code>)에 대한 참조를 캐스팅하여 자신을 생성한 <code>ApplicationContext</code> 를 프로그래밍적으로 조작할 수 있습니다.
+한 가지 용도는 다른 빈을 프로그래밍 방식으로 검색하는 것입니다.
+때때로 이 기능이 유용할 수 있습니다.
+그러나 일반적으로는 코드를 Spring에 결합하고 공동 작업자가 빈에 속성으로 제공되는 제어의 역전 스타일을 따르지 않기 때문에 피해야 합니다.
+<code>ApplicationContext</code> 의 다른 메서드는 파일 리소스에 대한 액세스, 애플리케이션 이벤트 게시 및 <code>MessageSource</code> 에 대한 액세스를 제공합니다.
+이러한 추가 기능에 대한 설명은 <a href="context-introduction.html" class="xref page"><code>ApplicationContext</code> 의 추가 기능</a>에 나와 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>Autowiring is another alternative to obtain a reference to the
-<code>ApplicationContext</code>. The <em>traditional</em> <code>constructor</code> and <code>byType</code> autowiring modes
-(as described in <a href="dependencies/factory-autowire.html" class="xref page">Autowiring Collaborators</a>) can provide a dependency of type
-<code>ApplicationContext</code> for a constructor argument or a setter method parameter,
-respectively. For more flexibility, including the ability to autowire fields and
-multiple parameter methods, use the annotation-based autowiring features. If you do,
-the <code>ApplicationContext</code> is autowired into a field, constructor argument, or method
-parameter that expects the <code>ApplicationContext</code> type if the field, constructor, or
-method in question carries the <code>@Autowired</code> annotation. For more information, see
-<a href="annotation-config/autowired.html" class="xref page">Using <code>@Autowired</code></a>.</p>
+<p>자동 배선은 <code>ApplicationContext</code> 에 대한 참조를 얻기 위한 또 다른 대안입니다.
+기존의 <code>constructor</code> 및 <code>byType</code> 자동 배선 모드(<a href="dependencies/factory-autowire.html" class="xref page">Autowiring Collaborators</a>에 설명된 대로)는 각각 생성자 인수 또는 설정자 메서드 파라미터에 대해 <code>ApplicationContext</code> 유형의 의존성을 제공할 수 있습니다.
+필드 및 여러 매개변수 메서드를 자동 와이어링하는 기능 등 더 많은 유연성을 원한다면 어노테이션 기반 Autowiring 기능을 사용하세요.
+이 경우 해당 필드, 생성자 또는 메서드에 <code>@Autowired</code> 어노테이션이 있는 경우 <code>ApplicationContext</code> 유형이 예상되는 필드, 생성자 인수 또는 메서드 매개변수에 <code>ApplicationContext`가 자동 와이어링됩니다.
+자세한 내용은 <a href="annotation-config/autowired.html" class="xref page"></code>@Autowired` 사용</a>을 참조하세요.</p>
 </div>
 <div class="paragraph">
-<p>When an <code>ApplicationContext</code> creates a class that implements the
-<code>org.springframework.beans.factory.BeanNameAware</code> interface, the class is provided with
-a reference to the name defined in its associated object definition. The following listing
-shows the definition of the BeanNameAware interface:</p>
+<p><code>ApplicationContext</code> 가 <code>org.springframework.beans.factory.BeanNameAware</code> 인터페이스를 구현하는 클래스를 생성하면 해당 클래스에는 연결된 객체 정의에 정의된 이름에 대한 참조가 제공됩니다.
+다음 목록은 BeanNameAware 인터페이스의 정의를 보여줍니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2729,9 +2600,7 @@ shows the definition of the BeanNameAware interface:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The callback is invoked after population of normal bean properties but before an
-initialization callback such as <code>InitializingBean.afterPropertiesSet()</code> or a custom
-init-method.</p>
+<p>이 콜백은 일반 Bean 프로퍼티를 채운 후 <code>InitializingBean.afterPropertiesSet()</code> 와 같은 초기화 콜백이나 사용자 지정 init-method 이전에 호출됩니다.</p>
 </div>
 </div>
 </div>
@@ -2739,10 +2608,9 @@ init-method.</p>
 <h2 id="aware-list"><a class="anchor" href="#aware-list"></a>Other <code>Aware</code> Interfaces</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Besides <code>ApplicationContextAware</code> and <code>BeanNameAware</code> (discussed <a href="#beans-factory-aware">earlier</a>),
-Spring offers a wide range of <code>Aware</code> callback interfaces that let beans indicate to the container
-that they require a certain infrastructure dependency. As a general rule, the name indicates the
-dependency type. The following table summarizes the most important <code>Aware</code> interfaces:</p>
+<p><code>ApplicationContextAware</code> 및 <code>BeanNameAware</code>(<a href="#beans-factory-aware">이전</a> 참조) 외에도 Spring은 Bean이 특정 인프라 종속성이 필요함을 컨테이너에 표시할 수 있는 광범위한 <code>Aware</code> 콜백 인터페이스를 제공합니다.
+일반적으로 이름은 종속성 유형을 나타냅니다.
+다음 표에는 가장 중요한 <code>Aware</code> 인터페이스가 요약되어 있습니다:</p>
 </div>
 <table id="beans-factory-nature-aware-list" class="tableblock frame-all grid-all stripes-odd stretch">
 <caption class="title">Table 1. Aware interfaces</caption>
@@ -2820,9 +2688,8 @@ dependency type. The following table summarizes the most important <code>Aware</
 </tbody>
 </table>
 <div class="paragraph">
-<p>Note again that using these interfaces ties your code to the Spring API and does not
-follow the Inversion of Control style. As a result, we recommend them for infrastructure
-beans that require programmatic access to the container.</p>
+<p>이러한 인터페이스를 사용하면 코드가 Spring API에 연결되며 제어의 반전 스타일을 따르지 않는다는 점에 다시 한 번 유의하세요.
+따라서 컨테이너에 대한 프로그래밍 방식의 액세스가 필요한 인프라 Bean에 사용하는 것이 좋습니다.</p>
 </div>
 </div>
 </div>
