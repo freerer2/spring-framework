@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Container Extension Points :: Spring Framework Reference</title>
+    <title>Container Extension Points(반글) :: Spring Framework Reference</title>
     <link rel="prev" href="child-bean-definitions.html">
     <link rel="next" href="annotation-config.html">
     <meta name="generator" content="Antora 3.2.0-alpha.2">
@@ -334,10 +334,10 @@
     <a class="nav-link" href="factory-nature.html">Customizing the Nature of a Bean(한글)</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="child-bean-definitions.html">Bean Definition Inheritance</a>
+    <a class="nav-link" href="child-bean-definitions.html">Bean Definition Inheritance(한글)</a>
   </li>
   <li class="nav-item is-current-page" data-depth="3">
-    <a class="nav-link" href="factory-extension.html">Container Extension Points</a>
+    <a class="nav-link" href="factory-extension.html">Container Extension Points(반글)</a>
   </li>
   <li class="nav-item" data-depth="3">
     <button class="nav-item-toggle"></button>
@@ -1792,7 +1792,7 @@
   <div class="content">
     <div
       class="toc"
-      data-title="Container Extension Points"
+      data-title="Container Extension Points(반글)"
       data-levels="2"
     >
       <div class="toc-menu"></div>
@@ -1839,39 +1839,32 @@
     <li><a href="../../index.html">Spring Framework</a></li>
     <li><a href="../../core.html">Core Technologies(한글)</a></li>
     <li><a href="../beans.html">IoC Container(한글)</a></li>
-    <li><a href="factory-extension.html">Container Extension Points</a></li>
+    <li><a href="factory-extension.html">Container Extension Points(반글)</a></li>
   </ul>
 </nav>
-<h1 id="page-title" class="page">Container Extension Points</h1>
+<h1 id="page-title" class="page">Container Extension Points(반글)</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Typically, an application developer does not need to subclass <code>ApplicationContext</code>
-implementation classes. Instead, the Spring IoC container can be extended by plugging in
-implementations of special integration interfaces. The next few sections describe these
-integration interfaces.</p>
+<p>일반적으로 애플리케이션 개발자는 <code>ApplicationContext</code> 구현 클래스를 서브클래스화할 필요가 없습니다.
+대신 특수 통합 인터페이스의 구현을 연결하여 Spring IoC 컨테이너를 확장할 수 있습니다.
+다음 몇 섹션에서는 이러한 통합 인터페이스에 대해 설명합니다.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-factory-extension-bpp"><a class="anchor" href="#beans-factory-extension-bpp"></a>Customizing Beans by Using a <code>BeanPostProcessor</code></h2>
+<h2 id="beans-factory-extension-bpp"><a class="anchor" href="#beans-factory-extension-bpp"></a>BeanPostProcessor을 사용한 Bean 커스터마이징(Customizing Beans by Using a <code>BeanPostProcessor</code>)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>BeanPostProcessor</code> interface defines callback methods that you can implement to
-provide your own (or override the container&#8217;s default) instantiation logic, dependency
-resolution logic, and so forth. If you want to implement some custom logic after the
-Spring container finishes instantiating, configuring, and initializing a bean, you can
-plug in one or more custom <code>BeanPostProcessor</code> implementations.</p>
+<p><code>BeanPostProcessor</code> 인터페이스는 자체 인스턴스화 로직, 의존성 해결 로직 등을 제공하기 위해(또는 컨테이너의 기본값을 재정의하기 위해) 구현할 수 있는 콜백 메서드를 정의합니다.
+Spring 컨테이너가 Bean의 인스턴스화, 구성 및 초기화를 마친 후 사용자 정의 로직을 구현하려는 경우 하나 이상의 사용자 정의 <code>BeanPostProcessor</code> 구현을 플러그인할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>You can configure multiple <code>BeanPostProcessor</code> instances, and you can control the order
-in which these <code>BeanPostProcessor</code> instances run by setting the <code>order</code> property.
-You can set this property only if the <code>BeanPostProcessor</code> implements the <code>Ordered</code>
-interface. If you write your own <code>BeanPostProcessor</code>, you should consider implementing
-the <code>Ordered</code> interface, too. For further details, see the javadoc of the
-<a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/beans/factory/config/BeanPostProcessor.html"><code>BeanPostProcessor</code></a>
-and <a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/core/Ordered.html"><code>Ordered</code></a> interfaces. See also the note on
-<a href="#beans-factory-programmatically-registering-beanpostprocessors">programmatic registration of <code>BeanPostProcessor</code> instances</a>.</p>
+<p>여러 개의 <code>BeanPostProcessor</code> 인스턴스를 구성할 수 있으며, <code>order</code> 속성을 설정하여 이러한 <code>BeanPostProcessor</code> 인스턴스가 실행되는 순서를 제어할 수 있습니다.
+이 property는 <code>BeanPostProcessor</code> 가 <code>Ordered</code> 인터페이스를 구현하는 경우에만 설정할 수 있습니다.
+자체 <code>BeanPostProcessor</code> 를 작성하는 경우 <code>Ordered</code> 인터페이스도 구현하는 것을 고려해야 합니다.
+자세한 내용은 <a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/beans/factory/config/BeanPostProcessor.html"><code>BeanPostProcessor</code></a> 및 <a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/core/Ordered.html"><code>Ordered</code></a> 인터페이스의 javadoc을 참조하세요.
+<a href="#beans-factory-programmatically-registering-beanpostprocessors"><code>BeanPostProcessor</code> 인스턴스의 프로그래밍 등록</a>에 대한 참고 사항도 참조하세요.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1881,53 +1874,38 @@ and <a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc
 </td>
 <td class="content">
 <div class="paragraph">
-<p><code>BeanPostProcessor</code> instances operate on bean (or object) instances. That is,
-the Spring IoC container instantiates a bean instance and then <code>BeanPostProcessor</code>
-instances do their work.</p>
+<p><code>BeanPostProcessor</code> 인스턴스는 Bean(또는 객체) 인스턴스에서 작동합니다.
+즉, Spring IoC 컨테이너가 Bean 인스턴스를 인스턴스화한 다음 <code>BeanPostProcessor</code> 인스턴스가 작업을 수행합니다.</p>
 </div>
 <div class="paragraph">
-<p><code>BeanPostProcessor</code> instances are scoped per-container. This is relevant only if you
-use container hierarchies. If you define a <code>BeanPostProcessor</code> in one container,
-it post-processes only the beans in that container. In other words, beans that are
-defined in one container are not post-processed by a <code>BeanPostProcessor</code> defined in
-another container, even if both containers are part of the same hierarchy.</p>
+<p><code>BeanPostProcessor</code> 인스턴스는 컨테이너별로 Scope가 지정됩니다.
+이는 컨테이너 계층 구조를 사용하는 경우에만 관련이 있습니다.
+하나의 컨테이너에 <code>BeanPostProcessor</code> 를 정의하면 해당 컨테이너에 있는 Bean만 사후 처리합니다.
+즉, 두 컨테이너가 동일한 계층에 속해 있더라도 한 컨테이너에 정의된 Bean은 다른 컨테이너에 정의된 <code>BeanPostProcessor</code> 에 의해 사후 처리되지 않습니다.</p>
 </div>
 <div class="paragraph">
-<p>To change the actual bean definition (that is, the blueprint that defines the bean),
-you instead need to use a <code>BeanFactoryPostProcessor</code>, as described in
-<a href="#beans-factory-extension-factory-postprocessors">Customizing Configuration Metadata with a <code>BeanFactoryPostProcessor</code></a>.</p>
+<p>실제 Bean 정의(즉, Bean을 정의하는 블루프린트)를 변경하려면 <a href="#beans-factory-extension-factory-post-processors"><code>BeanFactoryPostProcessor</code> 로 구성 메타데이터 사용자 지정</a>에 설명된 대로 <code>BeanFactoryPostProcessor</code> 를 대신 사용해야 합니다.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The <code>org.springframework.beans.factory.config.BeanPostProcessor</code> interface consists of
-exactly two callback methods. When such a class is registered as a post-processor with
-the container, for each bean instance that is created by the container, the
-post-processor gets a callback from the container both before container
-initialization methods (such as <code>InitializingBean.afterPropertiesSet()</code> or any
-declared <code>init</code> method) are called, and after any bean initialization callbacks.
-The post-processor can take any action with the bean instance, including ignoring the
-callback completely. A bean post-processor typically checks for callback interfaces,
-or it may wrap a bean with a proxy. Some Spring AOP infrastructure classes are
-implemented as bean post-processors in order to provide proxy-wrapping logic.</p>
+<p><code>org.springframework.beans.factory.config.BeanPostProcessor</code> 인터페이스는 정확히 두 개의 콜백 메서드로 구성됩니다.
+이러한 클래스가 컨테이너에 포스트 프로세서로 등록되면 컨테이너에 의해 생성되는 각 Bean 인스턴스에 대해 포스트 프로세서는 컨테이너 초기화 메서드(예: <code>InitializingBean.afterPropertiesSet()</code> 또는 선언된 모든 <code>init</code> 메서드)가 호출되기 전과 모든 Bean 초기화 콜백 후에 모두 컨테이너로부터 콜백을 가져옵니다.
+포스트 프로세서는 콜백을 완전히 무시하는 것을 포함하여 Bean 인스턴스에 대해 모든 작업을 수행할 수 있습니다.
+Bean 사후 프로세서는 일반적으로 콜백 인터페이스를 확인하거나 프록시로 Bean을 래핑할 수 있습니다.
+일부 Spring AOP 인프라 클래스는 프록시 래핑 로직을 제공하기 위해 Bean 포스트 프로세서로 구현됩니다.</p>
 </div>
 <div class="paragraph">
-<p>An <code>ApplicationContext</code> automatically detects any beans that are defined in the
-configuration metadata that implement the <code>BeanPostProcessor</code> interface. The
-<code>ApplicationContext</code> registers these beans as post-processors so that they can be called
-later, upon bean creation. Bean post-processors can be deployed in the container in the
-same fashion as any other beans.</p>
+<p><code>ApplicationContext</code> 는 자동으로 <code>BeanPostProcessor</code> 인터페이스를 구현하는 구성 메타데이터에 정의된 모든 빈을 자동으로 감지합니다.
+그리고 ApplicationContext` 는 이러한 Bean을 포스트 프로세서(post-processors)로 등록하여 나중에 Bean이 생성될 때 호출할 수 있도록 포스트 프로세서로 등록합니다.
+Bean 포스트 프로세서는 컨테이너에 다른 Bean과 동일한 방식으로 컨테이너에 배포할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>Note that, when declaring a <code>BeanPostProcessor</code> by using an <code>@Bean</code> factory method on a
-configuration class, the return type of the factory method should be the implementation
-class itself or at least the <code>org.springframework.beans.factory.config.BeanPostProcessor</code>
-interface, clearly indicating the post-processor nature of that bean. Otherwise, the
-<code>ApplicationContext</code> cannot autodetect it by type before fully creating it.
-Since a <code>BeanPostProcessor</code> needs to be instantiated early in order to apply to the
-initialization of other beans in the context, this early type detection is critical.</p>
+<p>구성 클래스에서 <code>@Bean</code> 팩토리 메서드를 사용하여 <code>BeanPostProcessor`를 선언할 때 주의하십시오. 구성 클래스에서 팩토리 메서드의 반환 유형은 구현된 클래스 자체 또는 최소한 `org.springframework.beans.factory.config.BeanPostProcessor</code> 인터페이스여야 합니다. 인터페이스여야 하며, 이는 해당 Bean의 포스트프로세서 특성을 명확하게 나타냅니다.
+그렇지 않으면 <code>ApplicationContext`가 완전히 생성되기 전에 유형별로 자동 감지할 수 없습니다.
+`BeanPostProcessor</code> 는 다른 Bean의 초기화에 적용하기 위해 조기에 인스턴스화되어야 하므로 초기화해야 하므로 이 초기 유형 감지는 매우 중요합니다.</p>
 </div>
 <div id="beans-factory-programmatically-registering-beanpostprocessors" class="admonitionblock note">
 <table>
@@ -2489,7 +2467,7 @@ product of the <code>FactoryBean</code>, whereas invoking <code>getBean("&amp;my
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="child-bean-definitions.html">Bean Definition Inheritance</a></span>
+  <span class="prev"><a href="child-bean-definitions.html">Bean Definition Inheritance(한글)</a></span>
   <span class="next"><a href="annotation-config.html">Annotation-based Container Configuration</a></span>
 </nav>
 </article>

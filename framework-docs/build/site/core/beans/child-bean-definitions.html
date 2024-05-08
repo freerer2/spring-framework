@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Bean Definition Inheritance :: Spring Framework Reference</title>
+    <title>Bean Definition Inheritance(한글) :: Spring Framework Reference</title>
     <link rel="prev" href="factory-nature.html">
     <link rel="next" href="factory-extension.html">
     <meta name="generator" content="Antora 3.2.0-alpha.2">
@@ -334,10 +334,10 @@
     <a class="nav-link" href="factory-nature.html">Customizing the Nature of a Bean(한글)</a>
   </li>
   <li class="nav-item is-current-page" data-depth="3">
-    <a class="nav-link" href="child-bean-definitions.html">Bean Definition Inheritance</a>
+    <a class="nav-link" href="child-bean-definitions.html">Bean Definition Inheritance(한글)</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="factory-extension.html">Container Extension Points</a>
+    <a class="nav-link" href="factory-extension.html">Container Extension Points(반글)</a>
   </li>
   <li class="nav-item" data-depth="3">
     <button class="nav-item-toggle"></button>
@@ -1792,7 +1792,7 @@
   <div class="content">
     <div
       class="toc"
-      data-title="Bean Definition Inheritance"
+      data-title="Bean Definition Inheritance(한글)"
       data-levels="2"
     >
       <div class="toc-menu"></div>
@@ -1839,26 +1839,23 @@
     <li><a href="../../index.html">Spring Framework</a></li>
     <li><a href="../../core.html">Core Technologies(한글)</a></li>
     <li><a href="../beans.html">IoC Container(한글)</a></li>
-    <li><a href="child-bean-definitions.html">Bean Definition Inheritance</a></li>
+    <li><a href="child-bean-definitions.html">Bean Definition Inheritance(한글)</a></li>
   </ul>
 </nav>
-<h1 id="page-title" class="page">Bean Definition Inheritance</h1>
+<h1 id="page-title" class="page">Bean Definition Inheritance(한글)</h1>
 <div class="paragraph">
-<p>A bean definition can contain a lot of configuration information, including constructor
-arguments, property values, and container-specific information, such as the initialization
-method, a static factory method name, and so on. A child bean definition inherits
-configuration data from a parent definition. The child definition can override some
-values or add others as needed. Using parent and child bean definitions can save a lot
-of typing. Effectively, this is a form of templating.</p>
+<p>Bean 정의에는 생성자 인수, property 값, 초기화 방법, 정적 팩토리 메서드 이름과 같은 컨테이너별 정보 등 많은 구성 정보가 포함될 수 있습니다.
+자식 Bean 정의는 부모 정의에서 구성 데이터를 상속합니다.
+자식 정의는 필요에 따라 일부 값을 재정의하거나 다른 값을 추가할 수 있습니다.
+부모 및 자식 빈 정의를 사용하면 많은 타이핑을 절약할 수 있습니다.
+사실상 이것은 템플릿의 한 형태입니다.</p>
 </div>
 <div class="paragraph">
-<p>If you work with an <code>ApplicationContext</code> interface programmatically, child bean
-definitions are represented by the <code>ChildBeanDefinition</code> class. Most users do not work
-with them on this level. Instead, they configure bean definitions declaratively in a class
-such as the <code>ClassPathXmlApplicationContext</code>. When you use XML-based configuration
-metadata, you can indicate a child bean definition by using the <code>parent</code> attribute,
-specifying the parent bean as the value of this attribute. The following example shows how
-to do so:</p>
+<p>프로그래밍 방식으로 <code>ApplicationContext</code> 인터페이스로 작업하는 경우, 자식 빈 정의는 <code>ChildBeanDefinition</code> 클래스로 표현됩니다.
+대부분의 사용자는 이 수준에서 작업하지 않습니다.
+대신, <code>ClassPathXmlApplicationContext</code> 와 같은 클래스에서 선언적으로 빈 정의를 구성합니다.
+XML 기반 구성 메타데이터를 사용하는 경우 <code>parent</code> 속성을 사용하여 부모 빈을 이 속성의 값으로 지정하여 자식 빈 정의를 나타낼 수 있습니다.
+다음 예제는 그 방법을 보여줍니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1885,25 +1882,19 @@ to do so:</p>
 </table>
 </div>
 <div class="paragraph">
-<p>A child bean definition uses the bean class from the parent definition if none is
-specified but can also override it. In the latter case, the child bean class must be
-compatible with the parent (that is, it must accept the parent&#8217;s property values).</p>
+<p>자식 Bean 정의는 부모 정의가 지정되지 않은 경우 부모 정의의 Bean 클래스를 사용하지만 지정되지 않은 경우 부모 정의의 Bean 클래스를 사용하지만 재정의할 수도 있습니다.
+후자의 경우, 자식 Bean 클래스는 부모와 와 호환되어야 합니다(즉, 부모의 속성 값을 허용해야 합니다).</p>
 </div>
 <div class="paragraph">
-<p>A child bean definition inherits scope, constructor argument values, property values, and
-method overrides from the parent, with the option to add new values. Any scope, initialization
-method, destroy method, or <code>static</code> factory method settings that you specify
-override the corresponding parent settings.</p>
+<p>자식 Bean 정의는 범위, 생성자 인수 값, property 값 및 메서드 오버라이드와 함께 새로운 값을 추가할 수 있는 옵션을 부모로부터 상속받습니다.
+모든 범위, 초기화 메서드, 파괴 메서드 또는 지정한 'static' 팩토리 메서드 설정은 해당 부모 설정을 재정의합니다.</p>
 </div>
 <div class="paragraph">
-<p>The remaining settings are always taken from the child definition: depends on,
-autowire mode, dependency check, singleton, and lazy init.</p>
+<p>나머지 설정은 항상 자식 정의에서 가져옵니다, Autowiring 모드, 의존성 검사, 싱글톤 및 지연 초기화.</p>
 </div>
 <div class="paragraph">
-<p>The preceding example explicitly marks the parent bean definition as abstract by using
-the <code>abstract</code> attribute. If the parent definition does not specify a class, explicitly
-marking the parent bean definition as <code>abstract</code> is required, as the following example
-shows:</p>
+<p>앞의 예에서는 <code>abstract</code> 속성을 사용하여 부모 Bean 정의를 추상적으로 명시적으로 표시합니다.
+부모 정의에 클래스가 지정되지 않은 경우 다음 예제에서와 같이 부모 Bean 정의를 명시적으로 <code>abstract</code> 으로 표시해야 합니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1920,14 +1911,10 @@ shows:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The parent bean cannot be instantiated on its own because it is incomplete, and it is
-also explicitly marked as <code>abstract</code>. When a definition is <code>abstract</code>, it is
-usable only as a pure template bean definition that serves as a parent definition for
-child definitions. Trying to use such an <code>abstract</code> parent bean on its own, by referring
-to it as a ref property of another bean or doing an explicit <code>getBean()</code> call with the
-parent bean ID returns an error. Similarly, the container&#8217;s internal
-<code>preInstantiateSingletons()</code> method ignores bean definitions that are defined as
-abstract.</p>
+<p>부모 Bean은 불완전하기 때문에 자체적으로 인스턴스화할 수 없으며, 명시적으로 <code>abstract</code> 으로 표시됩니다.
+정의가 <code>abstract</code> 인 경우, 자식 정의의 부모 정의 역할을 하는 순수한 템플릿 Bean 정의로만 사용할 수 있습니다.
+이러한 <code>abstract</code> 부모 Bean을 다른 Bean의 ref property로 참조하거나 부모 Bean ID로 명시적인 <code>getBean()</code> 호출을 수행하여 자체적으로 사용하려고 하면 오류가 반환됩니다.
+마찬가지로 컨테이너의 내부 <code>preInstantiateSingletons()</code> 메서드는 추상적으로 정의된 Bean 정의를 무시합니다.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1936,18 +1923,15 @@ abstract.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<code>ApplicationContext</code> pre-instantiates all singletons by default. Therefore, it is
-important (at least for singleton beans) that if you have a (parent) bean definition
-which you intend to use only as a template, and this definition specifies a class, you
-must make sure to set the <em>abstract</em> attribute to <em>true</em>, otherwise the application
-context will actually (attempt to) pre-instantiate the <code>abstract</code> bean.
+<code>ApplicationContext</code> 는 기본적으로 모든 싱글톤을 사전 인스턴스화합니다.
+따라서 (적어도 싱글톤 Bean의 경우) 템플릿으로만 사용하려는 (parent) Bean 정의가 있고 이 정의가 클래스를 지정하는 경우 <em>abstract</em> 속성을 <em>true</em>로 설정해야 합니다. 그렇지 않으면 애플리케이션 컨텍스트가 실제로 <code>abstract</code> Bean을 사전 인스턴스화하려고(시도하려고) 할 것입니다.
 </td>
 </tr>
 </table>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="factory-nature.html">Customizing the Nature of a Bean(한글)</a></span>
-  <span class="next"><a href="factory-extension.html">Container Extension Points</a></span>
+  <span class="next"><a href="factory-extension.html">Container Extension Points(반글)</a></span>
 </nav>
 </article>
   </div>
