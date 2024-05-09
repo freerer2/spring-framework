@@ -1,48 +1,31 @@
 [[beans-annotation-config]]
-= Annotation-based Container Configuration
+= Annotation-based Container Configuration(한글)
 
-.Are annotations better than XML for configuring Spring?
+.Spring을 구성하는 데 XML보다 어노테이션이 더 낫나요?
 ****
-The introduction of annotation-based configuration raised the question of whether this
-approach is "`better`" than XML. The short answer is "`it depends.`" The long answer is
-that each approach has its pros and cons, and, usually, it is up to the developer to
-decide which strategy suits them better. Due to the way they are defined, annotations
-provide a lot of context in their declaration, leading to shorter and more concise
-configuration. However, XML excels at wiring up components without touching their source
-code or recompiling them. Some developers prefer having the wiring close to the source
-while others argue that annotated classes are no longer POJOs and, furthermore, that the
-configuration becomes decentralized and harder to control.
+어노테이션 기반 구성이 도입되면서 이 접근 방식이 XML보다 '더 나은' 방식인지에 대한 의문이 제기되었습니다.
+짧은 대답은 "`상황에 따라 다릅니다.`" 입니다. 긴 대답은 각 접근 방식에는 장단점이 있으며, 일반적으로 어떤 전략이 더 적합한지는 개발자가 결정해야 한다는 것입니다.
+주석은 정의 방식 때문에 선언에 많은 컨텍스트를 제공하므로 더 짧고 간결한 구성으로 이어집니다.
+그러나 XML은 소스 코드를 건드리거나 다시 컴파일하지 않고도 컴포넌트를 배선하는 데 탁월합니다.
+일부 개발자는 소스에 가까운 와이어링을 선호하는 반면, 다른 개발자는 주석이 달린 클래스가 더 이상 POJO가 아니며 더 나아가 구성이 분산되고 제어하기 더 어려워진다고 주장합니다.
 
-No matter the choice, Spring can accommodate both styles and even mix them together.
-It is worth pointing out that through its xref:core/beans/java.adoc[JavaConfig] option, Spring lets
-annotations be used in a non-invasive way, without touching the target components'
-source code and that, in terms of tooling, all configuration styles are supported by
-{spring-site-tools}[Spring Tools] for Eclipse, Visual Studio Code, and Theia.
+어느 쪽을 선택하든 Spring은 두 가지 스타일을 모두 수용할 수 있으며 심지어 함께 혼합할 수도 있습니다.
+한 가지 짚고 넘어가야 할 점은 Spring은 xref:core/beans/java.adoc[JavaConfig] 옵션을 통해 대상 구성 요소의 소스 코드를 건드리지 않고 비침습적인 방식으로 주석을 사용할 수 있으며, 도구 측면에서 모든 구성 스타일이 Eclipse, Visual Studio Code 및 Theia용 {spring-site-tools}[Spring Tools]에서 지원된다는 점입니다.
 ****
 
-An alternative to XML setup is provided by annotation-based configuration, which relies
-on bytecode metadata for wiring up components instead of XML declarations. Instead of
-using XML to describe a bean wiring, the developer moves the configuration into the
-component class itself by using annotations on the relevant class, method, or field
-declaration. As mentioned in xref:core/beans/factory-extension.adoc#beans-factory-extension-bpp-examples-aabpp[Example: The `AutowiredAnnotationBeanPostProcessor`], using a
-`BeanPostProcessor` in conjunction with annotations is a common means of extending the
-Spring IoC container. For example, the xref:core/beans/annotation-config/autowired.adoc[`@Autowired`]
-annotation provides the same capabilities as described in xref:core/beans/dependencies/factory-autowire.adoc[Autowiring Collaborators] but
-with more fine-grained control and wider applicability. In addition, Spring provides
-support for JSR-250 annotations, such as `@PostConstruct` and `@PreDestroy`, as well as
-support for JSR-330 (Dependency Injection for Java) annotations contained in the
-`jakarta.inject` package such as `@Inject` and `@Named`. Details about those annotations
-can be found in the xref:core/beans/standard-annotations.adoc[relevant section].
+XML 설정의 대안으로 XML 선언 대신 바이트코드 메타데이터를 사용하여 구성 요소를 와이어링하는 어노테이션 기반 구성이 제공됩니다.
+개발자는 XML을 사용하여 Bean 와이어링을 설명하는 대신 관련 클래스, 메서드 또는 필드 선언에 어노테이션을 사용하여 구성을 구성 요소 클래스 자체로 이동합니다.
+xref:core/beans/factory-extension.adoc#beans-factory-extension-bpp-examples-aabpp[예: `AutowiredAnnotationBeanPostProcessor`]에서 언급했듯이, 어노테이션과 함께 `BeanPostProcessor` 를 사용하는 것은 Spring IoC 컨테이너를 확장하는 일반적인 수단입니다.
+예를 들어, xref:core/beans/annotation-config/autowired.adoc[`@Autowired`] 어노테이션은 xref:core/beans/dependencies/factory-autowire.adoc[Autowiring Collaborators]에 설명된 것과 동일한 기능을 제공하지만 더 세분화된 제어와 더 넓은 적용 가능성을 가지고 있습니다.
+또한 Spring은 `@PostConstruct` 및 `@PreDestroy` 와 같은 JSR-250 어노테이션을 지원할 뿐만 아니라 `@Inject` 및 `@Named`와 같은 `jakarta.inject` 패키지에 포함된 JSR-330(Java용 의존성 주입) 어노테이션을 지원합니다.
+이러한 어노테이션에 대한 자세한 내용은 xref:core/beans/standard-annotations.adoc[관련 섹션]에서 확인할 수 있습니다.
 
 [NOTE]
 ====
-Annotation injection is performed before XML injection. Thus, the XML configuration
-overrides the annotations for properties wired through both approaches.
+어노테이션 주입은 XML 주입 전에 수행됩니다. 따라서 XML 구성은 두 가지 접근 방식을 통해 유선 연결되는 property에 대한 주석을 재정의합니다.
 ====
 
-As always, you can register the post-processors as individual bean definitions, but they
-can also be implicitly registered by including the following tag in an XML-based Spring
-configuration (notice the inclusion of the `context` namespace):
+항상 그렇듯이 post-processors를 개별 Bean 정의로 등록할 수도 있지만, XML 기반 Spring 구성에 다음 태그를 포함하여 암시적으로 등록할 수도 있습니다(`context` 네임스페이스가 포함되어 있는 것을 주목하세요):
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----
@@ -60,7 +43,7 @@ configuration (notice the inclusion of the `context` namespace):
 	</beans>
 ----
 
-The `<context:annotation-config/>` element implicitly registers the following post-processors:
+`<context:annotation-config/>` 요소는 암시적으로 다음과 같은 post-processor를 등록합니다:
 
 * {spring-framework-api}/context/annotation/ConfigurationClassPostProcessor.html[`ConfigurationClassPostProcessor`]
 * {spring-framework-api}/beans/factory/annotation/AutowiredAnnotationBeanPostProcessor.html[`AutowiredAnnotationBeanPostProcessor`]
@@ -70,11 +53,9 @@ The `<context:annotation-config/>` element implicitly registers the following po
 
 [NOTE]
 ====
-`<context:annotation-config/>` only looks for annotations on beans in the same
-application context in which it is defined. This means that, if you put
-`<context:annotation-config/>` in a `WebApplicationContext` for a `DispatcherServlet`,
-it only checks for `@Autowired` beans in your controllers, and not your services. See
-xref:web/webmvc/mvc-servlet.adoc[The DispatcherServlet] for more information.
+`<context:annotation-config/>` 는 어노테이션이 정의된 동일한 애플리케이션 컨텍스트에 있는 Bean에 대한 어노테이션만 찾습니다.
+즉, `DispatcherServlet` 에 대한 `<context:annotation-config/>` 를 `WebApplicationContext` 에 넣으면 서비스가 아닌 컨트롤러의 `@Autowired` Bean만 확인합니다.
+자세한 내용은 xref:web/webmvc/mvc-servlet.adoc[DispatcherServlet]을 참조하세요.
 ====
 
 
