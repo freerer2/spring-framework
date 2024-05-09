@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Using @Autowired :: Spring Framework Reference</title>
+    <title>Using @Autowired(반글) :: Spring Framework Reference</title>
     <link rel="prev" href="../annotation-config.html">
     <link rel="next" href="autowired-primary.html">
     <meta name="generator" content="Antora 3.2.0-alpha.2">
@@ -337,14 +337,14 @@
     <a class="nav-link" href="../child-bean-definitions.html">Bean Definition Inheritance(한글)</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../factory-extension.html">Container Extension Points(반글)</a>
+    <a class="nav-link" href="../factory-extension.html">Container Extension Points(한글)</a>
   </li>
   <li class="nav-item" data-depth="3">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../annotation-config.html">Annotation-based Container Configuration</a>
+    <a class="nav-link" href="../annotation-config.html">Annotation-based Container Configuration(한글)</a>
 <ul class="nav-list">
   <li class="nav-item is-current-page" data-depth="4">
-    <a class="nav-link" href="autowired.html">Using <code>@Autowired</code></a>
+    <a class="nav-link" href="autowired.html">Using <code>@Autowired</code>(반글)</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="autowired-primary.html">Fine-tuning Annotation-based Autowiring with <code>@Primary</code> or <code>@Fallback</code></a>
@@ -1792,7 +1792,7 @@
   <div class="content">
     <div
       class="toc"
-      data-title="Using @Autowired"
+      data-title="Using @Autowired(반글)"
       data-levels="2"
     >
       <div class="toc-menu"></div>
@@ -1839,11 +1839,11 @@
     <li><a href="../../../index.html">Spring Framework</a></li>
     <li><a href="../../../core.html">Core Technologies(한글)</a></li>
     <li><a href="../../beans.html">IoC Container(한글)</a></li>
-    <li><a href="../annotation-config.html">Annotation-based Container Configuration</a></li>
-    <li><a href="autowired.html">Using <code>@Autowired</code></a></li>
+    <li><a href="../annotation-config.html">Annotation-based Container Configuration(한글)</a></li>
+    <li><a href="autowired.html">Using <code>@Autowired</code>(반글)</a></li>
   </ul>
 </nav>
-<h1 id="page-title" class="page">Using <code>@Autowired</code></h1>
+<h1 id="page-title" class="page">Using <code>@Autowired</code>(반글)</h1>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1852,15 +1852,14 @@
 </td>
 <td class="content">
 <div class="paragraph">
-<p>JSR 330&#8217;s <code>@Inject</code> annotation can be used in place of Spring&#8217;s <code>@Autowired</code> annotation in the
-examples included in this section. See <a href="../standard-annotations.html" class="xref page">here</a> for more details.</p>
+<p>이 섹션에 포함된 예제에서는 JSR 330의 <code>@Inject</code> 어노테이션을 Spring의 <code>@Autowired</code> 어노테이션 대신 사용할 수 있습니다. 자세한 내용은 <a href="../standard-annotations.html" class="xref page">여기</a>를 참조하세요.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>You can apply the <code>@Autowired</code> annotation to constructors, as the following example shows:</p>
+<p>다음 예시와 같이 생성자에 <code>@Autowired</code> 어노테이션을 적용할 수 있습니다:</p>
 </div>
 <div id="_tabs_1" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -1909,20 +1908,16 @@ examples included in this section. See <a href="../standard-annotations.html" cl
 </td>
 <td class="content">
 <div class="paragraph">
-<p>As of Spring Framework 4.3, an <code>@Autowired</code> annotation on such a constructor is no longer
-necessary if the target bean defines only one constructor to begin with. However, if
-several constructors are available and there is no primary/default constructor, at least
-one of the constructors must be annotated with <code>@Autowired</code> in order to instruct the
-container which one to use. See the discussion on
-<a href="#beans-autowired-annotation-constructor-resolution">constructor resolution</a> for details.</p>
+<p>Spring 프레임워크 4.3부터, 대상 Bean이 처음부터 하나의 생성자만 정의하는 경우 이러한 생성자에 대한 <code>@Autowired</code> 어노테이션은 더 이상 필요하지 않습니다.
+그러나 여러 생성자를 사용할 수 있고 주(primary)/기본(default) 생성자가 없는 경우 컨테이너에 어떤 생성자를 사용할지 지시하기 위해 생성자 중 하나 이상에 <code>@Autowired</code> 어노테이션을 추가해야 합니다.
+자세한 내용은 <a href="#beans-autowired-annotation-constructor-resolution">생성자 해결책</a>에 대한 설명을 참조하세요.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>You can also apply the <code>@Autowired</code> annotation to <em>traditional</em> setter methods,
-as the following example shows:</p>
+<p>다음 예제에서 볼 수 있듯이 <code>@Autowired</code> 어노테이션을 <em>전통적인</em> setter 메서드에 적용할 수도 있습니다:</p>
 </div>
 <div id="_tabs_2" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -1970,8 +1965,7 @@ as the following example shows:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>You can also apply the annotation to methods with arbitrary names and multiple
-arguments, as the following example shows:</p>
+<p>다음 예제에서 볼 수 있듯이 임의의 이름과 여러 인수가 있는 메서드에도 어노테이션을 적용할 수 있습니다:</p>
 </div>
 <div id="_tabs_3" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2030,8 +2024,7 @@ arguments, as the following example shows:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>You can apply <code>@Autowired</code> to fields as well and even mix it with constructors, as the
-following example shows:</p>
+<p>다음 예시와 같이 필드에도 `@Autowired`를 적용할 수 있으며 생성자와 혼합하여 사용할 수도 있습니다:</p>
 </div>
 <div id="_tabs_4" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2089,26 +2082,20 @@ following example shows:</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Make sure that your target components (for example, <code>MovieCatalog</code> or <code>CustomerPreferenceDao</code>)
-are consistently declared by the type that you use for your <code>@Autowired</code>-annotated
-injection points. Otherwise, injection may fail due to a "no type match found" error at runtime.</p>
+<p>대상 컴포넌트(예: <code>MovieCatalog</code> 또는 <code>CustomerPreferenceDao</code> )가 <code>@Autowired</code> 주석이 달린 주입 지점에 사용하는 유형으로 일관되게 선언되어 있는지 확인하세요.
+그렇지 않으면 런타임에 "일치하는 유형을 찾을 수 없음" 오류로 인해 주입이 실패할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>For XML-defined beans or component classes found via classpath scanning, the container
-usually knows the concrete type up front. However, for <code>@Bean</code> factory methods, you need
-to make sure that the declared return type is sufficiently expressive. For components
-that implement several interfaces or for components potentially referred to by their
-implementation type, consider declaring the most specific return type on your factory
-method (at least as specific as required by the injection points referring to your bean).</p>
+<p>클래스 경로 검색을 통해 찾은 XML 정의 Bean 또는 컴포넌트 클래스의 경우, 컨테이너는 일반적으로 구체적인 유형을 미리 알고 있습니다.
+그러나 <code>@Bean</code> 팩토리 메서드의 경우, 선언된 반환 유형이 충분히 표현력이 있는지 확인해야 합니다.
+여러 인터페이스를 구현하는 컴포넌트나 구현 유형에 의해 잠재적으로 참조될 수 있는 컴포넌트의 경우, 팩토리 메서드에 가장 구체적인 반환 유형을 선언하는 것을 고려하세요(최소한 Bean을 참조하는 주입 지점에서 요구하는 만큼 구체적이어야 합니다).</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>You can also instruct Spring to provide all beans of a particular type from the
-<code>ApplicationContext</code> by adding the <code>@Autowired</code> annotation to a field or method that
-expects an array of that type, as the following example shows:</p>
+<p>다음 예제와 같이 해당 유형의 배열을 기대하는 필드 또는 메서드에 <code>@Autowired</code> 어노테이션을 추가하여 <code>ApplicationContext</code> 에서 특정 유형의 모든 Bean을 제공하도록 Spring에 지시할 수도 있습니다:</p>
 </div>
 <div id="_tabs_5" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2151,7 +2138,7 @@ expects an array of that type, as the following example shows:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The same applies for typed collections, as the following example shows:</p>
+<p>다음 예에서 볼 수 있듯이 입력된 컬렉션에도 동일하게 적용됩니다:</p>
 </div>
 <div id="_tabs_6" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2205,22 +2192,16 @@ expects an array of that type, as the following example shows:</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Your target beans can implement the <code>org.springframework.core.Ordered</code> interface or use
-the <code>@Order</code> or standard <code>@Priority</code> annotation if you want items in the array or list
-to be sorted in a specific order. Otherwise, their order follows the registration
-order of the corresponding target bean definitions in the container.</p>
+<p>배열 또는 목록의 항목이 특정 순서로 정렬되도록 하려면 대상 Bean이 <code>org.springframework.core.Ordered</code> 인터페이스를 구현하거나 <code>@Order</code> 또는 표준 <code>@Priority</code> 어노테이션을 사용할 수 있습니다.
+그렇지 않으면 컨테이너에 있는 해당 대상 Bean 정의의 등록 순서를 따릅니다.</p>
 </div>
 <div class="paragraph">
-<p>You can declare the <code>@Order</code> annotation at the target class level and on <code>@Bean</code> methods,
-potentially for individual bean definitions (in case of multiple definitions that
-use the same bean class). <code>@Order</code> values may influence priorities at injection points,
-but be aware that they do not influence singleton startup order, which is an
-orthogonal concern determined by dependency relationships and <code>@DependsOn</code> declarations.</p>
+<p>대상 클래스 수준과 <code>@Bean</code> 메서드에서 <code>@Order</code> 어노테이션을 선언할 수 있으며, 개별 Bean 정의(동일한 Bean 클래스를 사용하는 여러 정의의 경우)에 대해 선언할 수도 있습니다.
+<code>@Order</code> 값은 주입 지점의 우선순위에 영향을 미칠 수 있지만, 종속성 관계와 <code>@DependsOn</code> 선언에 의해 결정되는 싱글톤 시작 순서에는 영향을 미치지 않는다는 점에 유의하세요.</p>
 </div>
 <div class="paragraph">
-<p>Note that the standard <code>jakarta.annotation.Priority</code> annotation is not available at the
-<code>@Bean</code> level, since it cannot be declared on methods. Its semantics can be modeled
-through <code>@Order</code> values in combination with <code>@Primary</code> on a single bean for each type.</p>
+<p>메서드에 선언할 수 없기 때문에 <code>@Bean</code> 수준에서는 표준 <code>jakarta.annotation.Priority</code> 어노테이션을 사용할 수 없다는 점에 유의하세요.
+그 의미는 각 유형에 대해 단일 Bean에서 <code>@Order</code> 값과 <code>@Primary</code> 를 조합하여 모델링할 수 있습니다.</p>
 </div>
 </td>
 </tr>
@@ -2518,7 +2499,7 @@ These types must be 'wired up' explicitly by using XML or a Spring <code>@Bean</
 </table>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="../annotation-config.html">Annotation-based Container Configuration</a></span>
+  <span class="prev"><a href="../annotation-config.html">Annotation-based Container Configuration(한글)</a></span>
   <span class="next"><a href="autowired-primary.html">Fine-tuning Annotation-based Autowiring with <code>@Primary</code> or <code>@Fallback</code></a></span>
 </nav>
 </article>

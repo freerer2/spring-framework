@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Container Extension Points(반글) :: Spring Framework Reference</title>
+    <title>Container Extension Points(한글) :: Spring Framework Reference</title>
     <link rel="prev" href="child-bean-definitions.html">
     <link rel="next" href="annotation-config.html">
     <meta name="generator" content="Antora 3.2.0-alpha.2">
@@ -337,14 +337,14 @@
     <a class="nav-link" href="child-bean-definitions.html">Bean Definition Inheritance(한글)</a>
   </li>
   <li class="nav-item is-current-page" data-depth="3">
-    <a class="nav-link" href="factory-extension.html">Container Extension Points(반글)</a>
+    <a class="nav-link" href="factory-extension.html">Container Extension Points(한글)</a>
   </li>
   <li class="nav-item" data-depth="3">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="annotation-config.html">Annotation-based Container Configuration</a>
+    <a class="nav-link" href="annotation-config.html">Annotation-based Container Configuration(한글)</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="annotation-config/autowired.html">Using <code>@Autowired</code></a>
+    <a class="nav-link" href="annotation-config/autowired.html">Using <code>@Autowired</code>(반글)</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="annotation-config/autowired-primary.html">Fine-tuning Annotation-based Autowiring with <code>@Primary</code> or <code>@Fallback</code></a>
@@ -1792,7 +1792,7 @@
   <div class="content">
     <div
       class="toc"
-      data-title="Container Extension Points(반글)"
+      data-title="Container Extension Points(한글)"
       data-levels="2"
     >
       <div class="toc-menu"></div>
@@ -1839,10 +1839,10 @@
     <li><a href="../../index.html">Spring Framework</a></li>
     <li><a href="../../core.html">Core Technologies(한글)</a></li>
     <li><a href="../beans.html">IoC Container(한글)</a></li>
-    <li><a href="factory-extension.html">Container Extension Points(반글)</a></li>
+    <li><a href="factory-extension.html">Container Extension Points(한글)</a></li>
   </ul>
 </nav>
-<h1 id="page-title" class="page">Container Extension Points(반글)</h1>
+<h1 id="page-title" class="page">Container Extension Points(한글)</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
@@ -1892,20 +1892,20 @@ Spring 컨테이너가 Bean의 인스턴스화, 구성 및 초기화를 마친 �
 </div>
 <div class="paragraph">
 <p><code>org.springframework.beans.factory.config.BeanPostProcessor</code> 인터페이스는 정확히 두 개의 콜백 메서드로 구성됩니다.
-이러한 클래스가 컨테이너에 포스트 프로세서로 등록되면 컨테이너에 의해 생성되는 각 Bean 인스턴스에 대해 포스트 프로세서는 컨테이너 초기화 메서드(예: <code>InitializingBean.afterPropertiesSet()</code> 또는 선언된 모든 <code>init</code> 메서드)가 호출되기 전과 모든 Bean 초기화 콜백 후에 모두 컨테이너로부터 콜백을 가져옵니다.
-포스트 프로세서는 콜백을 완전히 무시하는 것을 포함하여 Bean 인스턴스에 대해 모든 작업을 수행할 수 있습니다.
+이러한 클래스가 컨테이너에 post-processor로 등록되면 컨테이너에 의해 생성되는 각 Bean 인스턴스에 대해 post-processor는 컨테이너 초기화 메서드(예: <code>InitializingBean.afterPropertiesSet()</code> 또는 선언된 모든 <code>init</code> 메서드)가 호출되기 전과 모든 Bean 초기화 콜백 후에 모두 컨테이너로부터 콜백을 가져옵니다.
+post-processor는 콜백을 완전히 무시하는 것을 포함하여 Bean 인스턴스에 대해 모든 작업을 수행할 수 있습니다.
 Bean 사후 프로세서는 일반적으로 콜백 인터페이스를 확인하거나 프록시로 Bean을 래핑할 수 있습니다.
-일부 Spring AOP 인프라 클래스는 프록시 래핑 로직을 제공하기 위해 Bean 포스트 프로세서로 구현됩니다.</p>
+일부 Spring AOP 인프라 클래스는 프록시 래핑 로직을 제공하기 위해 Bean post-processor로 구현됩니다.</p>
 </div>
 <div class="paragraph">
 <p><code>ApplicationContext</code> 는 자동으로 <code>BeanPostProcessor</code> 인터페이스를 구현하는 구성 메타데이터에 정의된 모든 빈을 자동으로 감지합니다.
-그리고 ApplicationContext` 는 이러한 Bean을 포스트 프로세서(post-processors)로 등록하여 나중에 Bean이 생성될 때 호출할 수 있도록 포스트 프로세서로 등록합니다.
-Bean 포스트 프로세서는 컨테이너에 다른 Bean과 동일한 방식으로 컨테이너에 배포할 수 있습니다.</p>
+그리고 ApplicationContext` 는 이러한 Bean을 post-processor(post-processors)로 등록하여 나중에 Bean이 생성될 때 호출할 수 있도록 post-processor로 등록합니다.
+Bean post-processor는 컨테이너에 다른 Bean과 동일한 방식으로 컨테이너에 배포할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>구성 클래스에서 <code>@Bean</code> 팩토리 메서드를 사용하여 <code>BeanPostProcessor`를 선언할 때 주의하십시오. 구성 클래스에서 팩토리 메서드의 반환 유형은 구현된 클래스 자체 또는 최소한 `org.springframework.beans.factory.config.BeanPostProcessor</code> 인터페이스여야 합니다. 인터페이스여야 하며, 이는 해당 Bean의 포스트프로세서 특성을 명확하게 나타냅니다.
-그렇지 않으면 <code>ApplicationContext`가 완전히 생성되기 전에 유형별로 자동 감지할 수 없습니다.
-`BeanPostProcessor</code> 는 다른 Bean의 초기화에 적용하기 위해 조기에 인스턴스화되어야 하므로 초기화해야 하므로 이 초기 유형 감지는 매우 중요합니다.</p>
+<p>구성 클래스에서 <code>@Bean</code> 팩토리 메서드를 사용하여 <code>BeanPostProcessor</code> 를 선언할 때 주의하십시오. 구성 클래스에서 팩토리 메서드의 반환 유형은 구현된 클래스 자체 또는 최소한 <code>org.springframework.beans.factory.config.BeanPostProcessor</code> 인터페이스여야 합니다. 인터페이스여야 하며, 이는 해당 Bean의 포스트프로세서 특성을 명확하게 나타냅니다.
+그렇지 않으면 <code>ApplicationContext</code> 가 완전히 생성되기 전에 유형별로 자동 감지할 수 없습니다.
+<code>BeanPostProcessor</code> 는 다른 Bean의 초기화에 적용하기 위해 조기에 인스턴스화되어야 하므로 초기화해야 하므로 이 초기 유형 감지는 매우 중요합니다.</p>
 </div>
 <div id="beans-factory-programmatically-registering-beanpostprocessors" class="admonitionblock note">
 <table>
@@ -1914,20 +1914,18 @@ Bean 포스트 프로세서는 컨테이너에 다른 Bean과 동일한 방식�
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="title">Programmatically registering <code>BeanPostProcessor</code> instances</div>
-While the recommended approach for <code>BeanPostProcessor</code> registration is through
-<code>ApplicationContext</code> auto-detection (as described earlier), you can register them
-programmatically against a <code>ConfigurableBeanFactory</code> by using the <code>addBeanPostProcessor</code>
-method. This can be useful when you need to evaluate conditional logic before
-registration or even for copying bean post processors across contexts in a hierarchy.
-Note, however, that <code>BeanPostProcessor</code> instances added programmatically do not respect
-the <code>Ordered</code> interface. Here, it is the order of registration that dictates the order
-of execution. Note also that <code>BeanPostProcessor</code> instances registered programmatically
-are always processed before those registered through auto-detection, regardless of any
-explicit ordering.
+<div class="title">프로그래밍 방식으로 <code>BeanPostProcessor</code> 인스턴스 등록하기</div>
+<code>BeanPostProcessor</code> 등록을 위해 권장되는 방법은 앞서 설명한 대로 <code>ApplicationContext</code> 자동 감지를 이용하는 것이지만, <code>addBeanPostProcessor</code> 메서드를 사용하여 <code>ConfigurableBeanFactory</code> 에 대해 프로그래밍 방식으로 등록할 수도 있습니다.
+이는 등록 전에 조건부 로직을 평가해야 하거나 계층 구조의 컨텍스트 간에 Bean post-processor를 복사해야 할 때 유용할 수 있습니다.
+그러나 프로그래밍 방식으로 추가된 <code>BeanPostProcessor</code> 인스턴스는 <code>Ordered</code> 인터페이스를 따르지 않는다는 점에 유의하세요.
+여기서 실행 순서를 결정하는 것은 등록 순서입니다.
+또한 프로그래밍 방식으로 등록된 <code>BeanPostProcessor</code> 인스턴스는 명시적인 순서에 관계없이 자동 감지를 통해 등록된 인스턴스보다 항상 먼저 처리된다는 점에 유의하세요.
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>Translated with www.DeepL.com/Translator (free version)</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1936,30 +1934,19 @@ explicit ordering.
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="title"><code>BeanPostProcessor</code> instances and AOP auto-proxying</div>
+<div class="title"><code>BeanPostProcessor</code> 인스턴스 및 AOP 자동 프록싱</div>
 <div class="paragraph">
-<p>Classes that implement the <code>BeanPostProcessor</code> interface are special and are treated
-differently by the container. All <code>BeanPostProcessor</code> instances and beans that they
-directly reference are instantiated on startup, as part of the special startup phase
-of the <code>ApplicationContext</code>. Next, all <code>BeanPostProcessor</code> instances are registered
-in a sorted fashion and applied to all further beans in the container. Because AOP
-auto-proxying is implemented as a <code>BeanPostProcessor</code> itself, neither <code>BeanPostProcessor</code>
-instances nor the beans they directly reference are eligible for auto-proxying and,
-thus, do not have aspects woven into them.</p>
+<p><code>BeanPostProcessor</code> 인터페이스를 구현하는 클래스는 특별하며 컨테이너에서 다르게 취급됩니다.
+모든 <code>BeanPostProcessor</code> 인스턴스와 이들이 직접 참조하는 Bean은 시작 시 <code>ApplicationContext</code> 의 특수 시작 단계의 일부로 인스턴스화됩니다.
+그 다음, 모든 <code>BeanPostProcessor</code> 인스턴스가 정렬된 방식으로 등록되고 컨테이너의 모든 추가 Bean에 적용됩니다.
+AOP 자동 프록시는 <code>BeanPostProcessor</code> 자체로 구현되기 때문에 <code>BeanPostProcessor</code> 인스턴스나 인스턴스가 직접 참조하는 Bean은 자동 프록시를 사용할 수 없으며 따라서 측면이 짜여져 있지 않습니다.</p>
 </div>
 <div class="paragraph">
-<p>For any such bean, you should see an informational log message: <code>Bean someBean is not
-eligible for getting processed by all BeanPostProcessor interfaces (for example: not
-eligible for auto-proxying)</code>.</p>
+<p>이러한 Bean의 경우 정보 로그 메시지가 표시되어야 합니다: <code>일부 Bean은 모든 BeanPostProcessor 인터페이스에서 처리할 수 없습니다(예: 자동 프록시에 적합하지 않음)</code>.</p>
 </div>
 <div class="paragraph">
-<p>If you have beans wired into your <code>BeanPostProcessor</code> by using autowiring or
-<code>@Resource</code> (which may fall back to autowiring), Spring might access unexpected beans
-when searching for type-matching dependency candidates and, therefore, make them
-ineligible for auto-proxying or other kinds of bean post-processing. For example, if you
-have a dependency annotated with <code>@Resource</code> where the field or setter name does not
-directly correspond to the declared name of a bean and no name attribute is used,
-Spring accesses other beans for matching them by type.</p>
+<p>자동 배선 또는 <code>@Resource</code> (자동 배선으로 되돌아갈 수 있음)를 사용하여 <code>BeanPostProcessor</code> 에 Bean을 연결한 경우 Spring이 유형 일치 종속성 후보를 검색할 때 예기치 않은 Bean에 액세스하여 자동 프록시 또는 다른 종류의 Bean 사후 처리에 부적합하게 만들 수 있습니다.
+예를 들어, 필드 또는 설정자 이름이 선언된 Bean의 이름과 직접 일치하지 않고 이름 속성이 사용되지 않는 <code>@Resource</code> 로 주석이 달린 종속성이 있는 경우, Spring은 유형별로 일치시키기 위해 다른 Bean에 액세스합니다.</p>
 </div>
 </td>
 </tr>
@@ -1972,12 +1959,11 @@ in an <code>ApplicationContext</code>.</p>
 <div class="sect2">
 <h3 id="beans-factory-extension-bpp-examples-hw"><a class="anchor" href="#beans-factory-extension-bpp-examples-hw"></a>Example: Hello World, <code>BeanPostProcessor</code>-style</h3>
 <div class="paragraph">
-<p>This first example illustrates basic usage. The example shows a custom
-<code>BeanPostProcessor</code> implementation that invokes the <code>toString()</code> method of each bean as
-it is created by the container and prints the resulting string to the system console.</p>
+<p>이 첫 번째 예제는 기본적인 사용법을 보여줍니다.
+이 예는 컨테이너에서 생성될 때 각 Bean의 <code>toString()</code> 메서드를 호출하고 결과 문자열을 시스템 콘솔에 인쇄하는 사용자 지정 <code>BeanPostProcessor</code> 구현을 보여줍니다.</p>
 </div>
 <div class="paragraph">
-<p>The following listing shows the custom <code>BeanPostProcessor</code> implementation class definition:</p>
+<p>다음 목록은 사용자 지정 <code>BeanPostProcessor</code> 구현 클래스 정의를 보여줍니다:</p>
 </div>
 <div id="_tabs_1" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2038,7 +2024,7 @@ it is created by the container and prints the resulting string to the system con
 </div>
 </div>
 <div class="paragraph">
-<p>The following <code>beans</code> element uses the <code>InstantiationTracingBeanPostProcessor</code>:</p>
+<p>다음 <code>beans</code> 요소는 <code>InstantiationTracingBeanPostProcessor</code> 를 사용합니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2066,14 +2052,13 @@ it is created by the container and prints the resulting string to the system con
 </div>
 </div>
 <div class="paragraph">
-<p>Notice how the <code>InstantiationTracingBeanPostProcessor</code> is merely defined. It does not
-even have a name, and, because it is a bean, it can be dependency-injected as you would any
-other bean. (The preceding configuration also defines a bean that is backed by a Groovy
-script. The Spring dynamic language support is detailed in the chapter entitled
-<a href="../../languages/dynamic.html" class="xref page">Dynamic Language Support</a>.)</p>
+<p><code>InstantiationTracingBeanPostProcessor</code> 가 어떻게 정의되어 있는지 주목하세요.
+이름도 없으며, Bean이기 때문에 다른 Bean과 마찬가지로 종속성을 주입할 수 있습니다.
+(앞의 구성은 Groovy 스크립트에 의해 뒷받침되는 Bean도 정의합니다.
+Spring 동적 언어 지원은 <a href="../../languages/dynamic.html" class="xref page">동적 언어 지원</a>이라는 장에 자세히 설명되어 있습니다).</p>
 </div>
 <div class="paragraph">
-<p>The following Java application runs the preceding code and configuration:</p>
+<p>다음 Java 애플리케이션은 앞의 코드와 구성을 실행합니다:</p>
 </div>
 <div id="_tabs_2" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2134,35 +2119,25 @@ org.springframework.scripting.groovy.GroovyMessenger@272961</pre>
 <div class="sect2">
 <h3 id="beans-factory-extension-bpp-examples-aabpp"><a class="anchor" href="#beans-factory-extension-bpp-examples-aabpp"></a>Example: The <code>AutowiredAnnotationBeanPostProcessor</code></h3>
 <div class="paragraph">
-<p>Using callback interfaces or annotations in conjunction with a custom <code>BeanPostProcessor</code>
-implementation is a common means of extending the Spring IoC container. An example is
-Spring&#8217;s <code>AutowiredAnnotationBeanPostProcessor</code>&#8201;&#8212;&#8201;a <code>BeanPostProcessor</code> implementation
-that ships with the Spring distribution and autowires annotated fields, setter methods,
-and arbitrary config methods.</p>
+<p>콜백 인터페이스 또는 어노테이션을 사용자 정의 <code>BeanPostProcessor</code> 구현과 함께 사용하는 것은 Spring IoC 컨테이너를 확장하는 일반적인 수단입니다.
+예를 들어 Spring 배포와 함께 제공되며 주석이 달린 필드, 설정자 메서드 및 임의의 구성 메서드를 Autowiring하는 <code>BeanPostProcessor</code> 구현인 Spring의 <code>AutowiredAnnotationBeanPostProcessor</code> 를 들 수 있습니다.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-factory-extension-factory-postprocessors"><a class="anchor" href="#beans-factory-extension-factory-postprocessors"></a>Customizing Configuration Metadata with a <code>BeanFactoryPostProcessor</code></h2>
+<h2 id="beans-factory-extension-factory-postprocessors"><a class="anchor" href="#beans-factory-extension-factory-postprocessors"></a><code>BeanFactoryPostProcessor</code> 로 구성 메타데이터 커스터마이징하기(Customizing Configuration Metadata with a <code>BeanFactoryPostProcessor</code>)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The next extension point that we look at is the
-<code>org.springframework.beans.factory.config.BeanFactoryPostProcessor</code>. The semantics of
-this interface are similar to those of the <code>BeanPostProcessor</code>, with one major
-difference: <code>BeanFactoryPostProcessor</code> operates on the bean configuration metadata.
-That is, the Spring IoC container lets a <code>BeanFactoryPostProcessor</code> read the
-configuration metadata and potentially change it <em>before</em> the container instantiates
-any beans other than <code>BeanFactoryPostProcessor</code> instances.</p>
+<p>다음으로 살펴볼 확장 포인트는 <code>org.springframework.beans.factory.config.BeanFactoryPostProcessor</code> 입니다.
+이 인터페이스의 의미는 한 가지 큰 차이점이 있지만 <code>BeanPostProcessor</code> 인터페이스의 의미와 유사합니다: <code>BeanFactoryPostProcessor</code> 는 Bean 구성 메타데이터에서 작동합니다.
+즉, Spring IoC 컨테이너는 <code>BeanFactoryPostProcessor</code> 가 구성 메타데이터를 읽고 컨테이너가 <code>BeanFactoryPostProcessor</code> 인스턴스 이외의 Bean을 인스턴스화하기 <em>전에</em> 잠재적으로 변경할 수 있게 해줍니다.</p>
 </div>
 <div class="paragraph">
-<p>You can configure multiple <code>BeanFactoryPostProcessor</code> instances, and you can control the order in
-which these <code>BeanFactoryPostProcessor</code> instances run by setting the <code>order</code> property.
-However, you can only set this property if the <code>BeanFactoryPostProcessor</code> implements the
-<code>Ordered</code> interface. If you write your own <code>BeanFactoryPostProcessor</code>, you should
-consider implementing the <code>Ordered</code> interface, too. See the javadoc of the
-<a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/beans/factory/config/BeanFactoryPostProcessor.html"><code>BeanFactoryPostProcessor</code></a>
-and <a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/core/Ordered.html"><code>Ordered</code></a> interfaces for more details.</p>
+<p>여러 개의 <code>BeanFactoryPostProcessor</code> 인스턴스를 구성할 수 있으며, <code>order</code> 속성을 설정하여 이러한 <code>BeanFactoryPostProcessor</code> 인스턴스가 실행되는 순서를 제어할 수 있습니다.
+그러나 이 property는 <code>BeanFactoryPostProcessor</code> 가 <code>Ordered</code> 인터페이스를 구현하는 경우에만 설정할 수 있습니다.
+자체 <code>BeanFactoryPostProcessor</code> 를 작성하는 경우 <code>Ordered</code> 인터페이스도 구현하는 것을 고려해야 합니다.
+자세한 내용은 <a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/beans/factory/config/BeanFactoryPostProcessor.html"><code>BeanFactoryPostProcessor</code></a> 및 <a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/core/Ordered.html"><code>Ordered</code></a> 인터페이스의 javadoc을 참조하세요.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2172,38 +2147,29 @@ and <a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If you want to change the actual bean instances (that is, the objects that are created
-from the configuration metadata), then you instead need to use a <code>BeanPostProcessor</code>
-(described earlier in
-<a href="#beans-factory-extension-bpp">Customizing Beans by Using a <code>BeanPostProcessor</code></a>).
-While it is technically possible to work with bean instances within a <code>BeanFactoryPostProcessor</code>
-(for example, by using <code>BeanFactory.getBean()</code>), doing so causes premature bean instantiation,
-violating the standard container lifecycle. This may cause negative side effects, such as
-bypassing bean post processing.</p>
+<p>실제 Bean 인스턴스(즉, 구성 메타데이터에서 생성되는 객체)를 변경하려면 대신 <code>BeanPostProcessor</code> 를 사용해야 합니다(앞의 <a href="#beans-factory-extension-bpp"><code>BeanPostProcessor</code> 를 사용하여 Bean 사용자 정의</a>에 설명되어 있습니다).
+예를 들어, <code>BeanFactory.getBean()</code> 을 사용하여 <code>BeanFactoryPostProcessor</code> 내에서 Bean 인스턴스로 작업하는 것은 기술적으로 가능하지만, 그렇게 하면 표준 컨테이너 수명 주기를 위반하여 조기 Bean 인스턴스화가 발생합니다.
+이로 인해 Bean 사후 처리를 우회하는 등의 부작용이 발생할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>Also, <code>BeanFactoryPostProcessor</code> instances are scoped per-container. This is only relevant
-if you use container hierarchies. If you define a <code>BeanFactoryPostProcessor</code> in one
-container, it is applied only to the bean definitions in that container. Bean definitions
-in one container are not post-processed by <code>BeanFactoryPostProcessor</code> instances in another
-container, even if both containers are part of the same hierarchy.</p>
+<p>또한 <code>BeanFactoryPostProcessor</code> 인스턴스는 컨테이너별로 Scope가 지정됩니다.
+이는 컨테이너 계층 구조를 사용하는 경우에만 관련이 있습니다.
+하나의 컨테이너에 <code>BeanFactoryPostProcessor</code> 를 정의하면 해당 컨테이너의 Bean 정의에만 적용됩니다.
+두 컨테이너가 동일한 계층에 속해 있더라도 한 컨테이너의 Bean 정의는 다른 컨테이너의 <code>BeanFactoryPostProcessor</code> 인스턴스에 의해 사후 처리되지 않습니다.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>A bean factory post-processor is automatically run when it is declared inside an
-<code>ApplicationContext</code>, in order to apply changes to the configuration metadata that
-define the container. Spring includes a number of predefined bean factory
-post-processors, such as <code>PropertyOverrideConfigurer</code> and
-<code>PropertySourcesPlaceholderConfigurer</code>. You can also use a custom <code>BeanFactoryPostProcessor</code>&#8201;&#8212;&#8201;for example, to register custom property editors.</p>
+<p>컨테이너를 정의하는 구성 메타데이터에 변경 사항을 적용하기 위해 <code>ApplicationContext</code> 내부에 선언되면 Bean 팩토리 post-processor가 자동으로 실행됩니다.
+Spring에는 <code>PropertyOverrideConfigurer</code> 및 `PropertySourcesPlaceholderConfigurer`와 같이 미리 정의된 여러 Bean 팩토리 post-processor가 포함되어 있습니다.
+사용자 정의 `BeanFactoryPostProcessor`를 사용할 수도 있습니다.&#8201;&#8212;&#8201;예를 들어 사용자 정의 속성 편집기를 등록할 수도 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>An <code>ApplicationContext</code> automatically detects any beans that are deployed into it that
-implement the <code>BeanFactoryPostProcessor</code> interface. It uses these beans as bean factory
-post-processors, at the appropriate time. You can deploy these post-processor beans as
-you would any other bean.</p>
+<p><code>ApplicationContext</code> 는 <code>BeanFactoryPostProcessor</code> 인터페이스를 구현하는 배포된 모든 Bean을 자동으로 감지합니다.
+그리고 적절한 시점에 이러한 Bean을 Bean Factory post-processor로 사용합니다.
+다른 Bean과 마찬가지로 이러한 post-processor Bean을 배포할 수 있습니다.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2212,12 +2178,9 @@ you would any other bean.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-As with <code>BeanPostProcessor</code>s , you typically do not want to configure
-<code>BeanFactoryPostProcessor</code>s for lazy initialization. If no other bean references a
-<code>Bean(Factory)PostProcessor</code>, that post-processor will not get instantiated at all.
-Thus, marking it for lazy initialization will be ignored, and the
-<code>Bean(Factory)PostProcessor</code> will be instantiated eagerly even if you set the
-<code>default-lazy-init</code> attribute to <code>true</code> on the declaration of your <code>&lt;beans /&gt;</code> element.
+<code>BeanPostProcessor</code> 와 마찬가지로 일반적으로 지연 초기화를 위해 <code>BeanFactoryPostProcessor</code> 를 구성하고 싶지 않을 것입니다.
+다른 Bean이 <code>Bean(Factory)PostProcessor</code> 를 참조하지 않으면 해당 post-processor는 전혀 인스턴스화되지 않습니다.
+따라서 지연 초기화를 위해 표시하는 것은 무시되며, <code>&lt;beans /&gt;</code> 요소의 선언에서 <code>default-lazy-init</code> 속성을 <code>true</code> 로 설정하더라도 <code>Bean(Factory)PostProcessor</code> 는 열심히 인스턴스화됩니다.
 </td>
 </tr>
 </table>
@@ -2225,15 +2188,11 @@ Thus, marking it for lazy initialization will be ignored, and the
 <div class="sect2">
 <h3 id="beans-factory-placeholderconfigurer"><a class="anchor" href="#beans-factory-placeholderconfigurer"></a>Example: The Class Name Substitution <code>PropertySourcesPlaceholderConfigurer</code></h3>
 <div class="paragraph">
-<p>You can use the <code>PropertySourcesPlaceholderConfigurer</code> to externalize property values
-from a bean definition in a separate file by using the standard Java <code>Properties</code> format.
-Doing so enables the person deploying an application to customize environment-specific
-properties, such as database URLs and passwords, without the complexity or risk of
-modifying the main XML definition file or files for the container.</p>
+<p>표준 Java <code>Properties</code> 형식을 사용하여 별도의 파일에 있는 Bean 정의의 property 값을 외부화하기 위해 <code>PropertySourcesPlaceholderConfigurer</code> 를 사용할 수 있습니다.
+이렇게 하면 애플리케이션을 배포하는 사람이 컨테이너의 기본 XML 정의 파일을 수정해야 하는 복잡성이나 위험 없이 데이터베이스 URL 및 비밀번호와 같은 환경별 속성을 사용자 정의할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>Consider the following XML-based configuration metadata fragment, where a <code>DataSource</code>
-with placeholder values is defined:</p>
+<p>플레이스홀더 값을 가진 <code>DataSource</code> 가 정의된 다음 XML 기반 구성 메타데이터 조각을 살펴보세요:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2250,13 +2209,12 @@ with placeholder values is defined:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The example shows properties configured from an external <code>Properties</code> file. At runtime,
-a <code>PropertySourcesPlaceholderConfigurer</code> is applied to the metadata that replaces some
-properties of the DataSource. The values to replace are specified as placeholders of the
-form <code>${property-name}</code>, which follows the Ant and log4j and JSP EL style.</p>
+<p>이 예는 외부 <code>Properties</code> 파일에서 구성된 속성을 보여줍니다.
+런타임에 데이터 소스의 일부 property를 대체하는 메타데이터에 <code>PropertySourcesPlaceholderConfigurer</code> 가 적용됩니다.
+대체할 값은 Ant와 log4j 및 JSP EL 스타일을 따르는 <code>${property-name}</code> 형식의 플레이스홀더로 지정됩니다.</p>
 </div>
 <div class="paragraph">
-<p>The actual values come from another file in the standard Java <code>Properties</code> format:</p>
+<p>실제 값은 표준 Java <code>properties</code> 형식의 다른 파일에서 가져옵니다:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -2267,15 +2225,13 @@ jdbc.password=root</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Therefore, the <code>${jdbc.username}</code> string is replaced at runtime with the value, 'sa', and
-the same applies for other placeholder values that match keys in the properties file.
-The <code>PropertySourcesPlaceholderConfigurer</code> checks for placeholders in most properties and
-attributes of a bean definition. Furthermore, you can customize the placeholder prefix and suffix.</p>
+<p>따라서 <code>${jdbc.username}</code> 문자열은 런타임에 'sa' 라는 값으로 대체되며, 속성 파일의 키와 일치하는 다른 자리 표시자 값에도 동일하게 적용됩니다.
+<code>PropertySourcesPlaceholderConfigurer</code> 는 Bean 정의의 대부분의 property 및 속성에서 플레이스홀더를 확인합니다.
+또한 플레이스홀더 접두사와 접미사를 사용자 지정할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>With the <code>context</code> namespace introduced in Spring 2.5, you can configure property placeholders
-with a dedicated configuration element. You can provide one or more locations as a
-comma-separated list in the <code>location</code> attribute, as the following example shows:</p>
+<p>Spring 2.5에 도입된 <code>context</code> 네임스페이스를 사용하면 전용 구성 요소로 property 플레이스홀더를 구성할 수 있습니다.
+다음 예제와 같이 <code>location</code> 속성에 하나 이상의 위치를 쉼표로 구분된 목록으로 제공할 수 있습니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2283,9 +2239,8 @@ comma-separated list in the <code>location</code> attribute, as the following ex
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>PropertySourcesPlaceholderConfigurer</code> not only looks for properties in the <code>Properties</code>
-file you specify. By default, if it cannot find a property in the specified properties files,
-it checks against Spring <code>Environment</code> properties and regular Java <code>System</code> properties.</p>
+<p><code>PropertySourcesPlaceholderConfigurer</code> 는 사용자가 지정한 <code>Properties</code> 파일에서 속성만 찾는 것이 아닙니다.
+기본적으로 지정된 속성 파일에서 속성을 찾을 수 없는 경우 Spring <code>Environment</code> 속성 및 일반 Java <code>System</code> 속성에 대해 검사합니다.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -2295,14 +2250,12 @@ it checks against Spring <code>Environment</code> properties and regular Java <c
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Only one such element should be defined for a given application with the properties
-that it needs. Several property placeholders can be configured as long as they have distinct
-placeholder syntax (<code>${&#8230;&#8203;}</code>).</p>
+<p>이러한 요소는 해당 애플리케이션에 필요한 속성을 가진 하나의 요소만 정의해야 합니다.
+고유한 플레이스홀더 구문(<code>${&#8230;&#8203;}</code>)을 사용하는 한 여러 개의 속성 플레이스홀더를 구성할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>If you need to modularize the source of properties used for the replacement, you should
-not create multiple properties placeholders. Rather, you should create your own
-<code>PropertySourcesPlaceholderConfigurer</code> bean that gathers the properties to use.</p>
+<p>대체에 사용되는 속성 소스를 모듈화해야 하는 경우 여러 속성 자리 표시자를 생성해서는 안 됩니다.
+그 대신 사용할 속성을 수집하는 자체 <code>PropertySourcesPlaceholderConfigurer</code> Bean을 만들어야 합니다.</p>
 </div>
 </td>
 </tr>
@@ -2316,9 +2269,8 @@ not create multiple properties placeholders. Rather, you should create your own
 </td>
 <td class="content">
 <div class="paragraph">
-<p>You can use the <code>PropertySourcesPlaceholderConfigurer</code> to substitute class names, which
-is sometimes useful when you have to pick a particular implementation class at runtime.
-The following example shows how to do so:</p>
+<p><code>PropertySourcesPlaceholderConfigurer</code> 를 사용하여 클래스 이름을 대체할 수 있는데, 이는 런타임에 특정 구현 클래스를 선택해야 할 때 유용할 때가 있습니다.
+다음 예제는 그 방법을 보여줍니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2335,9 +2287,7 @@ The following example shows how to do so:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If the class cannot be resolved at runtime to a valid class, resolution of the bean
-fails when it is about to be created, which is during the <code>preInstantiateSingletons()</code>
-phase of an <code>ApplicationContext</code> for a non-lazy-init bean.</p>
+<p>런타임에 클래스를 유효한 클래스로 확인할 수 없는 경우, Bean이 생성되려고 할 때, 즉 지연 초기화되지 않은 Bean에 대한 <code>ApplicationContext`의 `preInstantiateSingletons()</code> 단계 중에 Bean의 (해결?)resolution이 실패합니다.</p>
 </div>
 </td>
 </tr>
@@ -2347,20 +2297,15 @@ phase of an <code>ApplicationContext</code> for a non-lazy-init bean.</p>
 <div class="sect2">
 <h3 id="beans-factory-overrideconfigurer"><a class="anchor" href="#beans-factory-overrideconfigurer"></a>Example: The <code>PropertyOverrideConfigurer</code></h3>
 <div class="paragraph">
-<p>The <code>PropertyOverrideConfigurer</code>, another bean factory post-processor, resembles the
-<code>PropertySourcesPlaceholderConfigurer</code>, but unlike the latter, the original definitions
-can have default values or no values at all for bean properties. If an overriding
-<code>Properties</code> file does not have an entry for a certain bean property, the default
-context definition is used.</p>
+<p>또 다른 Bean 팩토리 사후 처리기인 <code>PropertyOverrideConfigurer</code> 는 <code>PropertySourcesPlaceholderConfigurer</code> 와 유사하지만, 후자와 달리 원래 정의에 Bean 속성에 대한 기본값이 있거나 값이 전혀 없을 수 있습니다.
+재정의된 <code>Properties</code> 파일에 특정 Bean 속성에 대한 항목이 없는 경우 기본 컨텍스트 정의가 사용됩니다.</p>
 </div>
 <div class="paragraph">
-<p>Note that the bean definition is not aware of being overridden, so it is not
-immediately obvious from the XML definition file that the override configurer is being
-used. In case of multiple <code>PropertyOverrideConfigurer</code> instances that define different
-values for the same bean property, the last one wins, due to the overriding mechanism.</p>
+<p>Bean 정의는 재정의되고 있다는 것을 인식하지 못하므로 XML 정의 파일에서 재정의 구성자가 사용되고 있다는 것을 즉시 알 수 없습니다.
+동일한 Bean 속성에 대해 서로 다른 값을 정의하는 여러 개의 <code>PropertyOverrideConfigurer</code> 인스턴스가 있는 경우, 재정의 메커니즘으로 인해 마지막 인스턴스가 승리합니다.</p>
 </div>
 <div class="paragraph">
-<p>Properties file configuration lines take the following format:</p>
+<p>속성 파일 구성 줄의 형식은 다음과 같습니다:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -2377,14 +2322,11 @@ dataSource.url=jdbc:mysql:mydb</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This example file can be used with a container definition that contains a bean called
-<code>dataSource</code> that has <code>driver</code> and <code>url</code> properties.</p>
+<p>이 예제 파일은 <code>driver</code> 및 <code>url</code> 속성을 가진 <code>dataSource</code> 라는 Bean을 포함하는 컨테이너 정의와 함께 사용할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>Compound property names are also supported, as long as every component of the path
-except the final property being overridden is already non-null (presumably initialized
-by the constructors). In the following example, the <code>sammy</code> property of the <code>bob</code>
-property of the <code>fred</code> property of the <code>tom</code> bean is set to the scalar value <code>123</code>:</p>
+<p>재정의되는 최종 속성을 제외한 경로의 모든 구성 요소가 이미 null이 아닌 경우(아마도 생성자에 의해 초기화되었을 것입니다) 복합 속성 이름도 지원됩니다.
+다음 예제에서는 <code>tom</code> Bean의 <code>fred</code> 속성의 <code>bob</code> 속성의 <code>sammy</code> 속성이 스칼라 값 <code>123</code> 으로 설정되어 있습니다:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -2398,16 +2340,15 @@ property of the <code>fred</code> property of the <code>tom</code> bean is set t
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Specified override values are always literal values. They are not translated into
-bean references. This convention also applies when the original value in the XML bean
-definition specifies a bean reference.
+지정된 재정의 값은 항상 리터럴 값입니다.
+이 값은 Bean 참조로 변환되지 않습니다.
+이 규칙은 XML Bean의 원래 값이 정의의 원래 값이 Bean 참조를 지정하는 경우에도 적용됩니다.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>With the <code>context</code> namespace introduced in Spring 2.5, it is possible to configure
-property overriding with a dedicated configuration element, as the following example shows:</p>
+<p>Spring 2.5에 도입된 <code>context</code> 네임스페이스를 사용하면 전용 구성을 사용하여 property를 전용 구성 요소로 재정의할 수 있습니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2418,57 +2359,46 @@ property overriding with a dedicated configuration element, as the following exa
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-factory-extension-factorybean"><a class="anchor" href="#beans-factory-extension-factorybean"></a>Customizing Instantiation Logic with a <code>FactoryBean</code></h2>
+<h2 id="beans-factory-extension-factorybean"><a class="anchor" href="#beans-factory-extension-factorybean"></a><code>FactoryBean`으로 인스턴스화 로직 커스터마이징하기(Customizing Instantiation Logic with a `FactoryBean</code>)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can implement the <code>org.springframework.beans.factory.FactoryBean</code> interface for objects that
-are themselves factories.</p>
+<p>그 자체로 팩토리인 객체에 대해 <code>org.springframework.beans.factory.FactoryBean</code> 인터페이스를 구현할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>The <code>FactoryBean</code> interface is a point of pluggability into the Spring IoC container&#8217;s
-instantiation logic. If you have complex initialization code that is better expressed in
-Java as opposed to a (potentially) verbose amount of XML, you can create your own
-<code>FactoryBean</code>, write the complex initialization inside that class, and then plug your
-custom <code>FactoryBean</code> into the container.</p>
+<p><code>FactoryBean</code> 인터페이스는 Spring IoC 컨테이너의 인스턴스화 로직에 플러그할 수 있는 지점입니다.
+(잠재적으로) 장황한 양의 XML 대신 Java로 더 잘 표현되는 복잡한 초기화 코드가 있는 경우, 자체 <code>FactoryBean</code> 을 생성하고 해당 클래스 내에서 복잡한 초기화를 작성한 다음 사용자 정의 <code>FactoryBean</code> 을 컨테이너에 연결할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>The <code>FactoryBean&lt;T&gt;</code> interface provides three methods:</p>
+<p><code>FactoryBean&lt;T&gt;</code> 인터페이스는 세 가지 메서드를 제공합니다:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>T getObject()</code>: Returns an instance of the object this factory creates. The
-instance can possibly be shared, depending on whether this factory returns singletons
-or prototypes.</p>
+<p><code>T getObject()</code>: 이 팩토리가 생성하는 객체의 인스턴스를 반환합니다.
+이 팩토리가 싱글톤을 반환하는지 아니면 프로토타입을 반환하는지에 따라 인스턴스를 공유할 수 있습니다.</p>
 </li>
 <li>
-<p><code>boolean isSingleton()</code>: Returns <code>true</code> if this <code>FactoryBean</code> returns singletons or
-<code>false</code> otherwise. The default implementation of this method returns <code>true</code>.</p>
+<p><code>boolean isSingleton()</code>: 이 <code>FactoryBean</code> 이 싱글톤을 반환하면 <code>true</code> 를 리턴하고, 그렇지 않으면 <code>false</code> 를 리턴합니다.
+이 메서드의 기본 구현은 <code>true</code> 를 반환합니다.</p>
 </li>
 <li>
-<p><code>Class&lt;?&gt; getObjectType()</code>: Returns the object type returned by the <code>getObject()</code> method
-or <code>null</code> if the type is not known in advance.</p>
+<p><code>Class&lt;?&gt; getObjectType()</code>: getObject()` 메서드가 반환한 객체 타입을 반환하거나, 타입을 미리 알 수 없는 경우 <code>null</code> 을 반환합니다.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The <code>FactoryBean</code> concept and interface are used in a number of places within the Spring
-Framework. More than 50 implementations of the <code>FactoryBean</code> interface ship with Spring
-itself.</p>
+<p><code>FactoryBean</code> 개념과 인터페이스는 Spring 프레임워크 내 여러 곳에서 사용됩니다.
+50개 이상의 <code>FactoryBean</code> 인터페이스 구현이 Spring 자체와 함께 제공됩니다.</p>
 </div>
 <div class="paragraph">
-<p>When you need to ask a container for an actual <code>FactoryBean</code> instance itself instead of
-the bean it produces, prefix the bean&#8217;s <code>id</code> with the ampersand symbol (<code>&amp;</code>) when
-calling the <code>getBean()</code> method of the <code>ApplicationContext</code>. So, for a given <code>FactoryBean</code>
-with an <code>id</code> of <code>myBean</code>, invoking <code>getBean("myBean")</code> on the container returns the
-product of the <code>FactoryBean</code>, whereas invoking <code>getBean("&amp;myBean")</code> returns the
-<code>FactoryBean</code> instance itself.</p>
+<p>컨테이너가 생성하는 Bean 대신 실제 <code>FactoryBean</code> 인스턴스 자체를 컨테이너에 요청해야 하는 경우, <code>ApplicationContext</code> 의 <code>getBean()</code> 메서드를 호출할 때 Bean의 <code>id</code> 앞에 앰퍼샌드 기호(<code>&amp;</code>)를 붙이면 됩니다.
+따라서 <code>id</code> 가 <code>myBean</code> 인 주어진 <code>FactoryBean`의 경우 컨테이너에서 `getBean("myBean")</code> 을 호출하면 <code>FactoryBean</code> 의 생성물이 반환되는 반면, <code>getBean("&amp;myBean")</code> 을 호출하면 <code>FactoryBean</code> 인스턴스 자체가 반환됩니다.</p>
 </div>
 </div>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="child-bean-definitions.html">Bean Definition Inheritance(한글)</a></span>
-  <span class="next"><a href="annotation-config.html">Annotation-based Container Configuration</a></span>
+  <span class="next"><a href="annotation-config.html">Annotation-based Container Configuration(한글)</a></span>
 </nav>
 </article>
   </div>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Annotation-based Container Configuration :: Spring Framework Reference</title>
+    <title>Annotation-based Container Configuration(한글) :: Spring Framework Reference</title>
     <link rel="prev" href="factory-extension.html">
     <link rel="next" href="annotation-config/autowired.html">
     <meta name="generator" content="Antora 3.2.0-alpha.2">
@@ -337,14 +337,14 @@
     <a class="nav-link" href="child-bean-definitions.html">Bean Definition Inheritance(한글)</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="factory-extension.html">Container Extension Points(반글)</a>
+    <a class="nav-link" href="factory-extension.html">Container Extension Points(한글)</a>
   </li>
   <li class="nav-item is-current-page" data-depth="3">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="annotation-config.html">Annotation-based Container Configuration</a>
+    <a class="nav-link" href="annotation-config.html">Annotation-based Container Configuration(한글)</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="annotation-config/autowired.html">Using <code>@Autowired</code></a>
+    <a class="nav-link" href="annotation-config/autowired.html">Using <code>@Autowired</code>(반글)</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="annotation-config/autowired-primary.html">Fine-tuning Annotation-based Autowiring with <code>@Primary</code> or <code>@Fallback</code></a>
@@ -1792,7 +1792,7 @@
   <div class="content">
     <div
       class="toc"
-      data-title="Annotation-based Container Configuration"
+      data-title="Annotation-based Container Configuration(한글)"
       data-levels="2"
     >
       <div class="toc-menu"></div>
@@ -1839,47 +1839,33 @@
     <li><a href="../../index.html">Spring Framework</a></li>
     <li><a href="../../core.html">Core Technologies(한글)</a></li>
     <li><a href="../beans.html">IoC Container(한글)</a></li>
-    <li><a href="annotation-config.html">Annotation-based Container Configuration</a></li>
+    <li><a href="annotation-config.html">Annotation-based Container Configuration(한글)</a></li>
   </ul>
 </nav>
-<h1 id="page-title" class="page">Annotation-based Container Configuration</h1>
+<h1 id="page-title" class="page">Annotation-based Container Configuration(한글)</h1>
 <div class="sidebarblock">
 <div class="content">
-<div class="title">Are annotations better than XML for configuring Spring?</div>
+<div class="title">Spring을 구성하는 데 XML보다 어노테이션이 더 낫나요?</div>
 <div class="paragraph">
-<p>The introduction of annotation-based configuration raised the question of whether this
-approach is &#8220;better&#8221; than XML. The short answer is &#8220;it depends.&#8221; The long answer is
-that each approach has its pros and cons, and, usually, it is up to the developer to
-decide which strategy suits them better. Due to the way they are defined, annotations
-provide a lot of context in their declaration, leading to shorter and more concise
-configuration. However, XML excels at wiring up components without touching their source
-code or recompiling them. Some developers prefer having the wiring close to the source
-while others argue that annotated classes are no longer POJOs and, furthermore, that the
-configuration becomes decentralized and harder to control.</p>
+<p>어노테이션 기반 구성이 도입되면서 이 접근 방식이 XML보다 '더 나은' 방식인지에 대한 의문이 제기되었습니다.
+짧은 대답은 &#8220;상황에 따라 다릅니다.&#8221; 입니다. 긴 대답은 각 접근 방식에는 장단점이 있으며, 일반적으로 어떤 전략이 더 적합한지는 개발자가 결정해야 한다는 것입니다.
+주석은 정의 방식 때문에 선언에 많은 컨텍스트를 제공하므로 더 짧고 간결한 구성으로 이어집니다.
+그러나 XML은 소스 코드를 건드리거나 다시 컴파일하지 않고도 컴포넌트를 배선하는 데 탁월합니다.
+일부 개발자는 소스에 가까운 와이어링을 선호하는 반면, 다른 개발자는 주석이 달린 클래스가 더 이상 POJO가 아니며 더 나아가 구성이 분산되고 제어하기 더 어려워진다고 주장합니다.</p>
 </div>
 <div class="paragraph">
-<p>No matter the choice, Spring can accommodate both styles and even mix them together.
-It is worth pointing out that through its <a href="java.html" class="xref page">JavaConfig</a> option, Spring lets
-annotations be used in a non-invasive way, without touching the target components'
-source code and that, in terms of tooling, all configuration styles are supported by
-<a href="https://spring.io/tools">Spring Tools</a> for Eclipse, Visual Studio Code, and Theia.</p>
+<p>어느 쪽을 선택하든 Spring은 두 가지 스타일을 모두 수용할 수 있으며 심지어 함께 혼합할 수도 있습니다.
+한 가지 짚고 넘어가야 할 점은 Spring은 <a href="java.html" class="xref page">JavaConfig</a> 옵션을 통해 대상 구성 요소의 소스 코드를 건드리지 않고 비침습적인 방식으로 주석을 사용할 수 있으며, 도구 측면에서 모든 구성 스타일이 Eclipse, Visual Studio Code 및 Theia용 <a href="https://spring.io/tools">Spring Tools</a>에서 지원된다는 점입니다.</p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>An alternative to XML setup is provided by annotation-based configuration, which relies
-on bytecode metadata for wiring up components instead of XML declarations. Instead of
-using XML to describe a bean wiring, the developer moves the configuration into the
-component class itself by using annotations on the relevant class, method, or field
-declaration. As mentioned in <a href="factory-extension.html#beans-factory-extension-bpp-examples-aabpp" class="xref page">Example: The <code>AutowiredAnnotationBeanPostProcessor</code></a>, using a
-<code>BeanPostProcessor</code> in conjunction with annotations is a common means of extending the
-Spring IoC container. For example, the <a href="annotation-config/autowired.html" class="xref page"><code>@Autowired</code></a>
-annotation provides the same capabilities as described in <a href="dependencies/factory-autowire.html" class="xref page">Autowiring Collaborators</a> but
-with more fine-grained control and wider applicability. In addition, Spring provides
-support for JSR-250 annotations, such as <code>@PostConstruct</code> and <code>@PreDestroy</code>, as well as
-support for JSR-330 (Dependency Injection for Java) annotations contained in the
-<code>jakarta.inject</code> package such as <code>@Inject</code> and <code>@Named</code>. Details about those annotations
-can be found in the <a href="standard-annotations.html" class="xref page">relevant section</a>.</p>
+<p>XML 설정의 대안으로 XML 선언 대신 바이트코드 메타데이터를 사용하여 구성 요소를 와이어링하는 어노테이션 기반 구성이 제공됩니다.
+개발자는 XML을 사용하여 Bean 와이어링을 설명하는 대신 관련 클래스, 메서드 또는 필드 선언에 어노테이션을 사용하여 구성을 구성 요소 클래스 자체로 이동합니다.
+<a href="factory-extension.html#beans-factory-extension-bpp-examples-aabpp" class="xref page">예: <code>AutowiredAnnotationBeanPostProcessor</code></a>에서 언급했듯이, 어노테이션과 함께 <code>BeanPostProcessor</code> 를 사용하는 것은 Spring IoC 컨테이너를 확장하는 일반적인 수단입니다.
+예를 들어, <a href="annotation-config/autowired.html" class="xref page"><code>@Autowired</code></a> 어노테이션은 <a href="dependencies/factory-autowire.html" class="xref page">Autowiring Collaborators</a>에 설명된 것과 동일한 기능을 제공하지만 더 세분화된 제어와 더 넓은 적용 가능성을 가지고 있습니다.
+또한 Spring은 <code>@PostConstruct</code> 및 <code>@PreDestroy</code> 와 같은 JSR-250 어노테이션을 지원할 뿐만 아니라 <code>@Inject</code> 및 <code>@Named`와 같은 `jakarta.inject</code> 패키지에 포함된 JSR-330(Java용 의존성 주입) 어노테이션을 지원합니다.
+이러한 어노테이션에 대한 자세한 내용은 <a href="standard-annotations.html" class="xref page">관련 섹션</a>에서 확인할 수 있습니다.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1889,17 +1875,14 @@ can be found in the <a href="standard-annotations.html" class="xref page">releva
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Annotation injection is performed before XML injection. Thus, the XML configuration
-overrides the annotations for properties wired through both approaches.</p>
+<p>어노테이션 주입은 XML 주입 전에 수행됩니다. 따라서 XML 구성은 두 가지 접근 방식을 통해 유선 연결되는 property에 대한 주석을 재정의합니다.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>As always, you can register the post-processors as individual bean definitions, but they
-can also be implicitly registered by including the following tag in an XML-based Spring
-configuration (notice the inclusion of the <code>context</code> namespace):</p>
+<p>항상 그렇듯이 post-processors를 개별 Bean 정의로 등록할 수도 있지만, XML 기반 Spring 구성에 다음 태그를 포함하여 암시적으로 등록할 수도 있습니다(<code>context</code> 네임스페이스가 포함되어 있는 것을 주목하세요):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1918,7 +1901,7 @@ configuration (notice the inclusion of the <code>context</code> namespace):</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>&lt;context:annotation-config/&gt;</code> element implicitly registers the following post-processors:</p>
+<p><code>&lt;context:annotation-config/&gt;</code> 요소는 암시적으로 다음과 같은 post-processor를 등록합니다:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1947,19 +1930,17 @@ configuration (notice the inclusion of the <code>context</code> namespace):</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p><code>&lt;context:annotation-config/&gt;</code> only looks for annotations on beans in the same
-application context in which it is defined. This means that, if you put
-<code>&lt;context:annotation-config/&gt;</code> in a <code>WebApplicationContext</code> for a <code>DispatcherServlet</code>,
-it only checks for <code>@Autowired</code> beans in your controllers, and not your services. See
-<a href="../../web/webmvc/mvc-servlet.html" class="xref page">The DispatcherServlet</a> for more information.</p>
+<p><code>&lt;context:annotation-config/&gt;</code> 는 어노테이션이 정의된 동일한 애플리케이션 컨텍스트에 있는 Bean에 대한 어노테이션만 찾습니다.
+즉, <code>DispatcherServlet</code> 에 대한 <code>&lt;context:annotation-config/&gt;</code> 를 <code>WebApplicationContext</code> 에 넣으면 서비스가 아닌 컨트롤러의 <code>@Autowired</code> Bean만 확인합니다.
+자세한 내용은 <a href="../../web/webmvc/mvc-servlet.html" class="xref page">DispatcherServlet</a>을 참조하세요.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="factory-extension.html">Container Extension Points(반글)</a></span>
-  <span class="next"><a href="annotation-config/autowired.html">Using <code>@Autowired</code></a></span>
+  <span class="prev"><a href="factory-extension.html">Container Extension Points(한글)</a></span>
+  <span class="next"><a href="annotation-config/autowired.html">Using <code>@Autowired</code>(반글)</a></span>
 </nav>
 </article>
   </div>
