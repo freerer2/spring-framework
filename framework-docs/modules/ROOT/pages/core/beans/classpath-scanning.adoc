@@ -328,19 +328,18 @@ NOTE: 값이 `false` 인 `annotation-config` 속성을 포함하면 `AutowiredAn
 
 | aspectj
 | `org.example..*Service+`
-| An AspectJ type expression to be matched by the target components.
+| 타깃 컴포넌트에 의해 일치시킬 AspectJ 타입 표현식입니다.
 
 | regex
 | `org\.example\.Default.*`
-| A regex expression to be matched by the target components' class names.
+| 대상 컴포넌트의 클래스 이름과 일치시킬 정규식 표현식입니다.
 
 | custom
 | `org.example.MyTypeFilter`
-| A custom implementation of the `org.springframework.core.type.TypeFilter` interface.
+| `org.springframework.core.type.TypeFilter` 인터페이스의 사용자 정의 구현입니다.
 |===
 
-The following example shows the configuration ignoring all `@Repository` annotations
-and using "`stub`" repositories instead:
+다음 예는 모든 `@Repository` 어노테이션을 무시하고 대신 "`stub`" 리포지토리를 사용하는 구성을 보여줍니다:
 
 [tabs]
 ======
@@ -371,7 +370,7 @@ Kotlin::
 ----
 ======
 
-The following listing shows the equivalent XML:
+다음 목록은 이에 해당하는 XML을 보여줍니다:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----
@@ -385,20 +384,17 @@ The following listing shows the equivalent XML:
 	</beans>
 ----
 
-NOTE: You can also disable the default filters by setting `useDefaultFilters=false` on the
-annotation or by providing `use-default-filters="false"` as an attribute of the
-`<component-scan/>` element. This effectively disables automatic detection of classes
-annotated or meta-annotated with `@Component`, `@Repository`, `@Service`, `@Controller`,
-`@RestController`, or `@Configuration`.
+NOTE: 어노테이션에 `useDefaultFilters=false`를 설정하거나 `<component-scan/>` 요소의 속성으로 `use-default-filters="false"` 를 제공하여 기본 필터를 비활성화할 수도 있습니다.
+이렇게 하면 `@Component`, `@Repository`, `@Service`, `@Controller`, `@RestController` 또는 `@Configuration` 으로 어노테이션되거나 메타 어노테이션된 클래스의 자동 감지를 효과적으로 비활성화할 수 있습니다.
 
 
 
 [[beans-factorybeans-annotations]]
-== Defining Bean Metadata within Components
+== 컴포넌트 내에서 Bean 메타데이터 정의하기
 
-Spring components can also contribute bean definition metadata to the container. You can do
-this with the same `@Bean` annotation used to define bean metadata within `@Configuration`
-annotated classes. The following example shows how to do so:
+Spring 컴포넌트는 컨테이너에 Bean 정의 메타데이터를 제공할 수도 있습니다.
+이 작업은 `@Configuration` 어노테이션 클래스 내에서 Bean 메타데이터를 정의하는 데 사용되는 것과 동일한 `@Bean` 어노테이션을 사용하여 수행할 수 있습니다.
+다음 예제는 그 방법을 보여줍니다:
 
 [tabs]
 ======
@@ -439,21 +435,18 @@ Kotlin::
 ----
 ======
 
-The preceding class is a Spring component that has application-specific code in its
-`doWork()` method. However, it also contributes a bean definition that has a factory
-method referring to the method `publicInstance()`. The `@Bean` annotation identifies the
-factory method and other bean definition properties, such as a qualifier value through
-the `@Qualifier` annotation. Other method-level annotations that can be specified are
-`@Scope`, `@Lazy`, and custom qualifier annotations.
+앞의 클래스는 `doWork()` 메서드에 애플리케이션별 코드가 있는 Spring 컴포넌트입니다.
+그러나 이 컴포넌트는 `publicInstance()` 메서드를 참조하는 팩토리 메서드가 있는 Bean 정의도 제공합니다.
+'@Bean` 어노테이션은 팩토리 메서드와 `@Qualifier` 어노테이션을 통해 한정자 값과 같은 기타 Bean 정의 속성을 식별합니다. 
+지정할 수 있는 다른 메서드 수준 어노테이션으로는 `@Scope`, `@Lazy` 및 사용자 지정 한정자 어노테이션이 있습니다.
 
-TIP: In addition to its role for component initialization, you can also place the `@Lazy`
-annotation on injection points marked with `@Autowired` or `@Inject`. In this context,
-it leads to the injection of a lazy-resolution proxy. However, such a proxy approach
-is rather limited. For sophisticated lazy interactions, in particular in combination
-with optional dependencies, we recommend `ObjectProvider<MyTargetBean>` instead.
+TIP: 컴포넌트 초기화를 위한 역할 외에도 `@Autowired` 또는 `@Inject` 로 표시된 주입 지점에 `@Lazy` 어노테이션을 배치할 수도 있습니다.
+이러한 맥락에서는 지연 해결 프록시를 주입하게 됩니다.
+그러나 이러한 프록시 접근 방식은 다소 제한적입니다.
+특히 선택적 종속성과 결합된 정교한 지연 상호 작용의 경우, 대신 `ObjectProvider<MyTargetBean>` 을 사용하는 것이 좋습니다.
 
-Autowired fields and methods are supported, as previously discussed, with additional
-support for autowiring of `@Bean` methods. The following example shows how to do so:
+앞서 설명한 대로 자동 와이어링된 필드와 메서드는 지원되며, `@Bean` 메서드의 autowiring도 추가로 지원됩니다.
+다음 예제에서는 이를 수행하는 방법을 보여줍니다:
 
 [tabs]
 ======
@@ -530,22 +523,16 @@ Kotlin::
 ----
 ======
 
-The example autowires the `String` method parameter `country` to the value of the `age`
-property on another bean named `privateInstance`. A Spring Expression Language element
-defines the value of the property through the notation `#{ <expression> }`. For `@Value`
-annotations, an expression resolver is preconfigured to look for bean names when
-resolving expression text.
+이 예제에서는 `String` 메서드 매개변수 `country`를 `privateInstance` 라는 다른 Bean의 `age` 속성 값에 autowiring합니다.
+Spring 표현식 언어 요소는 `#{ <표현식> }` 표기법을 통해 속성 값을 정의합니다.
+`@Value` 어노테이션의 경우, 표현식 해석기는 표현식 텍스트를 해석할 때 Bean 이름을 찾도록 미리 구성되어 있습니다.
 
-As of Spring Framework 4.3, you may also declare a factory method parameter of type
-`InjectionPoint` (or its more specific subclass: `DependencyDescriptor`) to
-access the requesting injection point that triggers the creation of the current bean.
-Note that this applies only to the actual creation of bean instances, not to the
-injection of existing instances. As a consequence, this feature makes most sense for
-beans of prototype scope. For other scopes, the factory method only ever sees the
-injection point that triggered the creation of a new bean instance in the given scope
-(for example, the dependency that triggered the creation of a lazy singleton bean).
-You can use the provided injection point metadata with semantic care in such scenarios.
-The following example shows how to use `InjectionPoint`:
+Spring 프레임워크 4.3부터는 `InjectionPoint` (또는 보다 구체적인 하위 클래스인 `DependencyDescriptor`) 유형의 팩토리 메서드 파라미터를 선언하여 현재 Bean의 생성을 트리거하는 요청하는 주입 지점에 액세스할 수도 있습니다.
+이는 기존 인스턴스의 주입이 아닌 실제 Bean 인스턴스 생성에만 적용된다는 점에 유의하세요.
+따라서 이 기능은 프로토타입 범위의 Bean에 가장 적합합니다.
+다른 범위의 경우, 팩토리 메서드는 주어진 범위에서 새 Bean 인스턴스 생성을 트리거한 주입 지점(예: 지연 싱글톤 Bean 생성을 트리거한 종속성)만 볼 수 있습니다.
+이러한 시나리오에서는 제공된 주입 지점 메타데이터를 의미론적으로 주의하여 사용할 수 있습니다.
+다음 예제는 `InjectionPoint` 를 사용하는 방법을 보여줍니다:
 
 [tabs]
 ======
