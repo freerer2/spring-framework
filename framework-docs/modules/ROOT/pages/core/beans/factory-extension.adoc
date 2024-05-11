@@ -54,8 +54,6 @@ NOTE: `BeanPostProcessor` 등록을 위해 권장되는 방법은 앞서 설명�
 여기서 실행 순서를 결정하는 것은 등록 순서입니다.
 또한 프로그래밍 방식으로 등록된 `BeanPostProcessor` 인스턴스는 명시적인 순서에 관계없이 자동 감지를 통해 등록된 인스턴스보다 항상 먼저 처리된다는 점에 유의하세요.
 
-Translated with www.DeepL.com/Translator (free version)
-
 .`BeanPostProcessor` 인스턴스 및 AOP 자동 프록싱
 [NOTE]
 ====

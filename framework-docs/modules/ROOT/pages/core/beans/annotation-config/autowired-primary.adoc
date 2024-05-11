@@ -1,15 +1,12 @@
 [[beans-autowired-annotation-primary]]
-= Fine-tuning Annotation-based Autowiring with `@Primary` or `@Fallback`
+= Fine-tuning Annotation-based Autowiring with `@Primary` or `@Fallback`(한글)
 
-Because autowiring by type may lead to multiple candidates, it is often necessary to have
-more control over the selection process. One way to accomplish this is with Spring's
-`@Primary` annotation. `@Primary` indicates that a particular bean should be given
-preference when multiple beans are candidates to be autowired to a single-valued
-dependency. If exactly one primary bean exists among the candidates, it becomes the
-autowired value.
+유형별 자동 와이어링으로 인해 여러 후보가 나올 수 있으므로, 종종 선택 프로세스를 더 잘 제어할 필요가 있습니다.
+이를 수행하는 한 가지 방법은 Spring의 `@Primary` 어노테이션을 사용하는 것입니다.
+`@Primary` 는 여러 Bean이 후보로 있을 때 특정 Bean이 우선권을 부여해야 함을 나타냅니다. 종속성입니다.
+후보 중 정확히 하나의 기본 Bean이 존재하면, 이 Bean이 autowired 값이 됩니다.
 
-Consider the following configuration that defines `firstMovieCatalog` as the
-primary `MovieCatalog`:
+`firstMovieCatalog` 를 기본 `MovieCatalog` 로 정의하는 다음 구성을 고려하세요:
 
 [tabs]
 ======
@@ -50,9 +47,8 @@ Kotlin::
 ----
 ======
 
-Alternatively, as of 6.2, there is a `@Fallback` annotation for demarcating
-any beans other than the regular ones to be injected. If only one regular
-bean is left, it is effectively primary as well:
+또는 6.2부터 `@Fallback` 주석을 사용하여 주입할 일반 Bean 이외의 다른 Bean을 구분할 수 있습니다.
+일반 Bean이 하나만 남아 있으면 사실상 기본 Bean이 됩니다:
 
 [tabs]
 ======
@@ -93,8 +89,7 @@ Kotlin::
 ----
 ======
 
-With both variants of the preceding configuration, the following
-`MovieRecommender` is autowired with the `firstMovieCatalog`:
+앞선 구성의 두 가지 변형 모두에서 다음 `MovieRecommender` 는 `firstMovieCatalog` 와 자동 연결됩니다:
 
 [tabs]
 ======
@@ -125,7 +120,7 @@ class MovieRecommender {
 ----
 ======
 
-The corresponding bean definitions follow:
+해당 Bean 정의는 다음과 같습니다:
 
 [source,xml,indent=0,subs="verbatim,quotes"]
 ----

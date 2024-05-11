@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Fine-tuning Annotation-based Autowiring with Qualifiers :: Spring Framework Reference</title>
+    <title>Fine-tuning Annotation-based Autowiring with Qualifiers(한글) :: Spring Framework Reference</title>
     <link rel="prev" href="autowired-primary.html">
     <link rel="next" href="generics-as-qualifiers.html">
     <meta name="generator" content="Antora 3.2.0-alpha.2">
@@ -344,25 +344,25 @@
     <a class="nav-link" href="../annotation-config.html">Annotation-based Container Configuration(한글)</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="autowired.html">Using <code>@Autowired</code>(반글)</a>
+    <a class="nav-link" href="autowired.html">Using <code>@Autowired</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="autowired-primary.html">Fine-tuning Annotation-based Autowiring with <code>@Primary</code> or <code>@Fallback</code></a>
+    <a class="nav-link" href="autowired-primary.html">Fine-tuning Annotation-based Autowiring with <code>@Primary</code> or <code>@Fallback</code>(한글)</a>
   </li>
   <li class="nav-item is-current-page" data-depth="4">
-    <a class="nav-link" href="autowired-qualifiers.html">Fine-tuning Annotation-based Autowiring with Qualifiers</a>
+    <a class="nav-link" href="autowired-qualifiers.html">Fine-tuning Annotation-based Autowiring with Qualifiers(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="generics-as-qualifiers.html">Using Generics as Autowiring Qualifiers</a>
+    <a class="nav-link" href="generics-as-qualifiers.html">Using Generics as Autowiring Qualifiers(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="custom-autowire-configurer.html">Using <code>CustomAutowireConfigurer</code></a>
+    <a class="nav-link" href="custom-autowire-configurer.html">Using <code>CustomAutowireConfigurer</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="resource.html">Injection with <code>@Resource</code></a>
+    <a class="nav-link" href="resource.html">Injection with <code>@Resource</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="value-annotations.html">Using <code>@Value</code></a>
+    <a class="nav-link" href="value-annotations.html">Using <code>@Value</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="postconstruct-and-predestroy-annotations.html">Using <code>@PostConstruct</code> and <code>@PreDestroy</code></a>
@@ -1792,13 +1792,13 @@
   <div class="content">
     <div
       class="toc"
-      data-title="Fine-tuning Annotation-based Autowiring with Qualifiers"
+      data-title="Fine-tuning Annotation-based Autowiring with Qualifiers(한글)"
       data-levels="2"
     >
       <div class="toc-menu"></div>
     </div>
     <div class="sidebar-links">
-        <a href="file:///C:/Users/LHK/spring-framework/trans2kr/framework-docs/modules/ROOT/pages/core/beans/annotation-config/autowired-qualifiers.adoc">
+        <a href="file:///C:/Users/LHK/spring-framework/framework-docs/modules/ROOT/pages/core/beans/annotation-config/autowired-qualifiers.adoc">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"
@@ -1840,19 +1840,17 @@
     <li><a href="../../../core.html">Core Technologies(한글)</a></li>
     <li><a href="../../beans.html">IoC Container(한글)</a></li>
     <li><a href="../annotation-config.html">Annotation-based Container Configuration(한글)</a></li>
-    <li><a href="autowired-qualifiers.html">Fine-tuning Annotation-based Autowiring with Qualifiers</a></li>
+    <li><a href="autowired-qualifiers.html">Fine-tuning Annotation-based Autowiring with Qualifiers(한글)</a></li>
   </ul>
 </nav>
-<h1 id="page-title" class="page">Fine-tuning Annotation-based Autowiring with Qualifiers</h1>
+<h1 id="page-title" class="page">Fine-tuning Annotation-based Autowiring with Qualifiers(한글)</h1>
 <div class="paragraph">
-<p><code>@Primary</code> and <code>@Fallback</code> are effective ways to use autowiring by type with several
-instances when one primary (or non-fallback) candidate can be determined.</p>
+<p>기본(또는 비폴백) 후보를 하나만 결정할 수 있는 경우 <code>@Primary</code> 및 `@Fallback`은 여러 인스턴스에서 유형별로 autowiring을 사용하는 효과적인 방법입니다.</p>
 </div>
 <div class="paragraph">
-<p>When you need more control over the selection process, you can use Spring&#8217;s <code>@Qualifier</code>
-annotation. You can associate qualifier values with specific arguments, narrowing the set
-of type matches so that a specific bean is chosen for each argument. In the simplest case,
-this can be a plain descriptive value, as shown in the following example:</p>
+<p>선택 프로세스에 대한 더 많은 제어가 필요한 경우 Spring의 <code>@Qualifier</code> 어노테이션을 사용할 수 있습니다.
+한정자 값을 특정 인수와 연결하여 각 인수에 대해 특정 Bean이 선택되도록 유형 일치 집합을 좁힐 수 있습니다.
+가장 간단한 경우에는 다음 예제와 같이 단순한 설명 값일 수 있습니다:</p>
 </div>
 <div class="openblock">
 <div class="content">
@@ -1901,8 +1899,7 @@ this can be a plain descriptive value, as shown in the following example:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>You can also specify the <code>@Qualifier</code> annotation on individual constructor arguments or
-method parameters, as shown in the following example:</p>
+<p>다음 예시와 같이 개별 생성자 인수 또는 메서드 매개변수에 <code>@Qualifier</code> 어노테이션을 지정할 수도 있습니다:</p>
 </div>
 <div class="openblock">
 <div class="content">
@@ -1965,7 +1962,7 @@ method parameters, as shown in the following example:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The following example shows corresponding bean definitions.</p>
+<p>다음 예제는 해당 Bean 정의를 보여줍니다.</p>
 </div>
 <div class="openblock">
 <div class="content">
@@ -2003,37 +2000,30 @@ method parameters, as shown in the following example:</p>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The bean with the <code>main</code> qualifier value is wired with the constructor argument that
-is qualified with the same value.</td>
+<td><code>main</code> 한정자 값을 가진 Bean은 생성자 인수인 이 동일한 값으로 한정된 생성자 인수로 연결됩니다.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>The bean with the <code>action</code> qualifier value is wired with the constructor argument that
-is qualified with the same value.</td>
+<td><code>action</code> 한정자 값을 가진 Bean은 동일한 값으로 한정된 생성자 인수가 이 동일한 값으로 한정된 생성자 인수로 연결됩니다.</td>
 </tr>
 </table>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>For a fallback match, the bean name is considered a default qualifier value. Thus, you
-can define the bean with an <code>id</code> of <code>main</code> instead of the nested qualifier element, leading
-to the same matching result. However, although you can use this convention to refer to
-specific beans by name, <code>@Autowired</code> is fundamentally about type-driven injection with
-optional semantic qualifiers. This means that qualifier values, even with the bean name
-fallback, always have narrowing semantics within the set of type matches. They do not
-semantically express a reference to a unique bean <code>id</code>. Good qualifier values are <code>main</code>
-or <code>EMEA</code> or <code>persistent</code>, expressing characteristics of a specific component that are
-independent from the bean <code>id</code>, which may be auto-generated in case of an anonymous bean
-definition such as the one in the preceding example.</p>
+<p>Fallback 매치의 경우 Bean 이름이 기본 한정자 값으로 간주됩니다.
+따라서 중첩된 한정자 요소 대신 <code>main</code> 의 <code>id</code> 로 Bean을 정의하여 동일한 일치 결과를 얻을 수 있습니다.
+그러나 이 규칙을 사용하여 특정 Bean을 이름으로 참조할 수는 있지만, <code>@Autowired</code> 는 기본적으로 선택적 의미 한정자를 사용한 유형 중심 주입에 관한 것입니다.
+즉, 한정자 값은 Bean 이름 폴백을 사용하더라도 유형 일치 집합 내에서 항상 좁은 의미론을 갖습니다.
+이들은 고유한 Bean <code>id</code> 에 대한 참조를 의미적으로 표현하지 않습니다.
+좋은 한정자 값은 앞의 예와 같이 익명 Bean 정의의 경우 자동 생성될 수 있는 <code>main</code> 또는 <code>EMEA</code> 또는 <code>persistent</code> 로, Bean <code>id</code> 와 독립적인 특정 구성 요소의 특성을 표현합니다.</p>
 </div>
 <div class="paragraph">
-<p>Qualifiers also apply to typed collections, as discussed earlier&#8201;&#8212;&#8201;for example, to
-<code>Set&lt;MovieCatalog&gt;</code>. In this case, all matching beans, according to the declared
-qualifiers, are injected as a collection. This implies that qualifiers do not have to be
-unique. Rather, they constitute filtering criteria. For example, you can define
-multiple <code>MovieCatalog</code> beans with the same qualifier value &#8220;action&#8221;, all of which are
-injected into a <code>Set&lt;MovieCatalog&gt;</code> annotated with <code>@Qualifier("action")</code>.</p>
+<p>한정자는 앞서 설명한 것처럼 입력된 컬렉션에도 적용됩니다.&#8201;&#8212;&#8201;예를 들어 <code>Set&lt;MovieCatalog&gt;`에 적용됩니다.
+이 경우, 선언된 한정자에 따라 일치하는 모든 Bean이 컬렉션으로 주입됩니다.
+이는 한정자가 고유할 필요가 없음을 의미합니다.
+오히려 필터링 기준을 구성합니다.
+예를 들어, 동일한 한정자 값 "`action`"을 가진 여러 개의 `MovieCatalog</code> Bean을 정의할 수 있으며, 이들 모두는 <code>@Qualifier("action")</code> 로 어노테이션이 달린 <code>Set&lt;MovieCatalog&gt;</code> 에 주입됩니다.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -2043,50 +2033,36 @@ injected into a <code>Set&lt;MovieCatalog&gt;</code> annotated with <code>@Quali
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Letting qualifier values select against target bean names, within the type-matching
-candidates, does not require a <code>@Qualifier</code> annotation at the injection point.
-If there is no other resolution indicator (such as a qualifier or a primary marker),
-for a non-unique dependency situation, Spring matches the injection point name
-(that is, the field name or parameter name) against the target bean names and chooses the
-same-named candidate, if any.</p>
+<p>한정자 값이 type-matching 후보 내에서 대상 Bean 이름에 대해 선택되도록 하면 주입 지점에서 <code>@Qualifier</code> 어노테이션이 필요하지 않습니다.
+다른 resolution indicator(???)(한정자 또는 기본 마커 등)가 없는 경우, 고유하지 않은 종속성 상황에서 Spring은 주입 지점 이름(즉, 필드 이름 또는 매개 변수 이름)을 대상 Bean 이름과 일치시키고 동일한 이름의 후보가 있는 경우 선택합니다.</p>
 </div>
 <div class="paragraph">
-<p>Since version 6.1, this requires the <code>-parameters</code> Java compiler flag to be present.</p>
+<p>버전 6.1부터 이를 위해서는 <code>-parameters</code> Java 컴파일러 플래그가 있어야 합니다.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>That said, if you intend to express annotation-driven injection by name, do not
-primarily use <code>@Autowired</code>, even if it is capable of selecting by bean name among
-type-matching candidates. Instead, use the JSR-250 <code>@Resource</code> annotation, which is
-semantically defined to identify a specific target component by its unique name, with
-the declared type being irrelevant for the matching process. <code>@Autowired</code> has rather
-different semantics: After selecting candidate beans by type, the specified <code>String</code>
-qualifier value is considered within those type-selected candidates only (for example,
-matching an <code>account</code> qualifier against beans marked with the same qualifier label).</p>
+<p>즉, 어노테이션 기반 주입을 이름으로 표현하려는 경우, type-matching 후보 중 Bean 이름으로 선택할 수 있더라도 <code>@Autowired</code> 를 주로 사용하지 마세요.
+대신 JSR-250 <code>@Resource</code> 어노테이션을 사용하세요.
+이는 고유한 이름으로 특정 대상 컴포넌트를 식별하도록 의미적으로 정의되며, 선언된 유형은 매칭 프로세스와 관련이 없습니다.
+<code>@Autowired</code> 는 다소 다른 의미를 가집니다: 유형별로 후보 Bean을 선택한 후, 지정된 <code>String</code> 한정자 값은 유형이 선택된 후보 내에서만 고려됩니다(예: 동일한 한정자 레이블로 표시된 Bean에 대해 <code>account</code> 한정자를 일치시키는 경우).</p>
 </div>
 <div class="paragraph">
-<p>For beans that are themselves defined as a collection, <code>Map</code>, or array type, <code>@Resource</code>
-is a fine solution, referring to the specific collection or array bean by unique name.
-That said, as of 4.3, you can match collection, <code>Map</code>, and array types through Spring&#8217;s
-<code>@Autowired</code> type matching algorithm as well, as long as the element type information
-is preserved in <code>@Bean</code> return type signatures or collection inheritance hierarchies.
-In this case, you can use qualifier values to select among same-typed collections,
-as outlined in the previous paragraph.</p>
+<p>그 자체가 컬렉션, <code>Map</code> 또는 배열 타입으로 정의된 Bean의 경우, 특정 컬렉션이나 배열 Bean을 고유한 이름으로 참조하는 <code>@Resource</code> 가 좋은 해결책입니다.
+즉, 4.3부터는 <code>@Bean</code> 반환 타입 서명이나 컬렉션 상속 계층 구조에 요소 타입 정보가 보존되어 있다면 Spring의 <code>@Autowired</code> 타입 매칭 알고리즘을 통해서도 컬렉션, <code>Map</code> 및 배열 타입을 매칭할 수 있습니다.
+이 경우 이전 단락에서 설명한 대로 한정자 값을 사용하여 동일한 유형의 컬렉션 중에서 선택할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>As of 4.3, <code>@Autowired</code> also considers self references for injection (that is, references
-back to the bean that is currently injected). Note that self injection is a fallback.
-Regular dependencies on other components always have precedence. In that sense, self
-references do not participate in regular candidate selection and are therefore in
-particular never primary. On the contrary, they always end up as lowest precedence.
-In practice, you should use self references as a last resort only (for example, for
-calling other methods on the same instance through the bean&#8217;s transactional proxy).
-Consider factoring out the affected methods to a separate delegate bean in such a scenario.
-Alternatively, you can use <code>@Resource</code>, which may obtain a proxy back to the current bean
-by its unique name.</p>
+<p>4.3부터 <code>@Autowired</code> 는 주입에 대한 자체 참조(즉, 현재 주입된 Bean을 다시 참조하는 것)도 간주됩니다.
+자체 주입은 대체 수단(fallback)이라는 점에 유의하세요.
+다른 컴포넌트에 대한 일반 종속성은 항상 우선순위를 갖습니다.
+그런 의미에서 자체 참조는 정기적인 후보 선택에 참여하지 않으므로 특히 기본이 되지 않습니다.
+오히려 항상 가장 낮은 우선순위를 갖습니다.
+실제로는 자체 참조를 최후의 수단으로만 사용해야 합니다(예: Bean의 트랜잭션 프록시를 통해 동일한 인스턴스에서 다른 메서드를 호출하는 경우).
+이러한 시나리오에서는 영향을 받는 메서드를 별도의 델리게이트(delegate) Bean으로 분리하는 것을 고려하세요.
+또는 현재 Bean의 고유 이름으로 프록시를 다시 가져올 수 있는 <code>@Resource</code> 를 사용할 수 있습니다.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2096,28 +2072,22 @@ by its unique name.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Trying to inject the results from <code>@Bean</code> methods on the same configuration class is
-effectively a self-reference scenario as well. Either lazily resolve such references
-in the method signature where it is actually needed (as opposed to an autowired field
-in the configuration class) or declare the affected <code>@Bean</code> methods as <code>static</code>,
-decoupling them from the containing configuration class instance and its lifecycle.
-Otherwise, such beans are only considered in the fallback phase, with matching beans
-on other configuration classes selected as primary candidates instead (if available).</p>
+<p>동일한 구성 클래스에서 <code>@Bean</code> 메서드의 결과를 주입하려고 시도하는 것도 사실상 자체 참조 시나리오입니다.
+이러한 참조가 실제로 필요한 경우 메서드 서명에서 이러한 참조를 느리게 해결하거나(구성 클래스의 자동 autowiring 필드 대신) 영향을 받는 <code>@Bean</code> 메서드를 <code>static</code> 으로 선언하여 포함된 구성 클래스 인스턴스와 그 수명 주기에서 분리하세요.
+그렇지 않으면 이러한 Bean은 폴백 단계에서만 고려되며 다른 구성 클래스에서 일치하는 Bean이 기본 후보로 선택됩니다(사용 가능한 경우).</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p><code>@Autowired</code> applies to fields, constructors, and multi-argument methods, allowing for
-narrowing through qualifier annotations at the parameter level. In contrast, <code>@Resource</code>
-is supported only for fields and bean property setter methods with a single argument.
-As a consequence, you should stick with qualifiers if your injection target is a
-constructor or a multi-argument method.</p>
+<p><code>@Autowired</code> 은 필드, 생성자 및 다중 인수 메서드에 적용되므로 매개변수 수준에서 한정자(@Qualifier) 어노테이션을 통해 범위를 좁힐 수 있습니다.
+반면 <code>@Resource</code> 는 단일 인수가 있는 필드 및 Bean 속성 설정자 메서드에만 지원됩니다.
+따라서 주입 대상이 생성자 또는 다중 인수 메서드인 경우 한정자를 사용해야 합니다.</p>
 </div>
 <div class="paragraph">
-<p>You can create your own custom qualifier annotations. To do so, define an annotation and
-provide the <code>@Qualifier</code> annotation within your definition, as the following example shows:</p>
+<p>사용자 지정 한정자 어노테이션을 직접 만들 수 있습니다.
+이렇게 하려면 다음 예시와 같이 어노테이션을 정의하고 정의 내에 <code>@Qualifier</code> 어노테이션을 제공하세요:</p>
 </div>
 <div class="openblock">
 <div class="content">
@@ -2161,8 +2131,7 @@ annotation class Genre(val value: String)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Then you can provide the custom qualifier on autowired fields and parameters, as the
-following example shows:</p>
+<p>그런 다음 다음 예제와 같이 자동 연결 필드 및 매개변수에 사용자 지정 한정자를 제공할 수 있습니다:</p>
 </div>
 <div class="openblock">
 <div class="content">
@@ -2225,12 +2194,11 @@ following example shows:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Next, you can provide the information for the candidate bean definitions. You can add
-<code>&lt;qualifier/&gt;</code> tags as sub-elements of the <code>&lt;bean/&gt;</code> tag and then specify the <code>type</code> and
-<code>value</code> to match your custom qualifier annotations. The type is matched against the
-fully-qualified class name of the annotation. Alternately, as a convenience if no risk of
-conflicting names exists, you can use the short class name. The following example
-demonstrates both approaches:</p>
+<p>다음으로, 후보 Bean 정의에 대한 정보를 제공할 수 있습니다.
+'&lt;qualifier/&gt;` 태그를 <code>&lt;bean/&gt;</code> 태그의 하위 요소로 추가한 다음 사용자 정의 qualifier 어노테이션과 일치하도록 <code>type</code> 및 <code>value</code> 를 지정할 수 있습니다.
+유형은 어노테이션의 정규화된 클래스 이름과 일치합니다.
+또는 이름이 충돌할 위험이 없는 경우 편의를 위해 짧은 클래스 이름을 사용할 수 있습니다.
+다음 예에서는 두 가지 접근 방식을 모두 보여줍니다:</p>
 </div>
 <div class="openblock">
 <div class="content">
@@ -2265,15 +2233,14 @@ demonstrates both approaches:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>In <a href="../classpath-scanning.html" class="xref page">Classpath Scanning and Managed Components</a>, you can see an annotation-based alternative to
-providing the qualifier metadata in XML. Specifically, see <a href="../classpath-scanning.html#beans-scanning-qualifiers" class="xref page">Providing Qualifier Metadata with Annotations</a>.</p>
+<p><a href="../classpath-scanning.html" class="xref page">클래스경로 스캐닝 및 관리되는 컴포넌트</a>에서 XML로 한정자 메타데이터를 제공하는 대신 어노테이션 기반 대안을 볼 수 있습니다.
+구체적으로는 <a href="../classpath-scanning.html#beans-scanning-qualifiers" class="xref page">어노테이션으로 한정자 메타데이터 제공</a>을 참조하세요.</p>
 </div>
 <div class="paragraph">
-<p>In some cases, using an annotation without a value may suffice. This can be
-useful when the annotation serves a more generic purpose and can be applied across
-several different types of dependencies. For example, you may provide an offline
-catalog that can be searched when no Internet connection is available. First, define
-the simple annotation, as the following example shows:</p>
+<p>경우에 따라 값 없이 어노테이션을 사용하는 것으로 충분할 수 있습니다.
+이는 어노테이션이 보다 일반적인 용도로 사용되며 여러 유형의 종속성에 걸쳐 적용될 수 있는 경우에 유용할 수 있습니다.
+예를 들어 인터넷에 연결할 수 없을 때 검색할 수 있는 오프라인 카탈로그를 제공할 수 있습니다.
+먼저 다음 예시와 같이 간단한 어노테이션을 정의합니다:</p>
 </div>
 <div class="openblock">
 <div class="content">
@@ -2315,8 +2282,7 @@ annotation class Offline</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Then add the annotation to the field or property to be autowired, as shown in the
-following example:</p>
+<p>그런 다음 다음 예시와 같이 자동 연결할 필드 또는 속성에 어노테이션을 추가합니다:</p>
 </div>
 <div class="openblock">
 <div class="content">
@@ -2349,7 +2315,7 @@ following example:</p>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>This line adds the <code>@Offline</code> annotation.</td>
+<td>이 줄은 <code>@Offline</code> 어노테이션을 추가합니다.</td>
 </tr>
 </table>
 </div>
@@ -2371,7 +2337,7 @@ following example:</p>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>This line adds the <code>@Offline</code> annotation.</td>
+<td>이 줄은 <code>@Offline</code> 어노테이션을 추가합니다.</td>
 </tr>
 </table>
 </div>
@@ -2381,7 +2347,7 @@ following example:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Now the bean definition only needs a qualifier <code>type</code>, as shown in the following example:</p>
+<p>이제 Bean 정의에는 다음 예제와 같이 qualifier <code>type</code> 만 있으면 됩니다:</p>
 </div>
 <div class="openblock">
 <div class="content">
@@ -2404,11 +2370,9 @@ following example:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>You can also define custom qualifier annotations that accept named attributes in
-addition to or instead of the simple <code>value</code> attribute. If multiple attribute values are
-then specified on a field or parameter to be autowired, a bean definition must match
-all such attribute values to be considered an autowire candidate. As an example,
-consider the following annotation definition:</p>
+<p>또한 단순한 <code>value</code> 속성에 추가하거나 대신 명명된 속성을 허용하는 사용자 지정 한정자 주석을 정의할 수도 있습니다.
+그런 다음 autowiring할 필드 또는 매개변수에 여러 속성 값이 지정된 경우, autowiring 후보로 간주되려면 Bean 정의가 이러한 모든 속성 값과 일치해야 합니다.
+예를 들어 다음 어노테이션 정의를 고려해 보겠습니다:</p>
 </div>
 <div class="openblock">
 <div class="content">
@@ -2454,7 +2418,7 @@ annotation class MovieQualifier(val genre: String, val format: Format)</code></p
 </div>
 </div>
 <div class="paragraph">
-<p>In this case <code>Format</code> is an enum, defined as follows:</p>
+<p>이 경우 <code>Format</code> 은 다음과 같이 정의된 열거형입니다:</p>
 </div>
 <div class="openblock">
 <div class="content">
@@ -2493,8 +2457,7 @@ annotation class MovieQualifier(val genre: String, val format: Format)</code></p
 </div>
 </div>
 <div class="paragraph">
-<p>The fields to be autowired are annotated with the custom qualifier and include values
-for both attributes: <code>genre</code> and <code>format</code>, as the following example shows:</p>
+<p>autowiring할 필드에는 사용자 정의 한정자가 주석으로 지정되며 두 속성에 대한 값을 포함합니다: <code>genre</code> 및 <code>format</code> 속성의 값을 포함합니다:</p>
 </div>
 <div class="openblock">
 <div class="content">
@@ -2567,12 +2530,9 @@ for both attributes: <code>genre</code> and <code>format</code>, as the followin
 </div>
 </div>
 <div class="paragraph">
-<p>Finally, the bean definitions should contain matching qualifier values. This example
-also demonstrates that you can use bean meta attributes instead of the
-<code>&lt;qualifier/&gt;</code> elements. If available, the <code>&lt;qualifier/&gt;</code> element and its attributes take
-precedence, but the autowiring mechanism falls back on the values provided within the
-<code>&lt;meta/&gt;</code> tags if no such qualifier is present, as in the last two bean definitions in
-the following example:</p>
+<p>마지막으로, Bean 정의에는 일치하는 한정자(qualifier) 값이 포함되어야 합니다.
+이 예에서는 <code>&lt;qualifier/&gt;</code> 요소 대신 Bean 메타 속성을 사용할 수 있음을 보여줍니다.
+가능한 경우 <code>&lt;qualifier/&gt;</code> 요소와 해당 속성이 우선하지만, 다음 예제의 마지막 두 Bean 정의에서와 같이 해당 한정자가 없는 경우 자동 와이어링 메커니즘은 <code>&lt;meta/&gt;</code> 태그 내에 제공된 값으로 되돌아갑니다:</p>
 </div>
 <div class="openblock">
 <div class="content">
@@ -2623,8 +2583,8 @@ the following example:</p>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="autowired-primary.html">Fine-tuning Annotation-based Autowiring with <code>@Primary</code> or <code>@Fallback</code></a></span>
-  <span class="next"><a href="generics-as-qualifiers.html">Using Generics as Autowiring Qualifiers</a></span>
+  <span class="prev"><a href="autowired-primary.html">Fine-tuning Annotation-based Autowiring with <code>@Primary</code> or <code>@Fallback</code>(한글)</a></span>
+  <span class="next"><a href="generics-as-qualifiers.html">Using Generics as Autowiring Qualifiers(한글)</a></span>
 </nav>
 </article>
   </div>

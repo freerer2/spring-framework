@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Using @Value :: Spring Framework Reference</title>
+    <title>Using @Value(한글) :: Spring Framework Reference</title>
     <link rel="prev" href="resource.html">
     <link rel="next" href="postconstruct-and-predestroy-annotations.html">
     <meta name="generator" content="Antora 3.2.0-alpha.2">
@@ -344,25 +344,25 @@
     <a class="nav-link" href="../annotation-config.html">Annotation-based Container Configuration(한글)</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="autowired.html">Using <code>@Autowired</code>(반글)</a>
+    <a class="nav-link" href="autowired.html">Using <code>@Autowired</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="autowired-primary.html">Fine-tuning Annotation-based Autowiring with <code>@Primary</code> or <code>@Fallback</code></a>
+    <a class="nav-link" href="autowired-primary.html">Fine-tuning Annotation-based Autowiring with <code>@Primary</code> or <code>@Fallback</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="autowired-qualifiers.html">Fine-tuning Annotation-based Autowiring with Qualifiers</a>
+    <a class="nav-link" href="autowired-qualifiers.html">Fine-tuning Annotation-based Autowiring with Qualifiers(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="generics-as-qualifiers.html">Using Generics as Autowiring Qualifiers</a>
+    <a class="nav-link" href="generics-as-qualifiers.html">Using Generics as Autowiring Qualifiers(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="custom-autowire-configurer.html">Using <code>CustomAutowireConfigurer</code></a>
+    <a class="nav-link" href="custom-autowire-configurer.html">Using <code>CustomAutowireConfigurer</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="resource.html">Injection with <code>@Resource</code></a>
+    <a class="nav-link" href="resource.html">Injection with <code>@Resource</code>(한글)</a>
   </li>
   <li class="nav-item is-current-page" data-depth="4">
-    <a class="nav-link" href="value-annotations.html">Using <code>@Value</code></a>
+    <a class="nav-link" href="value-annotations.html">Using <code>@Value</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="postconstruct-and-predestroy-annotations.html">Using <code>@PostConstruct</code> and <code>@PreDestroy</code></a>
@@ -1792,13 +1792,13 @@
   <div class="content">
     <div
       class="toc"
-      data-title="Using @Value"
+      data-title="Using @Value(한글)"
       data-levels="2"
     >
       <div class="toc-menu"></div>
     </div>
     <div class="sidebar-links">
-        <a href="file:///C:/Users/LHK/spring-framework/trans2kr/framework-docs/modules/ROOT/pages/core/beans/annotation-config/value-annotations.adoc">
+        <a href="file:///C:/Users/LHK/spring-framework/framework-docs/modules/ROOT/pages/core/beans/annotation-config/value-annotations.adoc">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"
@@ -1840,12 +1840,12 @@
     <li><a href="../../../core.html">Core Technologies(한글)</a></li>
     <li><a href="../../beans.html">IoC Container(한글)</a></li>
     <li><a href="../annotation-config.html">Annotation-based Container Configuration(한글)</a></li>
-    <li><a href="value-annotations.html">Using <code>@Value</code></a></li>
+    <li><a href="value-annotations.html">Using <code>@Value</code>(한글)</a></li>
   </ul>
 </nav>
-<h1 id="page-title" class="page">Using <code>@Value</code></h1>
+<h1 id="page-title" class="page">Using <code>@Value</code>(한글)</h1>
 <div class="paragraph">
-<p><code>@Value</code> is typically used to inject externalized properties:</p>
+<p><code>@Value</code> 는 일반적으로 외부화된 프로퍼티를 주입하는 데 사용됩니다:</p>
 </div>
 <div id="_tabs_1" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -1885,7 +1885,7 @@ class MovieRecommender(@Value("\${catalog.name}") private val catalog: String)</
 </div>
 </div>
 <div class="paragraph">
-<p>With the following configuration:</p>
+<p>다음 구성을 사용합니다:</p>
 </div>
 <div id="_tabs_2" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -1928,14 +1928,12 @@ class AppConfig</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In that case, the <code>catalog</code> parameter and field will be equal to the <code>MovieCatalog</code> value.</p>
+<p>이 경우 <code>catalog</code> 매개변수 및 필드는 <code>MovieCatalog</code> 값과 동일합니다.</p>
 </div>
 <div class="paragraph">
-<p>A default lenient embedded value resolver is provided by Spring. It will try to resolve the
-property value and if it cannot be resolved, the property name (for example <code>${catalog.name}</code>)
-will be injected as the value. If you want to maintain strict control over nonexistent
-values, you should declare a <code>PropertySourcesPlaceholderConfigurer</code> bean, as the following
-example shows:</p>
+<p>Spring에서는 기본적으로 관대한 임베디드 값 리졸버를 제공합니다.
+속성 값을 확인하려고 시도하고 확인할 수 없는 경우 속성 이름(예: <code>${catalog.name}</code>)이 값으로 주입됩니다.
+존재하지 않는 값에 대한 엄격한 제어를 유지하려면 다음 예제에서와 같이 <code>PropertySourcesPlaceholderConfigurer</code> Bean을 선언해야 합니다:</p>
 </div>
 <div id="_tabs_3" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -1984,17 +1982,14 @@ class AppConfig {
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-When configuring a <code>PropertySourcesPlaceholderConfigurer</code> using JavaConfig, the
-<code>@Bean</code> method must be <code>static</code>.
+JavaConfig를 사용하여 <code>PropertySourcesPlaceholderConfigurer</code> 를 구성하는 경우, <code>@Bean</code> 메서드는 <code>static</code> 이어야 합니다.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Using the above configuration ensures Spring initialization failure if any <code>${}</code>
-placeholder could not be resolved. It is also possible to use methods like
-<code>setPlaceholderPrefix</code>, <code>setPlaceholderSuffix</code>, <code>setValueSeparator</code>, or
-<code>setEscapeCharacter</code> to customize placeholders.</p>
+<p>위의 구성을 사용하면 <code>${}</code> 플레이스홀더를 확인할 수 없는 경우 Spring 초기화에 실패할 수 있습니다.
+또한 <code>setPlaceholderPrefix</code>, <code>setPlaceholderSuffix</code>, <code>setValueSeparator</code> 또는 <code>setEscapeCharacter</code> 와 같은 메서드를 사용하여 자리 표시자를 사용자 지정할 수 있습니다.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2003,19 +1998,17 @@ placeholder could not be resolved. It is also possible to use methods like
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Spring Boot configures by default a <code>PropertySourcesPlaceholderConfigurer</code> bean that
-will get properties from <code>application.properties</code> and <code>application.yml</code> files.
+Spring Boot는 기본적으로 <code>application.properties</code> 및 <code>application.yml</code> 파일에서 속성을 가져오는 <code>PropertySourcesPlaceholderConfigurer</code> Bean을 구성합니다.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Built-in converter support provided by Spring allows simple type conversion (to <code>Integer</code>
-or <code>int</code> for example) to be automatically handled. Multiple comma-separated values can be
-automatically converted to <code>String</code> array without extra effort.</p>
+<p>Spring에서 제공하는 내장된 변환기 지원을 통해 간단한 유형 변환(예: <code>Integer</code> 또는 <code>int</code> 로)을 자동으로 처리할 수 있습니다.
+쉼표로 구분된 여러 개의 값을 별도의 작업 없이 <code>String</code> 배열로 자동 변환할 수 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>It is possible to provide a default value as following:</p>
+<p>다음과 같이 기본값을 제공할 수 있습니다:</p>
 </div>
 <div id="_tabs_4" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2055,10 +2048,8 @@ class MovieRecommender(@Value("\${catalog.name:defaultCatalog}") private val cat
 </div>
 </div>
 <div class="paragraph">
-<p>A Spring <code>BeanPostProcessor</code> uses a <code>ConversionService</code> behind the scenes to handle the
-process for converting the <code>String</code> value in <code>@Value</code> to the target type. If you want to
-provide conversion support for your own custom type, you can provide your own
-<code>ConversionService</code> bean instance as the following example shows:</p>
+<p>Spring <code>BeanPostProcessor</code> 는 <code>@Value</code> 의 <code>String</code> 값을 대상 유형으로 변환하는 프로세스를 처리하기 위해 백그라운드에서 <code>ConversionService</code> 를 사용합니다.
+사용자 정의 유형에 대한 변환 지원을 제공하려는 경우 다음 예제와 같이 자체 <code>ConversionService</code> Bean 인스턴스를 제공할 수 있습니다:</p>
 </div>
 <div id="_tabs_5" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2107,8 +2098,7 @@ class AppConfig {
 </div>
 </div>
 <div class="paragraph">
-<p>When <code>@Value</code> contains a <a href="../../expressions.html" class="xref page"><code>SpEL</code> expression</a> the value will be dynamically
-computed at runtime as the following example shows:</p>
+<p>'@Value&#8217;에 <a href="../../expressions.html" class="xref page"><code>SpEL</code> 식</a>이 포함되어 있으면 다음 예제에서 보는 것처럼 런타임에 값이 동적으로 계산됩니다:</p>
 </div>
 <div id="_tabs_6" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2149,7 +2139,7 @@ class MovieRecommender(
 </div>
 </div>
 <div class="paragraph">
-<p>SpEL also enables the use of more complex data structures:</p>
+<p>또한 SpEL을 사용하면 더 복잡한 데이터 구조도 사용할 수 있습니다:</p>
 </div>
 <div id="_tabs_7" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2191,7 +2181,7 @@ class MovieRecommender(
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="resource.html">Injection with <code>@Resource</code></a></span>
+  <span class="prev"><a href="resource.html">Injection with <code>@Resource</code>(한글)</a></span>
   <span class="next"><a href="postconstruct-and-predestroy-annotations.html">Using <code>@PostConstruct</code> and <code>@PreDestroy</code></a></span>
 </nav>
 </article>

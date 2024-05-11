@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Using Generics as Autowiring Qualifiers :: Spring Framework Reference</title>
+    <title>Using Generics as Autowiring Qualifiers(한글) :: Spring Framework Reference</title>
     <link rel="prev" href="autowired-qualifiers.html">
     <link rel="next" href="custom-autowire-configurer.html">
     <meta name="generator" content="Antora 3.2.0-alpha.2">
@@ -344,25 +344,25 @@
     <a class="nav-link" href="../annotation-config.html">Annotation-based Container Configuration(한글)</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="autowired.html">Using <code>@Autowired</code>(반글)</a>
+    <a class="nav-link" href="autowired.html">Using <code>@Autowired</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="autowired-primary.html">Fine-tuning Annotation-based Autowiring with <code>@Primary</code> or <code>@Fallback</code></a>
+    <a class="nav-link" href="autowired-primary.html">Fine-tuning Annotation-based Autowiring with <code>@Primary</code> or <code>@Fallback</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="autowired-qualifiers.html">Fine-tuning Annotation-based Autowiring with Qualifiers</a>
+    <a class="nav-link" href="autowired-qualifiers.html">Fine-tuning Annotation-based Autowiring with Qualifiers(한글)</a>
   </li>
   <li class="nav-item is-current-page" data-depth="4">
-    <a class="nav-link" href="generics-as-qualifiers.html">Using Generics as Autowiring Qualifiers</a>
+    <a class="nav-link" href="generics-as-qualifiers.html">Using Generics as Autowiring Qualifiers(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="custom-autowire-configurer.html">Using <code>CustomAutowireConfigurer</code></a>
+    <a class="nav-link" href="custom-autowire-configurer.html">Using <code>CustomAutowireConfigurer</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="resource.html">Injection with <code>@Resource</code></a>
+    <a class="nav-link" href="resource.html">Injection with <code>@Resource</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="value-annotations.html">Using <code>@Value</code></a>
+    <a class="nav-link" href="value-annotations.html">Using <code>@Value</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="postconstruct-and-predestroy-annotations.html">Using <code>@PostConstruct</code> and <code>@PreDestroy</code></a>
@@ -1792,13 +1792,13 @@
   <div class="content">
     <div
       class="toc"
-      data-title="Using Generics as Autowiring Qualifiers"
+      data-title="Using Generics as Autowiring Qualifiers(한글)"
       data-levels="2"
     >
       <div class="toc-menu"></div>
     </div>
     <div class="sidebar-links">
-        <a href="file:///C:/Users/LHK/spring-framework/trans2kr/framework-docs/modules/ROOT/pages/core/beans/annotation-config/generics-as-qualifiers.adoc">
+        <a href="file:///C:/Users/LHK/spring-framework/framework-docs/modules/ROOT/pages/core/beans/annotation-config/generics-as-qualifiers.adoc">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"
@@ -1840,14 +1840,13 @@
     <li><a href="../../../core.html">Core Technologies(한글)</a></li>
     <li><a href="../../beans.html">IoC Container(한글)</a></li>
     <li><a href="../annotation-config.html">Annotation-based Container Configuration(한글)</a></li>
-    <li><a href="generics-as-qualifiers.html">Using Generics as Autowiring Qualifiers</a></li>
+    <li><a href="generics-as-qualifiers.html">Using Generics as Autowiring Qualifiers(한글)</a></li>
   </ul>
 </nav>
-<h1 id="page-title" class="page">Using Generics as Autowiring Qualifiers</h1>
+<h1 id="page-title" class="page">Using Generics as Autowiring Qualifiers(한글)</h1>
 <div class="paragraph">
-<p>In addition to the <code>@Qualifier</code> annotation, you can use Java generic types
-as an implicit form of qualification. For example, suppose you have the following
-configuration:</p>
+<p>'@Qualifier` 어노테이션 외에도 Java 일반 유형을 암시적 형태의 한정으로 사용할 수 있습니다.
+예를 들어 다음과 같은 구성이 있다고 가정해 보겠습니다:</p>
 </div>
 <div id="_tabs_1" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -1898,9 +1897,7 @@ class MyConfiguration {
 </div>
 </div>
 <div class="paragraph">
-<p>Assuming that the preceding beans implement a generic interface, (that is, <code>Store&lt;String&gt;</code> and
-<code>Store&lt;Integer&gt;</code>), you can <code>@Autowire</code> the <code>Store</code> interface and the generic is
-used as a qualifier, as the following example shows:</p>
+<p>앞의 Bean이 제네릭 인터페이스(즉, <code>Store&lt;String&gt;</code> 및 <code>Store&lt;Integer&gt;</code>)를 구현한다고 가정하면, 다음 예제와 같이 <code>Store</code> 인터페이스에 <code>@Autowire</code> 하고 제네릭을 한정자로 사용할 수 있습니다:</p>
 </div>
 <div id="_tabs_2" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -1939,8 +1936,8 @@ private lateinit var s2: Store&lt;Integer&gt; // &lt;Integer&gt; qualifier, inje
 </div>
 </div>
 <div class="paragraph">
-<p>Generic qualifiers also apply when autowiring lists, <code>Map</code> instances and arrays. The
-following example autowires a generic <code>List</code>:</p>
+<p>일반 한정자는 목록, <code>Map</code> 인스턴스 및 배열을 autowiring할 때도 적용됩니다. 다음
+다음은 일반 `List`를 autowiring하는 예제입니다:</p>
 </div>
 <div id="_tabs_3" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -1977,8 +1974,8 @@ private lateinit var s: List&lt;Store&lt;Integer&gt;&gt;</code></pre>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="autowired-qualifiers.html">Fine-tuning Annotation-based Autowiring with Qualifiers</a></span>
-  <span class="next"><a href="custom-autowire-configurer.html">Using <code>CustomAutowireConfigurer</code></a></span>
+  <span class="prev"><a href="autowired-qualifiers.html">Fine-tuning Annotation-based Autowiring with Qualifiers(한글)</a></span>
+  <span class="next"><a href="custom-autowire-configurer.html">Using <code>CustomAutowireConfigurer</code>(한글)</a></span>
 </nav>
 </article>
   </div>

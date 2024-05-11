@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Fine-tuning Annotation-based Autowiring with @Primary or @Fallback :: Spring Framework Reference</title>
+    <title>Fine-tuning Annotation-based Autowiring with @Primary or @Fallback(한글) :: Spring Framework Reference</title>
     <link rel="prev" href="autowired.html">
     <link rel="next" href="autowired-qualifiers.html">
     <meta name="generator" content="Antora 3.2.0-alpha.2">
@@ -344,25 +344,25 @@
     <a class="nav-link" href="../annotation-config.html">Annotation-based Container Configuration(한글)</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="autowired.html">Using <code>@Autowired</code>(반글)</a>
+    <a class="nav-link" href="autowired.html">Using <code>@Autowired</code>(한글)</a>
   </li>
   <li class="nav-item is-current-page" data-depth="4">
-    <a class="nav-link" href="autowired-primary.html">Fine-tuning Annotation-based Autowiring with <code>@Primary</code> or <code>@Fallback</code></a>
+    <a class="nav-link" href="autowired-primary.html">Fine-tuning Annotation-based Autowiring with <code>@Primary</code> or <code>@Fallback</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="autowired-qualifiers.html">Fine-tuning Annotation-based Autowiring with Qualifiers</a>
+    <a class="nav-link" href="autowired-qualifiers.html">Fine-tuning Annotation-based Autowiring with Qualifiers(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="generics-as-qualifiers.html">Using Generics as Autowiring Qualifiers</a>
+    <a class="nav-link" href="generics-as-qualifiers.html">Using Generics as Autowiring Qualifiers(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="custom-autowire-configurer.html">Using <code>CustomAutowireConfigurer</code></a>
+    <a class="nav-link" href="custom-autowire-configurer.html">Using <code>CustomAutowireConfigurer</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="resource.html">Injection with <code>@Resource</code></a>
+    <a class="nav-link" href="resource.html">Injection with <code>@Resource</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="value-annotations.html">Using <code>@Value</code></a>
+    <a class="nav-link" href="value-annotations.html">Using <code>@Value</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="postconstruct-and-predestroy-annotations.html">Using <code>@PostConstruct</code> and <code>@PreDestroy</code></a>
@@ -1792,13 +1792,13 @@
   <div class="content">
     <div
       class="toc"
-      data-title="Fine-tuning Annotation-based Autowiring with @Primary or @Fallback"
+      data-title="Fine-tuning Annotation-based Autowiring with @Primary or @Fallback(한글)"
       data-levels="2"
     >
       <div class="toc-menu"></div>
     </div>
     <div class="sidebar-links">
-        <a href="file:///C:/Users/LHK/spring-framework/trans2kr/framework-docs/modules/ROOT/pages/core/beans/annotation-config/autowired-primary.adoc">
+        <a href="file:///C:/Users/LHK/spring-framework/framework-docs/modules/ROOT/pages/core/beans/annotation-config/autowired-primary.adoc">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"
@@ -1840,21 +1840,18 @@
     <li><a href="../../../core.html">Core Technologies(한글)</a></li>
     <li><a href="../../beans.html">IoC Container(한글)</a></li>
     <li><a href="../annotation-config.html">Annotation-based Container Configuration(한글)</a></li>
-    <li><a href="autowired-primary.html">Fine-tuning Annotation-based Autowiring with <code>@Primary</code> or <code>@Fallback</code></a></li>
+    <li><a href="autowired-primary.html">Fine-tuning Annotation-based Autowiring with <code>@Primary</code> or <code>@Fallback</code>(한글)</a></li>
   </ul>
 </nav>
-<h1 id="page-title" class="page">Fine-tuning Annotation-based Autowiring with <code>@Primary</code> or <code>@Fallback</code></h1>
+<h1 id="page-title" class="page">Fine-tuning Annotation-based Autowiring with <code>@Primary</code> or <code>@Fallback</code>(한글)</h1>
 <div class="paragraph">
-<p>Because autowiring by type may lead to multiple candidates, it is often necessary to have
-more control over the selection process. One way to accomplish this is with Spring&#8217;s
-<code>@Primary</code> annotation. <code>@Primary</code> indicates that a particular bean should be given
-preference when multiple beans are candidates to be autowired to a single-valued
-dependency. If exactly one primary bean exists among the candidates, it becomes the
-autowired value.</p>
+<p>유형별 자동 와이어링으로 인해 여러 후보가 나올 수 있으므로, 종종 선택 프로세스를 더 잘 제어할 필요가 있습니다.
+이를 수행하는 한 가지 방법은 Spring의 <code>@Primary</code> 어노테이션을 사용하는 것입니다.
+<code>@Primary</code> 는 여러 Bean이 후보로 있을 때 특정 Bean이 우선권을 부여해야 함을 나타냅니다. 종속성입니다.
+후보 중 정확히 하나의 기본 Bean이 존재하면, 이 Bean이 autowired 값이 됩니다.</p>
 </div>
 <div class="paragraph">
-<p>Consider the following configuration that defines <code>firstMovieCatalog</code> as the
-primary <code>MovieCatalog</code>:</p>
+<p><code>firstMovieCatalog</code> 를 기본 <code>MovieCatalog</code> 로 정의하는 다음 구성을 고려하세요:</p>
 </div>
 <div id="_tabs_1" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -1907,9 +1904,8 @@ class MovieConfiguration {
 </div>
 </div>
 <div class="paragraph">
-<p>Alternatively, as of 6.2, there is a <code>@Fallback</code> annotation for demarcating
-any beans other than the regular ones to be injected. If only one regular
-bean is left, it is effectively primary as well:</p>
+<p>또는 6.2부터 <code>@Fallback</code> 주석을 사용하여 주입할 일반 Bean 이외의 다른 Bean을 구분할 수 있습니다.
+일반 Bean이 하나만 남아 있으면 사실상 기본 Bean이 됩니다:</p>
 </div>
 <div id="_tabs_2" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -1962,8 +1958,7 @@ class MovieConfiguration {
 </div>
 </div>
 <div class="paragraph">
-<p>With both variants of the preceding configuration, the following
-<code>MovieRecommender</code> is autowired with the <code>firstMovieCatalog</code>:</p>
+<p>앞선 구성의 두 가지 변형 모두에서 다음 <code>MovieRecommender</code> 는 <code>firstMovieCatalog</code> 와 자동 연결됩니다:</p>
 </div>
 <div id="_tabs_3" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2006,7 +2001,7 @@ class MovieConfiguration {
 </div>
 </div>
 <div class="paragraph">
-<p>The corresponding bean definitions follow:</p>
+<p>해당 Bean 정의는 다음과 같습니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2035,8 +2030,8 @@ class MovieConfiguration {
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="autowired.html">Using <code>@Autowired</code>(반글)</a></span>
-  <span class="next"><a href="autowired-qualifiers.html">Fine-tuning Annotation-based Autowiring with Qualifiers</a></span>
+  <span class="prev"><a href="autowired.html">Using <code>@Autowired</code>(한글)</a></span>
+  <span class="next"><a href="autowired-qualifiers.html">Fine-tuning Annotation-based Autowiring with Qualifiers(한글)</a></span>
 </nav>
 </article>
   </div>

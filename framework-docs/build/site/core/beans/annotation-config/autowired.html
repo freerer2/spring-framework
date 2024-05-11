@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Using @Autowired(반글) :: Spring Framework Reference</title>
+    <title>Using @Autowired(한글) :: Spring Framework Reference</title>
     <link rel="prev" href="../annotation-config.html">
     <link rel="next" href="autowired-primary.html">
     <meta name="generator" content="Antora 3.2.0-alpha.2">
@@ -344,25 +344,25 @@
     <a class="nav-link" href="../annotation-config.html">Annotation-based Container Configuration(한글)</a>
 <ul class="nav-list">
   <li class="nav-item is-current-page" data-depth="4">
-    <a class="nav-link" href="autowired.html">Using <code>@Autowired</code>(반글)</a>
+    <a class="nav-link" href="autowired.html">Using <code>@Autowired</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="autowired-primary.html">Fine-tuning Annotation-based Autowiring with <code>@Primary</code> or <code>@Fallback</code></a>
+    <a class="nav-link" href="autowired-primary.html">Fine-tuning Annotation-based Autowiring with <code>@Primary</code> or <code>@Fallback</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="autowired-qualifiers.html">Fine-tuning Annotation-based Autowiring with Qualifiers</a>
+    <a class="nav-link" href="autowired-qualifiers.html">Fine-tuning Annotation-based Autowiring with Qualifiers(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="generics-as-qualifiers.html">Using Generics as Autowiring Qualifiers</a>
+    <a class="nav-link" href="generics-as-qualifiers.html">Using Generics as Autowiring Qualifiers(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="custom-autowire-configurer.html">Using <code>CustomAutowireConfigurer</code></a>
+    <a class="nav-link" href="custom-autowire-configurer.html">Using <code>CustomAutowireConfigurer</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="resource.html">Injection with <code>@Resource</code></a>
+    <a class="nav-link" href="resource.html">Injection with <code>@Resource</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="value-annotations.html">Using <code>@Value</code></a>
+    <a class="nav-link" href="value-annotations.html">Using <code>@Value</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
     <a class="nav-link" href="postconstruct-and-predestroy-annotations.html">Using <code>@PostConstruct</code> and <code>@PreDestroy</code></a>
@@ -1792,13 +1792,13 @@
   <div class="content">
     <div
       class="toc"
-      data-title="Using @Autowired(반글)"
+      data-title="Using @Autowired(한글)"
       data-levels="2"
     >
       <div class="toc-menu"></div>
     </div>
     <div class="sidebar-links">
-        <a href="file:///C:/Users/LHK/spring-framework/trans2kr/framework-docs/modules/ROOT/pages/core/beans/annotation-config/autowired.adoc">
+        <a href="file:///C:/Users/LHK/spring-framework/framework-docs/modules/ROOT/pages/core/beans/annotation-config/autowired.adoc">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"
@@ -1840,10 +1840,10 @@
     <li><a href="../../../core.html">Core Technologies(한글)</a></li>
     <li><a href="../../beans.html">IoC Container(한글)</a></li>
     <li><a href="../annotation-config.html">Annotation-based Container Configuration(한글)</a></li>
-    <li><a href="autowired.html">Using <code>@Autowired</code>(반글)</a></li>
+    <li><a href="autowired.html">Using <code>@Autowired</code>(한글)</a></li>
   </ul>
 </nav>
-<h1 id="page-title" class="page">Using <code>@Autowired</code>(반글)</h1>
+<h1 id="page-title" class="page">Using <code>@Autowired</code>(한글)</h1>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -2208,9 +2208,8 @@
 </table>
 </div>
 <div class="paragraph">
-<p>Even typed <code>Map</code> instances can be autowired as long as the expected key type is <code>String</code>.
-The map values contain all beans of the expected type, and the keys contain the
-corresponding bean names, as the following example shows:</p>
+<p>예상 키 유형이 <code>String</code> 인 한, <code>Map</code> 인스턴스도 자동 연결될 수 있습니다.
+다음 예제에서 볼 수 있듯이 맵 값에는 예상 유형의 모든 Bean이 포함되고 키에는 해당 Bean 이름이 포함됩니다:</p>
 </div>
 <div id="_tabs_7" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2257,15 +2256,11 @@ corresponding bean names, as the following example shows:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>By default, autowiring fails when no matching candidate beans are available for a given
-injection point. In the case of a declared array, collection, or map, at least one
-matching element is expected.</p>
+<p>기본적으로 지정된 주입 지점에 대해 일치하는 후보 Bean을 사용할 수 없는 경우 autowiring은 실패합니다.
+선언된 배열, 컬렉션 또는 맵의 경우 일치하는 요소가 하나 이상 있을 것으로 예상됩니다.</p>
 </div>
 <div class="paragraph">
-<p>The default behavior is to treat annotated methods and fields as indicating required
-dependencies. You can change this behavior as demonstrated in the following example,
-enabling the framework to skip a non-satisfiable injection point through marking it as
-non-required (i.e., by setting the <code>required</code> attribute in <code>@Autowired</code> to <code>false</code>):</p>
+<p>기본 동작은 주석이 달린 메서드와 필드를 필수 종속성을 나타내는 것으로 처리하는 것입니다. 다음 예제에서 설명한 대로 이 동작을 변경하여 프레임워크가 충족되지 않는 주입 지점을 비필수(즉, <code>@Autowired</code> 의 <code>required</code>  속성을 <code>false</code> 로 설정)로 표시하여 건너뛸 수 있도록 설정할 수 있습니다:</p>
 </div>
 <div id="_tabs_8" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2319,30 +2314,22 @@ non-required (i.e., by setting the <code>required</code> attribute in <code>@Aut
 </td>
 <td class="content">
 <div class="paragraph">
-<p>A non-required method will not be called at all if its dependency (or one of its
-dependencies, in case of multiple arguments) is not available. A non-required field will
-not get populated at all in such cases, leaving its default value in place.</p>
+<p>비필수 메서드는 종속성(또는 인수가 여러 개인 경우 종속성 중 하나)을 사용할 수 없는 경우 전혀 호출되지 않습니다.
+이러한 경우 필수 필드가 아닌 필드는 전혀 채워지지 않고 기본값이 그대로 유지됩니다.</p>
 </div>
 <div class="paragraph">
-<p>In other words, setting the <code>required</code> attribute to <code>false</code> indicates that the
-corresponding property is <em>optional</em> for autowiring purposes, and the property will be
-ignored if it cannot be autowired. This allows properties to be assigned default values
-that can be optionally overridden via dependency injection.</p>
+<p>즉, 'required' 속성을 'false&#8217;로 설정하면 해당 속성이 autowiring을 위한 것이며, autowiring할 수 없는 경우_선택사항_ 해당 속성이 무시된다는 것을 나타냅니다.
+이렇게 하면 종속성 주입을 통해 선택적으로 재정의할 수 있는 기본값을 프로퍼티에 할당할 수 있습니다.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div id="beans-autowired-annotation-constructor-resolution" class="paragraph">
-<p>Injected constructor and factory method arguments are a special case since the <code>required</code>
-attribute in <code>@Autowired</code> has a somewhat different meaning due to Spring&#8217;s constructor
-resolution algorithm that may potentially deal with multiple constructors. Constructor
-and factory method arguments are effectively required by default but with a few special
-rules in a single-constructor scenario, such as multi-element injection points (arrays,
-collections, maps) resolving to empty instances if no matching beans are available. This
-allows for a common implementation pattern where all dependencies can be declared in a
-unique multi-argument constructor — for example, declared as a single public constructor
-without an <code>@Autowired</code> annotation.</p>
+<p>주입된 생성자 및 팩토리 메서드 인수는 특별한 경우인데, 이는 잠재적으로 여러 생성자를 처리할 수 있는 Spring의 생성자 확인 알고리즘으로 인해 <code>@Autowired</code> 의 <code>required</code> 속성이 다소 다른 의미를 갖기 때문입니다.
+생성자 및 팩토리 메서드 인수는 기본적으로 필수이지만 단일 생성자 시나리오에서는 다중 요소 주입 지점(배열, 컬렉션, 맵)이 일치하는 Bean이 없는 경우 빈 인스턴스로 해결되는 것과 같은 몇 가지 특수 규칙이 적용됩니다.
+이를 통해 모든 종속성을 고유한 다중 인수 생성자에서 선언할 수 있는 일반적인 구현 패턴을 사용할 수 있습니다.
+- 예를 들어, <code>@Autowired</code> 어노테이션 없이 단일 공용 생성자로 선언할 수 있습니다.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2352,27 +2339,21 @@ without an <code>@Autowired</code> annotation.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Only one constructor of any given bean class may declare <code>@Autowired</code> with the <code>required</code>
-attribute set to <code>true</code>, indicating <em>the</em> constructor to autowire when used as a Spring
-bean. As a consequence, if the <code>required</code> attribute is left at its default value <code>true</code>,
-only a single constructor may be annotated with <code>@Autowired</code>. If multiple constructors
-declare the annotation, they will all have to declare <code>required=false</code> in order to be
-considered as candidates for autowiring (analogous to <code>autowire=constructor</code> in XML).
-The constructor with the greatest number of dependencies that can be satisfied by matching
-beans in the Spring container will be chosen. If none of the candidates can be satisfied,
-then a primary/default constructor (if present) will be used. Similarly, if a class
-declares multiple constructors but none of them is annotated with <code>@Autowired</code>, then a
-primary/default constructor (if present) will be used. If a class only declares a single
-constructor to begin with, it will always be used, even if not annotated. Note that an
-annotated constructor does not have to be public.</p>
+<p>주어진 Bean 클래스의 생성자 하나만 <code>required</code> 속성을 <code>true</code> 로 설정하여 <code>@Autowired</code> 를 선언할 수 있으며, 이는 Spring Bean으로 사용될 때 생성자를 autowiring으로 표시합니다.
+결과적으로 <code>required</code> 속성을 기본값인 <code>true</code> 로 남겨두면 하나의 생성자만 <code>@Autowired</code> 로 주석을 달 수 있습니다.
+여러 생성자가 어노테이션을 선언하는 경우, 모두 <code>required=false</code> 를 선언해야만 자동 와이어링 후보로 간주됩니다(XML의 <code>autowire=constructor</code> 와 유사).
+Spring 컨테이너에서 일치하는 Bean으로 충족할 수 있는 종속성 수가 가장 많은 생성자가 선택됩니다.
+후보 중 어느 것도 만족할 수 없는 경우 주/기본 생성자(있는 경우)가 사용됩니다.
+마찬가지로, 클래스가 여러 생성자를 선언하지만 <code>@Autowired</code> 로 주석을 달지 않은 경우 기본/기본 생성자(있는 경우)가 사용됩니다.
+클래스가 처음부터 하나의 생성자만 선언하는 경우, 주석을 달지 않더라도 항상 이 생성자가 사용됩니다.
+주석이 달린 생성자는 반드시 공개적일 필요는 없습니다.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Alternatively, you can express the non-required nature of a particular dependency
-through Java 8&#8217;s <code>java.util.Optional</code>, as the following example shows:</p>
+<p>또는 다음 예시와 같이 Java 8의 <code>java.util.Optional</code> 을 통해 특정 종속성의 비필수성을 표현할 수도 있습니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2386,9 +2367,7 @@ through Java 8&#8217;s <code>java.util.Optional</code>, as the following example
 </div>
 </div>
 <div class="paragraph">
-<p>As of Spring Framework 5.0, you can also use a <code>@Nullable</code> annotation (of any kind
-in any package&#8201;&#8212;&#8201;for example, <code>javax.annotation.Nullable</code> from JSR-305) or just leverage
-Kotlin built-in null-safety support:</p>
+<p>Spring 프레임워크 5.0부터는 <code>@Nullable</code> 어노테이션(모든 패키지에서 모든 종류의 어노테이션을 사용할 수 있습니다.&#8201;&#8212;&#8201;예: JSR-305의 <code>javax.annotation.Nullable</code>) 을 사용하거나 Kotlin에 내장된 널 안전 지원을 활용할 수도 있습니다:</p>
 </div>
 <div id="_tabs_9" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2431,12 +2410,9 @@ Kotlin built-in null-safety support:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>You can also use <code>@Autowired</code> for interfaces that are well-known resolvable
-dependencies: <code>BeanFactory</code>, <code>ApplicationContext</code>, <code>Environment</code>, <code>ResourceLoader</code>,
-<code>ApplicationEventPublisher</code>, and <code>MessageSource</code>. These interfaces and their extended
-interfaces, such as <code>ConfigurableApplicationContext</code> or <code>ResourcePatternResolver</code>, are
-automatically resolved, with no special setup necessary. The following example autowires
-an <code>ApplicationContext</code> object:</p>
+<p>잘 알려진 해결 가능한 종속성인 인터페이스에는 <code>@Autowired`를 사용할 수도 있습니다: BeanFactory</code>, <code>ApplicationContext</code>, <code>Environment</code>, <code>ResourceLoader</code>, <code>ApplicationEventPublisher</code> 및 <code>MessageSource</code> 와 같은 인터페이스에 대해서도 <code>@Autowired</code> 를 사용할 수 있습니다.
+이러한 인터페이스와 그 확장 인터페이스(예: <code>ConfigurableApplicationContext</code> 또는 <code>ResourcePatternResolver</code>) 는 특별한 설정 없이도 자동으로 해결됩니다.
+다음 예제는 <code>ApplicationContext</code> 객체를 자동 와이어링합니다:</p>
 </div>
 <div id="_tabs_10" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2489,10 +2465,9 @@ an <code>ApplicationContext</code> object:</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The <code>@Autowired</code>, <code>@Inject</code>, <code>@Value</code>, and <code>@Resource</code> annotations are handled by Spring
-<code>BeanPostProcessor</code> implementations. This means that you cannot apply these annotations
-within your own <code>BeanPostProcessor</code> or <code>BeanFactoryPostProcessor</code> types (if any).
-These types must be 'wired up' explicitly by using XML or a Spring <code>@Bean</code> method.</p>
+<p><code>@Autowired</code>, <code>@Inject</code>, <code>@Value</code> 및 <code>@Resource</code> 어노테이션은 Spring <code>BeanPostProcessor</code> 구현에서 처리됩니다.
+즉, 이러한 어노테이션은 자체 <code>BeanPostProcessor</code> 또는 <code>BeanFactoryPostProcessor</code> 유형(있는 경우) 내에서 적용할 수 없습니다.
+이러한 유형은 XML 또는 Spring <code>@Bean</code> 메서드를 사용하여 명시적으로 '연결&#8217;해야 합니다.</p>
 </div>
 </td>
 </tr>
@@ -2500,7 +2475,7 @@ These types must be 'wired up' explicitly by using XML or a Spring <code>@Bean</
 </div>
 <nav class="pagination">
   <span class="prev"><a href="../annotation-config.html">Annotation-based Container Configuration(한글)</a></span>
-  <span class="next"><a href="autowired-primary.html">Fine-tuning Annotation-based Autowiring with <code>@Primary</code> or <code>@Fallback</code></a></span>
+  <span class="next"><a href="autowired-primary.html">Fine-tuning Annotation-based Autowiring with <code>@Primary</code> or <code>@Fallback</code>(한글)</a></span>
 </nav>
 </article>
   </div>
