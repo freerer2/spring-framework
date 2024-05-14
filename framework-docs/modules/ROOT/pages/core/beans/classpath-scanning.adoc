@@ -1,5 +1,5 @@
 [[beans-classpath-scanning]]
-= Classpath Scanning and Managed Components(반글)
+= Classpath Scanning and Managed Components(한글)
 
 이 장의 대부분의 예제에서는 XML을 사용하여 Spring 컨테이너 내에서 각 `BeanDefinition` 을 생성하는 구성 메타데이터를 지정합니다.
 이전 섹션(xref:core/beans/annotation-config.adoc[주석 기반 컨테이너 구성])에서는 소스 수준 주석을 통해 많은 구성 메타데이터를 제공하는 방법을 보여줬습니다.
@@ -565,88 +565,58 @@ Kotlin::
 ----
 ======
 
-The `@Bean` methods in a regular Spring component are processed differently than their
-counterparts inside a Spring `@Configuration` class. The difference is that `@Component`
-classes are not enhanced with CGLIB to intercept the invocation of methods and fields.
-CGLIB proxying is the means by which invoking methods or fields within `@Bean` methods
-in `@Configuration` classes creates bean metadata references to collaborating objects.
-Such methods are not invoked with normal Java semantics but rather go through the
-container in order to provide the usual lifecycle management and proxying of Spring
-beans, even when referring to other beans through programmatic calls to `@Bean` methods.
-In contrast, invoking a method or field in a `@Bean` method within a plain `@Component`
-class has standard Java semantics, with no special CGLIB processing or other
-constraints applying.
+일반 Spring 컴포넌트의 `@Bean` 메서드는 Spring `@Configuration` 클래스 내부의 메서드와는 다르게 처리됩니다.
+차이점은 `@Component` 클래스가 메서드와 필드 호출을 가로채기 위해 CGLIB로 향상되지 않았다는 점입니다.
+CGLIB 프록시는 `@Configuration` 클래스의 `@Bean` 메서드 내에서 메서드나 필드를 호출하면 협력하는 객체에 대한 Bean 메타데이터 참조를 생성하는 수단입니다.
+이러한 메서드는 일반적인 Java 시맨틱으로 호출되는 것이 아니라 `@Bean` 메서드에 대한 프로그래밍 호출을 통해 다른 Bean을 참조할 때에도 일반적인 수명 주기 관리 및 Spring Bean의 프록시를 제공하기 위해 컨테이너를 거치게 됩니다.
+이와 대조적으로, 일반 `@Component` 클래스 내의 `@Bean` 메서드에서 메서드나 필드를 호출하는 것은 특별한 CGLIB 처리나 기타 제약 조건이 적용되지 않는 표준 Java 시맨틱을 갖습니다.
+
+Translated with www.DeepL.com/Translator (free version)
 
 [NOTE]
 ====
-You may declare `@Bean` methods as `static`, allowing for them to be called without
-creating their containing configuration class as an instance. This makes particular
-sense when defining post-processor beans (for example, of type `BeanFactoryPostProcessor`
-or `BeanPostProcessor`), since such beans get initialized early in the container
-lifecycle and should avoid triggering other parts of the configuration at that point.
+`static` 으로 `@Bean` 메서드를 선언하면 해당 메서드를 포함하는 구성 클래스를 인스턴스로 생성하지 않고도 호출할 수 있습니다.
+이는 Post-processor Bean을 정의할 때(예: `BeanFactoryPostProcessor` 또는 `BeanPostProcessor` 유형) 컨테이너 라이프사이클 초기에 초기화되므로 해당 시점에서 구성의 다른 부분이 트리거되지 않도록 해야 하므로 특히 의미가 있습니다.
 
-Calls to static `@Bean` methods never get intercepted by the container, not even within
-`@Configuration` classes (as described earlier in this section), due to technical
-limitations: CGLIB subclassing can override only non-static methods. As a consequence,
-a direct call to another `@Bean` method has standard Java semantics, resulting
-in an independent instance being returned straight from the factory method itself.
+정적 `@Bean` 메서드에 대한 호출은 기술적 제한으로 인해 컨테이너가 절대로 가로채지 않으며, 심지어 `@Configuration` 클래스 내에서도(이 섹션의 앞부분에서 설명한 대로) 절대로 가로채지 않습니다: CGLIB 서브클래싱은 정적이 아닌 메서드만 재정의할 수 있습니다.
+결과적으로, 다른 `@Bean` 메서드에 대한 직접 호출은 표준 Java 시맨틱을 가지므로 팩토리 메서드 자체에서 바로 독립적인 인스턴스가 반환됩니다.
 
-The Java language visibility of `@Bean` methods does not have an immediate impact on
-the resulting bean definition in Spring's container. You can freely declare your
-factory methods as you see fit in non-`@Configuration` classes and also for static
-methods anywhere. However, regular `@Bean` methods in `@Configuration` classes need
-to be overridable -- that is, they must not be declared as `private` or `final`.
+Java 언어의 `@Bean` 메서드 가시성은 Spring 컨테이너의 결과 Bean 정의에 즉각적인 영향을 미치지 않습니다.
+비`@Configuration` 클래스는 물론 정적 메서드에 대해서도 어디서나 자유롭게 팩토리 메서드를 선언할 수 있습니다.
+그러나 `@Configuration` 클래스의 일반 `@Bean` 메서드는 오버라이드할 수 있어야 합니다.
+-- 즉, `private` 또는 `final` 로 선언되어서는 안 됩니다.
 
-`@Bean` methods are also discovered on base classes of a given component or
-configuration class, as well as on Java 8 default methods declared in interfaces
-implemented by the component or configuration class. This allows for a lot of
-flexibility in composing complex configuration arrangements, with even multiple
-inheritance being possible through Java 8 default methods as of Spring 4.2.
+`@Bean` 메서드는 지정된 컴포넌트나 구성 클래스의 베이스 클래스뿐만 아니라 컴포넌트나 구성 클래스가 구현한 인터페이스에 선언된 Java 8 기본 메서드에서도 검색됩니다.
+이를 통해 복잡한 구성 배열을 유연하게 구성할 수 있으며, Spring 4.2부터는 Java 8 기본 메서드를 통해 다중 상속도 가능합니다.
 
-Finally, a single class may hold multiple `@Bean` methods for the same
-bean, as an arrangement of multiple factory methods to use depending on available
-dependencies at runtime. This is the same algorithm as for choosing the "`greediest`"
-constructor or factory method in other configuration scenarios: The variant with
-the largest number of satisfiable dependencies is picked at construction time,
-analogous to how the container selects between multiple `@Autowired` constructors.
+마지막으로, 단일 클래스는 런타임에 사용 가능한 종속성에 따라 사용할 여러 팩토리 메서드의 배열로 동일한 Bean에 대해 여러 개의 `@Bean` 메서드를 보유할 수 있습니다.
+이는 다른 구성 시나리오에서 "가장 `탐욕스러운`" 생성자 또는 팩토리 메서드를 선택하는 것과 동일한 알고리즘입니다: 컨테이너가 여러 개의 `@Autowired` 생성자 중에서 선택하는 방식과 유사하게 구성 시점에 만족스러운 종속성 수가 가장 많은 변형이 선택됩니다.
 ====
 
 
 
 [[beans-scanning-name-generator]]
-== Naming Autodetected Components
+== 자동 감지된 컴포넌트 이름 지정(Naming Autodetected Components)
 
-When a component is autodetected as part of the scanning process, its bean name is
-generated by the `BeanNameGenerator` strategy known to that scanner.
+스캔 프로세스의 일부로 컴포넌트가 자동 감지되면 해당 스캐너에 알려진 `BeanNameGenerator` 전략에 의해 Bean 이름이 생성됩니다.
 
-By default, the `AnnotationBeanNameGenerator` is used. For Spring
-xref:core/beans/classpath-scanning.adoc#beans-stereotype-annotations[stereotype annotations],
-if you supply a name via the annotation's `value` attribute that name will be used as
-the name in the corresponding bean definition. This convention also applies when the
-following JSR-250 and JSR-330 annotations are used instead of Spring stereotype
-annotations: `@jakarta.annotation.ManagedBean`, `@javax.annotation.ManagedBean`,
-`@jakarta.inject.Named`, and `@javax.inject.Named`.
+기본적으로 `AnnotationBeanNameGenerator` 가 사용됩니다.
+Spring xref:core/beans/classpath-scanning.adoc#beans-stereotype-annotations[stereotype annotations]의 경우, 어노테이션의 `value` 속성을 통해 이름을 제공하면 해당 이름이 해당 Bean 정의의 이름으로 사용됩니다.
+이 규칙은 Spring 스테레오타입 어노테이션 대신 다음 JSR-250 및 JSR-330 어노테이션을 사용하는 경우에도 적용됩니다: jakarta.annotation.ManagedBean`, `@javax.annotation.ManagedBean`, `@jakarta.inject.Named`, `@javax.inject.Named`.
 
-As of Spring Framework 6.1, the name of the annotation attribute that is used to specify
-the bean name is no longer required to be `value`. Custom stereotype annotations can
-declare an attribute with a different name (such as `name`) and annotate that attribute
-with `@AliasFor(annotation = Component.class, attribute = "value")`. See the source code
-declaration of `ControllerAdvice#name()` for a concrete example.
+Spring Framework 6.1부터 Bean 이름을 지정하는 데 사용되는 어노테이션 속성의 이름은 더 이상 `value` 가 아니어도 됩니다.
+사용자 정의 스테레오타입 어노테이션은 다른 이름(예: `name`)으로 어노테이션을 선언하고 해당 어노테이션에 `@AliasFor(annotation = Component.class, attribute = "value")`로 주석을 달 수 있습니다.
+구체적인 예는 `ControllerAdvice#name()` 의 소스 코드 선언을 참조하세요.
 
 [WARNING]
 ====
-As of Spring Framework 6.1, support for convention-based stereotype names is deprecated
-and will be removed in a future version of the framework. Consequently, custom stereotype
-annotations must use `@AliasFor` to declare an explicit alias for the `value` attribute
-in `@Component`. See the source code declaration of `Repository#value()` and
-`ControllerAdvice#name()` for concrete examples.
+스프링 프레임워크 6.1부터, 규칙 기반 스테레오타입 이름에 대한 지원은 더 이상 사용되지 않으며 향후 버전의 프레임워크에서 제거될 예정입니다.
+따라서 사용자 정의 스테레오타입 어노테이션은 `@AliasFor`를 사용하여 `@Component`의 `value` 속성에 대한 명시적 별칭을 선언해야 합니다.
+구체적인 예는 `Repository#value()` 및 `ControllerAdvice#name()`의 소스 코드 선언을 참조하세요.
 ====
 
-If an explicit bean name cannot be derived from such an annotation or for any other
-detected component (such as those discovered by custom filters), the default bean name
-generator returns the uncapitalized non-qualified class name. For example, if the
-following component classes were detected, the names would be `myMovieLister` and
-`movieFinderImpl`.
+이러한 어노테이션이나 기타 감지된 구성 요소(예: 사용자 정의 필터로 검색된 것)에서 명시적인 Bean 이름을 도출할 수 없는 경우 기본 Bean 이름 생성기는 대문자로 구분되지 않은 정규화되지 않은 클래스 이름을 반환합니다.
+예를 들어, 다음 컴포넌트 클래스가 감지된 경우 이름은 `myMovieLister` 및 `movieFinderImpl`이 됩니다.
 
 [tabs]
 ======
@@ -694,19 +664,12 @@ Kotlin::
 ----
 ======
 
-If you do not want to rely on the default bean-naming strategy, you can provide a custom
-bean-naming strategy. First, implement the
-{spring-framework-api}/beans/factory/support/BeanNameGenerator.html[`BeanNameGenerator`]
-interface, and be sure to include a default no-arg constructor. Then, provide the fully
-qualified class name when configuring the scanner, as the following example annotation
-and bean definition show.
+기본 Bean 명명 전략에 의존하지 않으려면 사용자 지정 Bean 명명 전략을 제공할 수 있습니다.
+먼저 {spring-framework-api}/beans/factory/support/BeanNameGenerator.html[`BeanNameGenerator`] 인터페이스를 구현하고 기본 no-arg 생성자를 반드시 포함하세요.
+그런 다음 스캐너를 구성할 때 다음 예제 어노테이션과 Bean 정의에 표시된 것처럼 정규화된 클래스 이름을 제공하세요.
 
-TIP: If you run into naming conflicts due to multiple autodetected components having the
-same non-qualified class name (i.e., classes with identical names but residing in
-different packages), you may need to configure a `BeanNameGenerator` that defaults to the
-fully qualified class name for the generated bean name. As of Spring Framework 5.2.3, the
-`FullyQualifiedAnnotationBeanNameGenerator` located in package
-`org.springframework.context.annotation` can be used for such purposes.
+TIP: 동일한 정규화되지 않은 클래스 이름을 가진 자동 감지된 여러 구성 요소(즉, 이름은 동일하지만 다른 패키지에 있는 클래스)로 인해 명명 충돌이 발생하는 경우, 생성된 Bean 이름에 대해 정규화된 클래스 이름을 기본값으로 하는 `BeanNameGenerator` 를 구성해야 할 수 있습니다.
+스프링 프레임워크 5.2.3부터 `org.springframework.context.annotation` 패키지에 있는 `FullyQualifiedAnnotationBeanNameGenerator` 를 이러한 용도로 사용할 수 있습니다.
 
 [tabs]
 ======
@@ -741,19 +704,17 @@ Kotlin::
 	</beans>
 ----
 
-As a general rule, consider specifying the name with the annotation whenever other
-components may be making explicit references to it. On the other hand, the
-auto-generated names are adequate whenever the container is responsible for wiring.
+일반적으로 다른 컴포넌트가 해당 이름을 명시적으로 참조할 수 있는 경우에는 어노테이션으로 이름을 지정하는 것이 좋습니다.
+반면에 컨테이너가 와이어링을 담당하는 경우에는 자동 생성된 이름을 사용하는 것이 적절합니다.
 
 
 
 [[beans-scanning-scope-resolver]]
-== Providing a Scope for Autodetected Components
+== 자동 감지된 구성 요소에 대한 Scope 제공(Providing a Scope for Autodetected Components)
 
-As with Spring-managed components in general, the default and most common scope for
-autodetected components is `singleton`. However, sometimes you need a different scope
-that can be specified by the `@Scope` annotation. You can provide the name of the
-scope within the annotation, as the following example shows:
+일반적으로 Spring이 관리하는 컴포넌트와 마찬가지로, 자동 감지된 컴포넌트의 기본적이고 가장 일반적인 범위는 `싱글톤`입니다.
+그러나 때때로 다른 범위가 필요할 수 있으며, 이는 `@Scope` 어노테이션으로 지정할 수 있습니다.
+다음 예시와 같이 어노테이션 내에 범위의 이름을 지정할 수 있습니다:
 
 [tabs]
 ======
@@ -780,23 +741,15 @@ Kotlin::
 ----
 ======
 
-NOTE: `@Scope` annotations are only introspected on the concrete bean class (for annotated
-components) or the factory method (for `@Bean` methods). In contrast to XML bean
-definitions, there is no notion of bean definition inheritance, and inheritance
-hierarchies at the class level are irrelevant for metadata purposes.
+NOTE: `@Scope` 어노테이션은 구체적인 Bean 클래스(어노테이션된 컴포넌트의 경우) 또는 팩토리 메서드(`@Bean` 메서드의 경우)에 대해서만 내재화됩니다.
+XML Bean 정의와 달리, Bean 정의 상속이라는 개념이 없으며 클래스 수준에서의 상속 계층 구조는 메타데이터 목적과 관련이 없습니다.
 
-For details on web-specific scopes such as "`request`" or "`session`" in a Spring context,
-see xref:core/beans/factory-scopes.adoc#beans-factory-scopes-other[Request, Session, Application, and WebSocket Scopes]. As with the pre-built annotations for those scopes,
-you may also compose your own scoping annotations by using Spring's meta-annotation
-approach: for example, a custom annotation meta-annotated with `@Scope("prototype")`,
-possibly also declaring a custom scoped-proxy mode.
+Spring 컨텍스트에서 "`request`" 또는 "`session`" 과 같은 웹 특정 Scope에 대한 자세한 내용은 xref:core/beans/factory-scopes.adoc#beans-factory-scopes-other[요청, 세션, 애플리케이션 및 웹소켓 스코프]를 참조하세요.
+이러한 범위에 대해 미리 빌드된 어노테이션과 마찬가지로, Spring의 메타 어노테이션 접근 방식을 사용하여 자체 스코핑 어노테이션을 작성할 수도 있습니다(예: `@Scope("프로토타입")` 으로 메타 어노테이션된 사용자 정의 어노테이션, 사용자 정의 스코프-프록시 모드 선언도 가능).
 
-NOTE: To provide a custom strategy for scope resolution rather than relying on the
-annotation-based approach, you can implement the
-{spring-framework-api}/context/annotation/ScopeMetadataResolver.html[`ScopeMetadataResolver`]
-interface. Be sure to include a default no-arg constructor. Then you can provide the
-fully qualified class name when configuring the scanner, as the following example of both
-an annotation and a bean definition shows:
+NOTE: 어노테이션 기반 접근 방식에 의존하지 않고 범위 확인을 위한 사용자 정의 전략을 제공하려면 {spring-framework-api}/context/annotation/ScopeMetadataResolver.html[`ScopeMetadataResolver`] 인터페이스를 구현할 수 있습니다.
+기본 no-arg 생성자를 포함해야 합니다.
+그런 다음 스캐너를 구성할 때 다음 어노테이션과 Bean 정의의 예에서 볼 수 있듯이 정규화된 클래스 이름을 제공할 수 있습니다:
 
 [tabs]
 ======
@@ -830,11 +783,11 @@ Kotlin::
 	</beans>
 ----
 
-When using certain non-singleton scopes, it may be necessary to generate proxies for the
-scoped objects. The reasoning is described in xref:core/beans/factory-scopes.adoc#beans-factory-scopes-other-injection[Scoped Beans as Dependencies].
-For this purpose, a scoped-proxy attribute is available on the component-scan
-element. The three possible values are: `no`, `interfaces`, and `targetClass`. For example,
-the following configuration results in standard JDK dynamic proxies:
+특정 싱글톤 아닌 스코프를 사용하는 경우, 스코프된 객체에 대한 프록시를 생성해야 할 수 있습니다.
+그 이유는 xref:core/beans/factory-scopes.adoc#beans-factory-scopes-other-injection[Scoped Bean as Dependencies]에 설명되어 있습니다.
+이를 위해 구성 요소 스캔 요소에서 Scope-proxy 속성을 사용할 수 있습니다.
+가능한 세 가지 값은 다음과 같습니다: `no`, `interfaces`, `targetClass` 입니다.
+예를 들어, 다음 구성은 표준 JDK 동적 프록시를 생성합니다:
 
 [tabs]
 ======
@@ -871,17 +824,13 @@ Kotlin::
 
 
 [[beans-scanning-qualifiers]]
-== Providing Qualifier Metadata with Annotations
+== 주석이 포함된 한정자 메타데이터 제공하기(Providing Qualifier Metadata with Annotations)
 
-The `@Qualifier` annotation is discussed in xref:core/beans/annotation-config/autowired-qualifiers.adoc[Fine-tuning Annotation-based Autowiring with Qualifiers].
-The examples in that section demonstrate the use of the `@Qualifier` annotation and
-custom qualifier annotations to provide fine-grained control when you resolve autowire
-candidates. Because those examples were based on XML bean definitions, the qualifier
-metadata was provided on the candidate bean definitions by using the `qualifier` or `meta`
-child elements of the `bean` element in the XML. When relying upon classpath scanning for
-auto-detection of components, you can provide the qualifier metadata with type-level
-annotations on the candidate class. The following three examples demonstrate this
-technique:
+`@Qualifier` 어노테이션은 xref:core/beans/annotation-config/autowired-qualifiers.adoc[한정자를 사용하여 어노테이션 기반 Autowiring 미세 조정하기]에서 설명합니다.
+이 섹션의 예제에서는 `@Qualifier` 어노테이션과 사용자 정의 한정자 어노테이션을 사용하여 Autowiring 후보를 해결할 때 세분화된 제어를 제공하는 방법을 보여줍니다.
+이러한 예제는 XML Bean 정의를 기반으로 했기 때문에, 한정자 메타데이터는 XML의 `bean` 요소의 `qualifier` 또는 `meta` 하위 요소를 사용하여 후보 Bean 정의에 제공되었습니다.
+구성 요소의 자동 감지를 위해 클래스 경로 검색에 의존하는 경우 한정자 메타데이터에 후보 클래스에 대한 유형 수준 주석을 제공할 수 있습니다.
+다음 세 가지 예는 이 기술을 보여줍니다:
 
 [tabs]
 ======
@@ -956,10 +905,7 @@ class CachingMovieCatalog : MovieCatalog {
 ----
 ======
 
-NOTE: As with most annotation-based alternatives, keep in mind that the annotation metadata is
-bound to the class definition itself, while the use of XML allows for multiple beans
-of the same type to provide variations in their qualifier metadata, because that
-metadata is provided per-instance rather than per-class.
+NOTE: 대부분의 어노테이션 기반 대안과 마찬가지로 어노테이션 메타데이터는 클래스 정의 자체에 바인딩되는 반면, XML을 사용하면 메타데이터가 클래스가 아닌 인스턴스별로 제공되므로 동일한 유형의 여러 Bean이 한정자 메타데이터에 변형을 제공할 수 있다는 점을 명심하세요.
 
 
 

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Using @PostConstruct and @PreDestroy :: Spring Framework Reference</title>
+    <title>Using @PostConstruct and @PreDestroy(한글) :: Spring Framework Reference</title>
     <link rel="prev" href="value-annotations.html">
     <link rel="next" href="../classpath-scanning.html">
     <meta name="generator" content="Antora 3.2.0-alpha.2">
@@ -365,12 +365,12 @@
     <a class="nav-link" href="value-annotations.html">Using <code>@Value</code>(한글)</a>
   </li>
   <li class="nav-item is-current-page" data-depth="4">
-    <a class="nav-link" href="postconstruct-and-predestroy-annotations.html">Using <code>@PostConstruct</code> and <code>@PreDestroy</code></a>
+    <a class="nav-link" href="postconstruct-and-predestroy-annotations.html">Using <code>@PostConstruct</code> and <code>@PreDestroy</code>(한글)</a>
   </li>
 </ul>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="../classpath-scanning.html">Classpath Scanning and Managed Components</a>
+    <a class="nav-link" href="../classpath-scanning.html">Classpath Scanning and Managed Components(한글)</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="../standard-annotations.html">Using JSR 330 Standard Annotations</a>
@@ -1792,13 +1792,13 @@
   <div class="content">
     <div
       class="toc"
-      data-title="Using @PostConstruct and @PreDestroy"
+      data-title="Using @PostConstruct and @PreDestroy(한글)"
       data-levels="2"
     >
       <div class="toc-menu"></div>
     </div>
     <div class="sidebar-links">
-        <a href="file:///C:/Users/LHK/spring-framework/framework-docs/modules/ROOT/pages/core/beans/annotation-config/postconstruct-and-predestroy-annotations.adoc">
+        <a href="file:///C:/Users/LHK/spring-framework/trans2kr/framework-docs/modules/ROOT/pages/core/beans/annotation-config/postconstruct-and-predestroy-annotations.adoc">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"
@@ -1840,22 +1840,15 @@
     <li><a href="../../../core.html">Core Technologies(한글)</a></li>
     <li><a href="../../beans.html">IoC Container(한글)</a></li>
     <li><a href="../annotation-config.html">Annotation-based Container Configuration(한글)</a></li>
-    <li><a href="postconstruct-and-predestroy-annotations.html">Using <code>@PostConstruct</code> and <code>@PreDestroy</code></a></li>
+    <li><a href="postconstruct-and-predestroy-annotations.html">Using <code>@PostConstruct</code> and <code>@PreDestroy</code>(한글)</a></li>
   </ul>
 </nav>
-<h1 id="page-title" class="page">Using <code>@PostConstruct</code> and <code>@PreDestroy</code></h1>
+<h1 id="page-title" class="page">Using <code>@PostConstruct</code> and <code>@PreDestroy</code>(한글)</h1>
 <div class="paragraph">
-<p>The <code>CommonAnnotationBeanPostProcessor</code> not only recognizes the <code>@Resource</code> annotation
-but also the JSR-250 lifecycle annotations: <code>jakarta.annotation.PostConstruct</code> and
-<code>jakarta.annotation.PreDestroy</code>. Introduced in Spring 2.5, the support for these
-annotations offers an alternative to the lifecycle callback mechanism described in
-<a href="../factory-nature.html#beans-factory-lifecycle-initializingbean" class="xref page">initialization callbacks</a> and
-<a href="../factory-nature.html#beans-factory-lifecycle-disposablebean" class="xref page">destruction callbacks</a>. Provided that the
-<code>CommonAnnotationBeanPostProcessor</code> is registered within the Spring <code>ApplicationContext</code>,
-a method carrying one of these annotations is invoked at the same point in the lifecycle
-as the corresponding Spring lifecycle interface method or explicitly declared callback
-method. In the following example, the cache is pre-populated upon initialization and
-cleared upon destruction:</p>
+<p><code>CommonAnnotationBeanPostProcessor</code> 는 <code>@Resource</code>  어노테이션뿐만 아니라 JSR-250 수명 주기(lifecycle) 어노테이션도 인식합니다: <code>jakarta.annotation.PostConstruct</code> 및 <code>jakarta.annotation.PreDestroy</code>.
+Spring 2.5에 도입된 이 어노테이션에 대한 지원은 <a href="../factory-nature.html#beans-factory-lifecycle-initializingbean" class="xref page">초기화 콜백</a> 및 <a href="../factory-nature.html#beans-factory-lifecycle-disposablebean" class="xref page">소멸 콜백</a>에 설명된 수명 주기 콜백 메커니즘에 대한 대안을 제공합니다.
+<code>CommonAnnotationBeanPostProcessor</code> 가 Spring <code>ApplicationContext</code> 내에 등록되어 있다면, 이러한 어노테이션 중 하나를 포함하는 메서드는 해당 Spring 라이프사이클 인터페이스 메서드 또는 명시적으로 선언된 콜백 메서드와 라이프사이클의 동일한 지점에서 호출됩니다.
+다음 예제에서는 캐시가 초기화될 때 미리 채워지고 소멸될 때 지워집니다:</p>
 </div>
 <div id="_tabs_1" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -1908,8 +1901,7 @@ cleared upon destruction:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>For details about the effects of combining various lifecycle mechanisms, see
-<a href="../factory-nature.html#beans-factory-lifecycle-combined-effects" class="xref page">Combining Lifecycle Mechanisms</a>.</p>
+<p>다양한 라이프사이클 메커니즘을 결합할 때의 효과에 대한 자세한 내용은 <a href="../factory-nature.html#beans-factory-lifecycle-combined-effects" class="xref page">라이프사이클 메커니즘 결합하기</a>를 참조하세요.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1919,12 +1911,10 @@ cleared upon destruction:</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Like <code>@Resource</code>, the <code>@PostConstruct</code> and <code>@PreDestroy</code> annotation types were a part
-of the standard Java libraries from JDK 6 to 8. However, the entire <code>javax.annotation</code>
-package got separated from the core Java modules in JDK 9 and eventually removed in
-JDK 11. As of Jakarta EE 9, the package lives in <code>jakarta.annotation</code> now. If needed,
-the <code>jakarta.annotation-api</code> artifact needs to be obtained via Maven Central now,
-simply to be added to the application&#8217;s classpath like any other library.</p>
+<p><code>@Resource</code> 와 마찬가지로 <code>@PostConstruct</code> 및 <code>@PreDestroy</code> 어노테이션 유형은 JDK 6에서 8까지 표준 Java 라이브러리의 일부였습니다.
+그러나 전체 <code>javax.annotation</code> 패키지는 JDK 9에서 핵심 Java 모듈에서 분리되었고 결국 JDK 11에서 제거되었습니다.
+Jakarta EE 9부터 이 패키지는 이제 <code>jakarta.annotation`에 있습니다.
+필요한 경우 이제 다른 라이브러리와 마찬가지로 애플리케이션의 클래스 경로에 추가하기 위해 Maven Central을 통해 `jakarta.annotation-api</code> 아티팩트를 가져와야 합니다.</p>
 </div>
 </td>
 </tr>
@@ -1932,7 +1922,7 @@ simply to be added to the application&#8217;s classpath like any other library.<
 </div>
 <nav class="pagination">
   <span class="prev"><a href="value-annotations.html">Using <code>@Value</code>(한글)</a></span>
-  <span class="next"><a href="../classpath-scanning.html">Classpath Scanning and Managed Components</a></span>
+  <span class="next"><a href="../classpath-scanning.html">Classpath Scanning and Managed Components(한글)</a></span>
 </nav>
 </article>
   </div>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Classpath Scanning and Managed Components :: Spring Framework Reference</title>
+    <title>Classpath Scanning and Managed Components(한글) :: Spring Framework Reference</title>
     <link rel="prev" href="annotation-config/postconstruct-and-predestroy-annotations.html">
     <link rel="next" href="standard-annotations.html">
     <meta name="generator" content="Antora 3.2.0-alpha.2">
@@ -365,12 +365,12 @@
     <a class="nav-link" href="annotation-config/value-annotations.html">Using <code>@Value</code>(한글)</a>
   </li>
   <li class="nav-item" data-depth="4">
-    <a class="nav-link" href="annotation-config/postconstruct-and-predestroy-annotations.html">Using <code>@PostConstruct</code> and <code>@PreDestroy</code></a>
+    <a class="nav-link" href="annotation-config/postconstruct-and-predestroy-annotations.html">Using <code>@PostConstruct</code> and <code>@PreDestroy</code>(한글)</a>
   </li>
 </ul>
   </li>
   <li class="nav-item is-current-page" data-depth="3">
-    <a class="nav-link" href="classpath-scanning.html">Classpath Scanning and Managed Components</a>
+    <a class="nav-link" href="classpath-scanning.html">Classpath Scanning and Managed Components(한글)</a>
   </li>
   <li class="nav-item" data-depth="3">
     <a class="nav-link" href="standard-annotations.html">Using JSR 330 Standard Annotations</a>
@@ -1792,13 +1792,13 @@
   <div class="content">
     <div
       class="toc"
-      data-title="Classpath Scanning and Managed Components"
+      data-title="Classpath Scanning and Managed Components(한글)"
       data-levels="2"
     >
       <div class="toc-menu"></div>
     </div>
     <div class="sidebar-links">
-        <a href="file:///C:/Users/LHK/spring-framework/framework-docs/modules/ROOT/pages/core/beans/classpath-scanning.adoc">
+        <a href="file:///C:/Users/LHK/spring-framework/trans2kr/framework-docs/modules/ROOT/pages/core/beans/classpath-scanning.adoc">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"
@@ -1839,25 +1839,20 @@
     <li><a href="../../index.html">Spring Framework</a></li>
     <li><a href="../../core.html">Core Technologies(한글)</a></li>
     <li><a href="../beans.html">IoC Container(한글)</a></li>
-    <li><a href="classpath-scanning.html">Classpath Scanning and Managed Components</a></li>
+    <li><a href="classpath-scanning.html">Classpath Scanning and Managed Components(한글)</a></li>
   </ul>
 </nav>
-<h1 id="page-title" class="page">Classpath Scanning and Managed Components</h1>
+<h1 id="page-title" class="page">Classpath Scanning and Managed Components(한글)</h1>
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Most examples in this chapter use XML to specify the configuration metadata that produces
-each <code>BeanDefinition</code> within the Spring container. The previous section
-(<a href="annotation-config.html" class="xref page">Annotation-based Container Configuration</a>) demonstrates how to provide a lot of the configuration
-metadata through source-level annotations. Even in those examples, however, the "base"
-bean definitions are explicitly defined in the XML file, while the annotations drive only
-the dependency injection. This section describes an option for implicitly detecting the
-candidate components by scanning the classpath. Candidate components are classes that
-match against a filter criteria and have a corresponding bean definition registered with
-the container. This removes the need to use XML to perform bean registration. Instead, you
-can use annotations (for example, <code>@Component</code>), AspectJ type expressions, or your own
-custom filter criteria to select which classes have bean definitions registered with
-the container.</p>
+<p>이 장의 대부분의 예제에서는 XML을 사용하여 Spring 컨테이너 내에서 각 <code>BeanDefinition</code> 을 생성하는 구성 메타데이터를 지정합니다.
+이전 섹션(<a href="annotation-config.html" class="xref page">주석 기반 컨테이너 구성</a>)에서는 소스 수준 주석을 통해 많은 구성 메타데이터를 제공하는 방법을 보여줬습니다.
+그러나 이러한 예시에서도 "기본" Bean 정의는 XML 파일에 명시적으로 정의되어 있고, 어노테이션은 종속성 주입만 구동합니다.
+이 섹션에서는 클래스 경로를 스캔하여 후보 컴포넌트를 암시적으로 감지하는 옵션에 대해 설명합니다.
+후보 컴포넌트는 필터 기준과 일치하고 컨테이너에 등록된 해당 Bean 정의가 있는 클래스입니다.
+이렇게 하면 XML을 사용하여 Bean 등록을 수행할 필요가 없습니다.
+대신 어노테이션(예: <code>@Component</code>), AspectJ 유형 표현식 또는 사용자 정의 필터 기준을 사용하여 컨테이너에 등록된 Bean 정의가 있는 클래스를 선택할 수 있습니다.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1867,9 +1862,8 @@ the container.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>You can define beans using Java rather than using XML files. Take a look at the
-<code>@Configuration</code>, <code>@Bean</code>, <code>@Import</code>, and <code>@DependsOn</code> annotations for examples of how to
-use these features.</p>
+<p>XML 파일 대신 Java를 사용하여 Bean을 정의할 수 있습니다.
+이러한 기능을 사용하는 방법에 대한 예는 <code>@Configuration</code>, <code>@Bean</code>, <code>@Import</code> 및 <code>@DependsOn</code> 어노테이션을 참조하세요.</p>
 </div>
 </td>
 </tr>
@@ -1878,28 +1872,21 @@ use these features.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-stereotype-annotations"><a class="anchor" href="#beans-stereotype-annotations"></a><code>@Component</code> and Further Stereotype Annotations</h2>
+<h2 id="beans-stereotype-annotations"><a class="anchor" href="#beans-stereotype-annotations"></a><code>@Component</code> 및 추가 스테레오타입 어노테이션(<code>@Component</code> and Further Stereotype Annotations)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>@Repository</code> annotation is a marker for any class that fulfills the role or
-<em>stereotype</em> of a repository (also known as Data Access Object or DAO). Among the uses
-of this marker is the automatic translation of exceptions, as described in
-<a href="../../data-access/orm/general.html#orm-exception-translation" class="xref page">Exception Translation</a>.</p>
+<p><code>@Repository</code> 어노테이션은 리포지토리(데이터 액세스 객체 또는 DAO라고도 함)의 역할을 수행하는 모든 클래스에 대한 마커입니다.
+이 마커의 용도 중에는 <a href="../../data-access/orm/general.html#orm-exception-translation" class="xref page">Exception Translation</a>에 설명된 대로 예외의 자동 번역이 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>Spring provides further stereotype annotations: <code>@Component</code>, <code>@Service</code>, and
-<code>@Controller</code>. <code>@Component</code> is a generic stereotype for any Spring-managed component.
-<code>@Repository</code>, <code>@Service</code>, and <code>@Controller</code> are specializations of <code>@Component</code> for
-more specific use cases (in the persistence, service, and presentation
-layers, respectively). Therefore, you can annotate your component classes with
-<code>@Component</code>, but, by annotating them with <code>@Repository</code>, <code>@Service</code>, or <code>@Controller</code>
-instead, your classes are more properly suited for processing by tools or associating
-with aspects. For example, these stereotype annotations make ideal targets for
-pointcuts. <code>@Repository</code>, <code>@Service</code>, and <code>@Controller</code> may also
-carry additional semantics in future releases of the Spring Framework. Thus, if you are
-choosing between using <code>@Component</code> or <code>@Service</code> for your service layer, <code>@Service</code> is
-clearly the better choice. Similarly, as stated earlier, <code>@Repository</code> is already
-supported as a marker for automatic exception translation in your persistence layer.</p>
+<p>Spring은 추가적인 스테레오타입 주석을 제공합니다: <code>@Component</code>, <code>@Service</code>, <code>@Controller</code>.
+<code>@Component</code> 는 Spring이 관리하는 모든 컴포넌트에 대한 일반적인 스테레오타입입니다.
+<code>@Repository</code>, <code>@Service</code>, <code>@Controller</code> 는 각각 지속성, 서비스, 프레젠테이션 레이어에서 보다 구체적인 사용 사례를 위한 <code>@Component`의 전문화입니다.
+따라서 컴포넌트 클래스에 `@Component`로 주석을 달 수 있지만, 대신 `@Repository</code>, <code>@Service</code> 또는 <code>@Controller`로 주석을 달면 도구로 처리하거나 aspects와 연결하는 데 더 적합하게 클래스를 사용할 수 있습니다.
+예를 들어, 이러한 스테레오타입 어노테이션은 포인트컷의 이상적인 대상이 됩니다.
+`@Repository</code>, <code>@Service</code>, <code>@Controller`는 Spring 프레임워크의 향후 릴리스에서 추가적인 의미를 가질 수도 있습니다.
+따라서 서비스 레이어에 `@Component`와 `@Service</code> 중 하나를 선택해야 한다면 <code>@Service</code> 가 더 나은 선택입니다.
+마찬가지로, 앞서 설명한 것처럼 <code>@Repository</code> 는 이미 지속성 계층에서 자동 예외 변환을 위한 마커로 지원되고 있습니다.</p>
 </div>
 </div>
 </div>
@@ -1907,10 +1894,9 @@ supported as a marker for automatic exception translation in your persistence la
 <h2 id="beans-meta-annotations"><a class="anchor" href="#beans-meta-annotations"></a>Using Meta-annotations and Composed Annotations</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Many of the annotations provided by Spring can be used as meta-annotations in your
-own code. A meta-annotation is an annotation that can be applied to another annotation.
-For example, the <code>@Service</code> annotation mentioned <a href="#beans-stereotype-annotations">earlier</a>
-is meta-annotated with <code>@Component</code>, as the following example shows:</p>
+<p>Spring에서 제공하는 많은 어노테이션을 자신의 코드에서 메타 어노테이션으로 사용할 수 있습니다.
+메타 어노테이션은 다른 어노테이션에 적용할 수 있는 어노테이션입니다.
+예를 들어, 다음 예제에서 볼 수 있듯이 <a href="#beans-stereotype-annotations">이전</a>에서 언급한 <code>@Service</code> 어노테이션은 <code>@Component</code> 로 메타 어노테이션이 되어 있습니다:</p>
 </div>
 <div id="_tabs_1" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -1941,7 +1927,7 @@ public @interface Service {
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The <code>@Component</code> causes <code>@Service</code> to be treated in the same way as <code>@Component</code>.</td>
+<td><code>@ Component</code> 는 <code>@ Service</code> 를 <code>@ Component</code> 와 같은 방식으로 취급하게 합니다.</td>
 </tr>
 </table>
 </div>
@@ -1971,17 +1957,14 @@ annotation class Service {
 </div>
 </div>
 <div class="paragraph">
-<p>You can also combine meta-annotations to create &#8220;composed annotations&#8221;. For example,
-the <code>@RestController</code> annotation from Spring MVC is composed of <code>@Controller</code> and
-<code>@ResponseBody</code>.</p>
+<p>메타 어노테이션을 결합하여 "`구성된 어노테이션`"을 만들 수도 있습니다.
+예를 들어 Spring MVC의 <code>@RestController</code> 어노테이션은 <code>@Controller</code> 와 <code>@ResponseBody</code> 로 구성됩니다.</p>
 </div>
 <div class="paragraph">
-<p>In addition, composed annotations can optionally redeclare attributes from
-meta-annotations to allow customization. This can be particularly useful when you
-want to only expose a subset of the meta-annotation&#8217;s attributes. For example, Spring&#8217;s
-<code>@SessionScope</code> annotation hard codes the scope name to <code>session</code> but still allows
-customization of the <code>proxyMode</code>. The following listing shows the definition of the
-<code>SessionScope</code> annotation:</p>
+<p>또한 구성된 어노테이션은 선택적으로 메타 어노테이션에서 어트리뷰트를 다시 선언하여 사용자 정의할 수 있습니다.
+이는 메타 어노테이션 속성의 하위 집합만 노출하려는 경우에 특히 유용할 수 있습니다.
+예를 들어 Spring의 <code>@SessionScope</code> 어노테이션은 범위 이름을 <code>session`으로 하드코딩하지만 여전히 `proxyMode</code> 의 사용자 정의는 허용합니다.
+다음 목록은 <code>SessionScope</code> 어노테이션의 정의를 보여줍니다:</p>
 </div>
 <div id="_tabs_2" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2032,7 +2015,7 @@ annotation class SessionScope(
 </div>
 </div>
 <div class="paragraph">
-<p>You can then use <code>@SessionScope</code> without declaring the <code>proxyMode</code> as follows:</p>
+<p>그런 다음 다음과 같이 <code>proxyMode</code> 를 선언하지 않고 <code>@SessionScope</code> 를 사용할 수 있습니다:</p>
 </div>
 <div id="_tabs_3" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2071,7 +2054,7 @@ class SessionScopedService {
 </div>
 </div>
 <div class="paragraph">
-<p>You can also override the value for the <code>proxyMode</code>, as the following example shows:</p>
+<p>다음 예시와 같이 <code>proxyMode</code> 의 값을 재정의할 수도 있습니다:</p>
 </div>
 <div id="_tabs_4" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2110,19 +2093,17 @@ class SessionScopedUserService : UserService {
 </div>
 </div>
 <div class="paragraph">
-<p>For further details, see the
-<a href="https://github.com/spring-projects/spring-framework/wiki/Spring-Annotation-Programming-Model">Spring Annotation Programming Model</a>
-wiki page.</p>
+<p>자세한 내용은
+{스프링 프레임워크 위키}/Spring-Annotation-Programming-Model[Spring Annotation Programming Model] 위키 페이지를 참조하세요.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-scanning-autodetection"><a class="anchor" href="#beans-scanning-autodetection"></a>Automatically Detecting Classes and Registering Bean Definitions</h2>
+<h2 id="beans-scanning-autodetection"><a class="anchor" href="#beans-scanning-autodetection"></a>클래스 자동 감지 및 Bean 정의 등록하기(Automatically Detecting Classes and Registering Bean Definitions)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Spring can automatically detect stereotyped classes and register corresponding
-<code>BeanDefinition</code> instances with the <code>ApplicationContext</code>. For example, the following two classes
-are eligible for such autodetection:</p>
+<p>Spring은 정형화된 클래스를 자동으로 감지하고 그에 해당하는 <code>BeanDefinition</code> 인스턴스를 <code>ApplicationContext</code> 에 등록할 수 있습니다.
+예를 들어, 다음 두 클래스는 이러한 자동 감지를 사용할 수 있습니다:</p>
 </div>
 <div id="_tabs_5" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2196,10 +2177,8 @@ class JpaMovieFinder : MovieFinder {
 </div>
 </div>
 <div class="paragraph">
-<p>To autodetect these classes and register the corresponding beans, you need to add
-<code>@ComponentScan</code> to your <code>@Configuration</code> class, where the <code>basePackages</code> attribute
-is a common parent package for the two classes. (Alternatively, you can specify a
-comma- or semicolon- or space-separated list that includes the parent package of each class.)</p>
+<p>이러한 클래스를 자동 감지하고 해당 Bean을 등록하려면 <code>@Configuration</code> 클래스에 <code>@ComponentScan</code> 을 추가해야 하며, 여기서 <code>basePackages</code> 속성은 두 클래스의 공통 부모 패키지입니다.
+(또는 각 클래스의 부모 패키지를 포함하는 쉼표, 세미콜론 또는 공백으로 구분된 목록을 지정할 수 있습니다.)</p>
 </div>
 <div id="_tabs_7" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2244,14 +2223,13 @@ class AppConfig  {
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-For brevity, the preceding example could have used the <code>value</code> attribute of the
-annotation (that is, <code>@ComponentScan("org.example")</code>).
+간결성을 위해 앞의 예제에서는 어노테이션의 <code>value</code> 속성(즉, <code>@ComponentScan("org.example")</code> 을 사용했을 수 있습니다.)
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The following alternative uses XML:</p>
+<p>다음 대안은 XML을 사용합니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2276,9 +2254,8 @@ annotation (that is, <code>@ComponentScan("org.example")</code>).
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The use of <code>&lt;context:component-scan&gt;</code> implicitly enables the functionality of
-<code>&lt;context:annotation-config&gt;</code>. There is usually no need to include the
-<code>&lt;context:annotation-config&gt;</code> element when using <code>&lt;context:component-scan&gt;</code>.
+<code>&lt;context:component-scan&gt;</code>  을 사용하면 <code>&lt;context:annotation-config&gt;</code> 의 기능이 암시적으로 활성화됩니다.
+일반적으로 <code>&lt;context:component-scan&gt;</code> 을 사용할 때는 <code>&lt;context:annotation-config&gt;</code> 요소를 포함할 필요가 없습니다.
 </td>
 </tr>
 </table>
@@ -2291,58 +2268,35 @@ The use of <code>&lt;context:component-scan&gt;</code> implicitly enables the fu
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The scanning of classpath packages requires the presence of corresponding directory
-entries in the classpath. When you build JARs with Ant, make sure that you do not
-activate the files-only switch of the JAR task. Also, classpath directories may not be
-exposed based on security policies in some environments&#8201;&#8212;&#8201;for example, standalone apps on
-JDK 1.7.0_45 and higher (which requires 'Trusted-Library' setup in your manifests&#8201;&#8212;&#8201;see
-<a href="https://stackoverflow.com/questions/19394570/java-jre-7u45-breaks-classloader-getresources" class="bare">stackoverflow.com/questions/19394570/java-jre-7u45-breaks-classloader-getresources</a>).</p>
+<p>클래스 경로 패키지를 검사하려면 클래스 경로에 해당 디렉터리 항목이 있어야 합니다.
+Ant로 JAR을 빌드할 때 JAR 작업의 파일 전용 스위치를 활성화하지 않았는지 확인하세요.
+또한 일부 환경에서는 보안 정책에 따라 클래스 경로 디렉터리가 노출되지 않을 수 있습니다.&#8201;&#8212;&#8201;예를 들어 JDK 1.7.0_45 이상의 독립 실행형 앱(매니페스트에서 'Trusted-Library' 설정이 필요함)&#8201;&#8212;&#8201;스택오버플로우-질문}/19394570/java-jre-7u45-breaks-classloader-getresources 참조).</p>
 </div>
 <div class="paragraph">
-<p>On JDK 9&#8217;s module path (Jigsaw), Spring&#8217;s classpath scanning generally works as expected.
-However, make sure that your component classes are exported in your <code>module-info</code>
-descriptors. If you expect Spring to invoke non-public members of your classes, make
-sure that they are 'opened' (that is, that they use an <code>opens</code> declaration instead of an
-<code>exports</code> declaration in your <code>module-info</code> descriptor).</p>
+<p>JDK 9의 모듈 경로(Jigsaw)에서 Spring의 클래스 경로 검색은 일반적으로 예상대로 작동합니다.
+그러나 컴포넌트 클래스가 <code>module-info</code> 디스크립터에 내보내져 있는지 확인하세요.
+Spring이 클래스의 비공개 멤버를 호출할 것으로 예상되는 경우, 해당 클래스가 '열린' 상태인지(즉, <code>module-info</code> 설명자에서 <code>exports</code> 선언 대신 <code>opens</code> 선언을 사용하는지) 확인해야 합니다.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Furthermore, the <code>AutowiredAnnotationBeanPostProcessor</code> and
-<code>CommonAnnotationBeanPostProcessor</code> are both implicitly included when you use the
-component-scan element. That means that the two components are autodetected and
-wired together&#8201;&#8212;&#8201;all without any bean configuration metadata provided in XML.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-You can disable the registration of <code>AutowiredAnnotationBeanPostProcessor</code> and
-<code>CommonAnnotationBeanPostProcessor</code> by including the <code>annotation-config</code> attribute
-with a value of <code>false</code>.
-</td>
-</tr>
-</table>
+<p>또한, component-scan 요소를 사용할 때 <code>AutowiredAnnotationBeanPostProcessor</code> 와 <code>CommonAnnotationBeanPostProcessor</code> 가 모두 암시적으로 포함됩니다.
+즉, 두 구성 요소는 XML로 제공된 Bean 구성 메타데이터 없이도 자동 감지되어 함께 연결됩니다.
+NOTE: 값이 <code>false</code> 인 <code>annotation-config</code> 속성을 포함하면 <code>AutowiredAnnotationBeanPostProcessor</code> 및 <code>CommonAnnotationBeanPostProcessor</code> 의 등록을 비활성화할 수 있습니다.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-scanning-filters"><a class="anchor" href="#beans-scanning-filters"></a>Using Filters to Customize Scanning</h2>
+<h2 id="beans-scanning-filters"><a class="anchor" href="#beans-scanning-filters"></a>필터를 사용하여 스캔 사용자 지정(Using Filters to Customize Scanning)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>By default, classes annotated with <code>@Component</code>, <code>@Repository</code>, <code>@Service</code>, <code>@Controller</code>,
-<code>@Configuration</code>, or a custom annotation that itself is annotated with <code>@Component</code> are
-the only detected candidate components. However, you can modify and extend this behavior
-by applying custom filters. Add them as <code>includeFilters</code> or <code>excludeFilters</code> attributes of
-the <code>@ComponentScan</code> annotation (or as <code>&lt;context:include-filter /&gt;</code> or
-<code>&lt;context:exclude-filter /&gt;</code> child elements of the <code>&lt;context:component-scan&gt;</code> element in
-XML configuration). Each filter element requires the <code>type</code> and <code>expression</code> attributes.
-The following table describes the filtering options:</p>
+<p>기본적으로 <code>@Component</code>, <code>@Repository</code>, <code>@Service</code>, <code>@Controller</code>, <code>@Configuration`으로 주석이 달린 클래스 또는 `@Component`로 주석이 달린 사용자 정의 어노테이션만 감지되는 후보 컴포넌트입니다.
+그러나 사용자 정의 필터를 적용하여 이 동작을 수정하고 확장할 수 있습니다.
+사용자 정의 필터를 `@ComponentScan</code> 어노테이션의 <code>includeFilters</code> 또는 <code>excludeFilters</code> 속성으로 추가합니다(또는 XML 구성에서 <code>&lt;context:component-scan&gt;</code> 요소의 <code>&lt;context:include-filter /&gt;</code> 또는 <code>&lt;context:exclude-filter /&gt;</code> 하위 요소로 추가합니다).
+각 필터 요소에는 <code>type</code> 및 <code>expression</code> 속성이 필요합니다.
+다음 표에서는 필터링 옵션에 대해 설명합니다:</p>
 </div>
 <table id="beans-scanning-filters-tbl" class="tableblock frame-all grid-all stripes-odd stretch">
 <caption class="title">Table 1. Filter Types</caption>
@@ -2362,33 +2316,32 @@ The following table describes the filtering options:</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">annotation (default)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.example.SomeAnnotation</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An annotation to be <em>present</em> or <em>meta-present</em> at the type level in target components.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">대상 컴포넌트의 유형 수준에서 <em>present</em> 또는 _meta-present_가 될 어노테이션입니다.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">assignable</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.example.SomeClass</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A class (or interface) that the target components are assignable to (extend or implement).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">대상 컴포넌트가 할당(확장 또는 구현)할 수 있는 클래스(또는 인터페이스)입니다.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aspectj</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.example..*Service+</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An AspectJ type expression to be matched by the target components.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">타깃 컴포넌트에 의해 일치시킬 AspectJ 타입 표현식입니다.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">regex</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org\.example\.Default.*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A regex expression to be matched by the target components' class names.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">대상 컴포넌트의 클래스 이름과 일치시킬 정규식 표현식입니다.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">custom</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.example.MyTypeFilter</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A custom implementation of the <code>org.springframework.core.type.TypeFilter</code> interface.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>org.springframework.core.type.TypeFilter</code> 인터페이스의 사용자 정의 구현입니다.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>The following example shows the configuration ignoring all <code>@Repository</code> annotations
-and using &#8220;stub&#8221; repositories instead:</p>
+<p>다음 예는 모든 <code>@Repository</code> 어노테이션을 무시하고 대신 &#8220;stub&#8221; 리포지토리를 사용하는 구성을 보여줍니다:</p>
 </div>
 <div id="_tabs_8" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2431,7 +2384,7 @@ class AppConfig {
 </div>
 </div>
 <div class="paragraph">
-<p>The following listing shows the equivalent XML:</p>
+<p>다음 목록은 이에 해당하는 XML을 보여줍니다:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2452,11 +2405,8 @@ class AppConfig {
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-You can also disable the default filters by setting <code>useDefaultFilters=false</code> on the
-annotation or by providing <code>use-default-filters="false"</code> as an attribute of the
-<code>&lt;component-scan/&gt;</code> element. This effectively disables automatic detection of classes
-annotated or meta-annotated with <code>@Component</code>, <code>@Repository</code>, <code>@Service</code>, <code>@Controller</code>,
-<code>@RestController</code>, or <code>@Configuration</code>.
+어노테이션에 <code>useDefaultFilters=false`를 설정하거나 `&lt;component-scan/&gt;</code> 요소의 속성으로 <code>use-default-filters="false"</code> 를 제공하여 기본 필터를 비활성화할 수도 있습니다.
+이렇게 하면 <code>@Component</code>, <code>@Repository</code>, <code>@Service</code>, <code>@Controller</code>, <code>@RestController</code> 또는 <code>@Configuration</code> 으로 어노테이션되거나 메타 어노테이션된 클래스의 자동 감지를 효과적으로 비활성화할 수 있습니다.
 </td>
 </tr>
 </table>
@@ -2464,12 +2414,12 @@ annotated or meta-annotated with <code>@Component</code>, <code>@Repository</cod
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-factorybeans-annotations"><a class="anchor" href="#beans-factorybeans-annotations"></a>Defining Bean Metadata within Components</h2>
+<h2 id="beans-factorybeans-annotations"><a class="anchor" href="#beans-factorybeans-annotations"></a>컴포넌트 내에서 Bean 메타데이터 정의하기</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Spring components can also contribute bean definition metadata to the container. You can do
-this with the same <code>@Bean</code> annotation used to define bean metadata within <code>@Configuration</code>
-annotated classes. The following example shows how to do so:</p>
+<p>Spring 컴포넌트는 컨테이너에 Bean 정의 메타데이터를 제공할 수도 있습니다.
+이 작업은 <code>@Configuration</code> 어노테이션 클래스 내에서 Bean 메타데이터를 정의하는 데 사용되는 것과 동일한 <code>@Bean</code> 어노테이션을 사용하여 수행할 수 있습니다.
+다음 예제는 그 방법을 보여줍니다:</p>
 </div>
 <div id="_tabs_9" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2522,12 +2472,10 @@ class FactoryMethodComponent {
 </div>
 </div>
 <div class="paragraph">
-<p>The preceding class is a Spring component that has application-specific code in its
-<code>doWork()</code> method. However, it also contributes a bean definition that has a factory
-method referring to the method <code>publicInstance()</code>. The <code>@Bean</code> annotation identifies the
-factory method and other bean definition properties, such as a qualifier value through
-the <code>@Qualifier</code> annotation. Other method-level annotations that can be specified are
-<code>@Scope</code>, <code>@Lazy</code>, and custom qualifier annotations.</p>
+<p>앞의 클래스는 <code>doWork()</code> 메서드에 애플리케이션별 코드가 있는 Spring 컴포넌트입니다.
+그러나 이 컴포넌트는 <code>publicInstance()</code> 메서드를 참조하는 팩토리 메서드가 있는 Bean 정의도 제공합니다.
+'@Bean` 어노테이션은 팩토리 메서드와 <code>@Qualifier</code> 어노테이션을 통해 한정자 값과 같은 기타 Bean 정의 속성을 식별합니다.
+지정할 수 있는 다른 메서드 수준 어노테이션으로는 <code>@Scope</code>, <code>@Lazy</code> 및 사용자 지정 한정자 어노테이션이 있습니다.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -2536,18 +2484,17 @@ the <code>@Qualifier</code> annotation. Other method-level annotations that can 
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-In addition to its role for component initialization, you can also place the <code>@Lazy</code>
-annotation on injection points marked with <code>@Autowired</code> or <code>@Inject</code>. In this context,
-it leads to the injection of a lazy-resolution proxy. However, such a proxy approach
-is rather limited. For sophisticated lazy interactions, in particular in combination
-with optional dependencies, we recommend <code>ObjectProvider&lt;MyTargetBean&gt;</code> instead.
+컴포넌트 초기화를 위한 역할 외에도 <code>@Autowired</code> 또는 <code>@Inject</code> 로 표시된 주입 지점에 <code>@Lazy</code> 어노테이션을 배치할 수도 있습니다.
+이러한 맥락에서는 지연 해결 프록시를 주입하게 됩니다.
+그러나 이러한 프록시 접근 방식은 다소 제한적입니다.
+특히 선택적 종속성과 결합된 정교한 지연 상호 작용의 경우, 대신 <code>ObjectProvider&lt;MyTargetBean&gt;</code> 을 사용하는 것이 좋습니다.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Autowired fields and methods are supported, as previously discussed, with additional
-support for autowiring of <code>@Bean</code> methods. The following example shows how to do so:</p>
+<p>앞서 설명한 대로 자동 와이어링된 필드와 메서드는 지원되며, <code>@Bean</code> 메서드의 autowiring도 추가로 지원됩니다.
+다음 예제에서는 이를 수행하는 방법을 보여줍니다:</p>
 </div>
 <div id="_tabs_10" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2636,23 +2583,17 @@ class FactoryMethodComponent {
 </div>
 </div>
 <div class="paragraph">
-<p>The example autowires the <code>String</code> method parameter <code>country</code> to the value of the <code>age</code>
-property on another bean named <code>privateInstance</code>. A Spring Expression Language element
-defines the value of the property through the notation <code>#{ &lt;expression&gt; }</code>. For <code>@Value</code>
-annotations, an expression resolver is preconfigured to look for bean names when
-resolving expression text.</p>
+<p>이 예제에서는 <code>String</code> 메서드 매개변수 <code>country`를 `privateInstance</code> 라는 다른 Bean의 <code>age</code> 속성 값에 autowiring합니다.
+Spring 표현식 언어 요소는 <code>#{ &lt;표현식&gt; }</code> 표기법을 통해 속성 값을 정의합니다.
+<code>@Value</code> 어노테이션의 경우, 표현식 해석기는 표현식 텍스트를 해석할 때 Bean 이름을 찾도록 미리 구성되어 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>As of Spring Framework 4.3, you may also declare a factory method parameter of type
-<code>InjectionPoint</code> (or its more specific subclass: <code>DependencyDescriptor</code>) to
-access the requesting injection point that triggers the creation of the current bean.
-Note that this applies only to the actual creation of bean instances, not to the
-injection of existing instances. As a consequence, this feature makes most sense for
-beans of prototype scope. For other scopes, the factory method only ever sees the
-injection point that triggered the creation of a new bean instance in the given scope
-(for example, the dependency that triggered the creation of a lazy singleton bean).
-You can use the provided injection point metadata with semantic care in such scenarios.
-The following example shows how to use <code>InjectionPoint</code>:</p>
+<p>Spring 프레임워크 4.3부터는 <code>InjectionPoint</code> (또는 보다 구체적인 하위 클래스인 <code>DependencyDescriptor</code>) 유형의 팩토리 메서드 파라미터를 선언하여 현재 Bean의 생성을 트리거하는 요청하는 주입 지점에 액세스할 수도 있습니다.
+이는 기존 인스턴스의 주입이 아닌 실제 Bean 인스턴스 생성에만 적용된다는 점에 유의하세요.
+따라서 이 기능은 프로토타입 범위의 Bean에 가장 적합합니다.
+다른 범위의 경우, 팩토리 메서드는 주어진 범위에서 새 Bean 인스턴스 생성을 트리거한 주입 지점(예: 지연 싱글톤 Bean 생성을 트리거한 종속성)만 볼 수 있습니다.
+이러한 시나리오에서는 제공된 주입 지점 메타데이터를 의미론적으로 주의하여 사용할 수 있습니다.
+다음 예제는 <code>InjectionPoint</code> 를 사용하는 방법을 보여줍니다:</p>
 </div>
 <div id="_tabs_11" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2697,17 +2638,14 @@ class FactoryMethodComponent {
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>@Bean</code> methods in a regular Spring component are processed differently than their
-counterparts inside a Spring <code>@Configuration</code> class. The difference is that <code>@Component</code>
-classes are not enhanced with CGLIB to intercept the invocation of methods and fields.
-CGLIB proxying is the means by which invoking methods or fields within <code>@Bean</code> methods
-in <code>@Configuration</code> classes creates bean metadata references to collaborating objects.
-Such methods are not invoked with normal Java semantics but rather go through the
-container in order to provide the usual lifecycle management and proxying of Spring
-beans, even when referring to other beans through programmatic calls to <code>@Bean</code> methods.
-In contrast, invoking a method or field in a <code>@Bean</code> method within a plain <code>@Component</code>
-class has standard Java semantics, with no special CGLIB processing or other
-constraints applying.</p>
+<p>일반 Spring 컴포넌트의 <code>@Bean</code> 메서드는 Spring <code>@Configuration</code> 클래스 내부의 메서드와는 다르게 처리됩니다.
+차이점은 <code>@Component</code> 클래스가 메서드와 필드 호출을 가로채기 위해 CGLIB로 향상되지 않았다는 점입니다.
+CGLIB 프록시는 <code>@Configuration</code> 클래스의 <code>@Bean</code> 메서드 내에서 메서드나 필드를 호출하면 협력하는 객체에 대한 Bean 메타데이터 참조를 생성하는 수단입니다.
+이러한 메서드는 일반적인 Java 시맨틱으로 호출되는 것이 아니라 <code>@Bean</code> 메서드에 대한 프로그래밍 호출을 통해 다른 Bean을 참조할 때에도 일반적인 수명 주기 관리 및 Spring Bean의 프록시를 제공하기 위해 컨테이너를 거치게 됩니다.
+이와 대조적으로, 일반 <code>@Component</code> 클래스 내의 <code>@Bean</code> 메서드에서 메서드나 필드를 호출하는 것은 특별한 CGLIB 처리나 기타 제약 조건이 적용되지 않는 표준 Java 시맨틱을 갖습니다.</p>
+</div>
+<div class="paragraph">
+<p>Translated with www.DeepL.com/Translator (free version)</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2717,40 +2655,25 @@ constraints applying.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>You may declare <code>@Bean</code> methods as <code>static</code>, allowing for them to be called without
-creating their containing configuration class as an instance. This makes particular
-sense when defining post-processor beans (for example, of type <code>BeanFactoryPostProcessor</code>
-or <code>BeanPostProcessor</code>), since such beans get initialized early in the container
-lifecycle and should avoid triggering other parts of the configuration at that point.</p>
+<p><code>static</code> 으로 <code>@Bean</code> 메서드를 선언하면 해당 메서드를 포함하는 구성 클래스를 인스턴스로 생성하지 않고도 호출할 수 있습니다.
+이는 Post-processor Bean을 정의할 때(예: <code>BeanFactoryPostProcessor</code> 또는 <code>BeanPostProcessor</code> 유형) 컨테이너 라이프사이클 초기에 초기화되므로 해당 시점에서 구성의 다른 부분이 트리거되지 않도록 해야 하므로 특히 의미가 있습니다.</p>
 </div>
 <div class="paragraph">
-<p>Calls to static <code>@Bean</code> methods never get intercepted by the container, not even within
-<code>@Configuration</code> classes (as described earlier in this section), due to technical
-limitations: CGLIB subclassing can override only non-static methods. As a consequence,
-a direct call to another <code>@Bean</code> method has standard Java semantics, resulting
-in an independent instance being returned straight from the factory method itself.</p>
+<p>정적 <code>@Bean</code> 메서드에 대한 호출은 기술적 제한으로 인해 컨테이너가 절대로 가로채지 않으며, 심지어 <code>@Configuration</code> 클래스 내에서도(이 섹션의 앞부분에서 설명한 대로) 절대로 가로채지 않습니다: CGLIB 서브클래싱은 정적이 아닌 메서드만 재정의할 수 있습니다.
+결과적으로, 다른 <code>@Bean</code> 메서드에 대한 직접 호출은 표준 Java 시맨틱을 가지므로 팩토리 메서드 자체에서 바로 독립적인 인스턴스가 반환됩니다.</p>
 </div>
 <div class="paragraph">
-<p>The Java language visibility of <code>@Bean</code> methods does not have an immediate impact on
-the resulting bean definition in Spring&#8217;s container. You can freely declare your
-factory methods as you see fit in non-<code>@Configuration</code> classes and also for static
-methods anywhere. However, regular <code>@Bean</code> methods in <code>@Configuration</code> classes need
-to be overridable&#8201;&#8212;&#8201;that is, they must not be declared as <code>private</code> or <code>final</code>.</p>
+<p>Java 언어의 <code>@Bean</code> 메서드 가시성은 Spring 컨테이너의 결과 Bean 정의에 즉각적인 영향을 미치지 않습니다.
+비`@Configuration` 클래스는 물론 정적 메서드에 대해서도 어디서나 자유롭게 팩토리 메서드를 선언할 수 있습니다.
+그러나 <code>@Configuration</code> 클래스의 일반 <code>@Bean</code> 메서드는 오버라이드할 수 있어야 합니다.&#8201;&#8212;&#8201;즉, <code>private</code> 또는 <code>final</code> 로 선언되어서는 안 됩니다.</p>
 </div>
 <div class="paragraph">
-<p><code>@Bean</code> methods are also discovered on base classes of a given component or
-configuration class, as well as on Java 8 default methods declared in interfaces
-implemented by the component or configuration class. This allows for a lot of
-flexibility in composing complex configuration arrangements, with even multiple
-inheritance being possible through Java 8 default methods as of Spring 4.2.</p>
+<p><code>@Bean</code> 메서드는 지정된 컴포넌트나 구성 클래스의 베이스 클래스뿐만 아니라 컴포넌트나 구성 클래스가 구현한 인터페이스에 선언된 Java 8 기본 메서드에서도 검색됩니다.
+이를 통해 복잡한 구성 배열을 유연하게 구성할 수 있으며, Spring 4.2부터는 Java 8 기본 메서드를 통해 다중 상속도 가능합니다.</p>
 </div>
 <div class="paragraph">
-<p>Finally, a single class may hold multiple <code>@Bean</code> methods for the same
-bean, as an arrangement of multiple factory methods to use depending on available
-dependencies at runtime. This is the same algorithm as for choosing the &#8220;greediest&#8221;
-constructor or factory method in other configuration scenarios: The variant with
-the largest number of satisfiable dependencies is picked at construction time,
-analogous to how the container selects between multiple <code>@Autowired</code> constructors.</p>
+<p>마지막으로, 단일 클래스는 런타임에 사용 가능한 종속성에 따라 사용할 여러 팩토리 메서드의 배열로 동일한 Bean에 대해 여러 개의 <code>@Bean</code> 메서드를 보유할 수 있습니다.
+이는 다른 구성 시나리오에서 "가장 <code>탐욕스러운`" 생성자 또는 팩토리 메서드를 선택하는 것과 동일한 알고리즘입니다: 컨테이너가 여러 개의 `@Autowired</code> 생성자 중에서 선택하는 방식과 유사하게 구성 시점에 만족스러운 종속성 수가 가장 많은 변형이 선택됩니다.</p>
 </div>
 </td>
 </tr>
@@ -2759,27 +2682,20 @@ analogous to how the container selects between multiple <code>@Autowired</code> 
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-scanning-name-generator"><a class="anchor" href="#beans-scanning-name-generator"></a>Naming Autodetected Components</h2>
+<h2 id="beans-scanning-name-generator"><a class="anchor" href="#beans-scanning-name-generator"></a>자동 감지된 컴포넌트 이름 지정(Naming Autodetected Components)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>When a component is autodetected as part of the scanning process, its bean name is
-generated by the <code>BeanNameGenerator</code> strategy known to that scanner.</p>
+<p>스캔 프로세스의 일부로 컴포넌트가 자동 감지되면 해당 스캐너에 알려진 <code>BeanNameGenerator</code> 전략에 의해 Bean 이름이 생성됩니다.</p>
 </div>
 <div class="paragraph">
-<p>By default, the <code>AnnotationBeanNameGenerator</code> is used. For Spring
-<a href="#beans-stereotype-annotations">stereotype annotations</a>,
-if you supply a name via the annotation&#8217;s <code>value</code> attribute that name will be used as
-the name in the corresponding bean definition. This convention also applies when the
-following JSR-250 and JSR-330 annotations are used instead of Spring stereotype
-annotations: <code>@jakarta.annotation.ManagedBean</code>, <code>@javax.annotation.ManagedBean</code>,
-<code>@jakarta.inject.Named</code>, and <code>@javax.inject.Named</code>.</p>
+<p>기본적으로 <code>AnnotationBeanNameGenerator</code> 가 사용됩니다.
+Spring <a href="#beans-stereotype-annotations">stereotype annotations</a>의 경우, 어노테이션의 <code>value</code> 속성을 통해 이름을 제공하면 해당 이름이 해당 Bean 정의의 이름으로 사용됩니다.
+이 규칙은 Spring 스테레오타입 어노테이션 대신 다음 JSR-250 및 JSR-330 어노테이션을 사용하는 경우에도 적용됩니다: jakarta.annotation.ManagedBean`, <code>@javax.annotation.ManagedBean</code>, <code>@jakarta.inject.Named</code>, <code>@javax.inject.Named</code>.</p>
 </div>
 <div class="paragraph">
-<p>As of Spring Framework 6.1, the name of the annotation attribute that is used to specify
-the bean name is no longer required to be <code>value</code>. Custom stereotype annotations can
-declare an attribute with a different name (such as <code>name</code>) and annotate that attribute
-with <code>@AliasFor(annotation = Component.class, attribute = "value")</code>. See the source code
-declaration of <code>ControllerAdvice#name()</code> for a concrete example.</p>
+<p>Spring Framework 6.1부터 Bean 이름을 지정하는 데 사용되는 어노테이션 속성의 이름은 더 이상 <code>value</code> 가 아니어도 됩니다.
+사용자 정의 스테레오타입 어노테이션은 다른 이름(예: <code>name</code>)으로 어노테이션을 선언하고 해당 어노테이션에 <code>@AliasFor(annotation = Component.class, attribute = "value")`로 주석을 달 수 있습니다.
+구체적인 예는 `ControllerAdvice#name()</code> 의 소스 코드 선언을 참조하세요.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -2789,22 +2705,17 @@ declaration of <code>ControllerAdvice#name()</code> for a concrete example.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>As of Spring Framework 6.1, support for convention-based stereotype names is deprecated
-and will be removed in a future version of the framework. Consequently, custom stereotype
-annotations must use <code>@AliasFor</code> to declare an explicit alias for the <code>value</code> attribute
-in <code>@Component</code>. See the source code declaration of <code>Repository#value()</code> and
-<code>ControllerAdvice#name()</code> for concrete examples.</p>
+<p>스프링 프레임워크 6.1부터, 규칙 기반 스테레오타입 이름에 대한 지원은 더 이상 사용되지 않으며 향후 버전의 프레임워크에서 제거될 예정입니다.
+따라서 사용자 정의 스테레오타입 어노테이션은 <code>@AliasFor`를 사용하여 `@Component`의 `value</code> 속성에 대한 명시적 별칭을 선언해야 합니다.
+구체적인 예는 <code>Repository#value()</code> 및 `ControllerAdvice#name()`의 소스 코드 선언을 참조하세요.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>If an explicit bean name cannot be derived from such an annotation or for any other
-detected component (such as those discovered by custom filters), the default bean name
-generator returns the uncapitalized non-qualified class name. For example, if the
-following component classes were detected, the names would be <code>myMovieLister</code> and
-<code>movieFinderImpl</code>.</p>
+<p>이러한 어노테이션이나 기타 감지된 구성 요소(예: 사용자 정의 필터로 검색된 것)에서 명시적인 Bean 이름을 도출할 수 없는 경우 기본 Bean 이름 생성기는 대문자로 구분되지 않은 정규화되지 않은 클래스 이름을 반환합니다.
+예를 들어, 다음 컴포넌트 클래스가 감지된 경우 이름은 <code>myMovieLister</code> 및 `movieFinderImpl`이 됩니다.</p>
 </div>
 <div id="_tabs_12" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -2875,12 +2786,9 @@ class MovieFinderImpl : MovieFinder {
 </div>
 </div>
 <div class="paragraph">
-<p>If you do not want to rely on the default bean-naming strategy, you can provide a custom
-bean-naming strategy. First, implement the
-<a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/beans/factory/support/BeanNameGenerator.html"><code>BeanNameGenerator</code></a>
-interface, and be sure to include a default no-arg constructor. Then, provide the fully
-qualified class name when configuring the scanner, as the following example annotation
-and bean definition show.</p>
+<p>기본 Bean 명명 전략에 의존하지 않으려면 사용자 지정 Bean 명명 전략을 제공할 수 있습니다.
+먼저 <a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/beans/factory/support/BeanNameGenerator.html"><code>BeanNameGenerator</code></a> 인터페이스를 구현하고 기본 no-arg 생성자를 반드시 포함하세요.
+그런 다음 스캐너를 구성할 때 다음 예제 어노테이션과 Bean 정의에 표시된 것처럼 정규화된 클래스 이름을 제공하세요.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -2889,12 +2797,8 @@ and bean definition show.</p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-If you run into naming conflicts due to multiple autodetected components having the
-same non-qualified class name (i.e., classes with identical names but residing in
-different packages), you may need to configure a <code>BeanNameGenerator</code> that defaults to the
-fully qualified class name for the generated bean name. As of Spring Framework 5.2.3, the
-<code>FullyQualifiedAnnotationBeanNameGenerator</code> located in package
-<code>org.springframework.context.annotation</code> can be used for such purposes.
+동일한 정규화되지 않은 클래스 이름을 가진 자동 감지된 여러 구성 요소(즉, 이름은 동일하지만 다른 패키지에 있는 클래스)로 인해 명명 충돌이 발생하는 경우, 생성된 Bean 이름에 대해 정규화된 클래스 이름을 기본값으로 하는 <code>BeanNameGenerator</code> 를 구성해야 할 수 있습니다.
+스프링 프레임워크 5.2.3부터 <code>org.springframework.context.annotation</code> 패키지에 있는 <code>FullyQualifiedAnnotationBeanNameGenerator</code> 를 이러한 용도로 사용할 수 있습니다.
 </td>
 </tr>
 </table>
@@ -2944,20 +2848,18 @@ class AppConfig {
 </div>
 </div>
 <div class="paragraph">
-<p>As a general rule, consider specifying the name with the annotation whenever other
-components may be making explicit references to it. On the other hand, the
-auto-generated names are adequate whenever the container is responsible for wiring.</p>
+<p>일반적으로 다른 컴포넌트가 해당 이름을 명시적으로 참조할 수 있는 경우에는 어노테이션으로 이름을 지정하는 것이 좋습니다.
+반면에 컨테이너가 와이어링을 담당하는 경우에는 자동 생성된 이름을 사용하는 것이 적절합니다.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-scanning-scope-resolver"><a class="anchor" href="#beans-scanning-scope-resolver"></a>Providing a Scope for Autodetected Components</h2>
+<h2 id="beans-scanning-scope-resolver"><a class="anchor" href="#beans-scanning-scope-resolver"></a>자동 감지된 구성 요소에 대한 Scope 제공(Providing a Scope for Autodetected Components)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>As with Spring-managed components in general, the default and most common scope for
-autodetected components is <code>singleton</code>. However, sometimes you need a different scope
-that can be specified by the <code>@Scope</code> annotation. You can provide the name of the
-scope within the annotation, as the following example shows:</p>
+<p>일반적으로 Spring이 관리하는 컴포넌트와 마찬가지로, 자동 감지된 컴포넌트의 기본적이고 가장 일반적인 범위는 <code>싱글톤`입니다.
+그러나 때때로 다른 범위가 필요할 수 있으며, 이는 `@Scope</code> 어노테이션으로 지정할 수 있습니다.
+다음 예시와 같이 어노테이션 내에 범위의 이름을 지정할 수 있습니다:</p>
 </div>
 <div id="_tabs_15" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -3002,20 +2904,15 @@ class MovieFinderImpl : MovieFinder {
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<code>@Scope</code> annotations are only introspected on the concrete bean class (for annotated
-components) or the factory method (for <code>@Bean</code> methods). In contrast to XML bean
-definitions, there is no notion of bean definition inheritance, and inheritance
-hierarchies at the class level are irrelevant for metadata purposes.
+<code>@Scope</code> 어노테이션은 구체적인 Bean 클래스(어노테이션된 컴포넌트의 경우) 또는 팩토리 메서드(<code>@Bean</code> 메서드의 경우)에 대해서만 내재화됩니다.
+XML Bean 정의와 달리, Bean 정의 상속이라는 개념이 없으며 클래스 수준에서의 상속 계층 구조는 메타데이터 목적과 관련이 없습니다.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>For details on web-specific scopes such as &#8220;request&#8221; or &#8220;session&#8221; in a Spring context,
-see <a href="factory-scopes.html#beans-factory-scopes-other" class="xref page">Request, Session, Application, and WebSocket Scopes</a>. As with the pre-built annotations for those scopes,
-you may also compose your own scoping annotations by using Spring&#8217;s meta-annotation
-approach: for example, a custom annotation meta-annotated with <code>@Scope("prototype")</code>,
-possibly also declaring a custom scoped-proxy mode.</p>
+<p>Spring 컨텍스트에서 &#8220;request&#8221; 또는 &#8220;session&#8221; 과 같은 웹 특정 Scope에 대한 자세한 내용은 <a href="factory-scopes.html#beans-factory-scopes-other" class="xref page">요청, 세션, 애플리케이션 및 웹소켓 스코프</a>를 참조하세요.
+이러한 범위에 대해 미리 빌드된 어노테이션과 마찬가지로, Spring의 메타 어노테이션 접근 방식을 사용하여 자체 스코핑 어노테이션을 작성할 수도 있습니다(예: <code>@Scope("프로토타입")</code> 으로 메타 어노테이션된 사용자 정의 어노테이션, 사용자 정의 스코프-프록시 모드 선언도 가능).</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3024,12 +2921,9 @@ possibly also declaring a custom scoped-proxy mode.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-To provide a custom strategy for scope resolution rather than relying on the
-annotation-based approach, you can implement the
-<a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/context/annotation/ScopeMetadataResolver.html"><code>ScopeMetadataResolver</code></a>
-interface. Be sure to include a default no-arg constructor. Then you can provide the
-fully qualified class name when configuring the scanner, as the following example of both
-an annotation and a bean definition shows:
+어노테이션 기반 접근 방식에 의존하지 않고 범위 확인을 위한 사용자 정의 전략을 제공하려면 <a href="https://docs.spring.io/spring-framework/docs/6.2.0-SNAPSHOT/javadoc-api/org/springframework/context/annotation/ScopeMetadataResolver.html"><code>ScopeMetadataResolver</code></a> 인터페이스를 구현할 수 있습니다.
+기본 no-arg 생성자를 포함해야 합니다.
+그런 다음 스캐너를 구성할 때 다음 어노테이션과 Bean 정의의 예에서 볼 수 있듯이 정규화된 클래스 이름을 제공할 수 있습니다:
 </td>
 </tr>
 </table>
@@ -3078,11 +2972,11 @@ class AppConfig {
 </div>
 </div>
 <div class="paragraph">
-<p>When using certain non-singleton scopes, it may be necessary to generate proxies for the
-scoped objects. The reasoning is described in <a href="factory-scopes.html#beans-factory-scopes-other-injection" class="xref page">Scoped Beans as Dependencies</a>.
-For this purpose, a scoped-proxy attribute is available on the component-scan
-element. The three possible values are: <code>no</code>, <code>interfaces</code>, and <code>targetClass</code>. For example,
-the following configuration results in standard JDK dynamic proxies:</p>
+<p>특정 싱글톤 아닌 스코프를 사용하는 경우, 스코프된 객체에 대한 프록시를 생성해야 할 수 있습니다.
+그 이유는 <a href="factory-scopes.html#beans-factory-scopes-other-injection" class="xref page">Scoped Bean as Dependencies</a>에 설명되어 있습니다.
+이를 위해 구성 요소 스캔 요소에서 Scope-proxy 속성을 사용할 수 있습니다.
+가능한 세 가지 값은 다음과 같습니다: <code>no</code>, <code>interfaces</code>, <code>targetClass</code> 입니다.
+예를 들어, 다음 구성은 표준 JDK 동적 프록시를 생성합니다:</p>
 </div>
 <div id="_tabs_17" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -3130,18 +3024,14 @@ class AppConfig {
 </div>
 </div>
 <div class="sect1">
-<h2 id="beans-scanning-qualifiers"><a class="anchor" href="#beans-scanning-qualifiers"></a>Providing Qualifier Metadata with Annotations</h2>
+<h2 id="beans-scanning-qualifiers"><a class="anchor" href="#beans-scanning-qualifiers"></a>주석이 포함된 한정자 메타데이터 제공하기(Providing Qualifier Metadata with Annotations)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>@Qualifier</code> annotation is discussed in <a href="annotation-config/autowired-qualifiers.html" class="xref page">Fine-tuning Annotation-based Autowiring with Qualifiers</a>.
-The examples in that section demonstrate the use of the <code>@Qualifier</code> annotation and
-custom qualifier annotations to provide fine-grained control when you resolve autowire
-candidates. Because those examples were based on XML bean definitions, the qualifier
-metadata was provided on the candidate bean definitions by using the <code>qualifier</code> or <code>meta</code>
-child elements of the <code>bean</code> element in the XML. When relying upon classpath scanning for
-auto-detection of components, you can provide the qualifier metadata with type-level
-annotations on the candidate class. The following three examples demonstrate this
-technique:</p>
+<p><code>@Qualifier</code> 어노테이션은 <a href="annotation-config/autowired-qualifiers.html" class="xref page">한정자를 사용하여 어노테이션 기반 Autowiring 미세 조정하기</a>에서 설명합니다.
+이 섹션의 예제에서는 <code>@Qualifier</code> 어노테이션과 사용자 정의 한정자 어노테이션을 사용하여 Autowiring 후보를 해결할 때 세분화된 제어를 제공하는 방법을 보여줍니다.
+이러한 예제는 XML Bean 정의를 기반으로 했기 때문에, 한정자 메타데이터는 XML의 <code>bean</code> 요소의 <code>qualifier</code> 또는 <code>meta</code> 하위 요소를 사용하여 후보 Bean 정의에 제공되었습니다.
+구성 요소의 자동 감지를 위해 클래스 경로 검색에 의존하는 경우 한정자 메타데이터에 후보 클래스에 대한 유형 수준 주석을 제공할 수 있습니다.
+다음 세 가지 예는 이 기술을 보여줍니다:</p>
 </div>
 <div id="_tabs_18" class="openblock tabs is-sync is-loading">
 <div class="content">
@@ -3256,10 +3146,7 @@ class CachingMovieCatalog : MovieCatalog {
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-As with most annotation-based alternatives, keep in mind that the annotation metadata is
-bound to the class definition itself, while the use of XML allows for multiple beans
-of the same type to provide variations in their qualifier metadata, because that
-metadata is provided per-instance rather than per-class.
+대부분의 어노테이션 기반 대안과 마찬가지로 어노테이션 메타데이터는 클래스 정의 자체에 바인딩되는 반면, XML을 사용하면 메타데이터가 클래스가 아닌 인스턴스별로 제공되므로 동일한 유형의 여러 Bean이 한정자 메타데이터에 변형을 제공할 수 있다는 점을 명심하세요.
 </td>
 </tr>
 </table>
@@ -3267,7 +3154,7 @@ metadata is provided per-instance rather than per-class.
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="annotation-config/postconstruct-and-predestroy-annotations.html">Using <code>@PostConstruct</code> and <code>@PreDestroy</code></a></span>
+  <span class="prev"><a href="annotation-config/postconstruct-and-predestroy-annotations.html">Using <code>@PostConstruct</code> and <code>@PreDestroy</code>(한글)</a></span>
   <span class="next"><a href="standard-annotations.html">Using JSR 330 Standard Annotations</a></span>
 </nav>
 </article>
